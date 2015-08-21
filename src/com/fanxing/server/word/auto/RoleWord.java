@@ -4,7 +4,13 @@ public interface RoleWord extends ErrorCode {
 
 	String NAME = "name";
 
-	String CHINESE = "chinese";
+	String NOTES = "notes";
+
+	String SHOWINFO = "showinfo";
+
+	String KEY = "key";
+
+	String name = "name";
 
 	String ROLE_NOT_EXISTS = "ROLE_NOT_EXISTS";
 

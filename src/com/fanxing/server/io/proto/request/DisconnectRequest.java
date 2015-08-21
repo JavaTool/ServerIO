@@ -1,7 +1,8 @@
 package com.fanxing.server.io.proto.request;
 
 import com.fanxing.server.io.proto.Request;
-import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
+import io.netty.channel.Channel;
 import com.fanxing.server.io.proto.protocol.AccountProtos.*;
 
 /**
@@ -12,8 +13,8 @@ public class DisconnectRequest extends Request {
 
 	private CS_Disconnect cS_Disconnect;
 
-	public DisconnectRequest(String ip, String receiveMessageId, HttpSession session, CS_Disconnect cS_Disconnect) {
-		super(ip, receiveMessageId, session);
+	public DisconnectRequest(String ip, String receiveMessageId, ServletContext servletContext, String sessionId, Channel channel, CS_Disconnect cS_Disconnect) {
+		super(ip, receiveMessageId, servletContext, sessionId, channel);
 		this.cS_Disconnect = cS_Disconnect;
 
 	}

@@ -24,6 +24,24 @@ public class CheckVersionResponse extends Response {
 
 	/**
 	 * 
+	 * @param	updateDb
+	 * 			�?要更新的文件名称列表
+	 */
+	public void setUpdateDb(Iterable<VO_FileVersion> updateDb) {
+		builder.addAllUpdateDb(updateDb);
+	}
+
+	/**
+	 * 
+	 * @param	updateClient
+	 * 			是否�?要更新客户端
+	 */
+	public void setUpdateClient(Boolean updateClient) {
+		builder.setUpdateClient(updateClient);
+	}
+
+	/**
+	 * 
 	 * @param	updateUrl
 	 * 			更新文件的链�?
 	 */
@@ -33,26 +51,8 @@ public class CheckVersionResponse extends Response {
 
 	/**
 	 * 
-	 * @param	updateDb
-	 * 			�?��更新的文件名称列�?
-	 */
-	public void setUpdateDb(Iterable<VO_FileVersion> updateDb) {
-		builder.addAllUpdateDb(updateDb);
-	}
-
-	/**
-	 * 
-	 * @param	updateClient
-	 * 			是否�?��更新客户�?
-	 */
-	public void setUpdateClient(Boolean updateClient) {
-		builder.setUpdateClient(updateClient);
-	}
-
-	/**
-	 * 
 	 * @param	dbSize
-	 * 			�?��更新的db文件总大�?
+	 * 			�?要更新的db文件总大�?
 	 */
 	public void setDbSize(Integer dbSize) {
 		builder.setDbSize(dbSize);

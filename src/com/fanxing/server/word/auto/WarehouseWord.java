@@ -4,7 +4,13 @@ public interface WarehouseWord extends ErrorCode {
 
 	String NAME = "name";
 
-	String CHINESE = "chinese";
+	String NOTES = "notes";
+
+	String SHOWINFO = "showinfo";
+
+	String KEY = "key";
+
+	String name = "name";
 
 	String DO_NOT_HAVE_TANK = "DO_NOT_HAVE_TANK";
 

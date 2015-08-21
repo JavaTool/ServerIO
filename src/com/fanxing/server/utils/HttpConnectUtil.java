@@ -1,5 +1,6 @@
 package com.fanxing.server.utils;
 
+import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -9,6 +10,7 @@ import java.net.CookiePolicy;
 import java.net.CookieStore;
 import java.net.HttpCookie;
 import java.net.HttpURLConnection;
+import java.net.SocketAddress;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.net.URL;
@@ -19,8 +21,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.fanxing.server.io.HttpBackInfo;
-import com.fanxing.server.io.proto.HTTPStatus;
+import com.fanxing.server.io.http.HTTPStatus;
+import com.fanxing.server.io.http.HttpBackInfo;
 import com.fanxing.server.io.proto.protocol.MessageIdProto.MessageId;
 
 /**
@@ -31,6 +33,10 @@ public abstract class HttpConnectUtil implements HTTPStatus {
 	
 	/**HTTP消息头的消息id名称*/
 	private static final String MESSAGEID = MessageId.class.getSimpleName().toLowerCase();
+	
+	private static final byte[] NULL_REQUEST = new byte[0];
+	/**最大数据读取次数*/
+	private static final int CONTENT_MAX_READ_TIMES = 5;
 	
 	/**
 	 * 创建连接
@@ -68,7 +74,7 @@ public abstract class HttpConnectUtil implements HTTPStatus {
         outputStream.close();
         
         int responseCode = connection.getResponseCode();
-        if (responseCode == HTTP_STATUS_SUCCESS) {
+        if (responseCode == HTTP_STATUS_SUCCESS || responseCode == HTTP_STATUS_REDIRECT) {
 	        InputStream is = connection.getInputStream();
 			byte[] b = new byte[4096];
 			int n;
@@ -202,6 +208,42 @@ public abstract class HttpConnectUtil implements HTTPStatus {
 	        sbu.append(it.next());
 	    }
 	    return sbu.toString();
+	}
+	
+	/**
+	 * 读取数据
+	 * @param 	request
+	 * 			请求
+	 * @return	数据
+	 * @throws 	Exception
+	 */
+	public static byte[] getRequestProtoContent(HttpServletRequest request) throws Exception {
+		// get request content length
+		final int contentLength = request.getContentLength();
+		if (contentLength < 0) {
+			throw new Exception("contentLength < 0");
+		} else if (contentLength == 0) {
+			return NULL_REQUEST;
+		} else {
+			// get request content
+			byte[] data = new byte[contentLength];
+			BufferedInputStream bis = new BufferedInputStream(request.getInputStream());
+			int readLength = bis.read(data, 0, contentLength);
+			
+			int count = 0;
+			while (readLength < contentLength) {
+				// 读取次数超过最大设置读取次数时还没有读取全部请求内容，返回错误
+				if ((++count) > CONTENT_MAX_READ_TIMES) {
+					throw new Exception();
+				}
+				readLength += bis.read(data, readLength, contentLength - readLength);
+			}
+			return data;
+		}
+	}
+	
+	public static String getIp(SocketAddress address) {
+		return address.toString().split(":")[0].replace("/", "");
 	}
 	
 }

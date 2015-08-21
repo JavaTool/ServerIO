@@ -1,7 +1,8 @@
 package com.fanxing.server.io.proto.request;
 
 import com.fanxing.server.io.proto.Request;
-import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
+import io.netty.channel.Channel;
 import com.fanxing.server.io.proto.protocol.RoleProtos.*;
 
 /**
@@ -12,8 +13,8 @@ public class NewRoleInfoRequest extends Request {
 
 	private CS_NewRoleInfo cS_NewRoleInfo;
 
-	public NewRoleInfoRequest(String ip, String receiveMessageId, HttpSession session, CS_NewRoleInfo cS_NewRoleInfo) {
-		super(ip, receiveMessageId, session);
+	public NewRoleInfoRequest(String ip, String receiveMessageId, ServletContext servletContext, String sessionId, Channel channel, CS_NewRoleInfo cS_NewRoleInfo) {
+		super(ip, receiveMessageId, servletContext, sessionId, channel);
 		this.cS_NewRoleInfo = cS_NewRoleInfo;
 
 	}
@@ -24,7 +25,15 @@ public class NewRoleInfoRequest extends Request {
 
 	/**
 	 * 
-	 * @return	性别，true=男�?
+	 * @return	人物模型
+	 */
+	public Integer getRoleModel() {
+		return cS_NewRoleInfo.getRoleModel();
+	}
+
+	/**
+	 * 
+	 * @return	性别，true=男�??
 	 */
 	public Boolean getSex() {
 		return cS_NewRoleInfo.getSex();
@@ -36,14 +45,6 @@ public class NewRoleInfoRequest extends Request {
 	 */
 	public String getName() {
 		return cS_NewRoleInfo.getName();
-	}
-
-	/**
-	 * 
-	 * @return	人物模型
-	 */
-	public Integer getRoleModel() {
-		return cS_NewRoleInfo.getRoleModel();
 	}
 
 	public CS_NewRoleInfo getCS_NewRoleInfo() {

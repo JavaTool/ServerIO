@@ -1,6 +1,8 @@
 package com.fanxing.server.io.proto;
 
-import javax.servlet.http.HttpSession;
+import io.netty.channel.Channel;
+
+import javax.servlet.ServletContext;
 
 /**
  * 重定向请求
@@ -11,8 +13,8 @@ public class RedirectRequest extends Request {
 	/**消息数据*/
 	private final byte[] data;
 
-	public RedirectRequest(String ip, String receiveMessageId, HttpSession session, byte[] data) {
-		super(ip, receiveMessageId, session);
+	public RedirectRequest(String ip, String receiveMessageId, ServletContext servletContext, String sessionId, byte[] data, Channel channel) {
+		super(ip, receiveMessageId, servletContext, sessionId, channel);
 		this.data = data;
 	}
 

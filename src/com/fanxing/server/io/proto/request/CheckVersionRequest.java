@@ -1,7 +1,8 @@
 package com.fanxing.server.io.proto.request;
 
 import com.fanxing.server.io.proto.Request;
-import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
+import io.netty.channel.Channel;
 import com.fanxing.server.io.proto.protocol.CommonProtos.*;
 import java.util.List;
 
@@ -13,8 +14,8 @@ public class CheckVersionRequest extends Request {
 
 	private CS_CheckVersion cS_CheckVersion;
 
-	public CheckVersionRequest(String ip, String receiveMessageId, HttpSession session, CS_CheckVersion cS_CheckVersion) {
-		super(ip, receiveMessageId, session);
+	public CheckVersionRequest(String ip, String receiveMessageId, ServletContext servletContext, String sessionId, Channel channel, CS_CheckVersion cS_CheckVersion) {
+		super(ip, receiveMessageId, servletContext, sessionId, channel);
 		this.cS_CheckVersion = cS_CheckVersion;
 
 	}

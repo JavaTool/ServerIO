@@ -1,6 +1,6 @@
 package com.fanxing.server.io.proto;
 
-import javax.servlet.http.HttpSession;
+import io.netty.channel.Channel;
 
 /**
  * 消息接收器
@@ -16,11 +16,13 @@ public interface MessageHandle {
 	 * 			客户端地址
 	 * @param 	receiveMessageId
 	 * 			接收的消息id
-	 * @param 	session
-	 * 			会话
+	 * @param 	sessionId
+	 * 			会话id
+	 * @param 	channel
+	 * 			Netty客户端频道
 	 * @return	响应对象
 	 * @throws 	Exception
 	 */
-	Response handle(byte[] receiveDatas, String ip, String receiveMessageId, HttpSession session) throws Exception;
+	Response handle(byte[] receiveDatas, String ip, String receiveMessageId, String sessionId, Channel channel) throws Exception;
 
 }

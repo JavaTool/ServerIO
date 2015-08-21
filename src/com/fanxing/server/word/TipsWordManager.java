@@ -66,7 +66,7 @@ public class TipsWordManager {
 		for (int i = 0;i < language.length;i++) {
 			language[i] = row.getCell(i + 1).getStringCellValue();
 		}
-		for (int i = 1;i < rowCount;i++) {
+		for (int i = 3;i < rowCount;i++) {
 			TipsWord tipsWord = new TipsWord(sheet.getRow(i), type, language);
 			map.put(tipsWord.getName(), tipsWord);
 		}

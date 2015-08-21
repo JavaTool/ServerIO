@@ -1,7 +1,8 @@
 package com.fanxing.server.io.proto.request;
 
 import com.fanxing.server.io.proto.Request;
-import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
+import io.netty.channel.Channel;
 import com.fanxing.server.io.proto.protocol.AccountProtos.*;
 
 /**
@@ -12,8 +13,8 @@ public class AccountRegisterRequest extends Request {
 
 	private CS_AccountRegister cS_AccountRegister;
 
-	public AccountRegisterRequest(String ip, String receiveMessageId, HttpSession session, CS_AccountRegister cS_AccountRegister) {
-		super(ip, receiveMessageId, session);
+	public AccountRegisterRequest(String ip, String receiveMessageId, ServletContext servletContext, String sessionId, Channel channel, CS_AccountRegister cS_AccountRegister) {
+		super(ip, receiveMessageId, servletContext, sessionId, channel);
 		this.cS_AccountRegister = cS_AccountRegister;
 
 	}
@@ -24,10 +25,10 @@ public class AccountRegisterRequest extends Request {
 
 	/**
 	 * 
-	 * @return	邮箱
+	 * @return	密码
 	 */
-	public String getEmail() {
-		return cS_AccountRegister.getEmail();
+	public String getPassword() {
+		return cS_AccountRegister.getPassword();
 	}
 
 	/**
@@ -40,10 +41,10 @@ public class AccountRegisterRequest extends Request {
 
 	/**
 	 * 
-	 * @return	密码
+	 * @return	邮箱
 	 */
-	public String getPassword() {
-		return cS_AccountRegister.getPassword();
+	public String getEmail() {
+		return cS_AccountRegister.getEmail();
 	}
 
 	public CS_AccountRegister getCS_AccountRegister() {

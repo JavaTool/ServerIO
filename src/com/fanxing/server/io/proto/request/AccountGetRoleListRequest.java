@@ -1,7 +1,8 @@
 package com.fanxing.server.io.proto.request;
 
 import com.fanxing.server.io.proto.Request;
-import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
+import io.netty.channel.Channel;
 import com.fanxing.server.io.proto.protocol.RoleProtos.*;
 
 /**
@@ -12,8 +13,8 @@ public class AccountGetRoleListRequest extends Request {
 
 	private CS_AccountGetRoleList cS_AccountGetRoleList;
 
-	public AccountGetRoleListRequest(String ip, String receiveMessageId, HttpSession session, CS_AccountGetRoleList cS_AccountGetRoleList) {
-		super(ip, receiveMessageId, session);
+	public AccountGetRoleListRequest(String ip, String receiveMessageId, ServletContext servletContext, String sessionId, Channel channel, CS_AccountGetRoleList cS_AccountGetRoleList) {
+		super(ip, receiveMessageId, servletContext, sessionId, channel);
 		this.cS_AccountGetRoleList = cS_AccountGetRoleList;
 
 	}
@@ -24,18 +25,10 @@ public class AccountGetRoleListRequest extends Request {
 
 	/**
 	 * 
-	 * @return	帐号id
+	 * @return	<u>do not has any annotate.</u>
 	 */
-	public Integer getAccountId() {
-		return cS_AccountGetRoleList.getAccountId();
-	}
-
-	/**
-	 * 
-	 * @return	帐号
-	 */
-	public String getAccount() {
-		return cS_AccountGetRoleList.getAccount();
+	public String getKey() {
+		return cS_AccountGetRoleList.getKey();
 	}
 
 	public CS_AccountGetRoleList getCS_AccountGetRoleList() {

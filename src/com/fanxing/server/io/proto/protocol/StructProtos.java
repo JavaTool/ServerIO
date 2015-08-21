@@ -8,6 +8,144 @@ public final class StructProtos {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  public enum ChangeType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    ONE(0, 0),
+    MANYTIMES(1, 1),
+    ;
+    
+    public static final int ONE_VALUE = 0;
+    public static final int MANYTIMES_VALUE = 1;
+    
+    
+    public final int getNumber() { return value; }
+    
+    public static ChangeType valueOf(int value) {
+      switch (value) {
+        case 0: return ONE;
+        case 1: return MANYTIMES;
+        default: return null;
+      }
+    }
+    
+    public static com.google.protobuf.Internal.EnumLiteMap<ChangeType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<ChangeType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ChangeType>() {
+            public ChangeType findValueByNumber(int number) {
+              return ChangeType.valueOf(number);
+            }
+          };
+    
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.getDescriptor().getEnumTypes().get(0);
+    }
+    
+    private static final ChangeType[] VALUES = {
+      ONE, MANYTIMES, 
+    };
+    
+    public static ChangeType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+    
+    private final int index;
+    private final int value;
+    
+    private ChangeType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+    
+    // @@protoc_insertion_point(enum_scope:ChangeType)
+  }
+  
+  public enum ChangeWay
+      implements com.google.protobuf.ProtocolMessageEnum {
+    COMMON(0, 0),
+    USEGOLD(1, 1),
+    ;
+    
+    public static final int COMMON_VALUE = 0;
+    public static final int USEGOLD_VALUE = 1;
+    
+    
+    public final int getNumber() { return value; }
+    
+    public static ChangeWay valueOf(int value) {
+      switch (value) {
+        case 0: return COMMON;
+        case 1: return USEGOLD;
+        default: return null;
+      }
+    }
+    
+    public static com.google.protobuf.Internal.EnumLiteMap<ChangeWay>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<ChangeWay>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ChangeWay>() {
+            public ChangeWay findValueByNumber(int number) {
+              return ChangeWay.valueOf(number);
+            }
+          };
+    
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.getDescriptor().getEnumTypes().get(1);
+    }
+    
+    private static final ChangeWay[] VALUES = {
+      COMMON, USEGOLD, 
+    };
+    
+    public static ChangeWay valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+    
+    private final int index;
+    private final int value;
+    
+    private ChangeWay(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+    
+    // @@protoc_insertion_point(enum_scope:ChangeWay)
+  }
+  
   public interface VO_ErrorOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
@@ -456,6 +594,417 @@ public final class StructProtos {
     // @@protoc_insertion_point(class_scope:VO_Error)
   }
   
+  public interface VO_SkillOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 skillGroupId = 1;
+    boolean hasSkillGroupId();
+    int getSkillGroupId();
+    
+    // required int32 level = 2;
+    boolean hasLevel();
+    int getLevel();
+  }
+  public static final class VO_Skill extends
+      com.google.protobuf.GeneratedMessage
+      implements VO_SkillOrBuilder {
+    // Use VO_Skill.newBuilder() to construct.
+    private VO_Skill(Builder builder) {
+      super(builder);
+    }
+    private VO_Skill(boolean noInit) {}
+    
+    private static final VO_Skill defaultInstance;
+    public static VO_Skill getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public VO_Skill getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_Skill_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_Skill_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required int32 skillGroupId = 1;
+    public static final int SKILLGROUPID_FIELD_NUMBER = 1;
+    private int skillGroupId_;
+    public boolean hasSkillGroupId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getSkillGroupId() {
+      return skillGroupId_;
+    }
+    
+    // required int32 level = 2;
+    public static final int LEVEL_FIELD_NUMBER = 2;
+    private int level_;
+    public boolean hasLevel() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getLevel() {
+      return level_;
+    }
+    
+    private void initFields() {
+      skillGroupId_ = 0;
+      level_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasSkillGroupId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLevel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, skillGroupId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, level_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, skillGroupId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, level_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_Skill_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_Skill_fieldAccessorTable;
+      }
+      
+      // Construct using com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        skillGroupId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        level_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.getDescriptor();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.getDefaultInstance();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill build() {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill buildPartial() {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill result = new com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.skillGroupId_ = skillGroupId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.level_ = level_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill other) {
+        if (other == com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.getDefaultInstance()) return this;
+        if (other.hasSkillGroupId()) {
+          setSkillGroupId(other.getSkillGroupId());
+        }
+        if (other.hasLevel()) {
+          setLevel(other.getLevel());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasSkillGroupId()) {
+          
+          return false;
+        }
+        if (!hasLevel()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              skillGroupId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              level_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required int32 skillGroupId = 1;
+      private int skillGroupId_ ;
+      public boolean hasSkillGroupId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public int getSkillGroupId() {
+        return skillGroupId_;
+      }
+      public Builder setSkillGroupId(int value) {
+        bitField0_ |= 0x00000001;
+        skillGroupId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearSkillGroupId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        skillGroupId_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required int32 level = 2;
+      private int level_ ;
+      public boolean hasLevel() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public int getLevel() {
+        return level_;
+      }
+      public Builder setLevel(int value) {
+        bitField0_ |= 0x00000002;
+        level_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearLevel() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        level_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:VO_Skill)
+    }
+    
+    static {
+      defaultInstance = new VO_Skill(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:VO_Skill)
+  }
+  
   public interface VO_TankOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
@@ -501,6 +1050,28 @@ public final class StructProtos {
     java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_DriverOrBuilder> 
         getDriversOrBuilderList();
     com.fanxing.server.io.proto.protocol.StructProtos.VO_DriverOrBuilder getDriversOrBuilder(
+        int index);
+    
+    // required int32 teamInstanceId = 9;
+    boolean hasTeamInstanceId();
+    int getTeamInstanceId();
+    
+    // required string name = 10;
+    boolean hasName();
+    String getName();
+    
+    // required string createDate = 11;
+    boolean hasCreateDate();
+    String getCreateDate();
+    
+    // repeated .VO_Skill skills = 12;
+    java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> 
+        getSkillsList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index);
+    int getSkillsCount();
+    java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+        getSkillsOrBuilderList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
         int index);
   }
   public static final class VO_Tank extends
@@ -634,6 +1205,101 @@ public final class StructProtos {
       return drivers_.get(index);
     }
     
+    // required int32 teamInstanceId = 9;
+    public static final int TEAMINSTANCEID_FIELD_NUMBER = 9;
+    private int teamInstanceId_;
+    public boolean hasTeamInstanceId() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    public int getTeamInstanceId() {
+      return teamInstanceId_;
+    }
+    
+    // required string name = 10;
+    public static final int NAME_FIELD_NUMBER = 10;
+    private java.lang.Object name_;
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    public String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    // required string createDate = 11;
+    public static final int CREATEDATE_FIELD_NUMBER = 11;
+    private java.lang.Object createDate_;
+    public boolean hasCreateDate() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    public String getCreateDate() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          createDate_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getCreateDateBytes() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        createDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    // repeated .VO_Skill skills = 12;
+    public static final int SKILLS_FIELD_NUMBER = 12;
+    private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> skills_;
+    public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> getSkillsList() {
+      return skills_;
+    }
+    public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+        getSkillsOrBuilderList() {
+      return skills_;
+    }
+    public int getSkillsCount() {
+      return skills_.size();
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index) {
+      return skills_.get(index);
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
+        int index) {
+      return skills_.get(index);
+    }
+    
     private void initFields() {
       instanceId_ = 0;
       templateId_ = 0;
@@ -643,6 +1309,10 @@ public final class StructProtos {
       platingId_ = 0;
       equipments_ = java.util.Collections.emptyList();
       drivers_ = java.util.Collections.emptyList();
+      teamInstanceId_ = 0;
+      name_ = "";
+      createDate_ = "";
+      skills_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -673,6 +1343,18 @@ public final class StructProtos {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasTeamInstanceId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCreateDate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       for (int i = 0; i < getEquipmentsCount(); i++) {
         if (!getEquipments(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -681,6 +1363,12 @@ public final class StructProtos {
       }
       for (int i = 0; i < getDriversCount(); i++) {
         if (!getDrivers(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getSkillsCount(); i++) {
+        if (!getSkills(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -715,6 +1403,18 @@ public final class StructProtos {
       }
       for (int i = 0; i < drivers_.size(); i++) {
         output.writeMessage(8, drivers_.get(i));
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeInt32(9, teamInstanceId_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeBytes(10, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeBytes(11, getCreateDateBytes());
+      }
+      for (int i = 0; i < skills_.size(); i++) {
+        output.writeMessage(12, skills_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -756,6 +1456,22 @@ public final class StructProtos {
       for (int i = 0; i < drivers_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(8, drivers_.get(i));
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(9, teamInstanceId_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(10, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(11, getCreateDateBytes());
+      }
+      for (int i = 0; i < skills_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(12, skills_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -875,6 +1591,7 @@ public final class StructProtos {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getEquipmentsFieldBuilder();
           getDriversFieldBuilder();
+          getSkillsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -906,6 +1623,18 @@ public final class StructProtos {
           bitField0_ = (bitField0_ & ~0x00000080);
         } else {
           driversBuilder_.clear();
+        }
+        teamInstanceId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000100);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000200);
+        createDate_ = "";
+        bitField0_ = (bitField0_ & ~0x00000400);
+        if (skillsBuilder_ == null) {
+          skills_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000800);
+        } else {
+          skillsBuilder_.clear();
         }
         return this;
       }
@@ -986,6 +1715,27 @@ public final class StructProtos {
           result.drivers_ = drivers_;
         } else {
           result.drivers_ = driversBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.teamInstanceId_ = teamInstanceId_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.createDate_ = createDate_;
+        if (skillsBuilder_ == null) {
+          if (((bitField0_ & 0x00000800) == 0x00000800)) {
+            skills_ = java.util.Collections.unmodifiableList(skills_);
+            bitField0_ = (bitField0_ & ~0x00000800);
+          }
+          result.skills_ = skills_;
+        } else {
+          result.skills_ = skillsBuilder_.build();
         }
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -1073,6 +1823,41 @@ public final class StructProtos {
             }
           }
         }
+        if (other.hasTeamInstanceId()) {
+          setTeamInstanceId(other.getTeamInstanceId());
+        }
+        if (other.hasName()) {
+          setName(other.getName());
+        }
+        if (other.hasCreateDate()) {
+          setCreateDate(other.getCreateDate());
+        }
+        if (skillsBuilder_ == null) {
+          if (!other.skills_.isEmpty()) {
+            if (skills_.isEmpty()) {
+              skills_ = other.skills_;
+              bitField0_ = (bitField0_ & ~0x00000800);
+            } else {
+              ensureSkillsIsMutable();
+              skills_.addAll(other.skills_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.skills_.isEmpty()) {
+            if (skillsBuilder_.isEmpty()) {
+              skillsBuilder_.dispose();
+              skillsBuilder_ = null;
+              skills_ = other.skills_;
+              bitField0_ = (bitField0_ & ~0x00000800);
+              skillsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getSkillsFieldBuilder() : null;
+            } else {
+              skillsBuilder_.addAllMessages(other.skills_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -1102,6 +1887,18 @@ public final class StructProtos {
           
           return false;
         }
+        if (!hasTeamInstanceId()) {
+          
+          return false;
+        }
+        if (!hasName()) {
+          
+          return false;
+        }
+        if (!hasCreateDate()) {
+          
+          return false;
+        }
         for (int i = 0; i < getEquipmentsCount(); i++) {
           if (!getEquipments(i).isInitialized()) {
             
@@ -1110,6 +1907,12 @@ public final class StructProtos {
         }
         for (int i = 0; i < getDriversCount(); i++) {
           if (!getDrivers(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getSkillsCount(); i++) {
+          if (!getSkills(i).isInitialized()) {
             
             return false;
           }
@@ -1180,6 +1983,27 @@ public final class StructProtos {
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Driver.Builder subBuilder = com.fanxing.server.io.proto.protocol.StructProtos.VO_Driver.newBuilder();
               input.readMessage(subBuilder, extensionRegistry);
               addDrivers(subBuilder.buildPartial());
+              break;
+            }
+            case 72: {
+              bitField0_ |= 0x00000100;
+              teamInstanceId_ = input.readInt32();
+              break;
+            }
+            case 82: {
+              bitField0_ |= 0x00000200;
+              name_ = input.readBytes();
+              break;
+            }
+            case 90: {
+              bitField0_ |= 0x00000400;
+              createDate_ = input.readBytes();
+              break;
+            }
+            case 98: {
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder subBuilder = com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addSkills(subBuilder.buildPartial());
               break;
             }
           }
@@ -1686,6 +2510,285 @@ public final class StructProtos {
         return driversBuilder_;
       }
       
+      // required int32 teamInstanceId = 9;
+      private int teamInstanceId_ ;
+      public boolean hasTeamInstanceId() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      public int getTeamInstanceId() {
+        return teamInstanceId_;
+      }
+      public Builder setTeamInstanceId(int value) {
+        bitField0_ |= 0x00000100;
+        teamInstanceId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearTeamInstanceId() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        teamInstanceId_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required string name = 10;
+      private java.lang.Object name_ = "";
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      public String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setName(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      void setName(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000200;
+        name_ = value;
+        onChanged();
+      }
+      
+      // required string createDate = 11;
+      private java.lang.Object createDate_ = "";
+      public boolean hasCreateDate() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      public String getCreateDate() {
+        java.lang.Object ref = createDate_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          createDate_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setCreateDate(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000400;
+        createDate_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCreateDate() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        createDate_ = getDefaultInstance().getCreateDate();
+        onChanged();
+        return this;
+      }
+      void setCreateDate(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000400;
+        createDate_ = value;
+        onChanged();
+      }
+      
+      // repeated .VO_Skill skills = 12;
+      private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> skills_ =
+        java.util.Collections.emptyList();
+      private void ensureSkillsIsMutable() {
+        if (!((bitField0_ & 0x00000800) == 0x00000800)) {
+          skills_ = new java.util.ArrayList<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill>(skills_);
+          bitField0_ |= 0x00000800;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> skillsBuilder_;
+      
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> getSkillsList() {
+        if (skillsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(skills_);
+        } else {
+          return skillsBuilder_.getMessageList();
+        }
+      }
+      public int getSkillsCount() {
+        if (skillsBuilder_ == null) {
+          return skills_.size();
+        } else {
+          return skillsBuilder_.getCount();
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index) {
+        if (skillsBuilder_ == null) {
+          return skills_.get(index);
+        } else {
+          return skillsBuilder_.getMessage(index);
+        }
+      }
+      public Builder setSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.set(index, value);
+          onChanged();
+        } else {
+          skillsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      public Builder setSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addSkills(com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.add(value);
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      public Builder addSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.add(index, value);
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      public Builder addSkills(
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.add(builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addAllSkills(
+          java.lang.Iterable<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> values) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          super.addAll(values, skills_);
+          onChanged();
+        } else {
+          skillsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      public Builder clearSkills() {
+        if (skillsBuilder_ == null) {
+          skills_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000800);
+          onChanged();
+        } else {
+          skillsBuilder_.clear();
+        }
+        return this;
+      }
+      public Builder removeSkills(int index) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.remove(index);
+          onChanged();
+        } else {
+          skillsBuilder_.remove(index);
+        }
+        return this;
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder getSkillsBuilder(
+          int index) {
+        return getSkillsFieldBuilder().getBuilder(index);
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
+          int index) {
+        if (skillsBuilder_ == null) {
+          return skills_.get(index);  } else {
+          return skillsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+           getSkillsOrBuilderList() {
+        if (skillsBuilder_ != null) {
+          return skillsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(skills_);
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder addSkillsBuilder() {
+        return getSkillsFieldBuilder().addBuilder(
+            com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.getDefaultInstance());
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder addSkillsBuilder(
+          int index) {
+        return getSkillsFieldBuilder().addBuilder(
+            index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.getDefaultInstance());
+      }
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder> 
+           getSkillsBuilderList() {
+        return getSkillsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+          getSkillsFieldBuilder() {
+        if (skillsBuilder_ == null) {
+          skillsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder>(
+                  skills_,
+                  ((bitField0_ & 0x00000800) == 0x00000800),
+                  getParentForChildren(),
+                  isClean());
+          skills_ = null;
+        }
+        return skillsBuilder_;
+      }
+      
       // @@protoc_insertion_point(builder_scope:VO_Tank)
     }
     
@@ -1787,6 +2890,10 @@ public final class StructProtos {
         getMaterialsOrBuilderList();
     com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialOrBuilder getMaterialsOrBuilder(
         int index);
+    
+    // required int32 ownerId = 14;
+    boolean hasOwnerId();
+    int getOwnerId();
   }
   public static final class VO_Warehouse extends
       com.google.protobuf.GeneratedMessage
@@ -2013,6 +3120,16 @@ public final class StructProtos {
       return materials_.get(index);
     }
     
+    // required int32 ownerId = 14;
+    public static final int OWNERID_FIELD_NUMBER = 14;
+    private int ownerId_;
+    public boolean hasOwnerId() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    public int getOwnerId() {
+      return ownerId_;
+    }
+    
     private void initFields() {
       instanceId_ = 0;
       propsSize_ = 0;
@@ -2027,6 +3144,7 @@ public final class StructProtos {
       equipments_ = java.util.Collections.emptyList();
       parts_ = java.util.Collections.emptyList();
       materials_ = java.util.Collections.emptyList();
+      ownerId_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2058,6 +3176,10 @@ public final class StructProtos {
         return false;
       }
       if (!hasMaterialSize()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOwnerId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2143,6 +3265,9 @@ public final class StructProtos {
       for (int i = 0; i < materials_.size(); i++) {
         output.writeMessage(13, materials_.get(i));
       }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeInt32(14, ownerId_);
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -2203,6 +3328,10 @@ public final class StructProtos {
       for (int i = 0; i < materials_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(13, materials_.get(i));
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(14, ownerId_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2384,6 +3513,8 @@ public final class StructProtos {
         } else {
           materialsBuilder_.clear();
         }
+        ownerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00002000);
         return this;
       }
       
@@ -2504,6 +3635,10 @@ public final class StructProtos {
         } else {
           result.materials_ = materialsBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.ownerId_ = ownerId_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2697,6 +3832,9 @@ public final class StructProtos {
             }
           }
         }
+        if (other.hasOwnerId()) {
+          setOwnerId(other.getOwnerId());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -2727,6 +3865,10 @@ public final class StructProtos {
           return false;
         }
         if (!hasMaterialSize()) {
+          
+          return false;
+        }
+        if (!hasOwnerId()) {
           
           return false;
         }
@@ -2861,6 +4003,11 @@ public final class StructProtos {
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Material.Builder subBuilder = com.fanxing.server.io.proto.protocol.StructProtos.VO_Material.newBuilder();
               input.readMessage(subBuilder, extensionRegistry);
               addMaterials(subBuilder.buildPartial());
+              break;
+            }
+            case 112: {
+              bitField0_ |= 0x00002000;
+              ownerId_ = input.readInt32();
               break;
             }
           }
@@ -4132,6 +5279,27 @@ public final class StructProtos {
         return materialsBuilder_;
       }
       
+      // required int32 ownerId = 14;
+      private int ownerId_ ;
+      public boolean hasOwnerId() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      public int getOwnerId() {
+        return ownerId_;
+      }
+      public Builder setOwnerId(int value) {
+        bitField0_ |= 0x00002000;
+        ownerId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearOwnerId() {
+        bitField0_ = (bitField0_ & ~0x00002000);
+        ownerId_ = 0;
+        onChanged();
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:VO_Warehouse)
     }
     
@@ -4165,6 +5333,20 @@ public final class StructProtos {
     // required int32 strengthen = 5;
     boolean hasStrengthen();
     int getStrengthen();
+    
+    // required string createDate = 6;
+    boolean hasCreateDate();
+    String getCreateDate();
+    
+    // repeated .VO_Skill skills = 7;
+    java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> 
+        getSkillsList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index);
+    int getSkillsCount();
+    java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+        getSkillsOrBuilderList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
+        int index);
   }
   public static final class VO_Driver extends
       com.google.protobuf.GeneratedMessage
@@ -4245,12 +5427,67 @@ public final class StructProtos {
       return strengthen_;
     }
     
+    // required string createDate = 6;
+    public static final int CREATEDATE_FIELD_NUMBER = 6;
+    private java.lang.Object createDate_;
+    public boolean hasCreateDate() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    public String getCreateDate() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          createDate_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getCreateDateBytes() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        createDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    // repeated .VO_Skill skills = 7;
+    public static final int SKILLS_FIELD_NUMBER = 7;
+    private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> skills_;
+    public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> getSkillsList() {
+      return skills_;
+    }
+    public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+        getSkillsOrBuilderList() {
+      return skills_;
+    }
+    public int getSkillsCount() {
+      return skills_.size();
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index) {
+      return skills_.get(index);
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
+        int index) {
+      return skills_.get(index);
+    }
+    
     private void initFields() {
       instanceId_ = 0;
       templateId_ = 0;
       exp_ = 0;
       level_ = 0;
       strengthen_ = 0;
+      createDate_ = "";
+      skills_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4277,6 +5514,16 @@ public final class StructProtos {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasCreateDate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getSkillsCount(); i++) {
+        if (!getSkills(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -4298,6 +5545,12 @@ public final class StructProtos {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         output.writeInt32(5, strengthen_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getCreateDateBytes());
+      }
+      for (int i = 0; i < skills_.size(); i++) {
+        output.writeMessage(7, skills_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -4327,6 +5580,14 @@ public final class StructProtos {
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(5, strengthen_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getCreateDateBytes());
+      }
+      for (int i = 0; i < skills_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(7, skills_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -4444,6 +5705,7 @@ public final class StructProtos {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSkillsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -4462,6 +5724,14 @@ public final class StructProtos {
         bitField0_ = (bitField0_ & ~0x00000008);
         strengthen_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
+        createDate_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
+        if (skillsBuilder_ == null) {
+          skills_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+        } else {
+          skillsBuilder_.clear();
+        }
         return this;
       }
       
@@ -4520,6 +5790,19 @@ public final class StructProtos {
           to_bitField0_ |= 0x00000010;
         }
         result.strengthen_ = strengthen_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.createDate_ = createDate_;
+        if (skillsBuilder_ == null) {
+          if (((bitField0_ & 0x00000040) == 0x00000040)) {
+            skills_ = java.util.Collections.unmodifiableList(skills_);
+            bitField0_ = (bitField0_ & ~0x00000040);
+          }
+          result.skills_ = skills_;
+        } else {
+          result.skills_ = skillsBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4551,6 +5834,35 @@ public final class StructProtos {
         if (other.hasStrengthen()) {
           setStrengthen(other.getStrengthen());
         }
+        if (other.hasCreateDate()) {
+          setCreateDate(other.getCreateDate());
+        }
+        if (skillsBuilder_ == null) {
+          if (!other.skills_.isEmpty()) {
+            if (skills_.isEmpty()) {
+              skills_ = other.skills_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+            } else {
+              ensureSkillsIsMutable();
+              skills_.addAll(other.skills_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.skills_.isEmpty()) {
+            if (skillsBuilder_.isEmpty()) {
+              skillsBuilder_.dispose();
+              skillsBuilder_ = null;
+              skills_ = other.skills_;
+              bitField0_ = (bitField0_ & ~0x00000040);
+              skillsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getSkillsFieldBuilder() : null;
+            } else {
+              skillsBuilder_.addAllMessages(other.skills_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -4575,6 +5887,16 @@ public final class StructProtos {
         if (!hasStrengthen()) {
           
           return false;
+        }
+        if (!hasCreateDate()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getSkillsCount(); i++) {
+          if (!getSkills(i).isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -4625,6 +5947,17 @@ public final class StructProtos {
             case 40: {
               bitField0_ |= 0x00000010;
               strengthen_ = input.readInt32();
+              break;
+            }
+            case 50: {
+              bitField0_ |= 0x00000020;
+              createDate_ = input.readBytes();
+              break;
+            }
+            case 58: {
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder subBuilder = com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addSkills(subBuilder.buildPartial());
               break;
             }
           }
@@ -4738,6 +6071,228 @@ public final class StructProtos {
         return this;
       }
       
+      // required string createDate = 6;
+      private java.lang.Object createDate_ = "";
+      public boolean hasCreateDate() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      public String getCreateDate() {
+        java.lang.Object ref = createDate_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          createDate_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setCreateDate(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        createDate_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCreateDate() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        createDate_ = getDefaultInstance().getCreateDate();
+        onChanged();
+        return this;
+      }
+      void setCreateDate(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000020;
+        createDate_ = value;
+        onChanged();
+      }
+      
+      // repeated .VO_Skill skills = 7;
+      private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> skills_ =
+        java.util.Collections.emptyList();
+      private void ensureSkillsIsMutable() {
+        if (!((bitField0_ & 0x00000040) == 0x00000040)) {
+          skills_ = new java.util.ArrayList<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill>(skills_);
+          bitField0_ |= 0x00000040;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> skillsBuilder_;
+      
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> getSkillsList() {
+        if (skillsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(skills_);
+        } else {
+          return skillsBuilder_.getMessageList();
+        }
+      }
+      public int getSkillsCount() {
+        if (skillsBuilder_ == null) {
+          return skills_.size();
+        } else {
+          return skillsBuilder_.getCount();
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index) {
+        if (skillsBuilder_ == null) {
+          return skills_.get(index);
+        } else {
+          return skillsBuilder_.getMessage(index);
+        }
+      }
+      public Builder setSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.set(index, value);
+          onChanged();
+        } else {
+          skillsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      public Builder setSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addSkills(com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.add(value);
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      public Builder addSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.add(index, value);
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      public Builder addSkills(
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.add(builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addAllSkills(
+          java.lang.Iterable<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> values) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          super.addAll(values, skills_);
+          onChanged();
+        } else {
+          skillsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      public Builder clearSkills() {
+        if (skillsBuilder_ == null) {
+          skills_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000040);
+          onChanged();
+        } else {
+          skillsBuilder_.clear();
+        }
+        return this;
+      }
+      public Builder removeSkills(int index) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.remove(index);
+          onChanged();
+        } else {
+          skillsBuilder_.remove(index);
+        }
+        return this;
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder getSkillsBuilder(
+          int index) {
+        return getSkillsFieldBuilder().getBuilder(index);
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
+          int index) {
+        if (skillsBuilder_ == null) {
+          return skills_.get(index);  } else {
+          return skillsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+           getSkillsOrBuilderList() {
+        if (skillsBuilder_ != null) {
+          return skillsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(skills_);
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder addSkillsBuilder() {
+        return getSkillsFieldBuilder().addBuilder(
+            com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.getDefaultInstance());
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder addSkillsBuilder(
+          int index) {
+        return getSkillsFieldBuilder().addBuilder(
+            index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.getDefaultInstance());
+      }
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder> 
+           getSkillsBuilderList() {
+        return getSkillsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+          getSkillsFieldBuilder() {
+        if (skillsBuilder_ == null) {
+          skillsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder>(
+                  skills_,
+                  ((bitField0_ & 0x00000040) == 0x00000040),
+                  getParentForChildren(),
+                  isClean());
+          skills_ = null;
+        }
+        return skillsBuilder_;
+      }
+      
       // @@protoc_insertion_point(builder_scope:VO_Driver)
     }
     
@@ -4780,6 +6335,20 @@ public final class StructProtos {
     java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_PartOrBuilder> 
         getPartsOrBuilderList();
     com.fanxing.server.io.proto.protocol.StructProtos.VO_PartOrBuilder getPartsOrBuilder(
+        int index);
+    
+    // required string createDate = 7;
+    boolean hasCreateDate();
+    String getCreateDate();
+    
+    // repeated .VO_Skill skills = 8;
+    java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> 
+        getSkillsList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index);
+    int getSkillsCount();
+    java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+        getSkillsOrBuilderList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
         int index);
   }
   public static final class VO_Equipment extends
@@ -4882,6 +6451,59 @@ public final class StructProtos {
       return parts_.get(index);
     }
     
+    // required string createDate = 7;
+    public static final int CREATEDATE_FIELD_NUMBER = 7;
+    private java.lang.Object createDate_;
+    public boolean hasCreateDate() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    public String getCreateDate() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          createDate_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getCreateDateBytes() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        createDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    // repeated .VO_Skill skills = 8;
+    public static final int SKILLS_FIELD_NUMBER = 8;
+    private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> skills_;
+    public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> getSkillsList() {
+      return skills_;
+    }
+    public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+        getSkillsOrBuilderList() {
+      return skills_;
+    }
+    public int getSkillsCount() {
+      return skills_.size();
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index) {
+      return skills_.get(index);
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
+        int index) {
+      return skills_.get(index);
+    }
+    
     private void initFields() {
       instanceId_ = 0;
       templateId_ = 0;
@@ -4889,6 +6511,8 @@ public final class StructProtos {
       level_ = 0;
       strengthen_ = 0;
       parts_ = java.util.Collections.emptyList();
+      createDate_ = "";
+      skills_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -4915,8 +6539,18 @@ public final class StructProtos {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasCreateDate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       for (int i = 0; i < getPartsCount(); i++) {
         if (!getParts(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getSkillsCount(); i++) {
+        if (!getSkills(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -4945,6 +6579,12 @@ public final class StructProtos {
       }
       for (int i = 0; i < parts_.size(); i++) {
         output.writeMessage(6, parts_.get(i));
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(7, getCreateDateBytes());
+      }
+      for (int i = 0; i < skills_.size(); i++) {
+        output.writeMessage(8, skills_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -4978,6 +6618,14 @@ public final class StructProtos {
       for (int i = 0; i < parts_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(6, parts_.get(i));
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(7, getCreateDateBytes());
+      }
+      for (int i = 0; i < skills_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(8, skills_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5096,6 +6744,7 @@ public final class StructProtos {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getPartsFieldBuilder();
+          getSkillsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -5119,6 +6768,14 @@ public final class StructProtos {
           bitField0_ = (bitField0_ & ~0x00000020);
         } else {
           partsBuilder_.clear();
+        }
+        createDate_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
+        if (skillsBuilder_ == null) {
+          skills_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+        } else {
+          skillsBuilder_.clear();
         }
         return this;
       }
@@ -5187,6 +6844,19 @@ public final class StructProtos {
         } else {
           result.parts_ = partsBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.createDate_ = createDate_;
+        if (skillsBuilder_ == null) {
+          if (((bitField0_ & 0x00000080) == 0x00000080)) {
+            skills_ = java.util.Collections.unmodifiableList(skills_);
+            bitField0_ = (bitField0_ & ~0x00000080);
+          }
+          result.skills_ = skills_;
+        } else {
+          result.skills_ = skillsBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -5244,6 +6914,35 @@ public final class StructProtos {
             }
           }
         }
+        if (other.hasCreateDate()) {
+          setCreateDate(other.getCreateDate());
+        }
+        if (skillsBuilder_ == null) {
+          if (!other.skills_.isEmpty()) {
+            if (skills_.isEmpty()) {
+              skills_ = other.skills_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+            } else {
+              ensureSkillsIsMutable();
+              skills_.addAll(other.skills_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.skills_.isEmpty()) {
+            if (skillsBuilder_.isEmpty()) {
+              skillsBuilder_.dispose();
+              skillsBuilder_ = null;
+              skills_ = other.skills_;
+              bitField0_ = (bitField0_ & ~0x00000080);
+              skillsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getSkillsFieldBuilder() : null;
+            } else {
+              skillsBuilder_.addAllMessages(other.skills_);
+            }
+          }
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -5269,8 +6968,18 @@ public final class StructProtos {
           
           return false;
         }
+        if (!hasCreateDate()) {
+          
+          return false;
+        }
         for (int i = 0; i < getPartsCount(); i++) {
           if (!getParts(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getSkillsCount(); i++) {
+          if (!getSkills(i).isInitialized()) {
             
             return false;
           }
@@ -5330,6 +7039,17 @@ public final class StructProtos {
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Part.Builder subBuilder = com.fanxing.server.io.proto.protocol.StructProtos.VO_Part.newBuilder();
               input.readMessage(subBuilder, extensionRegistry);
               addParts(subBuilder.buildPartial());
+              break;
+            }
+            case 58: {
+              bitField0_ |= 0x00000040;
+              createDate_ = input.readBytes();
+              break;
+            }
+            case 66: {
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder subBuilder = com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addSkills(subBuilder.buildPartial());
               break;
             }
           }
@@ -5629,6 +7349,228 @@ public final class StructProtos {
         return partsBuilder_;
       }
       
+      // required string createDate = 7;
+      private java.lang.Object createDate_ = "";
+      public boolean hasCreateDate() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      public String getCreateDate() {
+        java.lang.Object ref = createDate_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          createDate_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setCreateDate(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        createDate_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCreateDate() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        createDate_ = getDefaultInstance().getCreateDate();
+        onChanged();
+        return this;
+      }
+      void setCreateDate(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000040;
+        createDate_ = value;
+        onChanged();
+      }
+      
+      // repeated .VO_Skill skills = 8;
+      private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> skills_ =
+        java.util.Collections.emptyList();
+      private void ensureSkillsIsMutable() {
+        if (!((bitField0_ & 0x00000080) == 0x00000080)) {
+          skills_ = new java.util.ArrayList<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill>(skills_);
+          bitField0_ |= 0x00000080;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> skillsBuilder_;
+      
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> getSkillsList() {
+        if (skillsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(skills_);
+        } else {
+          return skillsBuilder_.getMessageList();
+        }
+      }
+      public int getSkillsCount() {
+        if (skillsBuilder_ == null) {
+          return skills_.size();
+        } else {
+          return skillsBuilder_.getCount();
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index) {
+        if (skillsBuilder_ == null) {
+          return skills_.get(index);
+        } else {
+          return skillsBuilder_.getMessage(index);
+        }
+      }
+      public Builder setSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.set(index, value);
+          onChanged();
+        } else {
+          skillsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      public Builder setSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addSkills(com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.add(value);
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      public Builder addSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.add(index, value);
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      public Builder addSkills(
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.add(builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addAllSkills(
+          java.lang.Iterable<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> values) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          super.addAll(values, skills_);
+          onChanged();
+        } else {
+          skillsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      public Builder clearSkills() {
+        if (skillsBuilder_ == null) {
+          skills_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000080);
+          onChanged();
+        } else {
+          skillsBuilder_.clear();
+        }
+        return this;
+      }
+      public Builder removeSkills(int index) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.remove(index);
+          onChanged();
+        } else {
+          skillsBuilder_.remove(index);
+        }
+        return this;
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder getSkillsBuilder(
+          int index) {
+        return getSkillsFieldBuilder().getBuilder(index);
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
+          int index) {
+        if (skillsBuilder_ == null) {
+          return skills_.get(index);  } else {
+          return skillsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+           getSkillsOrBuilderList() {
+        if (skillsBuilder_ != null) {
+          return skillsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(skills_);
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder addSkillsBuilder() {
+        return getSkillsFieldBuilder().addBuilder(
+            com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.getDefaultInstance());
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder addSkillsBuilder(
+          int index) {
+        return getSkillsFieldBuilder().addBuilder(
+            index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.getDefaultInstance());
+      }
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder> 
+           getSkillsBuilderList() {
+        return getSkillsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+          getSkillsFieldBuilder() {
+        if (skillsBuilder_ == null) {
+          skillsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder>(
+                  skills_,
+                  ((bitField0_ & 0x00000080) == 0x00000080),
+                  getParentForChildren(),
+                  isClean());
+          skills_ = null;
+        }
+        return skillsBuilder_;
+      }
+      
       // @@protoc_insertion_point(builder_scope:VO_Equipment)
     }
     
@@ -5658,6 +7600,24 @@ public final class StructProtos {
     // required int32 level = 4;
     boolean hasLevel();
     int getLevel();
+    
+    // required string createDate = 5;
+    boolean hasCreateDate();
+    String getCreateDate();
+    
+    // repeated .VO_Skill skills = 6;
+    java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> 
+        getSkillsList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index);
+    int getSkillsCount();
+    java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+        getSkillsOrBuilderList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
+        int index);
+    
+    // required int32 part = 7;
+    boolean hasPart();
+    int getPart();
   }
   public static final class VO_Part extends
       com.google.protobuf.GeneratedMessage
@@ -5728,11 +7688,77 @@ public final class StructProtos {
       return level_;
     }
     
+    // required string createDate = 5;
+    public static final int CREATEDATE_FIELD_NUMBER = 5;
+    private java.lang.Object createDate_;
+    public boolean hasCreateDate() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    public String getCreateDate() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          createDate_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getCreateDateBytes() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        createDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    // repeated .VO_Skill skills = 6;
+    public static final int SKILLS_FIELD_NUMBER = 6;
+    private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> skills_;
+    public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> getSkillsList() {
+      return skills_;
+    }
+    public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+        getSkillsOrBuilderList() {
+      return skills_;
+    }
+    public int getSkillsCount() {
+      return skills_.size();
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index) {
+      return skills_.get(index);
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
+        int index) {
+      return skills_.get(index);
+    }
+    
+    // required int32 part = 7;
+    public static final int PART_FIELD_NUMBER = 7;
+    private int part_;
+    public boolean hasPart() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    public int getPart() {
+      return part_;
+    }
+    
     private void initFields() {
       instanceId_ = 0;
       templateId_ = 0;
       exp_ = 0;
       level_ = 0;
+      createDate_ = "";
+      skills_ = java.util.Collections.emptyList();
+      part_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -5755,6 +7781,20 @@ public final class StructProtos {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasCreateDate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasPart()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      for (int i = 0; i < getSkillsCount(); i++) {
+        if (!getSkills(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -5773,6 +7813,15 @@ public final class StructProtos {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeInt32(4, level_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getCreateDateBytes());
+      }
+      for (int i = 0; i < skills_.size(); i++) {
+        output.writeMessage(6, skills_.get(i));
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeInt32(7, part_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -5798,6 +7847,18 @@ public final class StructProtos {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(4, level_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getCreateDateBytes());
+      }
+      for (int i = 0; i < skills_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(6, skills_.get(i));
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(7, part_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -5915,6 +7976,7 @@ public final class StructProtos {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getSkillsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -5931,6 +7993,16 @@ public final class StructProtos {
         bitField0_ = (bitField0_ & ~0x00000004);
         level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
+        createDate_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        if (skillsBuilder_ == null) {
+          skills_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000020);
+        } else {
+          skillsBuilder_.clear();
+        }
+        part_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000040);
         return this;
       }
       
@@ -5985,6 +8057,23 @@ public final class StructProtos {
           to_bitField0_ |= 0x00000008;
         }
         result.level_ = level_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.createDate_ = createDate_;
+        if (skillsBuilder_ == null) {
+          if (((bitField0_ & 0x00000020) == 0x00000020)) {
+            skills_ = java.util.Collections.unmodifiableList(skills_);
+            bitField0_ = (bitField0_ & ~0x00000020);
+          }
+          result.skills_ = skills_;
+        } else {
+          result.skills_ = skillsBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.part_ = part_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6013,6 +8102,38 @@ public final class StructProtos {
         if (other.hasLevel()) {
           setLevel(other.getLevel());
         }
+        if (other.hasCreateDate()) {
+          setCreateDate(other.getCreateDate());
+        }
+        if (skillsBuilder_ == null) {
+          if (!other.skills_.isEmpty()) {
+            if (skills_.isEmpty()) {
+              skills_ = other.skills_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+            } else {
+              ensureSkillsIsMutable();
+              skills_.addAll(other.skills_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.skills_.isEmpty()) {
+            if (skillsBuilder_.isEmpty()) {
+              skillsBuilder_.dispose();
+              skillsBuilder_ = null;
+              skills_ = other.skills_;
+              bitField0_ = (bitField0_ & ~0x00000020);
+              skillsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getSkillsFieldBuilder() : null;
+            } else {
+              skillsBuilder_.addAllMessages(other.skills_);
+            }
+          }
+        }
+        if (other.hasPart()) {
+          setPart(other.getPart());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -6033,6 +8154,20 @@ public final class StructProtos {
         if (!hasLevel()) {
           
           return false;
+        }
+        if (!hasCreateDate()) {
+          
+          return false;
+        }
+        if (!hasPart()) {
+          
+          return false;
+        }
+        for (int i = 0; i < getSkillsCount(); i++) {
+          if (!getSkills(i).isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -6078,6 +8213,22 @@ public final class StructProtos {
             case 32: {
               bitField0_ |= 0x00000008;
               level_ = input.readInt32();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              createDate_ = input.readBytes();
+              break;
+            }
+            case 50: {
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder subBuilder = com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addSkills(subBuilder.buildPartial());
+              break;
+            }
+            case 56: {
+              bitField0_ |= 0x00000040;
+              part_ = input.readInt32();
               break;
             }
           }
@@ -6170,6 +8321,249 @@ public final class StructProtos {
         return this;
       }
       
+      // required string createDate = 5;
+      private java.lang.Object createDate_ = "";
+      public boolean hasCreateDate() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      public String getCreateDate() {
+        java.lang.Object ref = createDate_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          createDate_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setCreateDate(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        createDate_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCreateDate() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        createDate_ = getDefaultInstance().getCreateDate();
+        onChanged();
+        return this;
+      }
+      void setCreateDate(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000010;
+        createDate_ = value;
+        onChanged();
+      }
+      
+      // repeated .VO_Skill skills = 6;
+      private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> skills_ =
+        java.util.Collections.emptyList();
+      private void ensureSkillsIsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          skills_ = new java.util.ArrayList<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill>(skills_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> skillsBuilder_;
+      
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> getSkillsList() {
+        if (skillsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(skills_);
+        } else {
+          return skillsBuilder_.getMessageList();
+        }
+      }
+      public int getSkillsCount() {
+        if (skillsBuilder_ == null) {
+          return skills_.size();
+        } else {
+          return skillsBuilder_.getCount();
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill getSkills(int index) {
+        if (skillsBuilder_ == null) {
+          return skills_.get(index);
+        } else {
+          return skillsBuilder_.getMessage(index);
+        }
+      }
+      public Builder setSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.set(index, value);
+          onChanged();
+        } else {
+          skillsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      public Builder setSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addSkills(com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.add(value);
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      public Builder addSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill value) {
+        if (skillsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureSkillsIsMutable();
+          skills_.add(index, value);
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      public Builder addSkills(
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.add(builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addSkills(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder builderForValue) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          skillsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addAllSkills(
+          java.lang.Iterable<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill> values) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          super.addAll(values, skills_);
+          onChanged();
+        } else {
+          skillsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      public Builder clearSkills() {
+        if (skillsBuilder_ == null) {
+          skills_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000020);
+          onChanged();
+        } else {
+          skillsBuilder_.clear();
+        }
+        return this;
+      }
+      public Builder removeSkills(int index) {
+        if (skillsBuilder_ == null) {
+          ensureSkillsIsMutable();
+          skills_.remove(index);
+          onChanged();
+        } else {
+          skillsBuilder_.remove(index);
+        }
+        return this;
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder getSkillsBuilder(
+          int index) {
+        return getSkillsFieldBuilder().getBuilder(index);
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder getSkillsOrBuilder(
+          int index) {
+        if (skillsBuilder_ == null) {
+          return skills_.get(index);  } else {
+          return skillsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+           getSkillsOrBuilderList() {
+        if (skillsBuilder_ != null) {
+          return skillsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(skills_);
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder addSkillsBuilder() {
+        return getSkillsFieldBuilder().addBuilder(
+            com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.getDefaultInstance());
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder addSkillsBuilder(
+          int index) {
+        return getSkillsFieldBuilder().addBuilder(
+            index, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.getDefaultInstance());
+      }
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder> 
+           getSkillsBuilderList() {
+        return getSkillsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder> 
+          getSkillsFieldBuilder() {
+        if (skillsBuilder_ == null) {
+          skillsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill, com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_SkillOrBuilder>(
+                  skills_,
+                  ((bitField0_ & 0x00000020) == 0x00000020),
+                  getParentForChildren(),
+                  isClean());
+          skills_ = null;
+        }
+        return skillsBuilder_;
+      }
+      
+      // required int32 part = 7;
+      private int part_ ;
+      public boolean hasPart() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      public int getPart() {
+        return part_;
+      }
+      public Builder setPart(int value) {
+        bitField0_ |= 0x00000040;
+        part_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearPart() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        part_ = 0;
+        onChanged();
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:VO_Part)
     }
     
@@ -6195,6 +8589,10 @@ public final class StructProtos {
     // required int32 count = 3;
     boolean hasCount();
     int getCount();
+    
+    // required string createDate = 4;
+    boolean hasCreateDate();
+    String getCreateDate();
   }
   public static final class VO_Props extends
       com.google.protobuf.GeneratedMessage
@@ -6255,10 +8653,43 @@ public final class StructProtos {
       return count_;
     }
     
+    // required string createDate = 4;
+    public static final int CREATEDATE_FIELD_NUMBER = 4;
+    private java.lang.Object createDate_;
+    public boolean hasCreateDate() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public String getCreateDate() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          createDate_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getCreateDateBytes() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        createDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
     private void initFields() {
       instanceId_ = 0;
       templateId_ = 0;
       count_ = 0;
+      createDate_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -6277,6 +8708,10 @@ public final class StructProtos {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasCreateDate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -6292,6 +8727,9 @@ public final class StructProtos {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeInt32(3, count_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getCreateDateBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -6313,6 +8751,10 @@ public final class StructProtos {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeInt32Size(3, count_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getCreateDateBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -6444,6 +8886,8 @@ public final class StructProtos {
         bitField0_ = (bitField0_ & ~0x00000002);
         count_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
+        createDate_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
       
@@ -6494,6 +8938,10 @@ public final class StructProtos {
           to_bitField0_ |= 0x00000004;
         }
         result.count_ = count_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.createDate_ = createDate_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -6519,6 +8967,9 @@ public final class StructProtos {
         if (other.hasCount()) {
           setCount(other.getCount());
         }
+        if (other.hasCreateDate()) {
+          setCreateDate(other.getCreateDate());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -6533,6 +8984,10 @@ public final class StructProtos {
           return false;
         }
         if (!hasCount()) {
+          
+          return false;
+        }
+        if (!hasCreateDate()) {
           
           return false;
         }
@@ -6575,6 +9030,11 @@ public final class StructProtos {
             case 24: {
               bitField0_ |= 0x00000004;
               count_ = input.readInt32();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              createDate_ = input.readBytes();
               break;
             }
           }
@@ -6644,6 +9104,42 @@ public final class StructProtos {
         count_ = 0;
         onChanged();
         return this;
+      }
+      
+      // required string createDate = 4;
+      private java.lang.Object createDate_ = "";
+      public boolean hasCreateDate() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      public String getCreateDate() {
+        java.lang.Object ref = createDate_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          createDate_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setCreateDate(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        createDate_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCreateDate() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        createDate_ = getDefaultInstance().getCreateDate();
+        onChanged();
+        return this;
+      }
+      void setCreateDate(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000008;
+        createDate_ = value;
+        onChanged();
       }
       
       // @@protoc_insertion_point(builder_scope:VO_Props)
@@ -7068,11 +9564,2591 @@ public final class StructProtos {
     // @@protoc_insertion_point(class_scope:VO_Material)
   }
   
+  public interface VO_TankTeamOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 instanceId = 1;
+    boolean hasInstanceId();
+    int getInstanceId();
+    
+    // required int32 ownerId = 2;
+    boolean hasOwnerId();
+    int getOwnerId();
+    
+    // required string name = 3;
+    boolean hasName();
+    String getName();
+    
+    // required int32 capacity = 4;
+    boolean hasCapacity();
+    int getCapacity();
+    
+    // required string createDate = 5;
+    boolean hasCreateDate();
+    String getCreateDate();
+    
+    // repeated int32 tankId = 6;
+    java.util.List<java.lang.Integer> getTankIdList();
+    int getTankIdCount();
+    int getTankId(int index);
+  }
+  public static final class VO_TankTeam extends
+      com.google.protobuf.GeneratedMessage
+      implements VO_TankTeamOrBuilder {
+    // Use VO_TankTeam.newBuilder() to construct.
+    private VO_TankTeam(Builder builder) {
+      super(builder);
+    }
+    private VO_TankTeam(boolean noInit) {}
+    
+    private static final VO_TankTeam defaultInstance;
+    public static VO_TankTeam getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public VO_TankTeam getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_TankTeam_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_TankTeam_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required int32 instanceId = 1;
+    public static final int INSTANCEID_FIELD_NUMBER = 1;
+    private int instanceId_;
+    public boolean hasInstanceId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getInstanceId() {
+      return instanceId_;
+    }
+    
+    // required int32 ownerId = 2;
+    public static final int OWNERID_FIELD_NUMBER = 2;
+    private int ownerId_;
+    public boolean hasOwnerId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getOwnerId() {
+      return ownerId_;
+    }
+    
+    // required string name = 3;
+    public static final int NAME_FIELD_NUMBER = 3;
+    private java.lang.Object name_;
+    public boolean hasName() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public String getName() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          name_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getNameBytes() {
+      java.lang.Object ref = name_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        name_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    // required int32 capacity = 4;
+    public static final int CAPACITY_FIELD_NUMBER = 4;
+    private int capacity_;
+    public boolean hasCapacity() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    public int getCapacity() {
+      return capacity_;
+    }
+    
+    // required string createDate = 5;
+    public static final int CREATEDATE_FIELD_NUMBER = 5;
+    private java.lang.Object createDate_;
+    public boolean hasCreateDate() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    public String getCreateDate() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          createDate_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getCreateDateBytes() {
+      java.lang.Object ref = createDate_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        createDate_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    // repeated int32 tankId = 6;
+    public static final int TANKID_FIELD_NUMBER = 6;
+    private java.util.List<java.lang.Integer> tankId_;
+    public java.util.List<java.lang.Integer>
+        getTankIdList() {
+      return tankId_;
+    }
+    public int getTankIdCount() {
+      return tankId_.size();
+    }
+    public int getTankId(int index) {
+      return tankId_.get(index);
+    }
+    
+    private void initFields() {
+      instanceId_ = 0;
+      ownerId_ = 0;
+      name_ = "";
+      capacity_ = 0;
+      createDate_ = "";
+      tankId_ = java.util.Collections.emptyList();;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasInstanceId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasOwnerId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasName()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCapacity()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCreateDate()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, instanceId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, ownerId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeInt32(4, capacity_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getCreateDateBytes());
+      }
+      for (int i = 0; i < tankId_.size(); i++) {
+        output.writeInt32(6, tankId_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, instanceId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, ownerId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getNameBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(4, capacity_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getCreateDateBytes());
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < tankId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeInt32SizeNoTag(tankId_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getTankIdList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeamOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_TankTeam_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_TankTeam_fieldAccessorTable;
+      }
+      
+      // Construct using com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        instanceId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        ownerId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        name_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        capacity_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        createDate_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
+        tankId_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.getDescriptor();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.getDefaultInstance();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam build() {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam buildPartial() {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam result = new com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.instanceId_ = instanceId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.ownerId_ = ownerId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.name_ = name_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.capacity_ = capacity_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.createDate_ = createDate_;
+        if (((bitField0_ & 0x00000020) == 0x00000020)) {
+          tankId_ = java.util.Collections.unmodifiableList(tankId_);
+          bitField0_ = (bitField0_ & ~0x00000020);
+        }
+        result.tankId_ = tankId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam other) {
+        if (other == com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.getDefaultInstance()) return this;
+        if (other.hasInstanceId()) {
+          setInstanceId(other.getInstanceId());
+        }
+        if (other.hasOwnerId()) {
+          setOwnerId(other.getOwnerId());
+        }
+        if (other.hasName()) {
+          setName(other.getName());
+        }
+        if (other.hasCapacity()) {
+          setCapacity(other.getCapacity());
+        }
+        if (other.hasCreateDate()) {
+          setCreateDate(other.getCreateDate());
+        }
+        if (!other.tankId_.isEmpty()) {
+          if (tankId_.isEmpty()) {
+            tankId_ = other.tankId_;
+            bitField0_ = (bitField0_ & ~0x00000020);
+          } else {
+            ensureTankIdIsMutable();
+            tankId_.addAll(other.tankId_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasInstanceId()) {
+          
+          return false;
+        }
+        if (!hasOwnerId()) {
+          
+          return false;
+        }
+        if (!hasName()) {
+          
+          return false;
+        }
+        if (!hasCapacity()) {
+          
+          return false;
+        }
+        if (!hasCreateDate()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              instanceId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              ownerId_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              name_ = input.readBytes();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              capacity_ = input.readInt32();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              createDate_ = input.readBytes();
+              break;
+            }
+            case 48: {
+              ensureTankIdIsMutable();
+              tankId_.add(input.readInt32());
+              break;
+            }
+            case 50: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              while (input.getBytesUntilLimit() > 0) {
+                addTankId(input.readInt32());
+              }
+              input.popLimit(limit);
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required int32 instanceId = 1;
+      private int instanceId_ ;
+      public boolean hasInstanceId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public int getInstanceId() {
+        return instanceId_;
+      }
+      public Builder setInstanceId(int value) {
+        bitField0_ |= 0x00000001;
+        instanceId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearInstanceId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        instanceId_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required int32 ownerId = 2;
+      private int ownerId_ ;
+      public boolean hasOwnerId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public int getOwnerId() {
+        return ownerId_;
+      }
+      public Builder setOwnerId(int value) {
+        bitField0_ |= 0x00000002;
+        ownerId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearOwnerId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        ownerId_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required string name = 3;
+      private java.lang.Object name_ = "";
+      public boolean hasName() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public String getName() {
+        java.lang.Object ref = name_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          name_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setName(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        name_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearName() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        name_ = getDefaultInstance().getName();
+        onChanged();
+        return this;
+      }
+      void setName(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000004;
+        name_ = value;
+        onChanged();
+      }
+      
+      // required int32 capacity = 4;
+      private int capacity_ ;
+      public boolean hasCapacity() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      public int getCapacity() {
+        return capacity_;
+      }
+      public Builder setCapacity(int value) {
+        bitField0_ |= 0x00000008;
+        capacity_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCapacity() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        capacity_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required string createDate = 5;
+      private java.lang.Object createDate_ = "";
+      public boolean hasCreateDate() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      public String getCreateDate() {
+        java.lang.Object ref = createDate_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          createDate_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setCreateDate(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        createDate_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCreateDate() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        createDate_ = getDefaultInstance().getCreateDate();
+        onChanged();
+        return this;
+      }
+      void setCreateDate(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000010;
+        createDate_ = value;
+        onChanged();
+      }
+      
+      // repeated int32 tankId = 6;
+      private java.util.List<java.lang.Integer> tankId_ = java.util.Collections.emptyList();;
+      private void ensureTankIdIsMutable() {
+        if (!((bitField0_ & 0x00000020) == 0x00000020)) {
+          tankId_ = new java.util.ArrayList<java.lang.Integer>(tankId_);
+          bitField0_ |= 0x00000020;
+         }
+      }
+      public java.util.List<java.lang.Integer>
+          getTankIdList() {
+        return java.util.Collections.unmodifiableList(tankId_);
+      }
+      public int getTankIdCount() {
+        return tankId_.size();
+      }
+      public int getTankId(int index) {
+        return tankId_.get(index);
+      }
+      public Builder setTankId(
+          int index, int value) {
+        ensureTankIdIsMutable();
+        tankId_.set(index, value);
+        onChanged();
+        return this;
+      }
+      public Builder addTankId(int value) {
+        ensureTankIdIsMutable();
+        tankId_.add(value);
+        onChanged();
+        return this;
+      }
+      public Builder addAllTankId(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureTankIdIsMutable();
+        super.addAll(values, tankId_);
+        onChanged();
+        return this;
+      }
+      public Builder clearTankId() {
+        tankId_ = java.util.Collections.emptyList();;
+        bitField0_ = (bitField0_ & ~0x00000020);
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:VO_TankTeam)
+    }
+    
+    static {
+      defaultInstance = new VO_TankTeam(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:VO_TankTeam)
+  }
+  
+  public interface VO_MaterialSpendResultOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 id = 1;
+    boolean hasId();
+    int getId();
+    
+    // required int32 count = 2;
+    boolean hasCount();
+    int getCount();
+  }
+  public static final class VO_MaterialSpendResult extends
+      com.google.protobuf.GeneratedMessage
+      implements VO_MaterialSpendResultOrBuilder {
+    // Use VO_MaterialSpendResult.newBuilder() to construct.
+    private VO_MaterialSpendResult(Builder builder) {
+      super(builder);
+    }
+    private VO_MaterialSpendResult(boolean noInit) {}
+    
+    private static final VO_MaterialSpendResult defaultInstance;
+    public static VO_MaterialSpendResult getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public VO_MaterialSpendResult getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_MaterialSpendResult_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_MaterialSpendResult_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required int32 id = 1;
+    public static final int ID_FIELD_NUMBER = 1;
+    private int id_;
+    public boolean hasId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getId() {
+      return id_;
+    }
+    
+    // required int32 count = 2;
+    public static final int COUNT_FIELD_NUMBER = 2;
+    private int count_;
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getCount() {
+      return count_;
+    }
+    
+    private void initFields() {
+      id_ = 0;
+      count_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, count_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, id_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, count_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResultOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_MaterialSpendResult_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_MaterialSpendResult_fieldAccessorTable;
+      }
+      
+      // Construct using com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        id_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.getDescriptor();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.getDefaultInstance();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult build() {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult buildPartial() {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult result = new com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.id_ = id_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.count_ = count_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult other) {
+        if (other == com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.getDefaultInstance()) return this;
+        if (other.hasId()) {
+          setId(other.getId());
+        }
+        if (other.hasCount()) {
+          setCount(other.getCount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasId()) {
+          
+          return false;
+        }
+        if (!hasCount()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              id_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              count_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required int32 id = 1;
+      private int id_ ;
+      public boolean hasId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public int getId() {
+        return id_;
+      }
+      public Builder setId(int value) {
+        bitField0_ |= 0x00000001;
+        id_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        id_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required int32 count = 2;
+      private int count_ ;
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public int getCount() {
+        return count_;
+      }
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000002;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        count_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:VO_MaterialSpendResult)
+    }
+    
+    static {
+      defaultInstance = new VO_MaterialSpendResult(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:VO_MaterialSpendResult)
+  }
+  
+  public interface VO_PropsSpendResultOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 instanceId = 1;
+    boolean hasInstanceId();
+    int getInstanceId();
+    
+    // required int32 count = 2;
+    boolean hasCount();
+    int getCount();
+  }
+  public static final class VO_PropsSpendResult extends
+      com.google.protobuf.GeneratedMessage
+      implements VO_PropsSpendResultOrBuilder {
+    // Use VO_PropsSpendResult.newBuilder() to construct.
+    private VO_PropsSpendResult(Builder builder) {
+      super(builder);
+    }
+    private VO_PropsSpendResult(boolean noInit) {}
+    
+    private static final VO_PropsSpendResult defaultInstance;
+    public static VO_PropsSpendResult getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public VO_PropsSpendResult getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_PropsSpendResult_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_PropsSpendResult_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required int32 instanceId = 1;
+    public static final int INSTANCEID_FIELD_NUMBER = 1;
+    private int instanceId_;
+    public boolean hasInstanceId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getInstanceId() {
+      return instanceId_;
+    }
+    
+    // required int32 count = 2;
+    public static final int COUNT_FIELD_NUMBER = 2;
+    private int count_;
+    public boolean hasCount() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getCount() {
+      return count_;
+    }
+    
+    private void initFields() {
+      instanceId_ = 0;
+      count_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasInstanceId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, instanceId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, count_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, instanceId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, count_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResultOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_PropsSpendResult_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_PropsSpendResult_fieldAccessorTable;
+      }
+      
+      // Construct using com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        instanceId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        count_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.getDescriptor();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.getDefaultInstance();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult build() {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult buildPartial() {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult result = new com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.instanceId_ = instanceId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.count_ = count_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult other) {
+        if (other == com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.getDefaultInstance()) return this;
+        if (other.hasInstanceId()) {
+          setInstanceId(other.getInstanceId());
+        }
+        if (other.hasCount()) {
+          setCount(other.getCount());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasInstanceId()) {
+          
+          return false;
+        }
+        if (!hasCount()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              instanceId_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              count_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required int32 instanceId = 1;
+      private int instanceId_ ;
+      public boolean hasInstanceId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public int getInstanceId() {
+        return instanceId_;
+      }
+      public Builder setInstanceId(int value) {
+        bitField0_ |= 0x00000001;
+        instanceId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearInstanceId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        instanceId_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required int32 count = 2;
+      private int count_ ;
+      public boolean hasCount() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public int getCount() {
+        return count_;
+      }
+      public Builder setCount(int value) {
+        bitField0_ |= 0x00000002;
+        count_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCount() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        count_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:VO_PropsSpendResult)
+    }
+    
+    static {
+      defaultInstance = new VO_PropsSpendResult(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:VO_PropsSpendResult)
+  }
+  
+  public interface VO_SpendResultOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // optional int32 money = 1;
+    boolean hasMoney();
+    int getMoney();
+    
+    // optional int32 gold = 2;
+    boolean hasGold();
+    int getGold();
+    
+    // repeated .VO_MaterialSpendResult materialSpendResult = 3;
+    java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult> 
+        getMaterialSpendResultList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult getMaterialSpendResult(int index);
+    int getMaterialSpendResultCount();
+    java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResultOrBuilder> 
+        getMaterialSpendResultOrBuilderList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResultOrBuilder getMaterialSpendResultOrBuilder(
+        int index);
+    
+    // repeated .VO_PropsSpendResult propsSpendResult = 4;
+    java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult> 
+        getPropsSpendResultList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult getPropsSpendResult(int index);
+    int getPropsSpendResultCount();
+    java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResultOrBuilder> 
+        getPropsSpendResultOrBuilderList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResultOrBuilder getPropsSpendResultOrBuilder(
+        int index);
+  }
+  public static final class VO_SpendResult extends
+      com.google.protobuf.GeneratedMessage
+      implements VO_SpendResultOrBuilder {
+    // Use VO_SpendResult.newBuilder() to construct.
+    private VO_SpendResult(Builder builder) {
+      super(builder);
+    }
+    private VO_SpendResult(boolean noInit) {}
+    
+    private static final VO_SpendResult defaultInstance;
+    public static VO_SpendResult getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public VO_SpendResult getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_SpendResult_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_SpendResult_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // optional int32 money = 1;
+    public static final int MONEY_FIELD_NUMBER = 1;
+    private int money_;
+    public boolean hasMoney() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getMoney() {
+      return money_;
+    }
+    
+    // optional int32 gold = 2;
+    public static final int GOLD_FIELD_NUMBER = 2;
+    private int gold_;
+    public boolean hasGold() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getGold() {
+      return gold_;
+    }
+    
+    // repeated .VO_MaterialSpendResult materialSpendResult = 3;
+    public static final int MATERIALSPENDRESULT_FIELD_NUMBER = 3;
+    private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult> materialSpendResult_;
+    public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult> getMaterialSpendResultList() {
+      return materialSpendResult_;
+    }
+    public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResultOrBuilder> 
+        getMaterialSpendResultOrBuilderList() {
+      return materialSpendResult_;
+    }
+    public int getMaterialSpendResultCount() {
+      return materialSpendResult_.size();
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult getMaterialSpendResult(int index) {
+      return materialSpendResult_.get(index);
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResultOrBuilder getMaterialSpendResultOrBuilder(
+        int index) {
+      return materialSpendResult_.get(index);
+    }
+    
+    // repeated .VO_PropsSpendResult propsSpendResult = 4;
+    public static final int PROPSSPENDRESULT_FIELD_NUMBER = 4;
+    private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult> propsSpendResult_;
+    public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult> getPropsSpendResultList() {
+      return propsSpendResult_;
+    }
+    public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResultOrBuilder> 
+        getPropsSpendResultOrBuilderList() {
+      return propsSpendResult_;
+    }
+    public int getPropsSpendResultCount() {
+      return propsSpendResult_.size();
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult getPropsSpendResult(int index) {
+      return propsSpendResult_.get(index);
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResultOrBuilder getPropsSpendResultOrBuilder(
+        int index) {
+      return propsSpendResult_.get(index);
+    }
+    
+    private void initFields() {
+      money_ = 0;
+      gold_ = 0;
+      materialSpendResult_ = java.util.Collections.emptyList();
+      propsSpendResult_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      for (int i = 0; i < getMaterialSpendResultCount(); i++) {
+        if (!getMaterialSpendResult(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      for (int i = 0; i < getPropsSpendResultCount(); i++) {
+        if (!getPropsSpendResult(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, money_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, gold_);
+      }
+      for (int i = 0; i < materialSpendResult_.size(); i++) {
+        output.writeMessage(3, materialSpendResult_.get(i));
+      }
+      for (int i = 0; i < propsSpendResult_.size(); i++) {
+        output.writeMessage(4, propsSpendResult_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, money_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, gold_);
+      }
+      for (int i = 0; i < materialSpendResult_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(3, materialSpendResult_.get(i));
+      }
+      for (int i = 0; i < propsSpendResult_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(4, propsSpendResult_.get(i));
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResultOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_SpendResult_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.internal_static_VO_SpendResult_fieldAccessorTable;
+      }
+      
+      // Construct using com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+          getMaterialSpendResultFieldBuilder();
+          getPropsSpendResultFieldBuilder();
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        money_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        gold_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        if (materialSpendResultBuilder_ == null) {
+          materialSpendResult_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+        } else {
+          materialSpendResultBuilder_.clear();
+        }
+        if (propsSpendResultBuilder_ == null) {
+          propsSpendResult_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+        } else {
+          propsSpendResultBuilder_.clear();
+        }
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult.getDescriptor();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult.getDefaultInstance();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult build() {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult buildPartial() {
+        com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult result = new com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.money_ = money_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.gold_ = gold_;
+        if (materialSpendResultBuilder_ == null) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+            materialSpendResult_ = java.util.Collections.unmodifiableList(materialSpendResult_);
+            bitField0_ = (bitField0_ & ~0x00000004);
+          }
+          result.materialSpendResult_ = materialSpendResult_;
+        } else {
+          result.materialSpendResult_ = materialSpendResultBuilder_.build();
+        }
+        if (propsSpendResultBuilder_ == null) {
+          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+            propsSpendResult_ = java.util.Collections.unmodifiableList(propsSpendResult_);
+            bitField0_ = (bitField0_ & ~0x00000008);
+          }
+          result.propsSpendResult_ = propsSpendResult_;
+        } else {
+          result.propsSpendResult_ = propsSpendResultBuilder_.build();
+        }
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult other) {
+        if (other == com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult.getDefaultInstance()) return this;
+        if (other.hasMoney()) {
+          setMoney(other.getMoney());
+        }
+        if (other.hasGold()) {
+          setGold(other.getGold());
+        }
+        if (materialSpendResultBuilder_ == null) {
+          if (!other.materialSpendResult_.isEmpty()) {
+            if (materialSpendResult_.isEmpty()) {
+              materialSpendResult_ = other.materialSpendResult_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+            } else {
+              ensureMaterialSpendResultIsMutable();
+              materialSpendResult_.addAll(other.materialSpendResult_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.materialSpendResult_.isEmpty()) {
+            if (materialSpendResultBuilder_.isEmpty()) {
+              materialSpendResultBuilder_.dispose();
+              materialSpendResultBuilder_ = null;
+              materialSpendResult_ = other.materialSpendResult_;
+              bitField0_ = (bitField0_ & ~0x00000004);
+              materialSpendResultBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getMaterialSpendResultFieldBuilder() : null;
+            } else {
+              materialSpendResultBuilder_.addAllMessages(other.materialSpendResult_);
+            }
+          }
+        }
+        if (propsSpendResultBuilder_ == null) {
+          if (!other.propsSpendResult_.isEmpty()) {
+            if (propsSpendResult_.isEmpty()) {
+              propsSpendResult_ = other.propsSpendResult_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+            } else {
+              ensurePropsSpendResultIsMutable();
+              propsSpendResult_.addAll(other.propsSpendResult_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.propsSpendResult_.isEmpty()) {
+            if (propsSpendResultBuilder_.isEmpty()) {
+              propsSpendResultBuilder_.dispose();
+              propsSpendResultBuilder_ = null;
+              propsSpendResult_ = other.propsSpendResult_;
+              bitField0_ = (bitField0_ & ~0x00000008);
+              propsSpendResultBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getPropsSpendResultFieldBuilder() : null;
+            } else {
+              propsSpendResultBuilder_.addAllMessages(other.propsSpendResult_);
+            }
+          }
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        for (int i = 0; i < getMaterialSpendResultCount(); i++) {
+          if (!getMaterialSpendResult(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        for (int i = 0; i < getPropsSpendResultCount(); i++) {
+          if (!getPropsSpendResult(i).isInitialized()) {
+            
+            return false;
+          }
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              money_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              gold_ = input.readInt32();
+              break;
+            }
+            case 26: {
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder subBuilder = com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addMaterialSpendResult(subBuilder.buildPartial());
+              break;
+            }
+            case 34: {
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder subBuilder = com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addPropsSpendResult(subBuilder.buildPartial());
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // optional int32 money = 1;
+      private int money_ ;
+      public boolean hasMoney() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public int getMoney() {
+        return money_;
+      }
+      public Builder setMoney(int value) {
+        bitField0_ |= 0x00000001;
+        money_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearMoney() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        money_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // optional int32 gold = 2;
+      private int gold_ ;
+      public boolean hasGold() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public int getGold() {
+        return gold_;
+      }
+      public Builder setGold(int value) {
+        bitField0_ |= 0x00000002;
+        gold_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearGold() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        gold_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // repeated .VO_MaterialSpendResult materialSpendResult = 3;
+      private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult> materialSpendResult_ =
+        java.util.Collections.emptyList();
+      private void ensureMaterialSpendResultIsMutable() {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+          materialSpendResult_ = new java.util.ArrayList<com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult>(materialSpendResult_);
+          bitField0_ |= 0x00000004;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult, com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResultOrBuilder> materialSpendResultBuilder_;
+      
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult> getMaterialSpendResultList() {
+        if (materialSpendResultBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(materialSpendResult_);
+        } else {
+          return materialSpendResultBuilder_.getMessageList();
+        }
+      }
+      public int getMaterialSpendResultCount() {
+        if (materialSpendResultBuilder_ == null) {
+          return materialSpendResult_.size();
+        } else {
+          return materialSpendResultBuilder_.getCount();
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult getMaterialSpendResult(int index) {
+        if (materialSpendResultBuilder_ == null) {
+          return materialSpendResult_.get(index);
+        } else {
+          return materialSpendResultBuilder_.getMessage(index);
+        }
+      }
+      public Builder setMaterialSpendResult(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult value) {
+        if (materialSpendResultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMaterialSpendResultIsMutable();
+          materialSpendResult_.set(index, value);
+          onChanged();
+        } else {
+          materialSpendResultBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      public Builder setMaterialSpendResult(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder builderForValue) {
+        if (materialSpendResultBuilder_ == null) {
+          ensureMaterialSpendResultIsMutable();
+          materialSpendResult_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          materialSpendResultBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addMaterialSpendResult(com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult value) {
+        if (materialSpendResultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMaterialSpendResultIsMutable();
+          materialSpendResult_.add(value);
+          onChanged();
+        } else {
+          materialSpendResultBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      public Builder addMaterialSpendResult(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult value) {
+        if (materialSpendResultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureMaterialSpendResultIsMutable();
+          materialSpendResult_.add(index, value);
+          onChanged();
+        } else {
+          materialSpendResultBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      public Builder addMaterialSpendResult(
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder builderForValue) {
+        if (materialSpendResultBuilder_ == null) {
+          ensureMaterialSpendResultIsMutable();
+          materialSpendResult_.add(builderForValue.build());
+          onChanged();
+        } else {
+          materialSpendResultBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addMaterialSpendResult(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder builderForValue) {
+        if (materialSpendResultBuilder_ == null) {
+          ensureMaterialSpendResultIsMutable();
+          materialSpendResult_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          materialSpendResultBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addAllMaterialSpendResult(
+          java.lang.Iterable<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult> values) {
+        if (materialSpendResultBuilder_ == null) {
+          ensureMaterialSpendResultIsMutable();
+          super.addAll(values, materialSpendResult_);
+          onChanged();
+        } else {
+          materialSpendResultBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      public Builder clearMaterialSpendResult() {
+        if (materialSpendResultBuilder_ == null) {
+          materialSpendResult_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000004);
+          onChanged();
+        } else {
+          materialSpendResultBuilder_.clear();
+        }
+        return this;
+      }
+      public Builder removeMaterialSpendResult(int index) {
+        if (materialSpendResultBuilder_ == null) {
+          ensureMaterialSpendResultIsMutable();
+          materialSpendResult_.remove(index);
+          onChanged();
+        } else {
+          materialSpendResultBuilder_.remove(index);
+        }
+        return this;
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder getMaterialSpendResultBuilder(
+          int index) {
+        return getMaterialSpendResultFieldBuilder().getBuilder(index);
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResultOrBuilder getMaterialSpendResultOrBuilder(
+          int index) {
+        if (materialSpendResultBuilder_ == null) {
+          return materialSpendResult_.get(index);  } else {
+          return materialSpendResultBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResultOrBuilder> 
+           getMaterialSpendResultOrBuilderList() {
+        if (materialSpendResultBuilder_ != null) {
+          return materialSpendResultBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(materialSpendResult_);
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder addMaterialSpendResultBuilder() {
+        return getMaterialSpendResultFieldBuilder().addBuilder(
+            com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.getDefaultInstance());
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder addMaterialSpendResultBuilder(
+          int index) {
+        return getMaterialSpendResultFieldBuilder().addBuilder(
+            index, com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.getDefaultInstance());
+      }
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder> 
+           getMaterialSpendResultBuilderList() {
+        return getMaterialSpendResultFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult, com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResultOrBuilder> 
+          getMaterialSpendResultFieldBuilder() {
+        if (materialSpendResultBuilder_ == null) {
+          materialSpendResultBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult, com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResultOrBuilder>(
+                  materialSpendResult_,
+                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  getParentForChildren(),
+                  isClean());
+          materialSpendResult_ = null;
+        }
+        return materialSpendResultBuilder_;
+      }
+      
+      // repeated .VO_PropsSpendResult propsSpendResult = 4;
+      private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult> propsSpendResult_ =
+        java.util.Collections.emptyList();
+      private void ensurePropsSpendResultIsMutable() {
+        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+          propsSpendResult_ = new java.util.ArrayList<com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult>(propsSpendResult_);
+          bitField0_ |= 0x00000008;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult, com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResultOrBuilder> propsSpendResultBuilder_;
+      
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult> getPropsSpendResultList() {
+        if (propsSpendResultBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(propsSpendResult_);
+        } else {
+          return propsSpendResultBuilder_.getMessageList();
+        }
+      }
+      public int getPropsSpendResultCount() {
+        if (propsSpendResultBuilder_ == null) {
+          return propsSpendResult_.size();
+        } else {
+          return propsSpendResultBuilder_.getCount();
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult getPropsSpendResult(int index) {
+        if (propsSpendResultBuilder_ == null) {
+          return propsSpendResult_.get(index);
+        } else {
+          return propsSpendResultBuilder_.getMessage(index);
+        }
+      }
+      public Builder setPropsSpendResult(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult value) {
+        if (propsSpendResultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePropsSpendResultIsMutable();
+          propsSpendResult_.set(index, value);
+          onChanged();
+        } else {
+          propsSpendResultBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      public Builder setPropsSpendResult(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder builderForValue) {
+        if (propsSpendResultBuilder_ == null) {
+          ensurePropsSpendResultIsMutable();
+          propsSpendResult_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          propsSpendResultBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addPropsSpendResult(com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult value) {
+        if (propsSpendResultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePropsSpendResultIsMutable();
+          propsSpendResult_.add(value);
+          onChanged();
+        } else {
+          propsSpendResultBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      public Builder addPropsSpendResult(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult value) {
+        if (propsSpendResultBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensurePropsSpendResultIsMutable();
+          propsSpendResult_.add(index, value);
+          onChanged();
+        } else {
+          propsSpendResultBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      public Builder addPropsSpendResult(
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder builderForValue) {
+        if (propsSpendResultBuilder_ == null) {
+          ensurePropsSpendResultIsMutable();
+          propsSpendResult_.add(builderForValue.build());
+          onChanged();
+        } else {
+          propsSpendResultBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addPropsSpendResult(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder builderForValue) {
+        if (propsSpendResultBuilder_ == null) {
+          ensurePropsSpendResultIsMutable();
+          propsSpendResult_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          propsSpendResultBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addAllPropsSpendResult(
+          java.lang.Iterable<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult> values) {
+        if (propsSpendResultBuilder_ == null) {
+          ensurePropsSpendResultIsMutable();
+          super.addAll(values, propsSpendResult_);
+          onChanged();
+        } else {
+          propsSpendResultBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      public Builder clearPropsSpendResult() {
+        if (propsSpendResultBuilder_ == null) {
+          propsSpendResult_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00000008);
+          onChanged();
+        } else {
+          propsSpendResultBuilder_.clear();
+        }
+        return this;
+      }
+      public Builder removePropsSpendResult(int index) {
+        if (propsSpendResultBuilder_ == null) {
+          ensurePropsSpendResultIsMutable();
+          propsSpendResult_.remove(index);
+          onChanged();
+        } else {
+          propsSpendResultBuilder_.remove(index);
+        }
+        return this;
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder getPropsSpendResultBuilder(
+          int index) {
+        return getPropsSpendResultFieldBuilder().getBuilder(index);
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResultOrBuilder getPropsSpendResultOrBuilder(
+          int index) {
+        if (propsSpendResultBuilder_ == null) {
+          return propsSpendResult_.get(index);  } else {
+          return propsSpendResultBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResultOrBuilder> 
+           getPropsSpendResultOrBuilderList() {
+        if (propsSpendResultBuilder_ != null) {
+          return propsSpendResultBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(propsSpendResult_);
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder addPropsSpendResultBuilder() {
+        return getPropsSpendResultFieldBuilder().addBuilder(
+            com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.getDefaultInstance());
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder addPropsSpendResultBuilder(
+          int index) {
+        return getPropsSpendResultFieldBuilder().addBuilder(
+            index, com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.getDefaultInstance());
+      }
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder> 
+           getPropsSpendResultBuilderList() {
+        return getPropsSpendResultFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult, com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResultOrBuilder> 
+          getPropsSpendResultFieldBuilder() {
+        if (propsSpendResultBuilder_ == null) {
+          propsSpendResultBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult, com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResultOrBuilder>(
+                  propsSpendResult_,
+                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  getParentForChildren(),
+                  isClean());
+          propsSpendResult_ = null;
+        }
+        return propsSpendResultBuilder_;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:VO_SpendResult)
+    }
+    
+    static {
+      defaultInstance = new VO_SpendResult(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:VO_SpendResult)
+  }
+  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_VO_Error_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_VO_Error_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_VO_Skill_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_VO_Skill_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_VO_Tank_descriptor;
   private static
@@ -7108,6 +12184,26 @@ public final class StructProtos {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_VO_Material_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_VO_TankTeam_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_VO_TankTeam_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_VO_MaterialSpendResult_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_VO_MaterialSpendResult_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_VO_PropsSpendResult_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_VO_PropsSpendResult_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_VO_SpendResult_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_VO_SpendResult_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -7118,32 +12214,51 @@ public final class StructProtos {
   static {
     java.lang.String[] descriptorData = {
       "\n\014Struct.proto\"/\n\010VO_Error\022\021\n\terrorCode\030" +
-      "\001 \002(\005\022\020\n\010errorMsg\030\002 \002(\t\"\265\001\n\007VO_Tank\022\022\n\ni" +
-      "nstanceId\030\001 \002(\005\022\022\n\ntemplateId\030\002 \002(\005\022\013\n\003e" +
-      "xp\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\022\n\nstrengthen\030\005 " +
-      "\002(\005\022\022\n\nplating_id\030\006 \002(\005\022!\n\nequipments\030\007 " +
-      "\003(\0132\r.VO_Equipment\022\033\n\007drivers\030\010 \003(\0132\n.VO" +
-      "_Driver\"\311\002\n\014VO_Warehouse\022\022\n\ninstanceId\030\001" +
-      " \002(\005\022\021\n\tpropsSize\030\002 \002(\005\022\020\n\010tankSize\030\003 \002(" +
-      "\005\022\022\n\ndriverSize\030\004 \002(\005\022\025\n\requipmentSize\030\005" +
-      " \002(\005\022\020\n\010partSize\030\006 \002(\005\022\024\n\014materialSize\030\007",
-      " \002(\005\022\032\n\007propses\030\010 \003(\0132\t.VO_Props\022\027\n\005tank" +
-      "s\030\t \003(\0132\010.VO_Tank\022\033\n\007drivers\030\n \003(\0132\n.VO_" +
-      "Driver\022!\n\nequipments\030\013 \003(\0132\r.VO_Equipmen" +
-      "t\022\027\n\005parts\030\014 \003(\0132\010.VO_Part\022\037\n\tmaterials\030" +
-      "\r \003(\0132\014.VO_Material\"c\n\tVO_Driver\022\022\n\ninst" +
-      "anceId\030\001 \002(\005\022\022\n\ntemplateId\030\002 \002(\005\022\013\n\003exp\030" +
-      "\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\022\n\nstrengthen\030\005 \002(\005" +
-      "\"\177\n\014VO_Equipment\022\022\n\ninstanceId\030\001 \002(\005\022\022\n\n" +
+      "\001 \002(\005\022\020\n\010errorMsg\030\002 \002(\t\"/\n\010VO_Skill\022\024\n\014s" +
+      "killGroupId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\"\212\002\n\007VO_" +
+      "Tank\022\022\n\ninstanceId\030\001 \002(\005\022\022\n\ntemplateId\030\002" +
+      " \002(\005\022\013\n\003exp\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\022\n\nstre" +
+      "ngthen\030\005 \002(\005\022\022\n\nplating_id\030\006 \002(\005\022!\n\nequi" +
+      "pments\030\007 \003(\0132\r.VO_Equipment\022\033\n\007drivers\030\010" +
+      " \003(\0132\n.VO_Driver\022\026\n\016teamInstanceId\030\t \002(\005" +
+      "\022\014\n\004name\030\n \002(\t\022\022\n\ncreateDate\030\013 \002(\t\022\031\n\006sk" +
+      "ills\030\014 \003(\0132\t.VO_Skill\"\332\002\n\014VO_Warehouse\022\022",
+      "\n\ninstanceId\030\001 \002(\005\022\021\n\tpropsSize\030\002 \002(\005\022\020\n" +
+      "\010tankSize\030\003 \002(\005\022\022\n\ndriverSize\030\004 \002(\005\022\025\n\re" +
+      "quipmentSize\030\005 \002(\005\022\020\n\010partSize\030\006 \002(\005\022\024\n\014" +
+      "materialSize\030\007 \002(\005\022\032\n\007propses\030\010 \003(\0132\t.VO" +
+      "_Props\022\027\n\005tanks\030\t \003(\0132\010.VO_Tank\022\033\n\007drive" +
+      "rs\030\n \003(\0132\n.VO_Driver\022!\n\nequipments\030\013 \003(\013" +
+      "2\r.VO_Equipment\022\027\n\005parts\030\014 \003(\0132\010.VO_Part" +
+      "\022\037\n\tmaterials\030\r \003(\0132\014.VO_Material\022\017\n\007own" +
+      "erId\030\016 \002(\005\"\222\001\n\tVO_Driver\022\022\n\ninstanceId\030\001" +
+      " \002(\005\022\022\n\ntemplateId\030\002 \002(\005\022\013\n\003exp\030\003 \002(\005\022\r\n",
+      "\005level\030\004 \002(\005\022\022\n\nstrengthen\030\005 \002(\005\022\022\n\ncrea" +
+      "teDate\030\006 \002(\t\022\031\n\006skills\030\007 \003(\0132\t.VO_Skill\"" +
+      "\256\001\n\014VO_Equipment\022\022\n\ninstanceId\030\001 \002(\005\022\022\n\n" +
       "templateId\030\002 \002(\005\022\013\n\003exp\030\003 \002(\005\022\r\n\005level\030\004" +
-      " \002(\005\022\022\n\nstrengthen\030\005 \002(\005\022\027\n\005parts\030\006 \003(\0132",
-      "\010.VO_Part\"M\n\007VO_Part\022\022\n\ninstanceId\030\001 \002(\005" +
-      "\022\022\n\ntemplateId\030\002 \002(\005\022\013\n\003exp\030\003 \002(\005\022\r\n\005lev" +
-      "el\030\004 \002(\005\"A\n\010VO_Props\022\022\n\ninstanceId\030\001 \002(\005" +
-      "\022\022\n\ntemplateId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\"(\n\013V" +
-      "O_Material\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005B4\n" +
-      "$com.fanxing.server.io.proto.protocolB\014S" +
-      "tructProtos"
+      " \002(\005\022\022\n\nstrengthen\030\005 \002(\005\022\027\n\005parts\030\006 \003(\0132" +
+      "\010.VO_Part\022\022\n\ncreateDate\030\007 \002(\t\022\031\n\006skills\030" +
+      "\010 \003(\0132\t.VO_Skill\"\212\001\n\007VO_Part\022\022\n\ninstance" +
+      "Id\030\001 \002(\005\022\022\n\ntemplateId\030\002 \002(\005\022\013\n\003exp\030\003 \002(" +
+      "\005\022\r\n\005level\030\004 \002(\005\022\022\n\ncreateDate\030\005 \002(\t\022\031\n\006" +
+      "skills\030\006 \003(\0132\t.VO_Skill\022\014\n\004part\030\007 \002(\005\"U\n",
+      "\010VO_Props\022\022\n\ninstanceId\030\001 \002(\005\022\022\n\ntemplat" +
+      "eId\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\022\n\ncreateDate\030\004" +
+      " \002(\t\"(\n\013VO_Material\022\n\n\002id\030\001 \002(\005\022\r\n\005count" +
+      "\030\002 \002(\005\"v\n\013VO_TankTeam\022\022\n\ninstanceId\030\001 \002(" +
+      "\005\022\017\n\007ownerId\030\002 \002(\005\022\014\n\004name\030\003 \002(\t\022\020\n\010capa" +
+      "city\030\004 \002(\005\022\022\n\ncreateDate\030\005 \002(\t\022\016\n\006tankId" +
+      "\030\006 \003(\005\"3\n\026VO_MaterialSpendResult\022\n\n\002id\030\001" +
+      " \002(\005\022\r\n\005count\030\002 \002(\005\"8\n\023VO_PropsSpendResu" +
+      "lt\022\022\n\ninstanceId\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\223\001" +
+      "\n\016VO_SpendResult\022\r\n\005money\030\001 \001(\005\022\014\n\004gold\030",
+      "\002 \001(\005\0224\n\023materialSpendResult\030\003 \003(\0132\027.VO_" +
+      "MaterialSpendResult\022.\n\020propsSpendResult\030" +
+      "\004 \003(\0132\024.VO_PropsSpendResult*$\n\nChangeTyp" +
+      "e\022\007\n\003ONE\020\000\022\r\n\tMANYTIMES\020\001*$\n\tChangeWay\022\n" +
+      "\n\006COMMON\020\000\022\013\n\007USEGOLD\020\001B4\n$com.fanxing.s" +
+      "erver.io.proto.protocolB\014StructProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -7158,62 +12273,102 @@ public final class StructProtos {
               new java.lang.String[] { "ErrorCode", "ErrorMsg", },
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Error.class,
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Error.Builder.class);
-          internal_static_VO_Tank_descriptor =
+          internal_static_VO_Skill_descriptor =
             getDescriptor().getMessageTypes().get(1);
+          internal_static_VO_Skill_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_VO_Skill_descriptor,
+              new java.lang.String[] { "SkillGroupId", "Level", },
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.class,
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_Skill.Builder.class);
+          internal_static_VO_Tank_descriptor =
+            getDescriptor().getMessageTypes().get(2);
           internal_static_VO_Tank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VO_Tank_descriptor,
-              new java.lang.String[] { "InstanceId", "TemplateId", "Exp", "Level", "Strengthen", "PlatingId", "Equipments", "Drivers", },
+              new java.lang.String[] { "InstanceId", "TemplateId", "Exp", "Level", "Strengthen", "PlatingId", "Equipments", "Drivers", "TeamInstanceId", "Name", "CreateDate", "Skills", },
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Tank.class,
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Tank.Builder.class);
           internal_static_VO_Warehouse_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_VO_Warehouse_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VO_Warehouse_descriptor,
-              new java.lang.String[] { "InstanceId", "PropsSize", "TankSize", "DriverSize", "EquipmentSize", "PartSize", "MaterialSize", "Propses", "Tanks", "Drivers", "Equipments", "Parts", "Materials", },
+              new java.lang.String[] { "InstanceId", "PropsSize", "TankSize", "DriverSize", "EquipmentSize", "PartSize", "MaterialSize", "Propses", "Tanks", "Drivers", "Equipments", "Parts", "Materials", "OwnerId", },
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Warehouse.class,
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Warehouse.Builder.class);
           internal_static_VO_Driver_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_VO_Driver_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VO_Driver_descriptor,
-              new java.lang.String[] { "InstanceId", "TemplateId", "Exp", "Level", "Strengthen", },
+              new java.lang.String[] { "InstanceId", "TemplateId", "Exp", "Level", "Strengthen", "CreateDate", "Skills", },
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Driver.class,
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Driver.Builder.class);
           internal_static_VO_Equipment_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_VO_Equipment_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VO_Equipment_descriptor,
-              new java.lang.String[] { "InstanceId", "TemplateId", "Exp", "Level", "Strengthen", "Parts", },
+              new java.lang.String[] { "InstanceId", "TemplateId", "Exp", "Level", "Strengthen", "Parts", "CreateDate", "Skills", },
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Equipment.class,
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Equipment.Builder.class);
           internal_static_VO_Part_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_VO_Part_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VO_Part_descriptor,
-              new java.lang.String[] { "InstanceId", "TemplateId", "Exp", "Level", },
+              new java.lang.String[] { "InstanceId", "TemplateId", "Exp", "Level", "CreateDate", "Skills", "Part", },
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Part.class,
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Part.Builder.class);
           internal_static_VO_Props_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_VO_Props_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VO_Props_descriptor,
-              new java.lang.String[] { "InstanceId", "TemplateId", "Count", },
+              new java.lang.String[] { "InstanceId", "TemplateId", "Count", "CreateDate", },
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Props.class,
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Props.Builder.class);
           internal_static_VO_Material_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_VO_Material_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VO_Material_descriptor,
               new java.lang.String[] { "Id", "Count", },
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Material.class,
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Material.Builder.class);
+          internal_static_VO_TankTeam_descriptor =
+            getDescriptor().getMessageTypes().get(9);
+          internal_static_VO_TankTeam_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_VO_TankTeam_descriptor,
+              new java.lang.String[] { "InstanceId", "OwnerId", "Name", "Capacity", "CreateDate", "TankId", },
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.class,
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder.class);
+          internal_static_VO_MaterialSpendResult_descriptor =
+            getDescriptor().getMessageTypes().get(10);
+          internal_static_VO_MaterialSpendResult_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_VO_MaterialSpendResult_descriptor,
+              new java.lang.String[] { "Id", "Count", },
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.class,
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_MaterialSpendResult.Builder.class);
+          internal_static_VO_PropsSpendResult_descriptor =
+            getDescriptor().getMessageTypes().get(11);
+          internal_static_VO_PropsSpendResult_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_VO_PropsSpendResult_descriptor,
+              new java.lang.String[] { "InstanceId", "Count", },
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.class,
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_PropsSpendResult.Builder.class);
+          internal_static_VO_SpendResult_descriptor =
+            getDescriptor().getMessageTypes().get(12);
+          internal_static_VO_SpendResult_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_VO_SpendResult_descriptor,
+              new java.lang.String[] { "Money", "Gold", "MaterialSpendResult", "PropsSpendResult", },
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult.class,
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult.Builder.class);
           return null;
         }
       };

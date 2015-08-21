@@ -1387,7 +1387,7 @@ public final class RoleProtos {
     // @@protoc_insertion_point(class_scope:CS_RoleInfo)
   }
   
-  public interface CS_AccountGetRoleListOrBuilder
+  public interface CS_AccountAuthenticateOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
     // required int32 accountId = 1;
@@ -1397,33 +1397,37 @@ public final class RoleProtos {
     // required string account = 2;
     boolean hasAccount();
     String getAccount();
+    
+    // required string key = 3;
+    boolean hasKey();
+    String getKey();
   }
-  public static final class CS_AccountGetRoleList extends
+  public static final class CS_AccountAuthenticate extends
       com.google.protobuf.GeneratedMessage
-      implements CS_AccountGetRoleListOrBuilder {
-    // Use CS_AccountGetRoleList.newBuilder() to construct.
-    private CS_AccountGetRoleList(Builder builder) {
+      implements CS_AccountAuthenticateOrBuilder {
+    // Use CS_AccountAuthenticate.newBuilder() to construct.
+    private CS_AccountAuthenticate(Builder builder) {
       super(builder);
     }
-    private CS_AccountGetRoleList(boolean noInit) {}
+    private CS_AccountAuthenticate(boolean noInit) {}
     
-    private static final CS_AccountGetRoleList defaultInstance;
-    public static CS_AccountGetRoleList getDefaultInstance() {
+    private static final CS_AccountAuthenticate defaultInstance;
+    public static CS_AccountAuthenticate getDefaultInstance() {
       return defaultInstance;
     }
     
-    public CS_AccountGetRoleList getDefaultInstanceForType() {
+    public CS_AccountAuthenticate getDefaultInstanceForType() {
       return defaultInstance;
     }
     
     public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountGetRoleList_descriptor;
+      return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountAuthenticate_descriptor;
     }
     
     protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountGetRoleList_fieldAccessorTable;
+      return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountAuthenticate_fieldAccessorTable;
     }
     
     private int bitField0_;
@@ -1469,9 +1473,42 @@ public final class RoleProtos {
       }
     }
     
+    // required string key = 3;
+    public static final int KEY_FIELD_NUMBER = 3;
+    private java.lang.Object key_;
+    public boolean hasKey() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public String getKey() {
+      java.lang.Object ref = key_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          key_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getKeyBytes() {
+      java.lang.Object ref = key_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        key_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
     private void initFields() {
       accountId_ = 0;
       account_ = "";
+      key_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1483,6 +1520,10 @@ public final class RoleProtos {
         return false;
       }
       if (!hasAccount()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasKey()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1498,6 +1539,9 @@ public final class RoleProtos {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getAccountBytes());
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getKeyBytes());
       }
       getUnknownFields().writeTo(output);
     }
@@ -1516,6 +1560,10 @@ public final class RoleProtos {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getAccountBytes());
       }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getKeyBytes());
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -1528,41 +1576,41 @@ public final class RoleProtos {
       return super.writeReplace();
     }
     
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate parseFrom(
         com.google.protobuf.ByteString data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate parseFrom(
         com.google.protobuf.ByteString data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(byte[] data)
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate parseFrom(byte[] data)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data).buildParsed();
     }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate parseFrom(
         byte[] data,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws com.google.protobuf.InvalidProtocolBufferException {
       return newBuilder().mergeFrom(data, extensionRegistry)
                .buildParsed();
     }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(java.io.InputStream input)
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate parseFrom(java.io.InputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate parseFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input, extensionRegistry)
                .buildParsed();
     }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseDelimitedFrom(java.io.InputStream input)
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate parseDelimitedFrom(java.io.InputStream input)
         throws java.io.IOException {
       Builder builder = newBuilder();
       if (builder.mergeDelimitedFrom(input)) {
@@ -1571,7 +1619,7 @@ public final class RoleProtos {
         return null;
       }
     }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseDelimitedFrom(
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate parseDelimitedFrom(
         java.io.InputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1582,12 +1630,12 @@ public final class RoleProtos {
         return null;
       }
     }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate parseFrom(
         com.google.protobuf.CodedInputStream input)
         throws java.io.IOException {
       return newBuilder().mergeFrom(input).buildParsed();
     }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate parseFrom(
         com.google.protobuf.CodedInputStream input,
         com.google.protobuf.ExtensionRegistryLite extensionRegistry)
         throws java.io.IOException {
@@ -1597,7 +1645,7 @@ public final class RoleProtos {
     
     public static Builder newBuilder() { return Builder.create(); }
     public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList prototype) {
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate prototype) {
       return newBuilder().mergeFrom(prototype);
     }
     public Builder toBuilder() { return newBuilder(this); }
@@ -1610,18 +1658,18 @@ public final class RoleProtos {
     }
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleListOrBuilder {
+       implements com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticateOrBuilder {
       public static final com.google.protobuf.Descriptors.Descriptor
           getDescriptor() {
-        return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountGetRoleList_descriptor;
+        return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountAuthenticate_descriptor;
       }
       
       protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
           internalGetFieldAccessorTable() {
-        return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountGetRoleList_fieldAccessorTable;
+        return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountAuthenticate_fieldAccessorTable;
       }
       
-      // Construct using com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.newBuilder()
+      // Construct using com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate.newBuilder()
       private Builder() {
         maybeForceBuilderInitialization();
       }
@@ -1644,6 +1692,8 @@ public final class RoleProtos {
         bitField0_ = (bitField0_ & ~0x00000001);
         account_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
+        key_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
         return this;
       }
       
@@ -1653,24 +1703,24 @@ public final class RoleProtos {
       
       public com.google.protobuf.Descriptors.Descriptor
           getDescriptorForType() {
-        return com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.getDescriptor();
+        return com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate.getDescriptor();
       }
       
-      public com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList getDefaultInstanceForType() {
-        return com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.getDefaultInstance();
+      public com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate.getDefaultInstance();
       }
       
-      public com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList build() {
-        com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList result = buildPartial();
+      public com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate build() {
+        com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(result);
         }
         return result;
       }
       
-      private com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList buildParsed()
+      private com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate buildParsed()
           throws com.google.protobuf.InvalidProtocolBufferException {
-        com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList result = buildPartial();
+        com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate result = buildPartial();
         if (!result.isInitialized()) {
           throw newUninitializedMessageException(
             result).asInvalidProtocolBufferException();
@@ -1678,8 +1728,8 @@ public final class RoleProtos {
         return result;
       }
       
-      public com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList buildPartial() {
-        com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList result = new com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList(this);
+      public com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate buildPartial() {
+        com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate result = new com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
@@ -1690,27 +1740,34 @@ public final class RoleProtos {
           to_bitField0_ |= 0x00000002;
         }
         result.account_ = account_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.key_ = key_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
       }
       
       public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList) {
-          return mergeFrom((com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList)other);
+        if (other instanceof com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate)other);
         } else {
           super.mergeFrom(other);
           return this;
         }
       }
       
-      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList other) {
-        if (other == com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.getDefaultInstance()) return this;
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate other) {
+        if (other == com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate.getDefaultInstance()) return this;
         if (other.hasAccountId()) {
           setAccountId(other.getAccountId());
         }
         if (other.hasAccount()) {
           setAccount(other.getAccount());
+        }
+        if (other.hasKey()) {
+          setKey(other.getKey());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1722,6 +1779,10 @@ public final class RoleProtos {
           return false;
         }
         if (!hasAccount()) {
+          
+          return false;
+        }
+        if (!hasKey()) {
           
           return false;
         }
@@ -1759,6 +1820,11 @@ public final class RoleProtos {
             case 18: {
               bitField0_ |= 0x00000002;
               account_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              key_ = input.readBytes();
               break;
             }
           }
@@ -1824,15 +1890,51 @@ public final class RoleProtos {
         onChanged();
       }
       
-      // @@protoc_insertion_point(builder_scope:CS_AccountGetRoleList)
+      // required string key = 3;
+      private java.lang.Object key_ = "";
+      public boolean hasKey() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public String getKey() {
+        java.lang.Object ref = key_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          key_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setKey(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        key_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearKey() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        key_ = getDefaultInstance().getKey();
+        onChanged();
+        return this;
+      }
+      void setKey(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000004;
+        key_ = value;
+        onChanged();
+      }
+      
+      // @@protoc_insertion_point(builder_scope:CS_AccountAuthenticate)
     }
     
     static {
-      defaultInstance = new CS_AccountGetRoleList(true);
+      defaultInstance = new CS_AccountAuthenticate(true);
       defaultInstance.initFields();
     }
     
-    // @@protoc_insertion_point(class_scope:CS_AccountGetRoleList)
+    // @@protoc_insertion_point(class_scope:CS_AccountAuthenticate)
   }
   
   public interface CS_CreateRoleOrBuilder
@@ -2731,6 +2833,389 @@ public final class RoleProtos {
     // @@protoc_insertion_point(class_scope:CS_NewRoleInfo)
   }
   
+  public interface CS_AccountGetRoleListOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required string key = 1;
+    boolean hasKey();
+    String getKey();
+  }
+  public static final class CS_AccountGetRoleList extends
+      com.google.protobuf.GeneratedMessage
+      implements CS_AccountGetRoleListOrBuilder {
+    // Use CS_AccountGetRoleList.newBuilder() to construct.
+    private CS_AccountGetRoleList(Builder builder) {
+      super(builder);
+    }
+    private CS_AccountGetRoleList(boolean noInit) {}
+    
+    private static final CS_AccountGetRoleList defaultInstance;
+    public static CS_AccountGetRoleList getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public CS_AccountGetRoleList getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountGetRoleList_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountGetRoleList_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required string key = 1;
+    public static final int KEY_FIELD_NUMBER = 1;
+    private java.lang.Object key_;
+    public boolean hasKey() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public String getKey() {
+      java.lang.Object ref = key_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          key_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getKeyBytes() {
+      java.lang.Object ref = key_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        key_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    private void initFields() {
+      key_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasKey()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getKeyBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getKeyBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleListOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountGetRoleList_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_CS_AccountGetRoleList_fieldAccessorTable;
+      }
+      
+      // Construct using com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        key_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.getDescriptor();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.getDefaultInstance();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList build() {
+        com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList buildPartial() {
+        com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList result = new com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.key_ = key_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList other) {
+        if (other == com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.getDefaultInstance()) return this;
+        if (other.hasKey()) {
+          setKey(other.getKey());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasKey()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              key_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required string key = 1;
+      private java.lang.Object key_ = "";
+      public boolean hasKey() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public String getKey() {
+        java.lang.Object ref = key_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          key_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setKey(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        key_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearKey() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        key_ = getDefaultInstance().getKey();
+        onChanged();
+        return this;
+      }
+      void setKey(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
+        key_ = value;
+        onChanged();
+      }
+      
+      // @@protoc_insertion_point(builder_scope:CS_AccountGetRoleList)
+    }
+    
+    static {
+      defaultInstance = new CS_AccountGetRoleList(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:CS_AccountGetRoleList)
+  }
+  
   public interface SC_RoleInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
@@ -2790,6 +3275,24 @@ public final class RoleProtos {
     boolean hasWarehouse();
     com.fanxing.server.io.proto.protocol.StructProtos.VO_Warehouse getWarehouse();
     com.fanxing.server.io.proto.protocol.StructProtos.VO_WarehouseOrBuilder getWarehouseOrBuilder();
+    
+    // required int32 sex = 15;
+    boolean hasSex();
+    int getSex();
+    
+    // required int32 roleModel = 16;
+    boolean hasRoleModel();
+    int getRoleModel();
+    
+    // repeated .VO_TankTeam tankTeams = 17;
+    java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam> 
+        getTankTeamsList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam getTankTeams(int index);
+    int getTankTeamsCount();
+    java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeamOrBuilder> 
+        getTankTeamsOrBuilderList();
+    com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeamOrBuilder getTankTeamsOrBuilder(
+        int index);
   }
   public static final class SC_RoleInfo extends
       com.google.protobuf.GeneratedMessage
@@ -3029,6 +3532,47 @@ public final class RoleProtos {
       return warehouse_;
     }
     
+    // required int32 sex = 15;
+    public static final int SEX_FIELD_NUMBER = 15;
+    private int sex_;
+    public boolean hasSex() {
+      return ((bitField0_ & 0x00004000) == 0x00004000);
+    }
+    public int getSex() {
+      return sex_;
+    }
+    
+    // required int32 roleModel = 16;
+    public static final int ROLEMODEL_FIELD_NUMBER = 16;
+    private int roleModel_;
+    public boolean hasRoleModel() {
+      return ((bitField0_ & 0x00008000) == 0x00008000);
+    }
+    public int getRoleModel() {
+      return roleModel_;
+    }
+    
+    // repeated .VO_TankTeam tankTeams = 17;
+    public static final int TANKTEAMS_FIELD_NUMBER = 17;
+    private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam> tankTeams_;
+    public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam> getTankTeamsList() {
+      return tankTeams_;
+    }
+    public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeamOrBuilder> 
+        getTankTeamsOrBuilderList() {
+      return tankTeams_;
+    }
+    public int getTankTeamsCount() {
+      return tankTeams_.size();
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam getTankTeams(int index) {
+      return tankTeams_.get(index);
+    }
+    public com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeamOrBuilder getTankTeamsOrBuilder(
+        int index) {
+      return tankTeams_.get(index);
+    }
+    
     private void initFields() {
       instanceId_ = 0;
       name_ = "";
@@ -3044,6 +3588,9 @@ public final class RoleProtos {
       registerDate_ = "";
       loginDate_ = "";
       warehouse_ = com.fanxing.server.io.proto.protocol.StructProtos.VO_Warehouse.getDefaultInstance();
+      sex_ = 0;
+      roleModel_ = 0;
+      tankTeams_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3106,9 +3653,23 @@ public final class RoleProtos {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasSex()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasRoleModel()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!getWarehouse().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
+      }
+      for (int i = 0; i < getTankTeamsCount(); i++) {
+        if (!getTankTeams(i).isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
       }
       memoizedIsInitialized = 1;
       return true;
@@ -3158,6 +3719,15 @@ public final class RoleProtos {
       }
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
         output.writeMessage(14, warehouse_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        output.writeInt32(15, sex_);
+      }
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        output.writeInt32(16, roleModel_);
+      }
+      for (int i = 0; i < tankTeams_.size(); i++) {
+        output.writeMessage(17, tankTeams_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -3223,6 +3793,18 @@ public final class RoleProtos {
       if (((bitField0_ & 0x00002000) == 0x00002000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(14, warehouse_);
+      }
+      if (((bitField0_ & 0x00004000) == 0x00004000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(15, sex_);
+      }
+      if (((bitField0_ & 0x00008000) == 0x00008000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(16, roleModel_);
+      }
+      for (int i = 0; i < tankTeams_.size(); i++) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(17, tankTeams_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3341,6 +3923,7 @@ public final class RoleProtos {
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
           getWarehouseFieldBuilder();
+          getTankTeamsFieldBuilder();
         }
       }
       private static Builder create() {
@@ -3381,6 +3964,16 @@ public final class RoleProtos {
           warehouseBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00002000);
+        sex_ = 0;
+        bitField0_ = (bitField0_ & ~0x00004000);
+        roleModel_ = 0;
+        bitField0_ = (bitField0_ & ~0x00008000);
+        if (tankTeamsBuilder_ == null) {
+          tankTeams_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00010000);
+        } else {
+          tankTeamsBuilder_.clear();
+        }
         return this;
       }
       
@@ -3479,6 +4072,23 @@ public final class RoleProtos {
         } else {
           result.warehouse_ = warehouseBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00004000;
+        }
+        result.sex_ = sex_;
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00008000;
+        }
+        result.roleModel_ = roleModel_;
+        if (tankTeamsBuilder_ == null) {
+          if (((bitField0_ & 0x00010000) == 0x00010000)) {
+            tankTeams_ = java.util.Collections.unmodifiableList(tankTeams_);
+            bitField0_ = (bitField0_ & ~0x00010000);
+          }
+          result.tankTeams_ = tankTeams_;
+        } else {
+          result.tankTeams_ = tankTeamsBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3536,6 +4146,38 @@ public final class RoleProtos {
         }
         if (other.hasWarehouse()) {
           mergeWarehouse(other.getWarehouse());
+        }
+        if (other.hasSex()) {
+          setSex(other.getSex());
+        }
+        if (other.hasRoleModel()) {
+          setRoleModel(other.getRoleModel());
+        }
+        if (tankTeamsBuilder_ == null) {
+          if (!other.tankTeams_.isEmpty()) {
+            if (tankTeams_.isEmpty()) {
+              tankTeams_ = other.tankTeams_;
+              bitField0_ = (bitField0_ & ~0x00010000);
+            } else {
+              ensureTankTeamsIsMutable();
+              tankTeams_.addAll(other.tankTeams_);
+            }
+            onChanged();
+          }
+        } else {
+          if (!other.tankTeams_.isEmpty()) {
+            if (tankTeamsBuilder_.isEmpty()) {
+              tankTeamsBuilder_.dispose();
+              tankTeamsBuilder_ = null;
+              tankTeams_ = other.tankTeams_;
+              bitField0_ = (bitField0_ & ~0x00010000);
+              tankTeamsBuilder_ = 
+                com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
+                   getTankTeamsFieldBuilder() : null;
+            } else {
+              tankTeamsBuilder_.addAllMessages(other.tankTeams_);
+            }
+          }
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -3598,9 +4240,23 @@ public final class RoleProtos {
           
           return false;
         }
+        if (!hasSex()) {
+          
+          return false;
+        }
+        if (!hasRoleModel()) {
+          
+          return false;
+        }
         if (!getWarehouse().isInitialized()) {
           
           return false;
+        }
+        for (int i = 0; i < getTankTeamsCount(); i++) {
+          if (!getTankTeams(i).isInitialized()) {
+            
+            return false;
+          }
         }
         return true;
       }
@@ -3700,6 +4356,22 @@ public final class RoleProtos {
               }
               input.readMessage(subBuilder, extensionRegistry);
               setWarehouse(subBuilder.buildPartial());
+              break;
+            }
+            case 120: {
+              bitField0_ |= 0x00004000;
+              sex_ = input.readInt32();
+              break;
+            }
+            case 128: {
+              bitField0_ |= 0x00008000;
+              roleModel_ = input.readInt32();
+              break;
+            }
+            case 138: {
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder subBuilder = com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.newBuilder();
+              input.readMessage(subBuilder, extensionRegistry);
+              addTankTeams(subBuilder.buildPartial());
               break;
             }
           }
@@ -4114,6 +4786,234 @@ public final class RoleProtos {
           warehouse_ = null;
         }
         return warehouseBuilder_;
+      }
+      
+      // required int32 sex = 15;
+      private int sex_ ;
+      public boolean hasSex() {
+        return ((bitField0_ & 0x00004000) == 0x00004000);
+      }
+      public int getSex() {
+        return sex_;
+      }
+      public Builder setSex(int value) {
+        bitField0_ |= 0x00004000;
+        sex_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearSex() {
+        bitField0_ = (bitField0_ & ~0x00004000);
+        sex_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required int32 roleModel = 16;
+      private int roleModel_ ;
+      public boolean hasRoleModel() {
+        return ((bitField0_ & 0x00008000) == 0x00008000);
+      }
+      public int getRoleModel() {
+        return roleModel_;
+      }
+      public Builder setRoleModel(int value) {
+        bitField0_ |= 0x00008000;
+        roleModel_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearRoleModel() {
+        bitField0_ = (bitField0_ & ~0x00008000);
+        roleModel_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // repeated .VO_TankTeam tankTeams = 17;
+      private java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam> tankTeams_ =
+        java.util.Collections.emptyList();
+      private void ensureTankTeamsIsMutable() {
+        if (!((bitField0_ & 0x00010000) == 0x00010000)) {
+          tankTeams_ = new java.util.ArrayList<com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam>(tankTeams_);
+          bitField0_ |= 0x00010000;
+         }
+      }
+      
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam, com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeamOrBuilder> tankTeamsBuilder_;
+      
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam> getTankTeamsList() {
+        if (tankTeamsBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(tankTeams_);
+        } else {
+          return tankTeamsBuilder_.getMessageList();
+        }
+      }
+      public int getTankTeamsCount() {
+        if (tankTeamsBuilder_ == null) {
+          return tankTeams_.size();
+        } else {
+          return tankTeamsBuilder_.getCount();
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam getTankTeams(int index) {
+        if (tankTeamsBuilder_ == null) {
+          return tankTeams_.get(index);
+        } else {
+          return tankTeamsBuilder_.getMessage(index);
+        }
+      }
+      public Builder setTankTeams(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam value) {
+        if (tankTeamsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTankTeamsIsMutable();
+          tankTeams_.set(index, value);
+          onChanged();
+        } else {
+          tankTeamsBuilder_.setMessage(index, value);
+        }
+        return this;
+      }
+      public Builder setTankTeams(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder builderForValue) {
+        if (tankTeamsBuilder_ == null) {
+          ensureTankTeamsIsMutable();
+          tankTeams_.set(index, builderForValue.build());
+          onChanged();
+        } else {
+          tankTeamsBuilder_.setMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addTankTeams(com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam value) {
+        if (tankTeamsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTankTeamsIsMutable();
+          tankTeams_.add(value);
+          onChanged();
+        } else {
+          tankTeamsBuilder_.addMessage(value);
+        }
+        return this;
+      }
+      public Builder addTankTeams(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam value) {
+        if (tankTeamsBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          ensureTankTeamsIsMutable();
+          tankTeams_.add(index, value);
+          onChanged();
+        } else {
+          tankTeamsBuilder_.addMessage(index, value);
+        }
+        return this;
+      }
+      public Builder addTankTeams(
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder builderForValue) {
+        if (tankTeamsBuilder_ == null) {
+          ensureTankTeamsIsMutable();
+          tankTeams_.add(builderForValue.build());
+          onChanged();
+        } else {
+          tankTeamsBuilder_.addMessage(builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addTankTeams(
+          int index, com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder builderForValue) {
+        if (tankTeamsBuilder_ == null) {
+          ensureTankTeamsIsMutable();
+          tankTeams_.add(index, builderForValue.build());
+          onChanged();
+        } else {
+          tankTeamsBuilder_.addMessage(index, builderForValue.build());
+        }
+        return this;
+      }
+      public Builder addAllTankTeams(
+          java.lang.Iterable<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam> values) {
+        if (tankTeamsBuilder_ == null) {
+          ensureTankTeamsIsMutable();
+          super.addAll(values, tankTeams_);
+          onChanged();
+        } else {
+          tankTeamsBuilder_.addAllMessages(values);
+        }
+        return this;
+      }
+      public Builder clearTankTeams() {
+        if (tankTeamsBuilder_ == null) {
+          tankTeams_ = java.util.Collections.emptyList();
+          bitField0_ = (bitField0_ & ~0x00010000);
+          onChanged();
+        } else {
+          tankTeamsBuilder_.clear();
+        }
+        return this;
+      }
+      public Builder removeTankTeams(int index) {
+        if (tankTeamsBuilder_ == null) {
+          ensureTankTeamsIsMutable();
+          tankTeams_.remove(index);
+          onChanged();
+        } else {
+          tankTeamsBuilder_.remove(index);
+        }
+        return this;
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder getTankTeamsBuilder(
+          int index) {
+        return getTankTeamsFieldBuilder().getBuilder(index);
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeamOrBuilder getTankTeamsOrBuilder(
+          int index) {
+        if (tankTeamsBuilder_ == null) {
+          return tankTeams_.get(index);  } else {
+          return tankTeamsBuilder_.getMessageOrBuilder(index);
+        }
+      }
+      public java.util.List<? extends com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeamOrBuilder> 
+           getTankTeamsOrBuilderList() {
+        if (tankTeamsBuilder_ != null) {
+          return tankTeamsBuilder_.getMessageOrBuilderList();
+        } else {
+          return java.util.Collections.unmodifiableList(tankTeams_);
+        }
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder addTankTeamsBuilder() {
+        return getTankTeamsFieldBuilder().addBuilder(
+            com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.getDefaultInstance());
+      }
+      public com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder addTankTeamsBuilder(
+          int index) {
+        return getTankTeamsFieldBuilder().addBuilder(
+            index, com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.getDefaultInstance());
+      }
+      public java.util.List<com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder> 
+           getTankTeamsBuilderList() {
+        return getTankTeamsFieldBuilder().getBuilderList();
+      }
+      private com.google.protobuf.RepeatedFieldBuilder<
+          com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam, com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeamOrBuilder> 
+          getTankTeamsFieldBuilder() {
+        if (tankTeamsBuilder_ == null) {
+          tankTeamsBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam, com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder, com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeamOrBuilder>(
+                  tankTeams_,
+                  ((bitField0_ & 0x00010000) == 0x00010000),
+                  getParentForChildren(),
+                  isClean());
+          tankTeams_ = null;
+        }
+        return tankTeamsBuilder_;
       }
       
       // @@protoc_insertion_point(builder_scope:SC_RoleInfo)
@@ -4701,10 +5601,10 @@ public final class RoleProtos {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_CS_RoleInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_CS_AccountGetRoleList_descriptor;
+    internal_static_CS_AccountAuthenticate_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_CS_AccountGetRoleList_fieldAccessorTable;
+      internal_static_CS_AccountAuthenticate_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_CS_CreateRole_descriptor;
   private static
@@ -4715,6 +5615,11 @@ public final class RoleProtos {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_CS_NewRoleInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CS_AccountGetRoleList_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CS_AccountGetRoleList_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_SC_RoleInfo_descriptor;
   private static
@@ -4740,20 +5645,23 @@ public final class RoleProtos {
       "\005 \002(\005\022\014\n\004gold\030\006 \002(\005\022\013\n\003oil\030\007 \002(\005\022\016\n\006oilM" +
       "ax\030\010 \002(\005\022\017\n\007tankExp\030\t \002(\005\022\021\n\taccountId\030\n" +
       " \002(\005\022\020\n\010serverId\030\013 \002(\005\"\037\n\013CS_RoleInfo\022\020\n" +
-      "\010playerId\030\001 \002(\005\";\n\025CS_AccountGetRoleList" +
-      "\022\021\n\taccountId\030\001 \002(\005\022\017\n\007account\030\002 \002(\t\" \n\r" +
-      "CS_CreateRole\022\017\n\007account\030\001 \002(\t\">\n\016CS_New" +
-      "RoleInfo\022\014\n\004name\030\001 \002(\t\022\013\n\003sex\030\002 \002(\010\022\021\n\tr",
-      "oleModel\030\003 \002(\005\"\206\002\n\013SC_RoleInfo\022\022\n\ninstan" +
-      "ceId\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\013\n\003exp\030\003 \002(\005\022\r\n" +
-      "\005level\030\004 \002(\005\022\r\n\005money\030\005 \002(\005\022\014\n\004gold\030\006 \002(" +
-      "\005\022\013\n\003oil\030\007 \002(\005\022\016\n\006oilMax\030\010 \002(\005\022\017\n\007tankEx" +
-      "p\030\t \002(\005\022\021\n\taccountId\030\n \002(\005\022\020\n\010serverId\030\013" +
-      " \002(\005\022\024\n\014registerDate\030\014 \002(\t\022\021\n\tloginDate\030" +
-      "\r \002(\t\022 \n\twarehouse\030\016 \002(\0132\r.VO_Warehouse\"" +
-      "4\n\025SC_AccountGetRoleList\022\033\n\005roles\030\001 \003(\0132" +
-      "\014.SC_RoleInfoB2\n$com.fanxing.server.io.p" +
-      "roto.protocolB\nRoleProtos"
+      "\010playerId\030\001 \002(\005\"I\n\026CS_AccountAuthenticat" +
+      "e\022\021\n\taccountId\030\001 \002(\005\022\017\n\007account\030\002 \002(\t\022\013\n" +
+      "\003key\030\003 \002(\t\" \n\rCS_CreateRole\022\017\n\007account\030\001" +
+      " \002(\t\">\n\016CS_NewRoleInfo\022\014\n\004name\030\001 \002(\t\022\013\n\003",
+      "sex\030\002 \002(\010\022\021\n\troleModel\030\003 \002(\005\"$\n\025CS_Accou" +
+      "ntGetRoleList\022\013\n\003key\030\001 \002(\t\"\307\002\n\013SC_RoleIn" +
+      "fo\022\022\n\ninstanceId\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\013\n\003" +
+      "exp\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\r\n\005money\030\005 \002(\005\022" +
+      "\014\n\004gold\030\006 \002(\005\022\013\n\003oil\030\007 \002(\005\022\016\n\006oilMax\030\010 \002" +
+      "(\005\022\017\n\007tankExp\030\t \002(\005\022\021\n\taccountId\030\n \002(\005\022\020" +
+      "\n\010serverId\030\013 \002(\005\022\024\n\014registerDate\030\014 \002(\t\022\021" +
+      "\n\tloginDate\030\r \002(\t\022 \n\twarehouse\030\016 \002(\0132\r.V" +
+      "O_Warehouse\022\013\n\003sex\030\017 \002(\005\022\021\n\troleModel\030\020 " +
+      "\002(\005\022\037\n\ttankTeams\030\021 \003(\0132\014.VO_TankTeam\"4\n\025",
+      "SC_AccountGetRoleList\022\033\n\005roles\030\001 \003(\0132\014.S" +
+      "C_RoleInfoB2\n$com.fanxing.server.io.prot" +
+      "o.protocolB\nRoleProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4776,14 +5684,14 @@ public final class RoleProtos {
               new java.lang.String[] { "PlayerId", },
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_RoleInfo.class,
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_RoleInfo.Builder.class);
-          internal_static_CS_AccountGetRoleList_descriptor =
+          internal_static_CS_AccountAuthenticate_descriptor =
             getDescriptor().getMessageTypes().get(2);
-          internal_static_CS_AccountGetRoleList_fieldAccessorTable = new
+          internal_static_CS_AccountAuthenticate_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_CS_AccountGetRoleList_descriptor,
-              new java.lang.String[] { "AccountId", "Account", },
-              com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.class,
-              com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.Builder.class);
+              internal_static_CS_AccountAuthenticate_descriptor,
+              new java.lang.String[] { "AccountId", "Account", "Key", },
+              com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate.class,
+              com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate.Builder.class);
           internal_static_CS_CreateRole_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_CS_CreateRole_fieldAccessorTable = new
@@ -4800,16 +5708,24 @@ public final class RoleProtos {
               new java.lang.String[] { "Name", "Sex", "RoleModel", },
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_NewRoleInfo.class,
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_NewRoleInfo.Builder.class);
-          internal_static_SC_RoleInfo_descriptor =
+          internal_static_CS_AccountGetRoleList_descriptor =
             getDescriptor().getMessageTypes().get(5);
+          internal_static_CS_AccountGetRoleList_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_CS_AccountGetRoleList_descriptor,
+              new java.lang.String[] { "Key", },
+              com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.class,
+              com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.Builder.class);
+          internal_static_SC_RoleInfo_descriptor =
+            getDescriptor().getMessageTypes().get(6);
           internal_static_SC_RoleInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_RoleInfo_descriptor,
-              new java.lang.String[] { "InstanceId", "Name", "Exp", "Level", "Money", "Gold", "Oil", "OilMax", "TankExp", "AccountId", "ServerId", "RegisterDate", "LoginDate", "Warehouse", },
+              new java.lang.String[] { "InstanceId", "Name", "Exp", "Level", "Money", "Gold", "Oil", "OilMax", "TankExp", "AccountId", "ServerId", "RegisterDate", "LoginDate", "Warehouse", "Sex", "RoleModel", "TankTeams", },
               com.fanxing.server.io.proto.protocol.RoleProtos.SC_RoleInfo.class,
               com.fanxing.server.io.proto.protocol.RoleProtos.SC_RoleInfo.Builder.class);
           internal_static_SC_AccountGetRoleList_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_SC_AccountGetRoleList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_AccountGetRoleList_descriptor,
