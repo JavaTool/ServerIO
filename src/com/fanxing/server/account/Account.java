@@ -21,6 +21,10 @@ public class Account implements Identity, Serializable {
 	private int id;
 	/**帐号邮箱*/
 	private String email;
+	/**登录密钥*/
+	private String loginKey;
+	/**用户ip*/
+	private String ip;
 
 	@Override
 	public String getName() {
@@ -67,6 +71,22 @@ public class Account implements Identity, Serializable {
 	@Override
 	public String toString() {
 		return "id[" + getId() + "] name[" + getName() + "]";
+	}
+
+	public String getLoginKey() {
+		return loginKey;
+	}
+
+	public void setLoginKey(String loginKey) {
+		this.loginKey = loginKey;
+	}
+
+	public String getIp() {
+		return ip;
+	}
+
+	public void setIp(String ip) {
+		this.ip = ip;
 	}
 
 }

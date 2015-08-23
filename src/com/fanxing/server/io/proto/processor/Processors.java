@@ -6,11 +6,15 @@ package com.fanxing.server.io.proto.processor;
  */
 public interface Processors {
 
+	RoleProcessor getRoleProcessor();
+
+	TankProcessor getTankProcessor();
+
+	TcpProcessor getTcpProcessor();
+
 	CommonProcessor getCommonProcessor();
 
 	AccountProcessor getAccountProcessor();
-
-	RoleProcessor getRoleProcessor();
 
 	TestProcessor getTestProcessor();
 

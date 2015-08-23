@@ -4,7 +4,13 @@ public interface AccountWord extends ErrorCode {
 
 	String NAME = "name";
 
-	String CHINESE = "chinese";
+	String NOTES = "notes";
+
+	String SHOWINFO = "showinfo";
+
+	String KEY = "key";
+
+	String name = "name";
 
 	String ACCOUNT_NAME_NULL = "ACCOUNT_NAME_NULL";
 

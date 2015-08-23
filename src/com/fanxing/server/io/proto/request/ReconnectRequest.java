@@ -1,7 +1,8 @@
 package com.fanxing.server.io.proto.request;
 
 import com.fanxing.server.io.proto.Request;
-import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
+import io.netty.channel.Channel;
 import com.fanxing.server.io.proto.protocol.CommonProtos.*;
 
 /**
@@ -12,8 +13,8 @@ public class ReconnectRequest extends Request {
 
 	private CS_Reconnect cS_Reconnect;
 
-	public ReconnectRequest(String ip, String receiveMessageId, HttpSession session, CS_Reconnect cS_Reconnect) {
-		super(ip, receiveMessageId, session);
+	public ReconnectRequest(String ip, String receiveMessageId, ServletContext servletContext, String sessionId, Channel channel, CS_Reconnect cS_Reconnect) {
+		super(ip, receiveMessageId, servletContext, sessionId, channel);
 		this.cS_Reconnect = cS_Reconnect;
 
 	}
@@ -24,10 +25,10 @@ public class ReconnectRequest extends Request {
 
 	/**
 	 * 
-	 * @return	帐号名称
+	 * @return	密码
 	 */
-	public String getAccount() {
-		return cS_Reconnect.getAccount();
+	public String getPassword() {
+		return cS_Reconnect.getPassword();
 	}
 
 	/**
@@ -40,10 +41,10 @@ public class ReconnectRequest extends Request {
 
 	/**
 	 * 
-	 * @return	密码
+	 * @return	帐号名称
 	 */
-	public String getPassword() {
-		return cS_Reconnect.getPassword();
+	public String getAccount() {
+		return cS_Reconnect.getAccount();
 	}
 
 	public CS_Reconnect getCS_Reconnect() {

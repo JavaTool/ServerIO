@@ -14,14 +14,13 @@ import org.slf4j.LoggerFactory;
  */
 public class Asynchronous<T> implements Runnable {
 	
-	private final Logger log;
+	private static final Logger log = LoggerFactory.getLogger(Asynchronous.class);
 	/**阻塞队列*/
 	private final BlockingQueue<T> queue;
 	
 	private final BlockingExecuter<T> callback;
 	
 	public Asynchronous(BlockingExecuter<T> callback) {
-		log = LoggerFactory.getLogger(Asynchronous.class);
 		this.callback = callback;
 		queue = new LinkedBlockingQueue<T>();
 	}

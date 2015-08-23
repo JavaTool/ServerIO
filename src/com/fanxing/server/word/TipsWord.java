@@ -22,9 +22,9 @@ public class TipsWord {
 		this.type = type;
 		this.name = row.getCell(0).getStringCellValue();
 		words = new HashMap<String, String>();
-		for (int i = 0;i < language.length;i++) {
-			words.put(language[i], row.getCell(i + 1).getStringCellValue());
-		}
+//		for (int i = 0;i < language.length;i++) {
+//			words.put(language[i], row.getCell(i + 1).getStringCellValue());
+//		}
 	}
 
 	public String getName() {
@@ -42,7 +42,7 @@ public class TipsWord {
 	 * @return	提示语内容
 	 */
 	public String getWord(String language) {
-		return words.containsKey(language) ? words.get(language) : "";
+		return words.containsKey(language) ? words.get(language) : name;
 	}
 
 }

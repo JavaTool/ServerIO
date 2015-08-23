@@ -1,7 +1,8 @@
 package com.fanxing.server.io.proto.request;
 
 import com.fanxing.server.io.proto.Request;
-import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
+import io.netty.channel.Channel;
 import com.fanxing.server.io.proto.protocol.RoleProtos.*;
 
 /**
@@ -12,8 +13,8 @@ public class CreateRoleRequest extends Request {
 
 	private CS_CreateRole cS_CreateRole;
 
-	public CreateRoleRequest(String ip, String receiveMessageId, HttpSession session, CS_CreateRole cS_CreateRole) {
-		super(ip, receiveMessageId, session);
+	public CreateRoleRequest(String ip, String receiveMessageId, ServletContext servletContext, String sessionId, Channel channel, CS_CreateRole cS_CreateRole) {
+		super(ip, receiveMessageId, servletContext, sessionId, channel);
 		this.cS_CreateRole = cS_CreateRole;
 
 	}

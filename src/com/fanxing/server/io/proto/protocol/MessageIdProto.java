@@ -21,24 +21,37 @@ public final class MessageIdProto {
     MICS_CheckVersion(8, 7),
     MISC_CheckVersionResp(9, 8),
     MICS_SelectServer(10, 9),
-    MICS_AccountRegister(11, 11),
-    MISC_AccountRegisterResp(12, 12),
-    MICS_AccountLogin(13, 13),
-    MISC_AccountLoginResp(14, 14),
-    MICS_Disconnect(15, 15),
-    MISC_DisconnectResp(16, 16),
-    MICS_AccountGetRoleList(17, 21),
-    MISC_AccountGetRoleListResp(18, 22),
-    MICS_CreateRole(19, 23),
-    MISC_CreateRoleResp(20, 24),
-    MICS_RoleInfo(21, 25),
-    MISC_RoleInfoResp(22, 26),
-    MICS_NewRoleInfo(23, 27),
-    MISC_NewRoleInfoResp(24, 28),
-    MICS_Reconnect(25, 31),
-    MISC_ReconnectResp(26, 32),
-    MICS_ServerHeart(27, 33),
-    MISC_ServerHeartResp(28, 34),
+    MISC_SelectServerResp(11, 10),
+    MICS_AccountRegister(12, 11),
+    MISC_AccountRegisterResp(13, 12),
+    MICS_AccountLogin(14, 13),
+    MISC_AccountLoginResp(15, 14),
+    MICS_Disconnect(16, 15),
+    MISC_DisconnectResp(17, 16),
+    MICS_AccountAuthenticate(18, 17),
+    MISC_AccountAuthenticateResp(19, 18),
+    MICS_TcpConnect(20, 19),
+    MISC_TcpConnectResp(21, 20),
+    MICS_AccountGetRoleList(22, 21),
+    MISC_AccountGetRoleListResp(23, 22),
+    MICS_CreateRole(24, 23),
+    MISC_CreateRoleResp(25, 24),
+    MICS_RoleInfo(26, 25),
+    MISC_RoleInfoResp(27, 26),
+    MICS_NewRoleInfo(28, 27),
+    MISC_NewRoleInfoResp(29, 28),
+    MICS_Reconnect(30, 31),
+    MISC_ReconnectResp(31, 32),
+    MICS_ServerHeart(32, 33),
+    MISC_ServerHeartResp(33, 34),
+    MICS_TankUpgrade(34, 35),
+    MISC_TankUpgradeResp(35, 36),
+    MICS_TankStrengthen(36, 37),
+    MISC_TankStrengthenResp(37, 38),
+    MICS_TankUpgradesStar(38, 39),
+    MISC_TankUpgradesStarResp(39, 40),
+    MICS_HttpCheck(40, 41),
+    MISC_HttpCheckResp(41, 42),
     ;
     
     public static final int MICS_Test1_VALUE = 1001;
@@ -52,12 +65,17 @@ public final class MessageIdProto {
     public static final int MICS_CheckVersion_VALUE = 7;
     public static final int MISC_CheckVersionResp_VALUE = 8;
     public static final int MICS_SelectServer_VALUE = 9;
+    public static final int MISC_SelectServerResp_VALUE = 10;
     public static final int MICS_AccountRegister_VALUE = 11;
     public static final int MISC_AccountRegisterResp_VALUE = 12;
     public static final int MICS_AccountLogin_VALUE = 13;
     public static final int MISC_AccountLoginResp_VALUE = 14;
     public static final int MICS_Disconnect_VALUE = 15;
     public static final int MISC_DisconnectResp_VALUE = 16;
+    public static final int MICS_AccountAuthenticate_VALUE = 17;
+    public static final int MISC_AccountAuthenticateResp_VALUE = 18;
+    public static final int MICS_TcpConnect_VALUE = 19;
+    public static final int MISC_TcpConnectResp_VALUE = 20;
     public static final int MICS_AccountGetRoleList_VALUE = 21;
     public static final int MISC_AccountGetRoleListResp_VALUE = 22;
     public static final int MICS_CreateRole_VALUE = 23;
@@ -70,6 +88,14 @@ public final class MessageIdProto {
     public static final int MISC_ReconnectResp_VALUE = 32;
     public static final int MICS_ServerHeart_VALUE = 33;
     public static final int MISC_ServerHeartResp_VALUE = 34;
+    public static final int MICS_TankUpgrade_VALUE = 35;
+    public static final int MISC_TankUpgradeResp_VALUE = 36;
+    public static final int MICS_TankStrengthen_VALUE = 37;
+    public static final int MISC_TankStrengthenResp_VALUE = 38;
+    public static final int MICS_TankUpgradesStar_VALUE = 39;
+    public static final int MISC_TankUpgradesStarResp_VALUE = 40;
+    public static final int MICS_HttpCheck_VALUE = 41;
+    public static final int MISC_HttpCheckResp_VALUE = 42;
     
     
     public final int getNumber() { return value; }
@@ -87,12 +113,17 @@ public final class MessageIdProto {
         case 7: return MICS_CheckVersion;
         case 8: return MISC_CheckVersionResp;
         case 9: return MICS_SelectServer;
+        case 10: return MISC_SelectServerResp;
         case 11: return MICS_AccountRegister;
         case 12: return MISC_AccountRegisterResp;
         case 13: return MICS_AccountLogin;
         case 14: return MISC_AccountLoginResp;
         case 15: return MICS_Disconnect;
         case 16: return MISC_DisconnectResp;
+        case 17: return MICS_AccountAuthenticate;
+        case 18: return MISC_AccountAuthenticateResp;
+        case 19: return MICS_TcpConnect;
+        case 20: return MISC_TcpConnectResp;
         case 21: return MICS_AccountGetRoleList;
         case 22: return MISC_AccountGetRoleListResp;
         case 23: return MICS_CreateRole;
@@ -105,6 +136,14 @@ public final class MessageIdProto {
         case 32: return MISC_ReconnectResp;
         case 33: return MICS_ServerHeart;
         case 34: return MISC_ServerHeartResp;
+        case 35: return MICS_TankUpgrade;
+        case 36: return MISC_TankUpgradeResp;
+        case 37: return MICS_TankStrengthen;
+        case 38: return MISC_TankStrengthenResp;
+        case 39: return MICS_TankUpgradesStar;
+        case 40: return MISC_TankUpgradesStarResp;
+        case 41: return MICS_HttpCheck;
+        case 42: return MISC_HttpCheckResp;
         default: return null;
       }
     }
@@ -135,7 +174,7 @@ public final class MessageIdProto {
     }
     
     private static final MessageId[] VALUES = {
-      MICS_Test1, MISC_Test1Resp, MICS_GetServerList, MISC_GetServerListResp, MIVO_ServerInfo, MIVO_Error, MICS_ServerStatus, MISC_ServerStatusResp, MICS_CheckVersion, MISC_CheckVersionResp, MICS_SelectServer, MICS_AccountRegister, MISC_AccountRegisterResp, MICS_AccountLogin, MISC_AccountLoginResp, MICS_Disconnect, MISC_DisconnectResp, MICS_AccountGetRoleList, MISC_AccountGetRoleListResp, MICS_CreateRole, MISC_CreateRoleResp, MICS_RoleInfo, MISC_RoleInfoResp, MICS_NewRoleInfo, MISC_NewRoleInfoResp, MICS_Reconnect, MISC_ReconnectResp, MICS_ServerHeart, MISC_ServerHeartResp, 
+      MICS_Test1, MISC_Test1Resp, MICS_GetServerList, MISC_GetServerListResp, MIVO_ServerInfo, MIVO_Error, MICS_ServerStatus, MISC_ServerStatusResp, MICS_CheckVersion, MISC_CheckVersionResp, MICS_SelectServer, MISC_SelectServerResp, MICS_AccountRegister, MISC_AccountRegisterResp, MICS_AccountLogin, MISC_AccountLoginResp, MICS_Disconnect, MISC_DisconnectResp, MICS_AccountAuthenticate, MISC_AccountAuthenticateResp, MICS_TcpConnect, MISC_TcpConnectResp, MICS_AccountGetRoleList, MISC_AccountGetRoleListResp, MICS_CreateRole, MISC_CreateRoleResp, MICS_RoleInfo, MISC_RoleInfoResp, MICS_NewRoleInfo, MISC_NewRoleInfoResp, MICS_Reconnect, MISC_ReconnectResp, MICS_ServerHeart, MISC_ServerHeartResp, MICS_TankUpgrade, MISC_TankUpgradeResp, MICS_TankStrengthen, MISC_TankStrengthenResp, MICS_TankUpgradesStar, MISC_TankUpgradesStarResp, MICS_HttpCheck, MISC_HttpCheckResp, 
     };
     
     public static MessageId valueOf(
@@ -167,26 +206,34 @@ public final class MessageIdProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017MessageId.proto*\277\005\n\tMessageId\022\017\n\nMICS_" +
+      "\n\017MessageId.proto*\224\010\n\tMessageId\022\017\n\nMICS_" +
       "Test1\020\351\007\022\023\n\016MISC_Test1Resp\020\352\007\022\026\n\022MICS_Ge" +
       "tServerList\020\001\022\032\n\026MISC_GetServerListResp\020" +
       "\002\022\023\n\017MIVO_ServerInfo\020\003\022\016\n\nMIVO_Error\020\004\022\025" +
       "\n\021MICS_ServerStatus\020\005\022\031\n\025MISC_ServerStat" +
       "usResp\020\006\022\025\n\021MICS_CheckVersion\020\007\022\031\n\025MISC_" +
       "CheckVersionResp\020\010\022\025\n\021MICS_SelectServer\020" +
-      "\t\022\030\n\024MICS_AccountRegister\020\013\022\034\n\030MISC_Acco" +
-      "untRegisterResp\020\014\022\025\n\021MICS_AccountLogin\020\r" +
-      "\022\031\n\025MISC_AccountLoginResp\020\016\022\023\n\017MICS_Disc",
-      "onnect\020\017\022\027\n\023MISC_DisconnectResp\020\020\022\033\n\027MIC" +
-      "S_AccountGetRoleList\020\025\022\037\n\033MISC_AccountGe" +
-      "tRoleListResp\020\026\022\023\n\017MICS_CreateRole\020\027\022\027\n\023" +
-      "MISC_CreateRoleResp\020\030\022\021\n\rMICS_RoleInfo\020\031" +
-      "\022\025\n\021MISC_RoleInfoResp\020\032\022\024\n\020MICS_NewRoleI" +
-      "nfo\020\033\022\030\n\024MISC_NewRoleInfoResp\020\034\022\022\n\016MICS_" +
-      "Reconnect\020\037\022\026\n\022MISC_ReconnectResp\020 \022\024\n\020M" +
-      "ICS_ServerHeart\020!\022\030\n\024MISC_ServerHeartRes" +
-      "p\020\"B6\n$com.fanxing.server.io.proto.proto" +
-      "colB\016MessageIdProto"
+      "\t\022\031\n\025MISC_SelectServerResp\020\n\022\030\n\024MICS_Acc" +
+      "ountRegister\020\013\022\034\n\030MISC_AccountRegisterRe" +
+      "sp\020\014\022\025\n\021MICS_AccountLogin\020\r\022\031\n\025MISC_Acco",
+      "untLoginResp\020\016\022\023\n\017MICS_Disconnect\020\017\022\027\n\023M" +
+      "ISC_DisconnectResp\020\020\022\034\n\030MICS_AccountAuth" +
+      "enticate\020\021\022 \n\034MISC_AccountAuthenticateRe" +
+      "sp\020\022\022\023\n\017MICS_TcpConnect\020\023\022\027\n\023MISC_TcpCon" +
+      "nectResp\020\024\022\033\n\027MICS_AccountGetRoleList\020\025\022" +
+      "\037\n\033MISC_AccountGetRoleListResp\020\026\022\023\n\017MICS" +
+      "_CreateRole\020\027\022\027\n\023MISC_CreateRoleResp\020\030\022\021" +
+      "\n\rMICS_RoleInfo\020\031\022\025\n\021MISC_RoleInfoResp\020\032" +
+      "\022\024\n\020MICS_NewRoleInfo\020\033\022\030\n\024MISC_NewRoleIn" +
+      "foResp\020\034\022\022\n\016MICS_Reconnect\020\037\022\026\n\022MISC_Rec",
+      "onnectResp\020 \022\024\n\020MICS_ServerHeart\020!\022\030\n\024MI" +
+      "SC_ServerHeartResp\020\"\022\024\n\020MICS_TankUpgrade" +
+      "\020#\022\030\n\024MISC_TankUpgradeResp\020$\022\027\n\023MICS_Tan" +
+      "kStrengthen\020%\022\033\n\027MISC_TankStrengthenResp" +
+      "\020&\022\031\n\025MICS_TankUpgradesStar\020\'\022\035\n\031MISC_Ta" +
+      "nkUpgradesStarResp\020(\022\022\n\016MICS_HttpCheck\020)" +
+      "\022\026\n\022MISC_HttpCheckResp\020*B6\n$com.fanxing." +
+      "server.io.proto.protocolB\016MessageIdProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {

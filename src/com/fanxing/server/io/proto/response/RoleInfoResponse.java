@@ -5,6 +5,7 @@ import com.fanxing.server.io.proto.Request;
 import com.fanxing.server.io.proto.protocol.RoleProtos.*;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.fanxing.server.io.proto.protocol.StructProtos.*;
+import java.lang.Iterable;
 
 /**
  * This is a auto make java file, so do not modify me.
@@ -24,38 +25,29 @@ public class RoleInfoResponse extends Response {
 
 	/**
 	 * 
-	 * @param	exp
-	 * 			经验
-	 */
-	public void setExp(Integer exp) {
-		builder.setExp(exp);
-	}
-
-	/**
-	 * 
-	 * @param	oilMax
-	 * 			�?��油料
-	 */
-	public void setOilMax(Integer oilMax) {
-		builder.setOilMax(oilMax);
-	}
-
-	/**
-	 * 
-	 * @param	accountId
-	 * 			帐号id
-	 */
-	public void setAccountId(Integer accountId) {
-		builder.setAccountId(accountId);
-	}
-
-	/**
-	 * 
 	 * @param	level
 	 * 			等级
 	 */
 	public void setLevel(Integer level) {
 		builder.setLevel(level);
+	}
+
+	/**
+	 * 
+	 * @param	sex
+	 * 			性别�?1为男性，0为女�?
+	 */
+	public void setSex(Integer sex) {
+		builder.setSex(sex);
+	}
+
+	/**
+	 * 
+	 * @param	loginDate
+	 * 			�?后登录时�?
+	 */
+	public void setLoginDate(String loginDate) {
+		builder.setLoginDate(loginDate);
 	}
 
 	/**
@@ -69,47 +61,20 @@ public class RoleInfoResponse extends Response {
 
 	/**
 	 * 
-	 * @param	registerDate
-	 * 			注册时间
+	 * @param	tankTeams
+	 * 			坦克队伍�?
 	 */
-	public void setRegisterDate(String registerDate) {
-		builder.setRegisterDate(registerDate);
+	public void setTankTeams(Iterable<VO_TankTeam> tankTeams) {
+		builder.addAllTankTeams(tankTeams);
 	}
 
 	/**
 	 * 
-	 * @param	name
-	 * 			角色名称
+	 * @param	warehouse
+	 * 			仓库
 	 */
-	public void setName(String name) {
-		builder.setName(name);
-	}
-
-	/**
-	 * 
-	 * @param	money
-	 * 			游戏�?
-	 */
-	public void setMoney(Integer money) {
-		builder.setMoney(money);
-	}
-
-	/**
-	 * 
-	 * @param	instanceId
-	 * 			实例id
-	 */
-	public void setInstanceId(Integer instanceId) {
-		builder.setInstanceId(instanceId);
-	}
-
-	/**
-	 * 
-	 * @param	loginDate
-	 * 			�?��登录时间
-	 */
-	public void setLoginDate(String loginDate) {
-		builder.setLoginDate(loginDate);
+	public void setWarehouse(VO_Warehouse warehouse) {
+		builder.setWarehouse(warehouse);
 	}
 
 	/**
@@ -132,11 +97,29 @@ public class RoleInfoResponse extends Response {
 
 	/**
 	 * 
-	 * @param	warehouse
-	 * 			仓库
+	 * @param	oilMax
+	 * 			�?大油�?
 	 */
-	public void setWarehouse(VO_Warehouse warehouse) {
-		builder.setWarehouse(warehouse);
+	public void setOilMax(Integer oilMax) {
+		builder.setOilMax(oilMax);
+	}
+
+	/**
+	 * 
+	 * @param	accountId
+	 * 			帐号id
+	 */
+	public void setAccountId(Integer accountId) {
+		builder.setAccountId(accountId);
+	}
+
+	/**
+	 * 
+	 * @param	instanceId
+	 * 			实例id
+	 */
+	public void setInstanceId(Integer instanceId) {
+		builder.setInstanceId(instanceId);
 	}
 
 	/**
@@ -146,6 +129,51 @@ public class RoleInfoResponse extends Response {
 	 */
 	public void setOil(Integer oil) {
 		builder.setOil(oil);
+	}
+
+	/**
+	 * 
+	 * @param	money
+	 * 			游戏�?
+	 */
+	public void setMoney(Integer money) {
+		builder.setMoney(money);
+	}
+
+	/**
+	 * 
+	 * @param	roleModel
+	 * 			角色模型id
+	 */
+	public void setRoleModel(Integer roleModel) {
+		builder.setRoleModel(roleModel);
+	}
+
+	/**
+	 * 
+	 * @param	name
+	 * 			角色名称
+	 */
+	public void setName(String name) {
+		builder.setName(name);
+	}
+
+	/**
+	 * 
+	 * @param	exp
+	 * 			经验
+	 */
+	public void setExp(Integer exp) {
+		builder.setExp(exp);
+	}
+
+	/**
+	 * 
+	 * @param	registerDate
+	 * 			注册时间
+	 */
+	public void setRegisterDate(String registerDate) {
+		builder.setRegisterDate(registerDate);
 	}
 
 	@Override

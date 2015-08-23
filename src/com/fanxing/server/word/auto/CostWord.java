@@ -4,7 +4,13 @@ public interface CostWord extends ErrorCode {
 
 	String NAME = "name";
 
-	String CHINESE = "chinese";
+	String NOTES = "notes";
+
+	String SHOWINFO = "showinfo";
+
+	String KEY = "key";
+
+	String name = "name";
 
 	String MONEY_NOT_ENOUGH = "MONEY_NOT_ENOUGH";
 

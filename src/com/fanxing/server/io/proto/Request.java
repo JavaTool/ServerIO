@@ -1,6 +1,11 @@
 package com.fanxing.server.io.proto;
 
-import javax.servlet.http.HttpSession;
+import io.netty.channel.Channel;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import javax.servlet.ServletContext;
 
 /**
  * 请求信息
@@ -13,17 +18,26 @@ public class Request {
 	private final String ip;
 	/**请求信息的id*/
 	private final String receiveMessageId;
-	/**HTTP会话*/
-	private final HttpSession session;
+	/**登录密钥*/
+	private final String sessionId;
+	/**环境*/
+	private final ServletContext servletContext;
+	/**数据映射*/
+	private final Map<String, Object> attributes;
+	/**Netty客户端频道*/
+	private final Channel channel;
 	
-	public Request(String ip, String receiveMessageId, HttpSession session) {
+	public Request(String ip, String receiveMessageId, ServletContext servletContext, String sessionId, Channel channel) {
 		this.ip = ip;
 		this.receiveMessageId = receiveMessageId;
-		this.session = session;
+		this.servletContext = servletContext;
+		this.sessionId = sessionId;
+		this.channel = channel;
+		attributes = new HashMap<String, Object>();
 	}
 	
 	public Request(Request request) {
-		this(request.ip, request.receiveMessageId, request.session);
+		this(request.ip, request.receiveMessageId, request.servletContext, request.sessionId, request.channel);
 	}
 
 	public String getIp() {
@@ -34,8 +48,12 @@ public class Request {
 		return receiveMessageId;
 	}
 
-	public HttpSession getSession() {
-		return session;
+	public ServletContext getServletContext() {
+		return servletContext;
+	}
+	
+	public String getSessionId() {
+		return sessionId;
 	}
 	
 	/**
@@ -44,6 +62,18 @@ public class Request {
 	 */
 	public byte[] getByteArray() {
 		return NULL_REQUEST;
+	}
+	
+	public void setAttribute(String key, Object value) {
+		attributes.put(key, value);
+	}
+	
+	public Object getAttribute(String key) {
+		return attributes.get(key);
+	}
+	
+	public Channel getChannel() {
+		return channel;
 	}
 
 }

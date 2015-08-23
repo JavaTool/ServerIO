@@ -3422,6 +3422,389 @@ public final class CommonProtos {
     // @@protoc_insertion_point(class_scope:CS_Reconnect)
   }
   
+  public interface CS_HttpCheckOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required string MessageId = 1;
+    boolean hasMessageId();
+    String getMessageId();
+  }
+  public static final class CS_HttpCheck extends
+      com.google.protobuf.GeneratedMessage
+      implements CS_HttpCheckOrBuilder {
+    // Use CS_HttpCheck.newBuilder() to construct.
+    private CS_HttpCheck(Builder builder) {
+      super(builder);
+    }
+    private CS_HttpCheck(boolean noInit) {}
+    
+    private static final CS_HttpCheck defaultInstance;
+    public static CS_HttpCheck getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public CS_HttpCheck getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_CS_HttpCheck_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_CS_HttpCheck_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required string MessageId = 1;
+    public static final int MESSAGEID_FIELD_NUMBER = 1;
+    private java.lang.Object messageId_;
+    public boolean hasMessageId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public String getMessageId() {
+      java.lang.Object ref = messageId_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          messageId_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getMessageIdBytes() {
+      java.lang.Object ref = messageId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        messageId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    private void initFields() {
+      messageId_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasMessageId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getMessageIdBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getMessageIdBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheckOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_CS_HttpCheck_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_CS_HttpCheck_fieldAccessorTable;
+      }
+      
+      // Construct using com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        messageId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck.getDescriptor();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck.getDefaultInstance();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck build() {
+        com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck buildPartial() {
+        com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck result = new com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.messageId_ = messageId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck other) {
+        if (other == com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck.getDefaultInstance()) return this;
+        if (other.hasMessageId()) {
+          setMessageId(other.getMessageId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasMessageId()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              messageId_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required string MessageId = 1;
+      private java.lang.Object messageId_ = "";
+      public boolean hasMessageId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public String getMessageId() {
+        java.lang.Object ref = messageId_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          messageId_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setMessageId(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        messageId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearMessageId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        messageId_ = getDefaultInstance().getMessageId();
+        onChanged();
+        return this;
+      }
+      void setMessageId(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
+        messageId_ = value;
+        onChanged();
+      }
+      
+      // @@protoc_insertion_point(builder_scope:CS_HttpCheck)
+    }
+    
+    static {
+      defaultInstance = new CS_HttpCheck(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:CS_HttpCheck)
+  }
+  
   public interface SC_GetServerListOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
@@ -3983,6 +4366,389 @@ public final class CommonProtos {
     }
     
     // @@protoc_insertion_point(class_scope:SC_GetServerList)
+  }
+  
+  public interface SC_SelectServerOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required string url = 1;
+    boolean hasUrl();
+    String getUrl();
+  }
+  public static final class SC_SelectServer extends
+      com.google.protobuf.GeneratedMessage
+      implements SC_SelectServerOrBuilder {
+    // Use SC_SelectServer.newBuilder() to construct.
+    private SC_SelectServer(Builder builder) {
+      super(builder);
+    }
+    private SC_SelectServer(boolean noInit) {}
+    
+    private static final SC_SelectServer defaultInstance;
+    public static SC_SelectServer getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SC_SelectServer getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_SC_SelectServer_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_SC_SelectServer_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required string url = 1;
+    public static final int URL_FIELD_NUMBER = 1;
+    private java.lang.Object url_;
+    public boolean hasUrl() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public String getUrl() {
+      java.lang.Object ref = url_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          url_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getUrlBytes() {
+      java.lang.Object ref = url_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        url_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    private void initFields() {
+      url_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasUrl()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getUrlBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getUrlBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServerOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_SC_SelectServer_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_SC_SelectServer_fieldAccessorTable;
+      }
+      
+      // Construct using com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        url_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer.getDescriptor();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer.getDefaultInstance();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer build() {
+        com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer buildPartial() {
+        com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer result = new com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.url_ = url_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer other) {
+        if (other == com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer.getDefaultInstance()) return this;
+        if (other.hasUrl()) {
+          setUrl(other.getUrl());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasUrl()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              url_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required string url = 1;
+      private java.lang.Object url_ = "";
+      public boolean hasUrl() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public String getUrl() {
+        java.lang.Object ref = url_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          url_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setUrl(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        url_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearUrl() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        url_ = getDefaultInstance().getUrl();
+        onChanged();
+        return this;
+      }
+      void setUrl(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
+        url_ = value;
+        onChanged();
+      }
+      
+      // @@protoc_insertion_point(builder_scope:SC_SelectServer)
+    }
+    
+    static {
+      defaultInstance = new SC_SelectServer(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:SC_SelectServer)
   }
   
   public interface SC_CheckVersionOrBuilder
@@ -4775,6 +5541,389 @@ public final class CommonProtos {
     // @@protoc_insertion_point(class_scope:SC_CheckVersion)
   }
   
+  public interface SC_HttpCheckOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required string MessageId = 1;
+    boolean hasMessageId();
+    String getMessageId();
+  }
+  public static final class SC_HttpCheck extends
+      com.google.protobuf.GeneratedMessage
+      implements SC_HttpCheckOrBuilder {
+    // Use SC_HttpCheck.newBuilder() to construct.
+    private SC_HttpCheck(Builder builder) {
+      super(builder);
+    }
+    private SC_HttpCheck(boolean noInit) {}
+    
+    private static final SC_HttpCheck defaultInstance;
+    public static SC_HttpCheck getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SC_HttpCheck getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_SC_HttpCheck_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_SC_HttpCheck_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required string MessageId = 1;
+    public static final int MESSAGEID_FIELD_NUMBER = 1;
+    private java.lang.Object messageId_;
+    public boolean hasMessageId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public String getMessageId() {
+      java.lang.Object ref = messageId_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          messageId_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getMessageIdBytes() {
+      java.lang.Object ref = messageId_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        messageId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    private void initFields() {
+      messageId_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasMessageId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getMessageIdBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getMessageIdBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheckOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_SC_HttpCheck_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.internal_static_SC_HttpCheck_fieldAccessorTable;
+      }
+      
+      // Construct using com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        messageId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck.getDescriptor();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck.getDefaultInstance();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck build() {
+        com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck buildPartial() {
+        com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck result = new com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.messageId_ = messageId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck other) {
+        if (other == com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck.getDefaultInstance()) return this;
+        if (other.hasMessageId()) {
+          setMessageId(other.getMessageId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasMessageId()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              messageId_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required string MessageId = 1;
+      private java.lang.Object messageId_ = "";
+      public boolean hasMessageId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public String getMessageId() {
+        java.lang.Object ref = messageId_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          messageId_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setMessageId(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        messageId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearMessageId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        messageId_ = getDefaultInstance().getMessageId();
+        onChanged();
+        return this;
+      }
+      void setMessageId(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000001;
+        messageId_ = value;
+        onChanged();
+      }
+      
+      // @@protoc_insertion_point(builder_scope:SC_HttpCheck)
+    }
+    
+    static {
+      defaultInstance = new SC_HttpCheck(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:SC_HttpCheck)
+  }
+  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_CS_GetServerList_descriptor;
   private static
@@ -4811,15 +5960,30 @@ public final class CommonProtos {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_CS_Reconnect_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_CS_HttpCheck_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_CS_HttpCheck_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_SC_GetServerList_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_SC_GetServerList_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SC_SelectServer_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SC_SelectServer_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_SC_CheckVersion_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_SC_CheckVersion_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SC_HttpCheck_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SC_HttpCheck_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -4839,12 +6003,15 @@ public final class CommonProtos {
       "bVersions\030\002 \003(\0132\017.VO_FileVersion\"#\n\017CS_S" +
       "electServer\022\020\n\010serverId\030\001 \002(\005\"C\n\014CS_Reco" +
       "nnect\022\017\n\007account\030\001 \002(\t\022\020\n\010password\030\002 \002(\t",
-      "\022\020\n\010serverId\030\003 \002(\005\"7\n\020SC_GetServerList\022#" +
-      "\n\013serverInfos\030\001 \003(\0132\016.VO_ServerInfo\"m\n\017S" +
-      "C_CheckVersion\022\024\n\014updateClient\030\001 \002(\010\022!\n\010" +
-      "updateDb\030\002 \003(\0132\017.VO_FileVersion\022\021\n\tupdat" +
-      "eUrl\030\003 \001(\t\022\016\n\006dbSize\030\004 \002(\005B4\n$com.fanxin" +
-      "g.server.io.proto.protocolB\014CommonProtos"
+      "\022\020\n\010serverId\030\003 \002(\005\"!\n\014CS_HttpCheck\022\021\n\tMe" +
+      "ssageId\030\001 \002(\t\"7\n\020SC_GetServerList\022#\n\013ser" +
+      "verInfos\030\001 \003(\0132\016.VO_ServerInfo\"\036\n\017SC_Sel" +
+      "ectServer\022\013\n\003url\030\001 \002(\t\"m\n\017SC_CheckVersio" +
+      "n\022\024\n\014updateClient\030\001 \002(\010\022!\n\010updateDb\030\002 \003(" +
+      "\0132\017.VO_FileVersion\022\021\n\tupdateUrl\030\003 \001(\t\022\016\n" +
+      "\006dbSize\030\004 \002(\005\"!\n\014SC_HttpCheck\022\021\n\tMessage" +
+      "Id\030\001 \002(\tB4\n$com.fanxing.server.io.proto." +
+      "protocolB\014CommonProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -4907,22 +6074,46 @@ public final class CommonProtos {
               new java.lang.String[] { "Account", "Password", "ServerId", },
               com.fanxing.server.io.proto.protocol.CommonProtos.CS_Reconnect.class,
               com.fanxing.server.io.proto.protocol.CommonProtos.CS_Reconnect.Builder.class);
-          internal_static_SC_GetServerList_descriptor =
+          internal_static_CS_HttpCheck_descriptor =
             getDescriptor().getMessageTypes().get(7);
+          internal_static_CS_HttpCheck_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_CS_HttpCheck_descriptor,
+              new java.lang.String[] { "MessageId", },
+              com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck.class,
+              com.fanxing.server.io.proto.protocol.CommonProtos.CS_HttpCheck.Builder.class);
+          internal_static_SC_GetServerList_descriptor =
+            getDescriptor().getMessageTypes().get(8);
           internal_static_SC_GetServerList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_GetServerList_descriptor,
               new java.lang.String[] { "ServerInfos", },
               com.fanxing.server.io.proto.protocol.CommonProtos.SC_GetServerList.class,
               com.fanxing.server.io.proto.protocol.CommonProtos.SC_GetServerList.Builder.class);
+          internal_static_SC_SelectServer_descriptor =
+            getDescriptor().getMessageTypes().get(9);
+          internal_static_SC_SelectServer_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_SC_SelectServer_descriptor,
+              new java.lang.String[] { "Url", },
+              com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer.class,
+              com.fanxing.server.io.proto.protocol.CommonProtos.SC_SelectServer.Builder.class);
           internal_static_SC_CheckVersion_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_SC_CheckVersion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_CheckVersion_descriptor,
               new java.lang.String[] { "UpdateClient", "UpdateDb", "UpdateUrl", "DbSize", },
               com.fanxing.server.io.proto.protocol.CommonProtos.SC_CheckVersion.class,
               com.fanxing.server.io.proto.protocol.CommonProtos.SC_CheckVersion.Builder.class);
+          internal_static_SC_HttpCheck_descriptor =
+            getDescriptor().getMessageTypes().get(11);
+          internal_static_SC_HttpCheck_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_SC_HttpCheck_descriptor,
+              new java.lang.String[] { "MessageId", },
+              com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck.class,
+              com.fanxing.server.io.proto.protocol.CommonProtos.SC_HttpCheck.Builder.class);
           return null;
         }
       };

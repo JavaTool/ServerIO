@@ -8,7 +8,10 @@ import com.fanxing.server.io.proto.request.ServerStatusRequest;
 import com.fanxing.server.io.proto.request.CheckVersionRequest;
 import com.fanxing.server.io.proto.response.CheckVersionResponse;
 import com.fanxing.server.io.proto.request.SelectServerRequest;
+import com.fanxing.server.io.proto.response.SelectServerResponse;
 import com.fanxing.server.io.proto.request.ReconnectRequest;
+import com.fanxing.server.io.proto.request.HttpCheckRequest;
+import com.fanxing.server.io.proto.response.HttpCheckResponse;
 import com.fanxing.server.io.proto.Request;
 
 /**
@@ -25,9 +28,11 @@ public interface CommonProcessor {
 
 	void processCheckVersion(CheckVersionRequest request, CheckVersionResponse response);
 
-	void processSelectServer(SelectServerRequest request, Response response);
+	void processSelectServer(SelectServerRequest request, SelectServerResponse response);
 
 	void processReconnect(ReconnectRequest request, Response response);
+
+	void processHttpCheck(HttpCheckRequest request, HttpCheckResponse response);
 
 	void processServerHeart(Request request, Response response);
 

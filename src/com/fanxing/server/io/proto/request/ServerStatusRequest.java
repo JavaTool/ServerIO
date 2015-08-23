@@ -1,7 +1,8 @@
 package com.fanxing.server.io.proto.request;
 
 import com.fanxing.server.io.proto.Request;
-import javax.servlet.http.HttpSession;
+import javax.servlet.ServletContext;
+import io.netty.channel.Channel;
 import com.fanxing.server.io.proto.protocol.CommonProtos.*;
 
 /**
@@ -12,8 +13,8 @@ public class ServerStatusRequest extends Request {
 
 	private CS_ServerStatus cS_ServerStatus;
 
-	public ServerStatusRequest(String ip, String receiveMessageId, HttpSession session, CS_ServerStatus cS_ServerStatus) {
-		super(ip, receiveMessageId, session);
+	public ServerStatusRequest(String ip, String receiveMessageId, ServletContext servletContext, String sessionId, Channel channel, CS_ServerStatus cS_ServerStatus) {
+		super(ip, receiveMessageId, servletContext, sessionId, channel);
 		this.cS_ServerStatus = cS_ServerStatus;
 
 	}

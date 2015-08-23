@@ -1,5 +1,13 @@
 package com.fanxing.server.io.proto;
 
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.Channel;
+
+import java.io.IOException;
+
+import com.fanxing.server.io.http.HTTPStatus;
+import com.fanxing.server.io.netty.Packet;
+import com.fanxing.server.io.netty.TCPHandler;
 import com.fanxing.server.io.proto.protocol.StructProtos.VO_Error;
 import com.fanxing.server.word.ErrorInfo;
 
@@ -84,6 +92,13 @@ public class Response implements HTTPStatus, ErrorInfo {
 	@Override
 	public boolean hasError() {
 		return errorBuilder != null;
+	}
+	
+	public static ByteBuf sendNettyResponse(Channel channel, Response response) throws IOException {
+		Packet packet = new Packet();
+		packet.setMessageId(response.getSendMessageId());
+		packet.setValue(response.getSendDatas());
+		return TCPHandler.sendPacket(channel, packet);
 	}
 
 }
