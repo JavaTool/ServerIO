@@ -94,6 +94,7 @@ public class HttpProxyServerHandler extends SimpleChannelInboundHandler<Object> 
 			headers.add(HttpHeaders.Names.SET_COOKIE, ServerCookieEncoder.encode(cookie));
 		}
 		channel.write(response);
+		channel.flush();
 	}
 
 	@Override

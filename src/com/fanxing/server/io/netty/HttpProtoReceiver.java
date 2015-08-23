@@ -61,7 +61,7 @@ public class HttpProtoReceiver {
 	
 	public static void main(String[] args) {
 		try {
-			new HttpProtoReceiver().bootStrap(10, 10, "guozhi", 8888, "Netty-Http");
+			new HttpProtoReceiver().bootStrap(10, 10, "localhost", 8888, "Netty-Http");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
