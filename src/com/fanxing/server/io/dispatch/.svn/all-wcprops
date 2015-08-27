@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/dispatch
+END
+IContent.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/dispatch/IContent.java
+END
+ISender.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/TankPrj/!svn/ver/2062/ServerIO/src/com/fanxing/server/io/dispatch/ISender.java
+END
+Dispatch.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/TankPrj/!svn/ver/2080/ServerIO/src/com/fanxing/server/io/dispatch/Dispatch.java
+END
+IContentHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/TankPrj/!svn/ver/2080/ServerIO/src/com/fanxing/server/io/dispatch/IContentHandler.java
+END
+IDispatchManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/TankPrj/!svn/ver/2080/ServerIO/src/com/fanxing/server/io/dispatch/IDispatchManager.java
+END
+Content.java
+K 25
+svn:wc:ra_dav:version-url
+V 83
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/dispatch/Content.java
+END
+DispatchManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/TankPrj/!svn/ver/2080/ServerIO/src/com/fanxing/server/io/dispatch/DispatchManager.java
+END
+IDispatch.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/TankPrj/!svn/ver/2080/ServerIO/src/com/fanxing/server/io/dispatch/IDispatch.java
+END

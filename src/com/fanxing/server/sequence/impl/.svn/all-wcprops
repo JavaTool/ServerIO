@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/TankPrj/!svn/ver/800/ServerIO/src/com/fanxing/server/sequence/impl
+END
+RedisIdMaker.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/TankPrj/!svn/ver/800/ServerIO/src/com/fanxing/server/sequence/impl/RedisIdMaker.java
+END
+JavaAutoIdMaker.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/TankPrj/!svn/ver/800/ServerIO/src/com/fanxing/server/sequence/impl/JavaAutoIdMaker.java
+END
+RedisIdManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/TankPrj/!svn/ver/800/ServerIO/src/com/fanxing/server/sequence/impl/RedisIdManager.java
+END
+ShardedRedisIdManager.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/TankPrj/!svn/ver/800/ServerIO/src/com/fanxing/server/sequence/impl/ShardedRedisIdManager.java
+END
+SequenceMaker.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/TankPrj/!svn/ver/800/ServerIO/src/com/fanxing/server/sequence/impl/SequenceMaker.java
+END

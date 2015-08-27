@@ -1,0 +1,215 @@
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/TankPrj/!svn/ver/1992/ServerIO/src/com/fanxing/server/io/proto/request
+END
+Test1Request.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/Test1Request.java
+END
+SelectServerRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/SelectServerRequest.java
+END
+HttpCheckRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/HttpCheckRequest.java
+END
+AccountAuthenticateRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/AccountAuthenticateRequest.java
+END
+ReplyInvitationRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/TankPrj/!svn/ver/1984/ServerIO/src/com/fanxing/server/io/proto/request/ReplyInvitationRequest.java
+END
+DonateGoodsRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/TankPrj/!svn/ver/2062/ServerIO/src/com/fanxing/server/io/proto/request/DonateGoodsRequest.java
+END
+SendChatMessageRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/TankPrj/!svn/ver/1984/ServerIO/src/com/fanxing/server/io/proto/request/SendChatMessageRequest.java
+END
+InviteJoinLegionRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/TankPrj/!svn/ver/1992/ServerIO/src/com/fanxing/server/io/proto/request/InviteJoinLegionRequest.java
+END
+AccountRegisterRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/AccountRegisterRequest.java
+END
+CheckVersionRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/TankPrj/!svn/ver/2062/ServerIO/src/com/fanxing/server/io/proto/request/CheckVersionRequest.java
+END
+TankStrengthenRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/TankStrengthenRequest.java
+END
+GetLegionLogRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/TankPrj/!svn/ver/1992/ServerIO/src/com/fanxing/server/io/proto/request/GetLegionLogRequest.java
+END
+TankChangeEquipmentRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 107
+/svn/TankPrj/!svn/ver/2030/ServerIO/src/com/fanxing/server/io/proto/request/TankChangeEquipmentRequest.java
+END
+GetLegionMemberInfoListRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 111
+/svn/TankPrj/!svn/ver/1992/ServerIO/src/com/fanxing/server/io/proto/request/GetLegionMemberInfoListRequest.java
+END
+GetServerListRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/GetServerListRequest.java
+END
+AccountLoginRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/AccountLoginRequest.java
+END
+FileVersionRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/TankPrj/!svn/ver/1984/ServerIO/src/com/fanxing/server/io/proto/request/FileVersionRequest.java
+END
+AccountGetRoleListRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 106
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/AccountGetRoleListRequest.java
+END
+RemoveMemberRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/TankPrj/!svn/ver/1984/ServerIO/src/com/fanxing/server/io/proto/request/RemoveMemberRequest.java
+END
+GetLegionInfoRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 101
+/svn/TankPrj/!svn/ver/1992/ServerIO/src/com/fanxing/server/io/proto/request/GetLegionInfoRequest.java
+END
+RoleInfoRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/RoleInfoRequest.java
+END
+NewRoleInfoRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/TankPrj/!svn/ver/2062/ServerIO/src/com/fanxing/server/io/proto/request/NewRoleInfoRequest.java
+END
+TransferLegionRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/TankPrj/!svn/ver/1992/ServerIO/src/com/fanxing/server/io/proto/request/TransferLegionRequest.java
+END
+ReplyApplyJoinLegionRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 108
+/svn/TankPrj/!svn/ver/1992/ServerIO/src/com/fanxing/server/io/proto/request/ReplyApplyJoinLegionRequest.java
+END
+TcpConnectRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/TcpConnectRequest.java
+END
+ServerInfoRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/TankPrj/!svn/ver/2062/ServerIO/src/com/fanxing/server/io/proto/request/ServerInfoRequest.java
+END
+CreateRoleRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/CreateRoleRequest.java
+END
+TankUpgradeRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 99
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/TankUpgradeRequest.java
+END
+ApplyJoinLegionRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 103
+/svn/TankPrj/!svn/ver/1992/ServerIO/src/com/fanxing/server/io/proto/request/ApplyJoinLegionRequest.java
+END
+TankUpgradesStarRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/TankUpgradesStarRequest.java
+END
+PermissionManageRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 104
+/svn/TankPrj/!svn/ver/1984/ServerIO/src/com/fanxing/server/io/proto/request/PermissionManageRequest.java
+END
+ServerStatusRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 100
+/svn/TankPrj/!svn/ver/2062/ServerIO/src/com/fanxing/server/io/proto/request/ServerStatusRequest.java
+END
+BuyLegionGoodsRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 102
+/svn/TankPrj/!svn/ver/1992/ServerIO/src/com/fanxing/server/io/proto/request/BuyLegionGoodsRequest.java
+END
+ReconnectRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 97
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/ReconnectRequest.java
+END
+DisconnectRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 98
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/request/DisconnectRequest.java
+END

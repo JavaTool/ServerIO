@@ -1,0 +1,65 @@
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/TankPrj/!svn/ver/1517/ServerIO/src/com/fanxing/server/io/proto/protocol
+END
+StructProtos.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/TankPrj/!svn/ver/2030/ServerIO/src/com/fanxing/server/io/proto/protocol/StructProtos.java
+END
+TestProtos.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/TankPrj/!svn/ver/547/ServerIO/src/com/fanxing/server/io/proto/protocol/TestProtos.java
+END
+TcpProtos.java
+K 25
+svn:wc:ra_dav:version-url
+V 91
+/svn/TankPrj/!svn/ver/1690/ServerIO/src/com/fanxing/server/io/proto/protocol/TcpProtos.java
+END
+AccountProtos.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/TankPrj/!svn/ver/731/ServerIO/src/com/fanxing/server/io/proto/protocol/AccountProtos.java
+END
+CommonProtos.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/TankPrj/!svn/ver/1898/ServerIO/src/com/fanxing/server/io/proto/protocol/CommonProtos.java
+END
+MessageIdProto.java
+K 25
+svn:wc:ra_dav:version-url
+V 96
+/svn/TankPrj/!svn/ver/2030/ServerIO/src/com/fanxing/server/io/proto/protocol/MessageIdProto.java
+END
+TankProtos.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/TankPrj/!svn/ver/2030/ServerIO/src/com/fanxing/server/io/proto/protocol/TankProtos.java
+END
+LegionProtos.java
+K 25
+svn:wc:ra_dav:version-url
+V 94
+/svn/TankPrj/!svn/ver/1993/ServerIO/src/com/fanxing/server/io/proto/protocol/LegionProtos.java
+END
+BattleProtos.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/TankPrj/!svn/ver/718/ServerIO/src/com/fanxing/server/io/proto/protocol/BattleProtos.java
+END
+RoleProtos.java
+K 25
+svn:wc:ra_dav:version-url
+V 92
+/svn/TankPrj/!svn/ver/1898/ServerIO/src/com/fanxing/server/io/proto/protocol/RoleProtos.java
+END

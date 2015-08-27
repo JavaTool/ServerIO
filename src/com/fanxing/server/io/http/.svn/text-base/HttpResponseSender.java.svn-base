@@ -1,0 +1,45 @@
+package com.fanxing.server.io.http;
+
+import java.io.OutputStream;
+
+import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpSession;
+
+import com.fanxing.server.io.dispatch.ISender;
+import com.fanxing.server.io.proto.protocol.MessageIdProto.MessageId;
+
+public class HttpResponseSender implements ISender {
+	
+	private final ServletResponse response;
+	
+	private final HttpSession session;
+	
+	public HttpResponseSender(ServletResponse response, HttpSession session) {
+		this.response = response;
+		this.session = session;
+	}
+
+	@Override
+	public void send(byte[] datas, String messageId) throws Exception {
+		OutputStream os = response.getOutputStream();
+		try {
+			response.setContentType("text/plain; charset=UTF-8; " + MessageId.class.getSimpleName() + "=" + messageId);
+			os.write(datas);
+		} finally {
+			os.flush();
+			os.close();
+		}
+	}
+
+	@Override
+	public <X, Y extends X> void setAttribute(String key, Class<X> clz, Y value) {
+		session.setAttribute(key, value);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public <X> X getAttribute(String key, Class<X> clz) {
+		return (X) session.getAttribute(key);
+	}
+
+}

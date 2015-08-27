@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/TankPrj/!svn/ver/1645/ServerIO/src/com/fanxing/server/io/http
+END
+HttpProtoReceiver.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/TankPrj/!svn/ver/2062/ServerIO/src/com/fanxing/server/io/http/HttpProtoReceiver.java
+END
+HttpResponseSender.java
+K 25
+svn:wc:ra_dav:version-url
+V 90
+/svn/TankPrj/!svn/ver/2062/ServerIO/src/com/fanxing/server/io/http/HttpResponseSender.java
+END
+HttpBackInfo.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/TankPrj/!svn/ver/1690/ServerIO/src/com/fanxing/server/io/http/HttpBackInfo.java
+END
+HttpStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/http/HttpStatus.java
+END
+HttpConnector.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/TankPrj/!svn/ver/2080/ServerIO/src/com/fanxing/server/io/http/HttpConnector.java
+END

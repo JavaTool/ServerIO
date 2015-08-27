@@ -1,0 +1,53 @@
+K 25
+svn:wc:ra_dav:version-url
+V 67
+/svn/TankPrj/!svn/ver/1517/ServerIO/src/com/fanxing/server/io/proto
+END
+MessageHandle.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/MessageHandle.java
+END
+Request.java
+K 25
+svn:wc:ra_dav:version-url
+V 80
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/Request.java
+END
+DefaultMessageHandle.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/TankPrj/!svn/ver/2030/ServerIO/src/com/fanxing/server/io/proto/DefaultMessageHandle.java
+END
+RedirectResponse.java
+K 25
+svn:wc:ra_dav:version-url
+V 89
+/svn/TankPrj/!svn/ver/1294/ServerIO/src/com/fanxing/server/io/proto/RedirectResponse.java
+END
+ProtoSender.java
+K 25
+svn:wc:ra_dav:version-url
+V 84
+/svn/TankPrj/!svn/ver/1690/ServerIO/src/com/fanxing/server/io/proto/ProtoSender.java
+END
+RedirectRequest.java
+K 25
+svn:wc:ra_dav:version-url
+V 88
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/RedirectRequest.java
+END
+Response.java
+K 25
+svn:wc:ra_dav:version-url
+V 81
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/io/proto/Response.java
+END
+ContentHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 87
+/svn/TankPrj/!svn/ver/2080/ServerIO/src/com/fanxing/server/io/proto/ContentHandler.java
+END

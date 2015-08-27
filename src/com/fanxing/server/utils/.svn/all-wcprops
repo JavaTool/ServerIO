@@ -1,0 +1,71 @@
+K 25
+svn:wc:ra_dav:version-url
+V 64
+/svn/TankPrj/!svn/ver/1468/ServerIO/src/com/fanxing/server/utils
+END
+DateUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/TankPrj/!svn/ver/1468/ServerIO/src/com/fanxing/server/utils/DateUtil.java
+END
+MD5Util.java
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/TankPrj/!svn/ver/800/ServerIO/src/com/fanxing/server/utils/MD5Util.java
+END
+SerializaUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 82
+/svn/TankPrj/!svn/ver/800/ServerIO/src/com/fanxing/server/utils/SerializaUtil.java
+END
+FileUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/TankPrj/!svn/ver/1046/ServerIO/src/com/fanxing/server/utils/FileUtil.java
+END
+Services.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/TankPrj/!svn/ver/2062/ServerIO/src/com/fanxing/server/utils/Services.java
+END
+DefaultShutdownExecutor.java
+K 25
+svn:wc:ra_dav:version-url
+V 93
+/svn/TankPrj/!svn/ver/2039/ServerIO/src/com/fanxing/server/utils/DefaultShutdownExecutor.java
+END
+RegexUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/TankPrj/!svn/ver/800/ServerIO/src/com/fanxing/server/utils/RegexUtil.java
+END
+ExcelUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 79
+/svn/TankPrj/!svn/ver/1789/ServerIO/src/com/fanxing/server/utils/ExcelUtil.java
+END
+ShutdownExecutor.java
+K 25
+svn:wc:ra_dav:version-url
+V 86
+/svn/TankPrj/!svn/ver/2039/ServerIO/src/com/fanxing/server/utils/ShutdownExecutor.java
+END
+Shutdown.java
+K 25
+svn:wc:ra_dav:version-url
+V 78
+/svn/TankPrj/!svn/ver/2039/ServerIO/src/com/fanxing/server/utils/Shutdown.java
+END
+HttpConnectUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 85
+/svn/TankPrj/!svn/ver/1937/ServerIO/src/com/fanxing/server/utils/HttpConnectUtil.java
+END
