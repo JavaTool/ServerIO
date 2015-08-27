@@ -7,7 +7,6 @@ import org.hibernate.cfg.Configuration;
 
 import com.fanxing.server.asynchronous.Asynchronous;
 import com.fanxing.server.persist.EntityManager;
-import com.fanxing.server.sequence.InstanceIdManager;
 
 /**
  * 扩展的实体管理器
@@ -121,11 +120,6 @@ public class EntityManagerImplEx implements EntityManager {
 	@Override
 	public Configuration getConfiguration() {
 		return entityManager.getConfiguration();
-	}
-
-	@Override
-	public InstanceIdManager getInstanceIdManager() {
-		return entityManager.getInstanceIdManager();
 	}
 
 }

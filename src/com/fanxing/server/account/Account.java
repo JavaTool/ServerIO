@@ -2,8 +2,6 @@ package com.fanxing.server.account;
 
 import java.io.Serializable;
 
-import com.fanxing.server.io.mina.Identity;
-
 /**
  * 帐号信息
  * @author 	fuhuiyuan

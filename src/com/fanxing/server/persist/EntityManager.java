@@ -5,8 +5,6 @@ import java.util.List;
 
 import org.hibernate.cfg.Configuration;
 
-import com.fanxing.server.sequence.InstanceIdManager;
-
 public interface EntityManager {
 
 	/**
@@ -106,7 +104,5 @@ public interface EntityManager {
 	void shutdown() throws Exception;
 	
 	Configuration getConfiguration();
-	
-	InstanceIdManager getInstanceIdManager();
 	
 }

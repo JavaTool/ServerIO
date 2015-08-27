@@ -1,4 +1,4 @@
-package com.fanxing.server.io.mina;
+package com.fanxing.server.account;
 
 public interface Identity {
 	

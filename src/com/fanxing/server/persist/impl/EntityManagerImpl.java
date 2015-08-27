@@ -15,14 +15,9 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.persister.entity.EntityPersister;
 import org.hibernate.proxy.HibernateProxy;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
-import com.fanxing.server.cache.Cache;
-import com.fanxing.server.io.ConfigurationHolder;
 import com.fanxing.server.persist.DataAccessException;
 import com.fanxing.server.persist.EntityManager;
-import com.fanxing.server.sequence.InstanceIdManager;
 
 public class EntityManagerImpl implements EntityManager {
 	
@@ -33,15 +28,6 @@ public class EntityManagerImpl implements EntityManager {
 	private HashMap<String, EntityPersister> entityPersisters;
 	
 	private HashMap<String, Lock> locks;
-	
-	private InstanceIdManager idManager;
-	
-	public EntityManagerImpl(Configuration conf, InstanceIdManager idManager) {
-		this.conf = conf;
-		this.idManager = idManager;
-		initHibernate();
-		initLocks();
-	}
 	
 	public EntityManagerImpl(Configuration conf) {
 		this.conf = conf;
@@ -357,11 +343,6 @@ public class EntityManagerImpl implements EntityManager {
 	@Override
 	public Configuration getConfiguration() {
 		return conf;
-	}
-
-	@Override
-	public InstanceIdManager getInstanceIdManager() {
-		return idManager;
 	}
 
 }
