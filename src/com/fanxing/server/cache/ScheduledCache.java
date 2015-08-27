@@ -14,21 +14,21 @@ public class ScheduledCache implements IScheduledCache {
 	private final Cache cache;
 	
 	private final EntityManager entityManager;
-	
+	/**创建-计划任务的键队列*/
 	private final Queue<Serializable> createKeys;
-	
+	/**更新-计划任务的键队列*/
 	private final Queue<Serializable> updateKeys;
-	
+	/**删除-计划任务的键队列*/
 	private final Queue<Serializable> deleteKeys;
-	
+	/**创建-计划任务的名称队列集合*/
 	private final Map<Serializable, Queue<Serializable>> createHmap;
-	
+	/**更新-计划任务的名称队列集合*/
 	private final Map<Serializable, Queue<Serializable>> updateHmap;
-	
+	/**删除-计划任务的名称队列集合*/
 	private final Map<Serializable, Queue<Serializable>> deleteHmap;
-	
+	/**键的持久化后是否删除缓存的标志集合*/
 	private final Map<Serializable, Boolean> keyCaches;
-	
+	/**名称的持久化后是否删除缓存的标志集合*/
 	private final Map<Serializable, Boolean> nameCaches;
 	
 	public ScheduledCache(Cache cache, EntityManager entityManager) {
@@ -125,20 +125,27 @@ public class ScheduledCache implements IScheduledCache {
 	protected void createSync() {
 		while (createKeys.size() > 0) {
 			Serializable key = createKeys.poll();
-			if (createHmap.containsKey(key)) {
+			if (createHmap.containsKey(key)) { // HSet
 				Queue<Serializable> queue = createHmap.get(key);
 				Serializable[] names = queue.toArray(new Serializable[queue.size()]);
 				List<Serializable> list = hmGet(key, names);
 				entityManager.createSync(list.toArray(new Serializable[list.size()]));
-				deleteCache(key, queue);
-			} else {
+				tryDeleteCache(key, queue);
+			} else { // Set
 				entityManager.createSync(get(key));
-				deleteCache(key);
+				tryDeleteCache(key);
 			}
 		}
 	}
 	
-	protected void deleteCache(Serializable key, Queue<Serializable> queue) {
+	/**
+	 * 尝试删除缓存对象
+	 * @param 	key
+	 * 			键
+	 * @param 	queue
+	 * 			名称队列
+	 */
+	protected void tryDeleteCache(Serializable key, Queue<Serializable> queue) {
 		int size = queue.size();
 		for (int i = 0;i < size;i++) {
 			Serializable name = queue.poll();
@@ -150,7 +157,7 @@ public class ScheduledCache implements IScheduledCache {
 		hdel(key, names);
 	}
 	
-	protected void deleteCache(Serializable key) {
+	protected void tryDeleteCache(Serializable key) {
 		if (keyCaches.containsKey(key) && !keyCaches.get(key)) {
 			del(key);
 		}
@@ -164,10 +171,10 @@ public class ScheduledCache implements IScheduledCache {
 				Serializable[] names = queue.toArray(new Serializable[queue.size()]);
 				List<Serializable> list = hmGet(key, names);
 				entityManager.updateSync(list.toArray(new Serializable[list.size()]));
-				deleteCache(key, queue);
+				tryDeleteCache(key, queue);
 			} else {
 				entityManager.updateSync(get(key));
-				deleteCache(key);
+				tryDeleteCache(key);
 			}
 		}
 	}
@@ -198,6 +205,7 @@ public class ScheduledCache implements IScheduledCache {
 		}
 		
 		saveDeleteKeyCache(key, deleteCache);
+		scheduledSet(key, value);
 	}
 
 	@Override
@@ -208,6 +216,7 @@ public class ScheduledCache implements IScheduledCache {
 			queueAdd(updateKeys, key);
 			saveDeleteKeyCache(key, deleteCache);
 		}
+		scheduledSet(key, value);
 	}
 
 	@Override
@@ -215,6 +224,7 @@ public class ScheduledCache implements IScheduledCache {
 		createKeys.remove(key);
 		updateKeys.remove(key);
 		queueAdd(deleteKeys, key);
+		scheduledSet(key, value);
 	}
 
 	@Override
@@ -226,6 +236,7 @@ public class ScheduledCache implements IScheduledCache {
 		}
 
 		saveDeleteNameCache(key, deleteCache);
+		scheduledHSet(key, name, value);
 	}
 
 	@Override
@@ -234,6 +245,7 @@ public class ScheduledCache implements IScheduledCache {
 			addHScheduled(key, name, updateKeys, updateHmap);
 			saveDeleteNameCache(key, deleteCache);
 		}
+		scheduledHSet(key, name, value);
 	}
 
 	@Override
@@ -241,6 +253,7 @@ public class ScheduledCache implements IScheduledCache {
 		getHNameList(key, createHmap).remove(name);
 		getHNameList(key, updateHmap).remove(name);
 		addHScheduled(key, name, deleteKeys, deleteHmap);
+		scheduledHSet(key, name, value);
 	}
 	
 	protected Queue<Serializable> getHNameList(Serializable key, Map<Serializable, Queue<Serializable>> hmap) {
@@ -253,12 +266,9 @@ public class ScheduledCache implements IScheduledCache {
 		}
 	}
 	
-	protected boolean queueAdd(Queue<Serializable> queue, Serializable key) {
+	protected void queueAdd(Queue<Serializable> queue, Serializable key) {
 		if (!queue.contains(key)) {
 			queue.add(key);
-			return true;
-		} else {
-			return false;
 		}
 	}
 	
@@ -268,8 +278,8 @@ public class ScheduledCache implements IScheduledCache {
 	}
 	
 	protected void saveDeleteCache(Serializable key, boolean deleteCache, Map<Serializable, Boolean> caches) {
-		if (caches.containsKey(key) && caches.get(key)) {
-			deleteCache = true;
+		if (caches.containsKey(key) && !caches.get(key)) {
+			deleteCache = false; // 之前的任务需要保留缓存对象，则这次任务也标记为保留
 		}
 		caches.put(key, deleteCache);
 	}
@@ -280,6 +290,18 @@ public class ScheduledCache implements IScheduledCache {
 	
 	protected void saveDeleteNameCache(Serializable key, boolean deleteCache) {
 		saveDeleteCache(key, deleteCache, nameCaches);
+	}
+	
+	protected void scheduledSet(Serializable key, Serializable value) {
+		if (value != null) {
+			set(key, value);
+		}
+	}
+	
+	protected void scheduledHSet(Serializable key, Serializable name, Serializable value) {
+		if (value != null) {
+			hset(key, name, value);
+		}
 	}
 
 }
