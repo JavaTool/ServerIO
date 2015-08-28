@@ -205,4 +205,13 @@ public class CacheOnRedis implements Cache, Counter {
 		}
 	}
 
+	@Override
+	public void set(Serializable key, Serializable object, int timeout) {
+		try {
+			jedis.setex(SerializaUtil.serializable(key), timeout, SerializaUtil.serializable(object));
+		} catch (Exception e) {
+			log.error("", e);
+		}
+	}
+
 }

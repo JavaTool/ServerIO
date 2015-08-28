@@ -280,4 +280,16 @@ public class CacheOnShardedRedis implements Cache, Counter {
 		}
 	}
 
+	@Override
+	public void set(Serializable key, Serializable object, int timeout) {
+		ShardedJedis sharded = jedis.getResource();
+		try {
+			sharded.setex(SerializaUtil.serializable(key), timeout, SerializaUtil.serializable(object));
+		} catch (Exception e) {
+			log.error("", e);
+		} finally {
+			jedis.returnResourceObject(sharded);
+		}
+	}
+
 }

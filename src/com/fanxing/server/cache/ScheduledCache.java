@@ -304,4 +304,9 @@ public class ScheduledCache implements IScheduledCache {
 		}
 	}
 
+	@Override
+	public void set(Serializable key, Serializable object, int timeout) {
+		cache.set(key, object, timeout);
+	}
+
 }

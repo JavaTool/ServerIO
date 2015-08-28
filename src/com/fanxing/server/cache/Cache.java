@@ -19,6 +19,16 @@ public interface Cache {
 	 */
 	void set(Serializable key, Serializable object);
 	/**
+	 * 存储一个对象
+	 * @param 	key
+	 * 			键
+	 * @param 	object
+	 * 			对象
+	 * @param 	timeout
+	 * 			过期时间（秒）
+	 */
+	void set(Serializable key, Serializable object, int timeout);
+	/**
 	 * 以哈希的方式存储一个对象
 	 * @param 	key
 	 * 			键
