@@ -3,6 +3,7 @@ package com.fanxing.server.cache;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 /**
  * 缓存器
@@ -10,6 +11,22 @@ import java.util.Map;
  */
 public interface Cache {
 	
+	/**
+	 * 判断是否存在键
+	 * @param 	key
+	 * 			键
+	 * @return	是否存在键
+	 */
+	boolean exists(Serializable key);
+	/**
+	 * 判断是否存在哈希名称
+	 * @param 	key
+	 * 			键
+	 * @param 	name
+	 * 			名称
+	 * @return	是否存在哈希名称
+	 */
+	boolean hexists(Serializable key, Serializable name);
 	/**
 	 * 存储一个对象
 	 * @param 	key
@@ -112,6 +129,20 @@ public interface Cache {
 	 * @return	存储内容列表
 	 */
 	List<Serializable> hmGet(Serializable key, Serializable... names);
+	/**
+	 * 获取存储的整个哈希内容
+	 * @param 	key
+	 * 			建
+	 * @return	整个哈希内容
+	 */
+	Map<Serializable, Serializable> hGetAll(Serializable key);
+	/**
+	 * 获取存储的整个哈希键集合
+	 * @param 	key
+	 * 			建
+	 * @return	整个哈希键集合
+	 */
+	Set<Serializable> hKeys(Serializable key);
 	/**
 	 * 清空缓存
 	 */

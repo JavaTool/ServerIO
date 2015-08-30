@@ -9,11 +9,8 @@ import java.util.concurrent.ConcurrentLinkedQueue;
 
 import com.fanxing.server.persist.EntityManager;
 
-public class ScheduledCache implements IScheduledCache {
+public class ScheduledCache extends PersistenceCache {
 	
-	private final Cache cache;
-	
-	private final EntityManager entityManager;
 	/**创建-计划任务的键队列*/
 	private final Queue<Serializable> createKeys;
 	/**更新-计划任务的键队列*/
@@ -32,8 +29,7 @@ public class ScheduledCache implements IScheduledCache {
 	private final Map<Serializable, Boolean> nameCaches;
 	
 	public ScheduledCache(Cache cache, EntityManager entityManager) {
-		this.cache = cache;
-		this.entityManager = entityManager;
+		super(cache, entityManager);
 		
 		createKeys = new ConcurrentLinkedQueue<Serializable>();
 		updateKeys = new ConcurrentLinkedQueue<Serializable>();
@@ -44,84 +40,8 @@ public class ScheduledCache implements IScheduledCache {
 		keyCaches = new ConcurrentHashMap<Serializable, Boolean>();
 		nameCaches = new ConcurrentHashMap<Serializable, Boolean>();
 	}
-
-	@Override
-	public void set(Serializable key, Serializable object) {
-		cache.set(key, object);
-	}
-
-	@Override
-	public void hset(Serializable key, Serializable name, Serializable object) {
-		cache.hset(key, name, object);
-	}
-
-	@Override
-	public void mSet(Map<Serializable, Serializable> map) {
-		cache.mSet(map);
-	}
-
-	@Override
-	public void hmSet(Serializable key, Map<Serializable, Serializable> map) {
-		cache.hmSet(key, map);
-	}
-
-	@Override
-	public void del(Serializable key) {
-		cache.del(key);
-	}
-
-	@Override
-	public void hdel(Serializable key, Serializable name) {
-		cache.hdel(key, name);
-	}
-
-	@Override
-	public void mDel(Serializable... keys) {
-		cache.mDel(keys);
-	}
-
-	@Override
-	public void hmDel(Serializable key, Serializable... names) {
-		cache.hmDel(key, names);
-	}
-
-	@Override
-	public Serializable get(Serializable key) {
-		return cache.get(key);
-	}
-
-	@Override
-	public Serializable hget(Serializable key, Serializable name) {
-		return cache.hget(key, name);
-	}
-
-	@Override
-	public List<Serializable> mGet(Serializable... keys) {
-		return cache.mGet(keys);
-	}
-
-	@Override
-	public List<Serializable> hmGet(Serializable key, Serializable... names) {
-		return cache.hmGet(key, names);
-	}
-
-	@Override
-	public void clear() {
-		cache.clear();
-	}
-
-	@Override
-	public long hlen(Serializable key) {
-		return cache.hlen(key);
-	}
-
-	@Override
-	public void run() {
-		createSync();
-		updateSync();
-		deleteSync();
-	}
 	
+	@Override
 	protected void createSync() {
 		while (createKeys.size() > 0) {
 			Serializable key = createKeys.poll();
@@ -162,7 +82,8 @@ public class ScheduledCache implements IScheduledCache {
 			del(key);
 		}
 	}
-	
+
+	@Override
 	protected void updateSync() {
 		while (updateKeys.size() > 0) {
 			Serializable key = updateKeys.poll();
@@ -178,7 +99,8 @@ public class ScheduledCache implements IScheduledCache {
 			}
 		}
 	}
-	
+
+	@Override
 	protected void deleteSync() {
 		while (deleteKeys.size() > 0) {
 			Serializable key = deleteKeys.poll();
@@ -302,11 +224,6 @@ public class ScheduledCache implements IScheduledCache {
 		if (value != null) {
 			hset(key, name, value);
 		}
-	}
-
-	@Override
-	public void set(Serializable key, Serializable object, int timeout) {
-		cache.set(key, object, timeout);
 	}
 
 }
