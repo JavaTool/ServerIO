@@ -4,14 +4,24 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.ScheduledFuture;
+import java.util.concurrent.TimeUnit;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.fanxing.server.persist.EntityManager;
 
 public abstract class PersistenceCache implements IScheduledCache {
 	
+	protected static final Logger log = LoggerFactory.getLogger(PersistenceCache.class);
+	
 	protected final Cache cache;
 	
 	protected final EntityManager entityManager;
+	
+	protected ScheduledFuture<?> scheduledFuture;
 	
 	public PersistenceCache(Cache cache, EntityManager entityManager) {
 		this.cache = cache;
@@ -118,6 +128,7 @@ public abstract class PersistenceCache implements IScheduledCache {
 		createSync();
 		updateSync();
 		deleteSync();
+		log.info("Sync finish.");
 	}
 	
 	protected abstract void createSync();
@@ -125,5 +136,17 @@ public abstract class PersistenceCache implements IScheduledCache {
 	protected abstract void updateSync();
 	
 	protected abstract void deleteSync();
+
+	@Override
+	public void scheduled(ScheduledExecutorService executorService) {
+		scheduledFuture = executorService.scheduleWithFixedDelay(this, 0, 1, TimeUnit.MINUTES);
+	}
+
+	@Override
+	public void shutdown() {
+		scheduledFuture.cancel(false);
+		run();
+		log.info("Shutdown finish.");
+	}
 
 }

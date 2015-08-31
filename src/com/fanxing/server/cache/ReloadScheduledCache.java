@@ -158,6 +158,7 @@ public class ReloadScheduledCache extends PersistenceCache {
 
 	@Override
 	public synchronized void addScheduledCreate(Serializable key, Serializable value, boolean deleteCache) {
+		scheduledSet(key, value);
 		lock.lock(); // 锁住
 		if (hexists(deleteSync.getKey(), key)) {
 			hdel(deleteSync.getKey(), key);
@@ -165,33 +166,34 @@ public class ReloadScheduledCache extends PersistenceCache {
 		} else {
 			addScheduled(createSync.getKey(), key, deleteCache);
 		}
-		scheduledSet(key, value);
 		lock.unlock(); // 解锁
 	}
 
 	@Override
 	public synchronized void addScheduledUpdate(Serializable key, Serializable value, boolean deleteCache) {
+		scheduledSet(key, value);
 		lock.lock(); // 锁住
 		if (hexists(createSync.getKey(), key)) {
 			addScheduled(createSync.getKey(), key, deleteCache);
 		} else if (!hexists(deleteSync.getKey(), key)) {
 			addScheduled(updateSync.getKey(), key, deleteCache);
 		}
-		scheduledSet(key, value);
 		lock.unlock(); // 解锁
 	}
 
 	@Override
 	public synchronized void addScheduledDelete(Serializable key, Serializable value) {
+		scheduledSet(key, value);
 		lock.lock(); // 锁住
 		hdel(createSync.getKey(), key);
 		hdel(updateSync.getKey(), key);
 		addScheduled(deleteSync.getKey(), key, true);
-		scheduledSet(key, value);
+		lock.unlock(); // 解锁
 	}
 
 	@Override
 	public synchronized void addHScheduledCreate(Serializable key, Serializable name, Serializable value, boolean deleteCache) {
+		scheduledHSet(key, name, value);
 		lock.lock(); // 锁住
 		if (hexists(deleteSync.makeHKey(key), name)) {
 			hdel(deleteSync.makeHKey(key), name);
@@ -199,20 +201,18 @@ public class ReloadScheduledCache extends PersistenceCache {
 		} else {
 			addHScheduled(createSync.getKey(), key, name, deleteCache);
 		}
-
-		scheduledHSet(key, name, value);
 		lock.unlock(); // 解锁
 	}
 
 	@Override
 	public synchronized void addHScheduledUpdate(Serializable key, Serializable name, Serializable value, boolean deleteCache) {
+		scheduledHSet(key, name, value);
 		lock.lock(); // 锁住
 		if (hexists(createSync.makeHKey(key), name)) {
 			addHScheduled(createSync.getKey(), key, name, deleteCache);
 		} else if (!hexists(deleteSync.makeHKey(key), name)) {
 			addHScheduled(updateSync.getKey(), key, name, deleteCache);
 		}
-		scheduledHSet(key, name, value);
 		lock.unlock(); // 解锁
 	}
 

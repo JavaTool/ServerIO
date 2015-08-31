@@ -2,6 +2,9 @@ package com.fanxing.server.cache;
 
 import java.io.Serializable;
 
+import com.fanxing.server.io.Scheduler;
+import com.fanxing.server.utils.Shutdown;
+
 /**
  * 拥有持久化计划任务的缓存器
  * <p>
@@ -13,7 +16,7 @@ import java.io.Serializable;
  * </p>
  * @author 	fuhuiyuan
  */
-public interface IScheduledCache extends Cache, Runnable {
+public interface IScheduledCache extends Cache, Runnable, Scheduler, Shutdown {
 	
 	/**
 	 * 插入计划任务
