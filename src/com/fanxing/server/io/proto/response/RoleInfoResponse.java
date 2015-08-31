@@ -35,7 +35,7 @@ public class RoleInfoResponse extends Response {
 	/**
 	 * 
 	 * @param	sex
-	 * 			性别，1为男性，0为女性
+	 * 			性别�?1为男性，0为女�?
 	 */
 	public void setSex(Integer sex) {
 		builder.setSex(sex);
@@ -44,10 +44,19 @@ public class RoleInfoResponse extends Response {
 	/**
 	 * 
 	 * @param	loginDate
-	 * 			最后登录时间
+	 * 			�?后登录时�?
 	 */
 	public void setLoginDate(String loginDate) {
 		builder.setLoginDate(loginDate);
+	}
+
+	/**
+	 * 
+	 * @param	refiningFree
+	 * 			免费装备精炼次数
+	 */
+	public void setRefiningFree(Integer refiningFree) {
+		builder.setRefiningFree(refiningFree);
 	}
 
 	/**
@@ -62,7 +71,7 @@ public class RoleInfoResponse extends Response {
 	/**
 	 * 
 	 * @param	tankTeams
-	 * 			坦克队伍组
+	 * 			坦克队伍�?
 	 */
 	public void setTankTeams(Iterable<VO_TankTeam> tankTeams) {
 		builder.addAllTankTeams(tankTeams);
@@ -98,7 +107,7 @@ public class RoleInfoResponse extends Response {
 	/**
 	 * 
 	 * @param	oilMax
-	 * 			最大油料
+	 * 			�?大油�?
 	 */
 	public void setOilMax(Integer oilMax) {
 		builder.setOilMax(oilMax);
@@ -134,7 +143,7 @@ public class RoleInfoResponse extends Response {
 	/**
 	 * 
 	 * @param	money
-	 * 			游戏币
+	 * 			游戏�?
 	 */
 	public void setMoney(Integer money) {
 		builder.setMoney(money);

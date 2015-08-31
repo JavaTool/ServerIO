@@ -30,7 +30,7 @@ public class ServerStatusRequest extends Request {
 
 	/**
 	 * 
-	 * @return	服务器状态
+	 * @return	服务器状�?
 	 */
 	public String getServerStatus() {
 		return cS_ServerStatus.getServerStatus();

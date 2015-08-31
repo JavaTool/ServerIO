@@ -23,9 +23,9 @@ public class ReloadScheduledCache extends PersistenceCache {
 	public ReloadScheduledCache(Cache cache, EntityManager entityManager, Serializable preKey) {
 		super(cache, entityManager);
 		
-		createSync = new CreateSync(preKey);
-		updateSync = new UpdateSync(preKey);
-		deleteSync = new DeleteSync(preKey);
+		createSync = makeCreateSync(preKey);
+		updateSync = makeUpdateSync(preKey);
+		deleteSync = makeDeleteSync(preKey);
 
 		lock = new ReentrantLock();
 	}
@@ -48,24 +48,37 @@ public class ReloadScheduledCache extends PersistenceCache {
 						deteleNameList.add(name); // 保存要删除的缓存名称
 					}
 				}
-				Serializable[] deleteNames = deteleNameList.toArray(new Serializable[deteleNameList.size()]);
-				hmDel(_HKey, deleteNames); // 删除所有缓存的哈希名称
-				hmDel(_key, deleteNames); // 删除所有缓存的哈希对象
+				del(_HKey);
+				hmDel(_key, deteleNameList.toArray(new Serializable[deteleNameList.size()])); // 删除所有缓存的哈希对象
 			} else { // set
-				syncList.add(get(_key)); // 保存需要持久化的缓存对象
-				if ((Boolean) keyMap.get(_key)) {
+				Serializable object = get(_key);
+				if (object != null) {
+					syncList.add(object); // 保存需要持久化的缓存对象
+				}
+				if (object == null || (Boolean) keyMap.get(_key)) {
 					deleteKeyList.add(_key); // 保存要删除的缓存键
 				}
 			}
 		}
 		sync.execute(syncList.toArray(new Serializable[syncList.size()])); // 进行持久化操作
-		Serializable[] keys = deleteKeyList.toArray(new Serializable[deleteKeyList.size()]);
-		hmDel(syncKey, keys); // 删除所有缓存的键
-		mDel(keys); // 删除所有缓存的对象
+		del(syncKey);
+		mDel(deleteKeyList.toArray(new Serializable[deleteKeyList.size()])); // 删除不需要缓存的对象
 		lock.unlock(); // 解锁
 	}
 	
-	private abstract class Sync {
+	protected Sync makeCreateSync(Serializable preKey) {
+		return new CreateSync(preKey);
+	}
+	
+	protected Sync makeUpdateSync(Serializable preKey) {
+		return new UpdateSync(preKey);
+	}
+	
+	protected Sync makeDeleteSync(Serializable preKey) {
+		return new DeleteSync(preKey);
+	}
+	
+	protected abstract class Sync {
 		
 		protected final String key;
 		
@@ -87,7 +100,7 @@ public class ReloadScheduledCache extends PersistenceCache {
 		
 	}
 	
-	private class CreateSync extends Sync {
+	protected class CreateSync extends Sync {
 		
 		public CreateSync(Serializable preKey) {		
 			super("createKey_" + preKey);
@@ -105,7 +118,7 @@ public class ReloadScheduledCache extends PersistenceCache {
 		
 	}
 	
-	private class UpdateSync extends Sync {
+	protected class UpdateSync extends Sync {
 		
 		public UpdateSync(Serializable preKey) {		
 			super("updateKey_" + preKey);
@@ -123,7 +136,7 @@ public class ReloadScheduledCache extends PersistenceCache {
 		
 	}
 	
-	private class DeleteSync extends Sync {
+	protected class DeleteSync extends Sync {
 		
 		public DeleteSync(Serializable preKey) {		
 			super("deleteKey_" + preKey);
@@ -197,9 +210,9 @@ public class ReloadScheduledCache extends PersistenceCache {
 		lock.lock(); // 锁住
 		if (hexists(deleteSync.makeHKey(key), name)) {
 			hdel(deleteSync.makeHKey(key), name);
-			addHScheduled(updateSync.getKey(), key, name, deleteCache);
+			addHScheduled(updateSync, key, name, deleteCache);
 		} else {
-			addHScheduled(createSync.getKey(), key, name, deleteCache);
+			addHScheduled(createSync, key, name, deleteCache);
 		}
 		lock.unlock(); // 解锁
 	}
@@ -209,9 +222,9 @@ public class ReloadScheduledCache extends PersistenceCache {
 		scheduledHSet(key, name, value);
 		lock.lock(); // 锁住
 		if (hexists(createSync.makeHKey(key), name)) {
-			addHScheduled(createSync.getKey(), key, name, deleteCache);
+			addHScheduled(createSync, key, name, deleteCache);
 		} else if (!hexists(deleteSync.makeHKey(key), name)) {
-			addHScheduled(updateSync.getKey(), key, name, deleteCache);
+			addHScheduled(updateSync, key, name, deleteCache);
 		}
 		lock.unlock(); // 解锁
 	}
@@ -221,7 +234,7 @@ public class ReloadScheduledCache extends PersistenceCache {
 		lock.lock(); // 锁住
 		hdel(createSync.makeHKey(key), name);
 		hdel(updateSync.makeHKey(key), name);
-		addHScheduled(deleteSync.getKey(), key, name, true);
+		addHScheduled(deleteSync, key, name, true);
 		scheduledHSet(key, name, value);
 		lock.unlock(); // 解锁
 	}
@@ -235,9 +248,9 @@ public class ReloadScheduledCache extends PersistenceCache {
 		hset(syncKey, key, deleteCache);
 	}
 	
-	private void addHScheduled(Serializable syncKey, Serializable key, Serializable name, boolean deleteCache) {
-		hset(syncKey, key, key);
-		hset(syncKey, name, deleteCache);
+	private void addHScheduled(Sync sync, Serializable key, Serializable name, boolean deleteCache) {
+		hset(sync.getKey(), key, key);
+		hset(sync.makeHKey(key), name, deleteCache);
 	}
 	
 	private void scheduledSet(Serializable key, Serializable value) {

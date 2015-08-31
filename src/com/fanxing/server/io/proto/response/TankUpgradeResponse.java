@@ -34,7 +34,7 @@ public class TankUpgradeResponse extends Response {
 	/**
 	 * 
 	 * @param	roleTankExp
-	 * 			角色表中的坦克经验
+	 * 			角色表中的坦克经�?
 	 */
 	public void setRoleTankExp(Integer roleTankExp) {
 		builder.setRoleTankExp(roleTankExp);
@@ -43,7 +43,7 @@ public class TankUpgradeResponse extends Response {
 	/**
 	 * 
 	 * @param	spendResult
-	 * 			消耗后的结果（货币，材料，道具）
+	 * 			消�?�后的结果（货币，材料，道具�?
 	 */
 	public void setSpendResult(VO_SpendResult spendResult) {
 		builder.setSpendResult(spendResult);

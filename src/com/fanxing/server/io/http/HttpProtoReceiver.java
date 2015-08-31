@@ -12,8 +12,10 @@ import javax.servlet.http.HttpSession;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.fanxing.server.io.dispatch.Content;
+import com.fanxing.server.io.dispatch.IContent;
+import com.fanxing.server.io.dispatch.IContentHandler;
 import com.fanxing.server.io.dispatch.ISender;
-import com.fanxing.server.io.proto.MessageHandle;
 import com.fanxing.server.io.proto.protocol.MessageIdProto.MessageId;
 import com.fanxing.server.io.proto.protocol.StructProtos.VO_Error;
 import com.fanxing.server.utils.HttpConnectUtil;
@@ -51,8 +53,10 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 			log.info("Session id is {}.", session.getId());
 			String messageId = req.getHeader(MessageId.class.getSimpleName());
 			byte[] decrypt = HttpConnectUtil.getRequestProtoContent(req);
-			MessageHandle opcodeHandle = ((MessageHandle) req.getServletContext().getAttribute(MessageHandle.class.getName()));
-			opcodeHandle.handle(decrypt, ip, messageId, session.getId(), sender);
+			
+			IContent content = new Content(session.getId(), messageId, ip, decrypt, sender);
+			IContentHandler contentHandler = (IContentHandler) req.getServletContext().getAttribute(IContentHandler.class.getName());
+			contentHandler.handle(content);
 		} catch (Exception e) {
 			error(e, response, os);
 			os.flush();

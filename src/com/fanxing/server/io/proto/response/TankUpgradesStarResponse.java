@@ -24,17 +24,17 @@ public class TankUpgradesStarResponse extends Response {
 
 	/**
 	 * 
-	 * @param	tankTemplateId
-	 * 			坦克升星后的模板Id
+	 * @param	tankStarLevel
+	 * 			坦克升星后的等级
 	 */
-	public void setTankTemplateId(Integer tankTemplateId) {
-		builder.setTankTemplateId(tankTemplateId);
+	public void setTankStarLevel(Integer tankStarLevel) {
+		builder.setTankStarLevel(tankStarLevel);
 	}
 
 	/**
 	 * 
 	 * @param	spendResult
-	 * 			消耗后的结果（货币，材料，道具）
+	 * 			消�?�后的结果（货币，材料，道具�?
 	 */
 	public void setSpendResult(VO_SpendResult spendResult) {
 		builder.setSpendResult(spendResult);

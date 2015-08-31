@@ -22,11 +22,18 @@ import com.fanxing.server.io.proto.protocol.TankProtos.CS_TankStrengthen;
 import com.fanxing.server.io.proto.response.TankStrengthenResponse;
 import com.fanxing.server.io.proto.request.TankStrengthenRequest;
 import com.fanxing.server.io.proto.processor.TankProcessor;
+import com.fanxing.server.io.proto.protocol.EquipmentProtos.CS_EquipmentRecast;
+import com.fanxing.server.io.proto.response.EquipmentRecastResponse;
+import com.fanxing.server.io.proto.request.EquipmentRecastRequest;
+import com.fanxing.server.io.proto.processor.EquipmentProcessor;
 import com.fanxing.server.io.proto.Response;
 import com.fanxing.server.io.proto.processor.CommonProcessor;
 import com.fanxing.server.io.proto.protocol.LegionProtos.CS_GetLegionMemberInfoList;
 import com.fanxing.server.io.proto.response.GetLegionMemberInfoListResponse;
 import com.fanxing.server.io.proto.request.GetLegionMemberInfoListRequest;
+import com.fanxing.server.io.proto.protocol.EquipmentProtos.CS_EquipmentRollback;
+import com.fanxing.server.io.proto.response.EquipmentRollbackResponse;
+import com.fanxing.server.io.proto.request.EquipmentRollbackRequest;
 import com.fanxing.server.io.proto.protocol.CommonProtos.CS_CheckVersion;
 import com.fanxing.server.io.proto.response.CheckVersionResponse;
 import com.fanxing.server.io.proto.request.CheckVersionRequest;
@@ -69,6 +76,9 @@ import com.fanxing.server.io.proto.protocol.AccountProtos.CS_AccountRegister;
 import com.fanxing.server.io.proto.response.AccountRegisterResponse;
 import com.fanxing.server.io.proto.request.AccountRegisterRequest;
 import com.fanxing.server.io.proto.processor.AccountProcessor;
+import com.fanxing.server.io.proto.protocol.EquipmentProtos.CS_EquipmentInherit;
+import com.fanxing.server.io.proto.response.EquipmentInheritResponse;
+import com.fanxing.server.io.proto.request.EquipmentInheritRequest;
 import com.fanxing.server.io.proto.protocol.CommonProtos.CS_GetServerList;
 import com.fanxing.server.io.proto.response.GetServerListResponse;
 import com.fanxing.server.io.proto.request.GetServerListRequest;
@@ -92,6 +102,9 @@ import com.fanxing.server.io.proto.response.DelateLegionLeaderResponse;
 import com.fanxing.server.io.proto.response.CreateLegionResponse;
 import com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate;
 import com.fanxing.server.io.proto.request.AccountAuthenticateRequest;
+import com.fanxing.server.io.proto.protocol.EquipmentProtos.CS_EquipmentRefin;
+import com.fanxing.server.io.proto.response.EquipmentRefinResponse;
+import com.fanxing.server.io.proto.request.EquipmentRefinRequest;
 import com.fanxing.server.io.proto.protocol.LegionProtos.CS_ReplyInvitation;
 import com.fanxing.server.io.proto.response.ReplyInvitationResponse;
 import com.fanxing.server.io.proto.request.ReplyInvitationRequest;
@@ -110,6 +123,7 @@ import com.fanxing.server.io.proto.protocol.LegionProtos.CS_InviteJoinLegion;
 import com.fanxing.server.io.proto.response.InviteJoinLegionResponse;
 import com.fanxing.server.io.proto.request.InviteJoinLegionRequest;
 import com.fanxing.server.io.proto.protocol.TankProtos.CS_TankChangeEquipment;
+import com.fanxing.server.io.proto.response.TankChangeEquipmentResponse;
 import com.fanxing.server.io.proto.request.TankChangeEquipmentRequest;
 import com.fanxing.server.io.proto.protocol.LegionProtos.CS_PermissionManage;
 import com.fanxing.server.io.proto.response.PermissionManageResponse;
@@ -126,6 +140,8 @@ public class ContentHandler implements IContentHandler {
 	private RoleProcessor roleProcessor;
 
 	private TankProcessor tankProcessor;
+
+	private EquipmentProcessor equipmentProcessor;
 
 	private CommonProcessor commonProcessor;
 
@@ -203,6 +219,17 @@ public class ContentHandler implements IContentHandler {
 				response = createNoProcessorResponse(new RedirectRequest(content));
 			}
 			break;
+		case MICS_EquipmentRecast : 
+			if (getEquipmentProcessor() != null) {
+				CS_EquipmentRecast cS_EquipmentRecast = CS_EquipmentRecast.parseFrom(content.getDatas());
+				EquipmentRecastRequest equipmentRecastRequest = new EquipmentRecastRequest(content, cS_EquipmentRecast);
+				EquipmentRecastResponse resp = new EquipmentRecastResponse(equipmentRecastRequest);
+				getEquipmentProcessor().processEquipmentRecast(equipmentRecastRequest, resp);
+				response = resp;
+			} else {
+				response = createNoProcessorResponse(new RedirectRequest(content));
+			}
+			break;
 		case MICS_ServerHeart : 
 			if (getCommonProcessor() != null) {
 				Request request = new Request(content);
@@ -219,6 +246,17 @@ public class ContentHandler implements IContentHandler {
 				GetLegionMemberInfoListRequest getLegionMemberInfoListRequest = new GetLegionMemberInfoListRequest(content, cS_GetLegionMemberInfoList);
 				GetLegionMemberInfoListResponse resp = new GetLegionMemberInfoListResponse(getLegionMemberInfoListRequest);
 				getLegionProcessor().processGetLegionMemberInfoList(getLegionMemberInfoListRequest, resp);
+				response = resp;
+			} else {
+				response = createNoProcessorResponse(new RedirectRequest(content));
+			}
+			break;
+		case MICS_EquipmentRollback : 
+			if (getEquipmentProcessor() != null) {
+				CS_EquipmentRollback cS_EquipmentRollback = CS_EquipmentRollback.parseFrom(content.getDatas());
+				EquipmentRollbackRequest equipmentRollbackRequest = new EquipmentRollbackRequest(content, cS_EquipmentRollback);
+				EquipmentRollbackResponse resp = new EquipmentRollbackResponse(equipmentRollbackRequest);
+				getEquipmentProcessor().processEquipmentRollback(equipmentRollbackRequest, resp);
 				response = resp;
 			} else {
 				response = createNoProcessorResponse(new RedirectRequest(content));
@@ -388,6 +426,17 @@ public class ContentHandler implements IContentHandler {
 				response = createNoProcessorResponse(new RedirectRequest(content));
 			}
 			break;
+		case MICS_EquipmentInherit : 
+			if (getEquipmentProcessor() != null) {
+				CS_EquipmentInherit cS_EquipmentInherit = CS_EquipmentInherit.parseFrom(content.getDatas());
+				EquipmentInheritRequest equipmentInheritRequest = new EquipmentInheritRequest(content, cS_EquipmentInherit);
+				EquipmentInheritResponse resp = new EquipmentInheritResponse(equipmentInheritRequest);
+				getEquipmentProcessor().processEquipmentInherit(equipmentInheritRequest, resp);
+				response = resp;
+			} else {
+				response = createNoProcessorResponse(new RedirectRequest(content));
+			}
+			break;
 		case MICS_GetServerList : 
 			if (getCommonProcessor() != null) {
 				CS_GetServerList cS_GetServerList = CS_GetServerList.parseFrom(content.getDatas());
@@ -505,6 +554,17 @@ public class ContentHandler implements IContentHandler {
 				response = createNoProcessorResponse(new RedirectRequest(content));
 			}
 			break;
+		case MICS_EquipmentRefin : 
+			if (getEquipmentProcessor() != null) {
+				CS_EquipmentRefin cS_EquipmentRefin = CS_EquipmentRefin.parseFrom(content.getDatas());
+				EquipmentRefinRequest equipmentRefinRequest = new EquipmentRefinRequest(content, cS_EquipmentRefin);
+				EquipmentRefinResponse resp = new EquipmentRefinResponse(equipmentRefinRequest);
+				getEquipmentProcessor().processEquipmentRefin(equipmentRefinRequest, resp);
+				response = resp;
+			} else {
+				response = createNoProcessorResponse(new RedirectRequest(content));
+			}
+			break;
 		case MICS_ReplyInvitation : 
 			if (getLegionProcessor() != null) {
 				CS_ReplyInvitation cS_ReplyInvitation = CS_ReplyInvitation.parseFrom(content.getDatas());
@@ -585,7 +645,7 @@ public class ContentHandler implements IContentHandler {
 			if (getTankProcessor() != null) {
 				CS_TankChangeEquipment cS_TankChangeEquipment = CS_TankChangeEquipment.parseFrom(content.getDatas());
 				TankChangeEquipmentRequest tankChangeEquipmentRequest = new TankChangeEquipmentRequest(content, cS_TankChangeEquipment);
-				Response resp = new Response(tankChangeEquipmentRequest);
+				TankChangeEquipmentResponse resp = new TankChangeEquipmentResponse(tankChangeEquipmentRequest);
 				getTankProcessor().processTankChangeEquipment(tankChangeEquipmentRequest, resp);
 				response = resp;
 			} else {
@@ -635,6 +695,14 @@ public class ContentHandler implements IContentHandler {
 
 	public void setTankProcessor(TankProcessor tankProcessor) {
 		this.tankProcessor = tankProcessor;
+	}
+
+	private EquipmentProcessor getEquipmentProcessor() {
+		return equipmentProcessor;
+	}
+
+	public void setEquipmentProcessor(EquipmentProcessor equipmentProcessor) {
+		this.equipmentProcessor = equipmentProcessor;
 	}
 
 	private CommonProcessor getCommonProcessor() {

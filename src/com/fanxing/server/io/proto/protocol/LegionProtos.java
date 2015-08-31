@@ -11,7 +11,7 @@ public final class LegionProtos {
   public interface VO_LegionInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // required uint32 LegionId = 1;
+    // required uint32 legionId = 1;
     boolean hasLegionId();
     int getLegionId();
     
@@ -47,13 +47,9 @@ public final class LegionProtos {
     boolean hasTechLevels();
     String getTechLevels();
     
-    // optional string applys = 10;
-    boolean hasApplys();
-    String getApplys();
-    
-    // required string memberCount = 11;
+    // required uint32 memberCount = 10;
     boolean hasMemberCount();
-    String getMemberCount();
+    int getMemberCount();
   }
   public static final class VO_LegionInfo extends
       com.google.protobuf.GeneratedMessage
@@ -84,7 +80,7 @@ public final class LegionProtos {
     }
     
     private int bitField0_;
-    // required uint32 LegionId = 1;
+    // required uint32 legionId = 1;
     public static final int LEGIONID_FIELD_NUMBER = 1;
     private int legionId_;
     public boolean hasLegionId() {
@@ -284,68 +280,14 @@ public final class LegionProtos {
       }
     }
     
-    // optional string applys = 10;
-    public static final int APPLYS_FIELD_NUMBER = 10;
-    private java.lang.Object applys_;
-    public boolean hasApplys() {
+    // required uint32 memberCount = 10;
+    public static final int MEMBERCOUNT_FIELD_NUMBER = 10;
+    private int memberCount_;
+    public boolean hasMemberCount() {
       return ((bitField0_ & 0x00000200) == 0x00000200);
     }
-    public String getApplys() {
-      java.lang.Object ref = applys_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          applys_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getApplysBytes() {
-      java.lang.Object ref = applys_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        applys_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // required string memberCount = 11;
-    public static final int MEMBERCOUNT_FIELD_NUMBER = 11;
-    private java.lang.Object memberCount_;
-    public boolean hasMemberCount() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    public String getMemberCount() {
-      java.lang.Object ref = memberCount_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          memberCount_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getMemberCountBytes() {
-      java.lang.Object ref = memberCount_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        memberCount_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
+    public int getMemberCount() {
+      return memberCount_;
     }
     
     private void initFields() {
@@ -358,8 +300,7 @@ public final class LegionProtos {
       delateState_ = 0;
       delateOverTime_ = "";
       techLevels_ = "";
-      applys_ = "";
-      memberCount_ = "";
+      memberCount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -425,10 +366,7 @@ public final class LegionProtos {
         output.writeBytes(9, getTechLevelsBytes());
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeBytes(10, getApplysBytes());
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeBytes(11, getMemberCountBytes());
+        output.writeUInt32(10, memberCount_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -477,11 +415,7 @@ public final class LegionProtos {
       }
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(10, getApplysBytes());
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(11, getMemberCountBytes());
+          .computeUInt32Size(10, memberCount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -625,10 +559,8 @@ public final class LegionProtos {
         bitField0_ = (bitField0_ & ~0x00000080);
         techLevels_ = "";
         bitField0_ = (bitField0_ & ~0x00000100);
-        applys_ = "";
+        memberCount_ = 0;
         bitField0_ = (bitField0_ & ~0x00000200);
-        memberCount_ = "";
-        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
       
@@ -706,10 +638,6 @@ public final class LegionProtos {
         if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
           to_bitField0_ |= 0x00000200;
         }
-        result.applys_ = applys_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
         result.memberCount_ = memberCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -753,9 +681,6 @@ public final class LegionProtos {
         }
         if (other.hasTechLevels()) {
           setTechLevels(other.getTechLevels());
-        }
-        if (other.hasApplys()) {
-          setApplys(other.getApplys());
         }
         if (other.hasMemberCount()) {
           setMemberCount(other.getMemberCount());
@@ -860,14 +785,9 @@ public final class LegionProtos {
               techLevels_ = input.readBytes();
               break;
             }
-            case 82: {
+            case 80: {
               bitField0_ |= 0x00000200;
-              applys_ = input.readBytes();
-              break;
-            }
-            case 90: {
-              bitField0_ |= 0x00000400;
-              memberCount_ = input.readBytes();
+              memberCount_ = input.readUInt32();
               break;
             }
           }
@@ -876,7 +796,7 @@ public final class LegionProtos {
       
       private int bitField0_;
       
-      // required uint32 LegionId = 1;
+      // required uint32 legionId = 1;
       private int legionId_ ;
       public boolean hasLegionId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
@@ -1140,76 +1060,25 @@ public final class LegionProtos {
         onChanged();
       }
       
-      // optional string applys = 10;
-      private java.lang.Object applys_ = "";
-      public boolean hasApplys() {
+      // required uint32 memberCount = 10;
+      private int memberCount_ ;
+      public boolean hasMemberCount() {
         return ((bitField0_ & 0x00000200) == 0x00000200);
       }
-      public String getApplys() {
-        java.lang.Object ref = applys_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          applys_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
+      public int getMemberCount() {
+        return memberCount_;
       }
-      public Builder setApplys(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000200;
-        applys_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearApplys() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        applys_ = getDefaultInstance().getApplys();
-        onChanged();
-        return this;
-      }
-      void setApplys(com.google.protobuf.ByteString value) {
+      public Builder setMemberCount(int value) {
         bitField0_ |= 0x00000200;
-        applys_ = value;
-        onChanged();
-      }
-      
-      // required string memberCount = 11;
-      private java.lang.Object memberCount_ = "";
-      public boolean hasMemberCount() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      public String getMemberCount() {
-        java.lang.Object ref = memberCount_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          memberCount_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      public Builder setMemberCount(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000400;
         memberCount_ = value;
         onChanged();
         return this;
       }
       public Builder clearMemberCount() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        memberCount_ = getDefaultInstance().getMemberCount();
+        bitField0_ = (bitField0_ & ~0x00000200);
+        memberCount_ = 0;
         onChanged();
         return this;
-      }
-      void setMemberCount(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000400;
-        memberCount_ = value;
-        onChanged();
       }
       
       // @@protoc_insertion_point(builder_scope:VO_LegionInfo)
@@ -1265,6 +1134,10 @@ public final class LegionProtos {
     // optional string supplyTime = 10;
     boolean hasSupplyTime();
     String getSupplyTime();
+    
+    // optional string supplyCount = 11;
+    boolean hasSupplyCount();
+    String getSupplyCount();
   }
   public static final class VO_LegionMemberInfo extends
       com.google.protobuf.GeneratedMessage
@@ -1527,6 +1400,38 @@ public final class LegionProtos {
       }
     }
     
+    // optional string supplyCount = 11;
+    public static final int SUPPLYCOUNT_FIELD_NUMBER = 11;
+    private java.lang.Object supplyCount_;
+    public boolean hasSupplyCount() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    public String getSupplyCount() {
+      java.lang.Object ref = supplyCount_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          supplyCount_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getSupplyCountBytes() {
+      java.lang.Object ref = supplyCount_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        supplyCount_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
     private void initFields() {
       roleId_ = 0;
       legionId_ = 0;
@@ -1538,6 +1443,7 @@ public final class LegionProtos {
       itemsPurchaseQuantity_ = "";
       benefitsTime_ = "";
       supplyTime_ = "";
+      supplyCount_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1601,6 +1507,9 @@ public final class LegionProtos {
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         output.writeBytes(10, getSupplyTimeBytes());
       }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeBytes(11, getSupplyCountBytes());
+      }
       getUnknownFields().writeTo(output);
     }
     
@@ -1649,6 +1558,10 @@ public final class LegionProtos {
       if (((bitField0_ & 0x00000200) == 0x00000200)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(10, getSupplyTimeBytes());
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(11, getSupplyCountBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1794,6 +1707,8 @@ public final class LegionProtos {
         bitField0_ = (bitField0_ & ~0x00000100);
         supplyTime_ = "";
         bitField0_ = (bitField0_ & ~0x00000200);
+        supplyCount_ = "";
+        bitField0_ = (bitField0_ & ~0x00000400);
         return this;
       }
       
@@ -1872,6 +1787,10 @@ public final class LegionProtos {
           to_bitField0_ |= 0x00000200;
         }
         result.supplyTime_ = supplyTime_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.supplyCount_ = supplyCount_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1917,6 +1836,9 @@ public final class LegionProtos {
         }
         if (other.hasSupplyTime()) {
           setSupplyTime(other.getSupplyTime());
+        }
+        if (other.hasSupplyCount()) {
+          setSupplyCount(other.getSupplyCount());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2017,6 +1939,11 @@ public final class LegionProtos {
             case 82: {
               bitField0_ |= 0x00000200;
               supplyTime_ = input.readBytes();
+              break;
+            }
+            case 90: {
+              bitField0_ |= 0x00000400;
+              supplyCount_ = input.readBytes();
               break;
             }
           }
@@ -2322,6 +2249,42 @@ public final class LegionProtos {
       void setSupplyTime(com.google.protobuf.ByteString value) {
         bitField0_ |= 0x00000200;
         supplyTime_ = value;
+        onChanged();
+      }
+      
+      // optional string supplyCount = 11;
+      private java.lang.Object supplyCount_ = "";
+      public boolean hasSupplyCount() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      public String getSupplyCount() {
+        java.lang.Object ref = supplyCount_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          supplyCount_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setSupplyCount(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000400;
+        supplyCount_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearSupplyCount() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        supplyCount_ = getDefaultInstance().getSupplyCount();
+        onChanged();
+        return this;
+      }
+      void setSupplyCount(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000400;
+        supplyCount_ = value;
         onChanged();
       }
       
@@ -3063,6 +3026,519 @@ public final class LegionProtos {
     }
     
     // @@protoc_insertion_point(class_scope:VO_LegionLog)
+  }
+  
+  public interface VO_LegionApplyOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required uint32 roleId = 1;
+    boolean hasRoleId();
+    int getRoleId();
+    
+    // required uint32 legionId = 2;
+    boolean hasLegionId();
+    int getLegionId();
+    
+    // required string createTime = 3;
+    boolean hasCreateTime();
+    String getCreateTime();
+  }
+  public static final class VO_LegionApply extends
+      com.google.protobuf.GeneratedMessage
+      implements VO_LegionApplyOrBuilder {
+    // Use VO_LegionApply.newBuilder() to construct.
+    private VO_LegionApply(Builder builder) {
+      super(builder);
+    }
+    private VO_LegionApply(boolean noInit) {}
+    
+    private static final VO_LegionApply defaultInstance;
+    public static VO_LegionApply getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public VO_LegionApply getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.LegionProtos.internal_static_VO_LegionApply_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.fanxing.server.io.proto.protocol.LegionProtos.internal_static_VO_LegionApply_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required uint32 roleId = 1;
+    public static final int ROLEID_FIELD_NUMBER = 1;
+    private int roleId_;
+    public boolean hasRoleId() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getRoleId() {
+      return roleId_;
+    }
+    
+    // required uint32 legionId = 2;
+    public static final int LEGIONID_FIELD_NUMBER = 2;
+    private int legionId_;
+    public boolean hasLegionId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getLegionId() {
+      return legionId_;
+    }
+    
+    // required string createTime = 3;
+    public static final int CREATETIME_FIELD_NUMBER = 3;
+    private java.lang.Object createTime_;
+    public boolean hasCreateTime() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public String getCreateTime() {
+      java.lang.Object ref = createTime_;
+      if (ref instanceof String) {
+        return (String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        String s = bs.toStringUtf8();
+        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
+          createTime_ = s;
+        }
+        return s;
+      }
+    }
+    private com.google.protobuf.ByteString getCreateTimeBytes() {
+      java.lang.Object ref = createTime_;
+      if (ref instanceof String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
+        createTime_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+    
+    private void initFields() {
+      roleId_ = 0;
+      legionId_ = 0;
+      createTime_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasRoleId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasLegionId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasCreateTime()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, roleId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, legionId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getCreateTimeBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, roleId_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, legionId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getCreateTimeBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApplyOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.fanxing.server.io.proto.protocol.LegionProtos.internal_static_VO_LegionApply_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.fanxing.server.io.proto.protocol.LegionProtos.internal_static_VO_LegionApply_fieldAccessorTable;
+      }
+      
+      // Construct using com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        roleId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        legionId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        createTime_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply.getDescriptor();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply.getDefaultInstance();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply build() {
+        com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply buildPartial() {
+        com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply result = new com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.roleId_ = roleId_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.legionId_ = legionId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.createTime_ = createTime_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply other) {
+        if (other == com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply.getDefaultInstance()) return this;
+        if (other.hasRoleId()) {
+          setRoleId(other.getRoleId());
+        }
+        if (other.hasLegionId()) {
+          setLegionId(other.getLegionId());
+        }
+        if (other.hasCreateTime()) {
+          setCreateTime(other.getCreateTime());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasRoleId()) {
+          
+          return false;
+        }
+        if (!hasLegionId()) {
+          
+          return false;
+        }
+        if (!hasCreateTime()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              roleId_ = input.readUInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              legionId_ = input.readUInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              createTime_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required uint32 roleId = 1;
+      private int roleId_ ;
+      public boolean hasRoleId() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public int getRoleId() {
+        return roleId_;
+      }
+      public Builder setRoleId(int value) {
+        bitField0_ |= 0x00000001;
+        roleId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearRoleId() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        roleId_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required uint32 legionId = 2;
+      private int legionId_ ;
+      public boolean hasLegionId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public int getLegionId() {
+        return legionId_;
+      }
+      public Builder setLegionId(int value) {
+        bitField0_ |= 0x00000002;
+        legionId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearLegionId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        legionId_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required string createTime = 3;
+      private java.lang.Object createTime_ = "";
+      public boolean hasCreateTime() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public String getCreateTime() {
+        java.lang.Object ref = createTime_;
+        if (!(ref instanceof String)) {
+          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
+          createTime_ = s;
+          return s;
+        } else {
+          return (String) ref;
+        }
+      }
+      public Builder setCreateTime(String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        createTime_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearCreateTime() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        createTime_ = getDefaultInstance().getCreateTime();
+        onChanged();
+        return this;
+      }
+      void setCreateTime(com.google.protobuf.ByteString value) {
+        bitField0_ |= 0x00000004;
+        createTime_ = value;
+        onChanged();
+      }
+      
+      // @@protoc_insertion_point(builder_scope:VO_LegionApply)
+    }
+    
+    static {
+      defaultInstance = new VO_LegionApply(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:VO_LegionApply)
   }
   
   public interface VO_GoodsInfoOrBuilder
@@ -18133,6 +18609,11 @@ public final class LegionProtos {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_VO_LegionLog_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_VO_LegionApply_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_VO_LegionApply_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_VO_GoodsInfo_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -18356,61 +18837,63 @@ public final class LegionProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\014Legion.proto\"\330\001\n\rVO_LegionInfo\022\020\n\010Legi" +
+      "\n\014Legion.proto\"\310\001\n\rVO_LegionInfo\022\020\n\010legi" +
       "onId\030\001 \002(\r\022\014\n\004name\030\002 \002(\t\022\r\n\005level\030\003 \002(\r\022" +
       "\014\n\004desc\030\004 \002(\t\022\022\n\ncreateTime\030\005 \002(\t\022\020\n\010res" +
       "ource\030\006 \001(\r\022\023\n\013delateState\030\007 \001(\r\022\026\n\016dela" +
-      "teOverTime\030\010 \001(\t\022\022\n\ntechLevels\030\t \001(\t\022\016\n\006" +
-      "applys\030\n \001(\t\022\023\n\013memberCount\030\013 \002(\t\"\352\001\n\023VO" +
-      "_LegionMemberInfo\022\016\n\006roleId\030\001 \002(\r\022\020\n\010leg" +
-      "ionId\030\002 \002(\r\022\r\n\005title\030\003 \002(\r\022\020\n\010joinTime\030\004" +
-      " \002(\t\022\024\n\014contribution\030\005 \002(\r\022\026\n\016joinCDOver" +
-      "Time\030\006 \001(\t\022\031\n\021itemsPurchaseTime\030\007 \001(\t\022\035\n",
-      "\025itemsPurchaseQuantity\030\010 \001(\t\022\024\n\014benefits" +
-      "Time\030\t \001(\t\022\022\n\nsupplyTime\030\n \001(\t\"\203\001\n\014VO_Le" +
-      "gionLog\022\020\n\010legionId\030\001 \002(\r\022\024\n\014sourceRoleI" +
-      "d\030\003 \002(\r\022\024\n\014targetRoleId\030\004 \001(\r\022\021\n\toperati" +
-      "on\030\005 \002(\r\022\022\n\ncreateTime\030\006 \002(\t\022\016\n\006result\030\007" +
-      " \001(\t\"D\n\014VO_GoodsInfo\022\022\n\ngoodsKeyId\030\001 \002(\r" +
-      "\022\021\n\tgoodsType\030\002 \002(\r\022\r\n\005count\030\003 \002(\r\"$\n\020CS" +
-      "_GetLegionInfo\022\020\n\010LegionId\030\001 \002(\r\"6\n\020SC_G" +
-      "etLegionInfo\022\"\n\nLegionInfo\030\001 \001(\0132\016.VO_Le" +
-      "gionInfo\".\n\032CS_GetLegionMemberInfoList\022\020",
-      "\n\010LegionId\030\001 \002(\r\"M\n\032SC_GetLegionMemberIn" +
-      "foList\022/\n\021legionMemberInfos\030\001 \003(\0132\024.VO_L" +
-      "egionMemberInfo\"#\n\017CS_GetLegionLog\022\020\n\010Le" +
-      "gionId\030\001 \002(\r\"4\n\017SC_GetLegionLog\022!\n\nLegio" +
-      "nLogs\030\001 \003(\0132\r.VO_LegionLog\"\030\n\026CS_Recomme" +
-      "ndLegionList\"=\n\026SC_RecommendLegionList\022#" +
-      "\n\013LegionInfos\030\001 \003(\0132\016.VO_LegionInfo\"\026\n\024C" +
-      "S_RankingLegionList\";\n\024SC_RankingLegionL" +
-      "ist\022#\n\013LegionInfos\030\001 \003(\0132\016.VO_LegionInfo" +
-      "\"\021\n\017CS_CreateLegion\"#\n\017SC_CreateLegion\022\020",
-      "\n\010LegionId\030\001 \001(\r\"\022\n\020CS_UpgradeLegion\"\022\n\020" +
-      "SC_UpgradeLegion\"\020\n\016CS_LeaveLegion\"\020\n\016SC" +
-      "_LeaveLegion\"%\n\021CS_TransferLegion\022\020\n\010tar" +
-      "getId\030\002 \002(\r\"\023\n\021SC_TransferLegion\"\027\n\025CS_D" +
-      "elateLegionLeader\"\027\n\025SC_DelateLegionLead" +
-      "er\"&\n\022CS_ApplyJoinLegion\022\020\n\010LegionId\030\001 \002" +
-      "(\r\"\024\n\022SC_ApplyJoinLegion\"+\n\027CS_ReplyAppl" +
-      "yJoinLegion\022\020\n\010targetId\030\001 \002(\r\"\031\n\027SC_Repl" +
-      "yApplyJoinLegion\"\'\n\023CS_InviteJoinLegion\022" +
-      "\020\n\010targetId\030\001 \002(\r\"\025\n\023SC_InviteJoinLegion",
-      "\"&\n\022CS_ReplyInvitation\022\020\n\010targetId\030\001 \002(\r" +
-      "\"\024\n\022SC_ReplyInvitation\".\n\016CS_DonateGoods" +
-      "\022\r\n\005keyId\030\002 \002(\r\022\r\n\005count\030\003 \002(\r\"\020\n\016SC_Don" +
-      "ateGoods\"%\n\022CS_SendChatMessage\022\017\n\007messag" +
-      "e\030\001 \002(\t\"\024\n\022SC_SendChatMessage\"\020\n\016CS_Gain" +
-      "Welfare\"3\n\016SC_GainWelfare\022!\n\ngoodsInfos\030" +
-      "\001 \001(\0132\r.VO_GoodsInfo\"\017\n\rCS_GainSupply\"2\n" +
-      "\rSC_GainSupply\022!\n\ngoodsInfos\030\001 \001(\0132\r.VO_" +
-      "GoodsInfo\"6\n\021CS_BuyLegionGoods\022!\n\ngoodsI" +
-      "nfos\030\001 \003(\0132\r.VO_GoodsInfo\"\023\n\021SC_BuyLegio",
-      "nGoods\"#\n\017CS_RemoveMember\022\020\n\010playerId\030\001 " +
-      "\002(\r\"\021\n\017SC_RemoveMember\"6\n\023CS_PermissionM" +
-      "anage\022\020\n\010playerId\030\001 \002(\r\022\r\n\005title\030\002 \002(\r\"\025" +
-      "\n\023SC_PermissionManageB4\n$com.fanxing.ser" +
-      "ver.io.proto.protocolB\014LegionProtos"
+      "teOverTime\030\010 \001(\t\022\022\n\ntechLevels\030\t \001(\t\022\023\n\013" +
+      "memberCount\030\n \002(\r\"\377\001\n\023VO_LegionMemberInf" +
+      "o\022\016\n\006roleId\030\001 \002(\r\022\020\n\010legionId\030\002 \002(\r\022\r\n\005t" +
+      "itle\030\003 \002(\r\022\020\n\010joinTime\030\004 \002(\t\022\024\n\014contribu" +
+      "tion\030\005 \002(\r\022\026\n\016joinCDOverTime\030\006 \001(\t\022\031\n\021it" +
+      "emsPurchaseTime\030\007 \001(\t\022\035\n\025itemsPurchaseQu",
+      "antity\030\010 \001(\t\022\024\n\014benefitsTime\030\t \001(\t\022\022\n\nsu" +
+      "pplyTime\030\n \001(\t\022\023\n\013supplyCount\030\013 \001(\t\"\203\001\n\014" +
+      "VO_LegionLog\022\020\n\010legionId\030\001 \002(\r\022\024\n\014source" +
+      "RoleId\030\003 \002(\r\022\024\n\014targetRoleId\030\004 \001(\r\022\021\n\top" +
+      "eration\030\005 \002(\r\022\022\n\ncreateTime\030\006 \002(\t\022\016\n\006res" +
+      "ult\030\007 \001(\t\"F\n\016VO_LegionApply\022\016\n\006roleId\030\001 " +
+      "\002(\r\022\020\n\010legionId\030\002 \002(\r\022\022\n\ncreateTime\030\003 \002(" +
+      "\t\"D\n\014VO_GoodsInfo\022\022\n\ngoodsKeyId\030\001 \002(\r\022\021\n" +
+      "\tgoodsType\030\002 \002(\r\022\r\n\005count\030\003 \002(\r\"$\n\020CS_Ge" +
+      "tLegionInfo\022\020\n\010LegionId\030\001 \002(\r\"6\n\020SC_GetL",
+      "egionInfo\022\"\n\nLegionInfo\030\001 \001(\0132\016.VO_Legio" +
+      "nInfo\".\n\032CS_GetLegionMemberInfoList\022\020\n\010L" +
+      "egionId\030\001 \002(\r\"M\n\032SC_GetLegionMemberInfoL" +
+      "ist\022/\n\021legionMemberInfos\030\001 \003(\0132\024.VO_Legi" +
+      "onMemberInfo\"#\n\017CS_GetLegionLog\022\020\n\010Legio" +
+      "nId\030\001 \002(\r\"4\n\017SC_GetLegionLog\022!\n\nLegionLo" +
+      "gs\030\001 \003(\0132\r.VO_LegionLog\"\030\n\026CS_RecommendL" +
+      "egionList\"=\n\026SC_RecommendLegionList\022#\n\013L" +
+      "egionInfos\030\001 \003(\0132\016.VO_LegionInfo\"\026\n\024CS_R" +
+      "ankingLegionList\";\n\024SC_RankingLegionList",
+      "\022#\n\013LegionInfos\030\001 \003(\0132\016.VO_LegionInfo\"\021\n" +
+      "\017CS_CreateLegion\"#\n\017SC_CreateLegion\022\020\n\010L" +
+      "egionId\030\001 \001(\r\"\022\n\020CS_UpgradeLegion\"\022\n\020SC_" +
+      "UpgradeLegion\"\020\n\016CS_LeaveLegion\"\020\n\016SC_Le" +
+      "aveLegion\"%\n\021CS_TransferLegion\022\020\n\010target" +
+      "Id\030\002 \002(\r\"\023\n\021SC_TransferLegion\"\027\n\025CS_Dela" +
+      "teLegionLeader\"\027\n\025SC_DelateLegionLeader\"" +
+      "&\n\022CS_ApplyJoinLegion\022\020\n\010LegionId\030\001 \002(\r\"" +
+      "\024\n\022SC_ApplyJoinLegion\"+\n\027CS_ReplyApplyJo" +
+      "inLegion\022\020\n\010targetId\030\001 \002(\r\"\031\n\027SC_ReplyAp",
+      "plyJoinLegion\"\'\n\023CS_InviteJoinLegion\022\020\n\010" +
+      "targetId\030\001 \002(\r\"\025\n\023SC_InviteJoinLegion\"&\n" +
+      "\022CS_ReplyInvitation\022\020\n\010targetId\030\001 \002(\r\"\024\n" +
+      "\022SC_ReplyInvitation\".\n\016CS_DonateGoods\022\r\n" +
+      "\005keyId\030\002 \002(\r\022\r\n\005count\030\003 \002(\r\"\020\n\016SC_Donate" +
+      "Goods\"%\n\022CS_SendChatMessage\022\017\n\007message\030\001" +
+      " \002(\t\"\024\n\022SC_SendChatMessage\"\020\n\016CS_GainWel" +
+      "fare\"3\n\016SC_GainWelfare\022!\n\ngoodsInfos\030\001 \001" +
+      "(\0132\r.VO_GoodsInfo\"\017\n\rCS_GainSupply\"2\n\rSC" +
+      "_GainSupply\022!\n\ngoodsInfos\030\001 \001(\0132\r.VO_Goo",
+      "dsInfo\"6\n\021CS_BuyLegionGoods\022!\n\ngoodsInfo" +
+      "s\030\001 \003(\0132\r.VO_GoodsInfo\"\023\n\021SC_BuyLegionGo" +
+      "ods\"#\n\017CS_RemoveMember\022\020\n\010playerId\030\001 \002(\r" +
+      "\"\021\n\017SC_RemoveMember\"6\n\023CS_PermissionMana" +
+      "ge\022\020\n\010playerId\030\001 \002(\r\022\r\n\005title\030\002 \002(\r\"\025\n\023S" +
+      "C_PermissionManageB4\n$com.fanxing.server" +
+      ".io.proto.protocolB\014LegionProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -18422,7 +18905,7 @@ public final class LegionProtos {
           internal_static_VO_LegionInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VO_LegionInfo_descriptor,
-              new java.lang.String[] { "LegionId", "Name", "Level", "Desc", "CreateTime", "Resource", "DelateState", "DelateOverTime", "TechLevels", "Applys", "MemberCount", },
+              new java.lang.String[] { "LegionId", "Name", "Level", "Desc", "CreateTime", "Resource", "DelateState", "DelateOverTime", "TechLevels", "MemberCount", },
               com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionInfo.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionInfo.Builder.class);
           internal_static_VO_LegionMemberInfo_descriptor =
@@ -18430,7 +18913,7 @@ public final class LegionProtos {
           internal_static_VO_LegionMemberInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VO_LegionMemberInfo_descriptor,
-              new java.lang.String[] { "RoleId", "LegionId", "Title", "JoinTime", "Contribution", "JoinCDOverTime", "ItemsPurchaseTime", "ItemsPurchaseQuantity", "BenefitsTime", "SupplyTime", },
+              new java.lang.String[] { "RoleId", "LegionId", "Title", "JoinTime", "Contribution", "JoinCDOverTime", "ItemsPurchaseTime", "ItemsPurchaseQuantity", "BenefitsTime", "SupplyTime", "SupplyCount", },
               com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionMemberInfo.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionMemberInfo.Builder.class);
           internal_static_VO_LegionLog_descriptor =
@@ -18441,8 +18924,16 @@ public final class LegionProtos {
               new java.lang.String[] { "LegionId", "SourceRoleId", "TargetRoleId", "Operation", "CreateTime", "Result", },
               com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionLog.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionLog.Builder.class);
-          internal_static_VO_GoodsInfo_descriptor =
+          internal_static_VO_LegionApply_descriptor =
             getDescriptor().getMessageTypes().get(3);
+          internal_static_VO_LegionApply_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_VO_LegionApply_descriptor,
+              new java.lang.String[] { "RoleId", "LegionId", "CreateTime", },
+              com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply.class,
+              com.fanxing.server.io.proto.protocol.LegionProtos.VO_LegionApply.Builder.class);
+          internal_static_VO_GoodsInfo_descriptor =
+            getDescriptor().getMessageTypes().get(4);
           internal_static_VO_GoodsInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VO_GoodsInfo_descriptor,
@@ -18450,7 +18941,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.VO_GoodsInfo.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.VO_GoodsInfo.Builder.class);
           internal_static_CS_GetLegionInfo_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_CS_GetLegionInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_GetLegionInfo_descriptor,
@@ -18458,7 +18949,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_GetLegionInfo.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_GetLegionInfo.Builder.class);
           internal_static_SC_GetLegionInfo_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_SC_GetLegionInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_GetLegionInfo_descriptor,
@@ -18466,7 +18957,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_GetLegionInfo.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_GetLegionInfo.Builder.class);
           internal_static_CS_GetLegionMemberInfoList_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_CS_GetLegionMemberInfoList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_GetLegionMemberInfoList_descriptor,
@@ -18474,7 +18965,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_GetLegionMemberInfoList.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_GetLegionMemberInfoList.Builder.class);
           internal_static_SC_GetLegionMemberInfoList_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_SC_GetLegionMemberInfoList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_GetLegionMemberInfoList_descriptor,
@@ -18482,7 +18973,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_GetLegionMemberInfoList.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_GetLegionMemberInfoList.Builder.class);
           internal_static_CS_GetLegionLog_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_CS_GetLegionLog_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_GetLegionLog_descriptor,
@@ -18490,7 +18981,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_GetLegionLog.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_GetLegionLog.Builder.class);
           internal_static_SC_GetLegionLog_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_SC_GetLegionLog_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_GetLegionLog_descriptor,
@@ -18498,7 +18989,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_GetLegionLog.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_GetLegionLog.Builder.class);
           internal_static_CS_RecommendLegionList_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_CS_RecommendLegionList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_RecommendLegionList_descriptor,
@@ -18506,7 +18997,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_RecommendLegionList.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_RecommendLegionList.Builder.class);
           internal_static_SC_RecommendLegionList_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_SC_RecommendLegionList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_RecommendLegionList_descriptor,
@@ -18514,7 +19005,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_RecommendLegionList.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_RecommendLegionList.Builder.class);
           internal_static_CS_RankingLegionList_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_CS_RankingLegionList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_RankingLegionList_descriptor,
@@ -18522,7 +19013,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_RankingLegionList.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_RankingLegionList.Builder.class);
           internal_static_SC_RankingLegionList_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_SC_RankingLegionList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_RankingLegionList_descriptor,
@@ -18530,7 +19021,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_RankingLegionList.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_RankingLegionList.Builder.class);
           internal_static_CS_CreateLegion_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_CS_CreateLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_CreateLegion_descriptor,
@@ -18538,7 +19029,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_CreateLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_CreateLegion.Builder.class);
           internal_static_SC_CreateLegion_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_SC_CreateLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_CreateLegion_descriptor,
@@ -18546,7 +19037,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_CreateLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_CreateLegion.Builder.class);
           internal_static_CS_UpgradeLegion_descriptor =
-            getDescriptor().getMessageTypes().get(16);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_CS_UpgradeLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_UpgradeLegion_descriptor,
@@ -18554,7 +19045,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_UpgradeLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_UpgradeLegion.Builder.class);
           internal_static_SC_UpgradeLegion_descriptor =
-            getDescriptor().getMessageTypes().get(17);
+            getDescriptor().getMessageTypes().get(18);
           internal_static_SC_UpgradeLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_UpgradeLegion_descriptor,
@@ -18562,7 +19053,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_UpgradeLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_UpgradeLegion.Builder.class);
           internal_static_CS_LeaveLegion_descriptor =
-            getDescriptor().getMessageTypes().get(18);
+            getDescriptor().getMessageTypes().get(19);
           internal_static_CS_LeaveLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_LeaveLegion_descriptor,
@@ -18570,7 +19061,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_LeaveLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_LeaveLegion.Builder.class);
           internal_static_SC_LeaveLegion_descriptor =
-            getDescriptor().getMessageTypes().get(19);
+            getDescriptor().getMessageTypes().get(20);
           internal_static_SC_LeaveLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_LeaveLegion_descriptor,
@@ -18578,7 +19069,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_LeaveLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_LeaveLegion.Builder.class);
           internal_static_CS_TransferLegion_descriptor =
-            getDescriptor().getMessageTypes().get(20);
+            getDescriptor().getMessageTypes().get(21);
           internal_static_CS_TransferLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_TransferLegion_descriptor,
@@ -18586,7 +19077,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_TransferLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_TransferLegion.Builder.class);
           internal_static_SC_TransferLegion_descriptor =
-            getDescriptor().getMessageTypes().get(21);
+            getDescriptor().getMessageTypes().get(22);
           internal_static_SC_TransferLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_TransferLegion_descriptor,
@@ -18594,7 +19085,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_TransferLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_TransferLegion.Builder.class);
           internal_static_CS_DelateLegionLeader_descriptor =
-            getDescriptor().getMessageTypes().get(22);
+            getDescriptor().getMessageTypes().get(23);
           internal_static_CS_DelateLegionLeader_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_DelateLegionLeader_descriptor,
@@ -18602,7 +19093,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_DelateLegionLeader.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_DelateLegionLeader.Builder.class);
           internal_static_SC_DelateLegionLeader_descriptor =
-            getDescriptor().getMessageTypes().get(23);
+            getDescriptor().getMessageTypes().get(24);
           internal_static_SC_DelateLegionLeader_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_DelateLegionLeader_descriptor,
@@ -18610,7 +19101,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_DelateLegionLeader.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_DelateLegionLeader.Builder.class);
           internal_static_CS_ApplyJoinLegion_descriptor =
-            getDescriptor().getMessageTypes().get(24);
+            getDescriptor().getMessageTypes().get(25);
           internal_static_CS_ApplyJoinLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_ApplyJoinLegion_descriptor,
@@ -18618,7 +19109,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_ApplyJoinLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_ApplyJoinLegion.Builder.class);
           internal_static_SC_ApplyJoinLegion_descriptor =
-            getDescriptor().getMessageTypes().get(25);
+            getDescriptor().getMessageTypes().get(26);
           internal_static_SC_ApplyJoinLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_ApplyJoinLegion_descriptor,
@@ -18626,7 +19117,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_ApplyJoinLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_ApplyJoinLegion.Builder.class);
           internal_static_CS_ReplyApplyJoinLegion_descriptor =
-            getDescriptor().getMessageTypes().get(26);
+            getDescriptor().getMessageTypes().get(27);
           internal_static_CS_ReplyApplyJoinLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_ReplyApplyJoinLegion_descriptor,
@@ -18634,7 +19125,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_ReplyApplyJoinLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_ReplyApplyJoinLegion.Builder.class);
           internal_static_SC_ReplyApplyJoinLegion_descriptor =
-            getDescriptor().getMessageTypes().get(27);
+            getDescriptor().getMessageTypes().get(28);
           internal_static_SC_ReplyApplyJoinLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_ReplyApplyJoinLegion_descriptor,
@@ -18642,7 +19133,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_ReplyApplyJoinLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_ReplyApplyJoinLegion.Builder.class);
           internal_static_CS_InviteJoinLegion_descriptor =
-            getDescriptor().getMessageTypes().get(28);
+            getDescriptor().getMessageTypes().get(29);
           internal_static_CS_InviteJoinLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_InviteJoinLegion_descriptor,
@@ -18650,7 +19141,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_InviteJoinLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_InviteJoinLegion.Builder.class);
           internal_static_SC_InviteJoinLegion_descriptor =
-            getDescriptor().getMessageTypes().get(29);
+            getDescriptor().getMessageTypes().get(30);
           internal_static_SC_InviteJoinLegion_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_InviteJoinLegion_descriptor,
@@ -18658,7 +19149,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_InviteJoinLegion.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_InviteJoinLegion.Builder.class);
           internal_static_CS_ReplyInvitation_descriptor =
-            getDescriptor().getMessageTypes().get(30);
+            getDescriptor().getMessageTypes().get(31);
           internal_static_CS_ReplyInvitation_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_ReplyInvitation_descriptor,
@@ -18666,7 +19157,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_ReplyInvitation.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_ReplyInvitation.Builder.class);
           internal_static_SC_ReplyInvitation_descriptor =
-            getDescriptor().getMessageTypes().get(31);
+            getDescriptor().getMessageTypes().get(32);
           internal_static_SC_ReplyInvitation_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_ReplyInvitation_descriptor,
@@ -18674,7 +19165,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_ReplyInvitation.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_ReplyInvitation.Builder.class);
           internal_static_CS_DonateGoods_descriptor =
-            getDescriptor().getMessageTypes().get(32);
+            getDescriptor().getMessageTypes().get(33);
           internal_static_CS_DonateGoods_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_DonateGoods_descriptor,
@@ -18682,7 +19173,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_DonateGoods.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_DonateGoods.Builder.class);
           internal_static_SC_DonateGoods_descriptor =
-            getDescriptor().getMessageTypes().get(33);
+            getDescriptor().getMessageTypes().get(34);
           internal_static_SC_DonateGoods_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_DonateGoods_descriptor,
@@ -18690,7 +19181,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_DonateGoods.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_DonateGoods.Builder.class);
           internal_static_CS_SendChatMessage_descriptor =
-            getDescriptor().getMessageTypes().get(34);
+            getDescriptor().getMessageTypes().get(35);
           internal_static_CS_SendChatMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_SendChatMessage_descriptor,
@@ -18698,7 +19189,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_SendChatMessage.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_SendChatMessage.Builder.class);
           internal_static_SC_SendChatMessage_descriptor =
-            getDescriptor().getMessageTypes().get(35);
+            getDescriptor().getMessageTypes().get(36);
           internal_static_SC_SendChatMessage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_SendChatMessage_descriptor,
@@ -18706,7 +19197,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_SendChatMessage.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_SendChatMessage.Builder.class);
           internal_static_CS_GainWelfare_descriptor =
-            getDescriptor().getMessageTypes().get(36);
+            getDescriptor().getMessageTypes().get(37);
           internal_static_CS_GainWelfare_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_GainWelfare_descriptor,
@@ -18714,7 +19205,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_GainWelfare.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_GainWelfare.Builder.class);
           internal_static_SC_GainWelfare_descriptor =
-            getDescriptor().getMessageTypes().get(37);
+            getDescriptor().getMessageTypes().get(38);
           internal_static_SC_GainWelfare_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_GainWelfare_descriptor,
@@ -18722,7 +19213,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_GainWelfare.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_GainWelfare.Builder.class);
           internal_static_CS_GainSupply_descriptor =
-            getDescriptor().getMessageTypes().get(38);
+            getDescriptor().getMessageTypes().get(39);
           internal_static_CS_GainSupply_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_GainSupply_descriptor,
@@ -18730,7 +19221,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_GainSupply.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_GainSupply.Builder.class);
           internal_static_SC_GainSupply_descriptor =
-            getDescriptor().getMessageTypes().get(39);
+            getDescriptor().getMessageTypes().get(40);
           internal_static_SC_GainSupply_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_GainSupply_descriptor,
@@ -18738,7 +19229,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_GainSupply.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_GainSupply.Builder.class);
           internal_static_CS_BuyLegionGoods_descriptor =
-            getDescriptor().getMessageTypes().get(40);
+            getDescriptor().getMessageTypes().get(41);
           internal_static_CS_BuyLegionGoods_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_BuyLegionGoods_descriptor,
@@ -18746,7 +19237,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_BuyLegionGoods.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_BuyLegionGoods.Builder.class);
           internal_static_SC_BuyLegionGoods_descriptor =
-            getDescriptor().getMessageTypes().get(41);
+            getDescriptor().getMessageTypes().get(42);
           internal_static_SC_BuyLegionGoods_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_BuyLegionGoods_descriptor,
@@ -18754,7 +19245,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_BuyLegionGoods.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_BuyLegionGoods.Builder.class);
           internal_static_CS_RemoveMember_descriptor =
-            getDescriptor().getMessageTypes().get(42);
+            getDescriptor().getMessageTypes().get(43);
           internal_static_CS_RemoveMember_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_RemoveMember_descriptor,
@@ -18762,7 +19253,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_RemoveMember.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_RemoveMember.Builder.class);
           internal_static_SC_RemoveMember_descriptor =
-            getDescriptor().getMessageTypes().get(43);
+            getDescriptor().getMessageTypes().get(44);
           internal_static_SC_RemoveMember_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_RemoveMember_descriptor,
@@ -18770,7 +19261,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_RemoveMember.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.SC_RemoveMember.Builder.class);
           internal_static_CS_PermissionManage_descriptor =
-            getDescriptor().getMessageTypes().get(44);
+            getDescriptor().getMessageTypes().get(45);
           internal_static_CS_PermissionManage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_PermissionManage_descriptor,
@@ -18778,7 +19269,7 @@ public final class LegionProtos {
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_PermissionManage.class,
               com.fanxing.server.io.proto.protocol.LegionProtos.CS_PermissionManage.Builder.class);
           internal_static_SC_PermissionManage_descriptor =
-            getDescriptor().getMessageTypes().get(45);
+            getDescriptor().getMessageTypes().get(46);
           internal_static_SC_PermissionManage_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_PermissionManage_descriptor,

@@ -7,7 +7,7 @@ import com.fanxing.server.io.proto.response.TankStrengthenResponse;
 import com.fanxing.server.io.proto.request.TankUpgradesStarRequest;
 import com.fanxing.server.io.proto.response.TankUpgradesStarResponse;
 import com.fanxing.server.io.proto.request.TankChangeEquipmentRequest;
-import com.fanxing.server.io.proto.Response;
+import com.fanxing.server.io.proto.response.TankChangeEquipmentResponse;
 
 /**
  * This is a auto make java file, so do not modify me.
@@ -21,6 +21,6 @@ public interface TankProcessor {
 
 	void processTankUpgradesStar(TankUpgradesStarRequest request, TankUpgradesStarResponse response);
 
-	void processTankChangeEquipment(TankChangeEquipmentRequest request, Response response);
+	void processTankChangeEquipment(TankChangeEquipmentRequest request, TankChangeEquipmentResponse response);
 
 }

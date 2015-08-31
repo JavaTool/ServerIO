@@ -38,7 +38,7 @@ public class DonateGoodsRequest extends Request {
 
 	/**
 	 * 
-	 * @return	捐献物品静态表id
+	 * @return	捐献物品静�?�表id
 	 */
 	public Integer getKeyId() {
 		return cS_DonateGoods.getKeyId();

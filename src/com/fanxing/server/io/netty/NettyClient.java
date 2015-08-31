@@ -1,5 +1,7 @@
 package com.fanxing.server.io.netty;
 
+import com.fanxing.server.io.dispatch.IContentHandler;
+
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -22,10 +24,10 @@ public class NettyClient {
 	
 	protected Channel socketChannel;
 	
-	public NettyClient(final NettyClientCallback callback, int port, String host) throws Exception {
+	public NettyClient(final IContentHandler contentHandler, final NettyClientContentFactory contentFactory, int port, String host) throws Exception {
 		group = new NioEventLoopGroup();
 		bootstrap = new Bootstrap();
-		nettyClientHandler = new NettyClientHandler(callback);
+		nettyClientHandler = new NettyClientHandler(contentHandler, contentFactory);
 		bootstrap.group(group).channel(NioSocketChannel.class).option(ChannelOption.SO_KEEPALIVE, true);
 		bootstrap.remoteAddress(host, port);
 		bootstrap.handler(new ChannelInitializer<SocketChannel>() {

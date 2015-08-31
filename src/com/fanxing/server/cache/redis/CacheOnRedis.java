@@ -67,7 +67,9 @@ public class CacheOnRedis extends CacheOnJedis<Jedis, Jedis> implements Cache, C
 	public void mDel(Serializable... keys) {
 		try {
 			byte[][] keyBytes = SerializaUtil.serializable(keys);
-			getBinaryJedisCommands().del(keyBytes);
+			for (byte[] key : keyBytes) {
+				getBinaryJedisCommands().del(key);
+			}
 		} catch (Exception e) {
 			log.error("", e);
 		}

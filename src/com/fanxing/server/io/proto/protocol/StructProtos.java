@@ -1024,9 +1024,9 @@ public final class StructProtos {
     boolean hasLevel();
     int getLevel();
     
-    // required int32 strengthen = 5;
-    boolean hasStrengthen();
-    int getStrengthen();
+    // required int32 quality_level = 5;
+    boolean hasQualityLevel();
+    int getQualityLevel();
     
     // required int32 plating_id = 6;
     boolean hasPlatingId();
@@ -1143,14 +1143,14 @@ public final class StructProtos {
       return level_;
     }
     
-    // required int32 strengthen = 5;
-    public static final int STRENGTHEN_FIELD_NUMBER = 5;
-    private int strengthen_;
-    public boolean hasStrengthen() {
+    // required int32 quality_level = 5;
+    public static final int QUALITY_LEVEL_FIELD_NUMBER = 5;
+    private int qualityLevel_;
+    public boolean hasQualityLevel() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
-    public int getStrengthen() {
-      return strengthen_;
+    public int getQualityLevel() {
+      return qualityLevel_;
     }
     
     // required int32 plating_id = 6;
@@ -1305,7 +1305,7 @@ public final class StructProtos {
       templateId_ = 0;
       exp_ = 0;
       level_ = 0;
-      strengthen_ = 0;
+      qualityLevel_ = 0;
       platingId_ = 0;
       equipments_ = java.util.Collections.emptyList();
       drivers_ = java.util.Collections.emptyList();
@@ -1335,7 +1335,7 @@ public final class StructProtos {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasStrengthen()) {
+      if (!hasQualityLevel()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -1393,7 +1393,7 @@ public final class StructProtos {
         output.writeInt32(4, level_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, strengthen_);
+        output.writeInt32(5, qualityLevel_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeInt32(6, platingId_);
@@ -1443,7 +1443,7 @@ public final class StructProtos {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, strengthen_);
+          .computeInt32Size(5, qualityLevel_);
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
@@ -1608,7 +1608,7 @@ public final class StructProtos {
         bitField0_ = (bitField0_ & ~0x00000004);
         level_ = 0;
         bitField0_ = (bitField0_ & ~0x00000008);
-        strengthen_ = 0;
+        qualityLevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000010);
         platingId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -1693,7 +1693,7 @@ public final class StructProtos {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.strengthen_ = strengthen_;
+        result.qualityLevel_ = qualityLevel_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
@@ -1765,8 +1765,8 @@ public final class StructProtos {
         if (other.hasLevel()) {
           setLevel(other.getLevel());
         }
-        if (other.hasStrengthen()) {
-          setStrengthen(other.getStrengthen());
+        if (other.hasQualityLevel()) {
+          setQualityLevel(other.getQualityLevel());
         }
         if (other.hasPlatingId()) {
           setPlatingId(other.getPlatingId());
@@ -1879,7 +1879,7 @@ public final class StructProtos {
           
           return false;
         }
-        if (!hasStrengthen()) {
+        if (!hasQualityLevel()) {
           
           return false;
         }
@@ -1965,7 +1965,7 @@ public final class StructProtos {
             }
             case 40: {
               bitField0_ |= 0x00000010;
-              strengthen_ = input.readInt32();
+              qualityLevel_ = input.readInt32();
               break;
             }
             case 48: {
@@ -2096,23 +2096,23 @@ public final class StructProtos {
         return this;
       }
       
-      // required int32 strengthen = 5;
-      private int strengthen_ ;
-      public boolean hasStrengthen() {
+      // required int32 quality_level = 5;
+      private int qualityLevel_ ;
+      public boolean hasQualityLevel() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
-      public int getStrengthen() {
-        return strengthen_;
+      public int getQualityLevel() {
+        return qualityLevel_;
       }
-      public Builder setStrengthen(int value) {
+      public Builder setQualityLevel(int value) {
         bitField0_ |= 0x00000010;
-        strengthen_ = value;
+        qualityLevel_ = value;
         onChanged();
         return this;
       }
-      public Builder clearStrengthen() {
+      public Builder clearQualityLevel() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        strengthen_ = 0;
+        qualityLevel_ = 0;
         onChanged();
         return this;
       }
@@ -13357,53 +13357,53 @@ public final class StructProtos {
     java.lang.String[] descriptorData = {
       "\n\014Struct.proto\"/\n\010VO_Error\022\021\n\terrorCode\030" +
       "\001 \002(\005\022\020\n\010errorMsg\030\002 \002(\t\"/\n\010VO_Skill\022\024\n\014s" +
-      "killGroupId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\"\212\002\n\007VO_" +
+      "killGroupId\030\001 \002(\005\022\r\n\005level\030\002 \002(\005\"\215\002\n\007VO_" +
       "Tank\022\022\n\ninstanceId\030\001 \002(\005\022\022\n\ntemplateId\030\002" +
-      " \002(\005\022\013\n\003exp\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\022\n\nstre" +
-      "ngthen\030\005 \002(\005\022\022\n\nplating_id\030\006 \002(\005\022!\n\nequi" +
-      "pments\030\007 \003(\0132\r.VO_Equipment\022\033\n\007drivers\030\010" +
-      " \003(\0132\n.VO_Driver\022\026\n\016teamInstanceId\030\t \002(\005" +
-      "\022\014\n\004name\030\n \002(\t\022\022\n\ncreateDate\030\013 \002(\t\022\031\n\006sk" +
-      "ills\030\014 \003(\0132\t.VO_Skill\"\332\002\n\014VO_Warehouse\022\022",
-      "\n\ninstanceId\030\001 \002(\005\022\021\n\tpropsSize\030\002 \002(\005\022\020\n" +
-      "\010tankSize\030\003 \002(\005\022\022\n\ndriverSize\030\004 \002(\005\022\025\n\re" +
-      "quipmentSize\030\005 \002(\005\022\020\n\010partSize\030\006 \002(\005\022\024\n\014" +
-      "materialSize\030\007 \002(\005\022\032\n\007propses\030\010 \003(\0132\t.VO" +
-      "_Props\022\027\n\005tanks\030\t \003(\0132\010.VO_Tank\022\033\n\007drive" +
-      "rs\030\n \003(\0132\n.VO_Driver\022!\n\nequipments\030\013 \003(\013" +
-      "2\r.VO_Equipment\022\027\n\005parts\030\014 \003(\0132\010.VO_Part" +
-      "\022\037\n\tmaterials\030\r \003(\0132\014.VO_Material\022\017\n\007own" +
-      "erId\030\016 \002(\005\"\222\001\n\tVO_Driver\022\022\n\ninstanceId\030\001" +
-      " \002(\005\022\022\n\ntemplateId\030\002 \002(\005\022\013\n\003exp\030\003 \002(\005\022\r\n",
-      "\005level\030\004 \002(\005\022\022\n\nstrengthen\030\005 \002(\005\022\022\n\ncrea" +
-      "teDate\030\006 \002(\t\022\031\n\006skills\030\007 \003(\0132\t.VO_Skill\"" +
-      "\250\001\n\014VO_Equipment\022\022\n\ninstanceId\030\001 \002(\005\022\022\n\n" +
-      "templateId\030\002 \002(\005\022\027\n\005parts\030\003 \003(\0132\010.VO_Par" +
-      "t\022\022\n\ncreateDate\030\004 \002(\t\022\"\n\013attachments\030\005 \003" +
-      "(\0132\r.VO_Attribute\022\037\n\trefinings\030\006 \003(\0132\014.V" +
-      "O_Refining\"\212\001\n\007VO_Part\022\022\n\ninstanceId\030\001 \002" +
-      "(\005\022\022\n\ntemplateId\030\002 \002(\005\022\013\n\003exp\030\003 \002(\005\022\r\n\005l" +
-      "evel\030\004 \002(\005\022\022\n\ncreateDate\030\005 \002(\t\022\031\n\006skills" +
-      "\030\006 \003(\0132\t.VO_Skill\022\014\n\004part\030\007 \002(\005\"U\n\010VO_Pr",
-      "ops\022\022\n\ninstanceId\030\001 \002(\005\022\022\n\ntemplateId\030\002 " +
-      "\002(\005\022\r\n\005count\030\003 \002(\005\022\022\n\ncreateDate\030\004 \002(\t\"(" +
-      "\n\013VO_Material\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 \002(\005" +
-      "\"v\n\013VO_TankTeam\022\022\n\ninstanceId\030\001 \002(\005\022\017\n\007o" +
-      "wnerId\030\002 \002(\005\022\014\n\004name\030\003 \002(\t\022\020\n\010capacity\030\004" +
-      " \002(\005\022\022\n\ncreateDate\030\005 \002(\t\022\016\n\006tankId\030\006 \003(\005" +
-      "\"3\n\026VO_MaterialSpendResult\022\n\n\002id\030\001 \002(\005\022\r" +
-      "\n\005count\030\002 \002(\005\"8\n\023VO_PropsSpendResult\022\022\n\n" +
-      "instanceId\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\223\001\n\016VO_S" +
-      "pendResult\022\r\n\005money\030\001 \001(\005\022\014\n\004gold\030\002 \001(\005\022",
-      "4\n\023materialSpendResult\030\003 \003(\0132\027.VO_Materi" +
-      "alSpendResult\022.\n\020propsSpendResult\030\004 \003(\0132" +
-      "\024.VO_PropsSpendResult\")\n\014VO_Attribute\022\n\n" +
-      "\002id\030\001 \002(\005\022\r\n\005value\030\002 \002(\005\"A\n\013VO_Refining\022" +
-      "\017\n\007quality\030\001 \002(\005\022!\n\nattributes\030\002 \003(\0132\r.V" +
-      "O_Attribute*$\n\nChangeType\022\007\n\003ONE\020\000\022\r\n\tMA" +
-      "NYTIMES\020\001*$\n\tChangeWay\022\n\n\006COMMON\020\000\022\013\n\007US" +
-      "EGOLD\020\001B4\n$com.fanxing.server.io.proto.p" +
-      "rotocolB\014StructProtos"
+      " \002(\005\022\013\n\003exp\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\025\n\rqual" +
+      "ity_level\030\005 \002(\005\022\022\n\nplating_id\030\006 \002(\005\022!\n\ne" +
+      "quipments\030\007 \003(\0132\r.VO_Equipment\022\033\n\007driver" +
+      "s\030\010 \003(\0132\n.VO_Driver\022\026\n\016teamInstanceId\030\t " +
+      "\002(\005\022\014\n\004name\030\n \002(\t\022\022\n\ncreateDate\030\013 \002(\t\022\031\n" +
+      "\006skills\030\014 \003(\0132\t.VO_Skill\"\332\002\n\014VO_Warehous",
+      "e\022\022\n\ninstanceId\030\001 \002(\005\022\021\n\tpropsSize\030\002 \002(\005" +
+      "\022\020\n\010tankSize\030\003 \002(\005\022\022\n\ndriverSize\030\004 \002(\005\022\025" +
+      "\n\requipmentSize\030\005 \002(\005\022\020\n\010partSize\030\006 \002(\005\022" +
+      "\024\n\014materialSize\030\007 \002(\005\022\032\n\007propses\030\010 \003(\0132\t" +
+      ".VO_Props\022\027\n\005tanks\030\t \003(\0132\010.VO_Tank\022\033\n\007dr" +
+      "ivers\030\n \003(\0132\n.VO_Driver\022!\n\nequipments\030\013 " +
+      "\003(\0132\r.VO_Equipment\022\027\n\005parts\030\014 \003(\0132\010.VO_P" +
+      "art\022\037\n\tmaterials\030\r \003(\0132\014.VO_Material\022\017\n\007" +
+      "ownerId\030\016 \002(\005\"\222\001\n\tVO_Driver\022\022\n\ninstanceI" +
+      "d\030\001 \002(\005\022\022\n\ntemplateId\030\002 \002(\005\022\013\n\003exp\030\003 \002(\005",
+      "\022\r\n\005level\030\004 \002(\005\022\022\n\nstrengthen\030\005 \002(\005\022\022\n\nc" +
+      "reateDate\030\006 \002(\t\022\031\n\006skills\030\007 \003(\0132\t.VO_Ski" +
+      "ll\"\250\001\n\014VO_Equipment\022\022\n\ninstanceId\030\001 \002(\005\022" +
+      "\022\n\ntemplateId\030\002 \002(\005\022\027\n\005parts\030\003 \003(\0132\010.VO_" +
+      "Part\022\022\n\ncreateDate\030\004 \002(\t\022\"\n\013attachments\030" +
+      "\005 \003(\0132\r.VO_Attribute\022\037\n\trefinings\030\006 \003(\0132" +
+      "\014.VO_Refining\"\212\001\n\007VO_Part\022\022\n\ninstanceId\030" +
+      "\001 \002(\005\022\022\n\ntemplateId\030\002 \002(\005\022\013\n\003exp\030\003 \002(\005\022\r" +
+      "\n\005level\030\004 \002(\005\022\022\n\ncreateDate\030\005 \002(\t\022\031\n\006ski" +
+      "lls\030\006 \003(\0132\t.VO_Skill\022\014\n\004part\030\007 \002(\005\"U\n\010VO",
+      "_Props\022\022\n\ninstanceId\030\001 \002(\005\022\022\n\ntemplateId" +
+      "\030\002 \002(\005\022\r\n\005count\030\003 \002(\005\022\022\n\ncreateDate\030\004 \002(" +
+      "\t\"(\n\013VO_Material\022\n\n\002id\030\001 \002(\005\022\r\n\005count\030\002 " +
+      "\002(\005\"v\n\013VO_TankTeam\022\022\n\ninstanceId\030\001 \002(\005\022\017" +
+      "\n\007ownerId\030\002 \002(\005\022\014\n\004name\030\003 \002(\t\022\020\n\010capacit" +
+      "y\030\004 \002(\005\022\022\n\ncreateDate\030\005 \002(\t\022\016\n\006tankId\030\006 " +
+      "\003(\005\"3\n\026VO_MaterialSpendResult\022\n\n\002id\030\001 \002(" +
+      "\005\022\r\n\005count\030\002 \002(\005\"8\n\023VO_PropsSpendResult\022" +
+      "\022\n\ninstanceId\030\001 \002(\005\022\r\n\005count\030\002 \002(\005\"\223\001\n\016V" +
+      "O_SpendResult\022\r\n\005money\030\001 \001(\005\022\014\n\004gold\030\002 \001",
+      "(\005\0224\n\023materialSpendResult\030\003 \003(\0132\027.VO_Mat" +
+      "erialSpendResult\022.\n\020propsSpendResult\030\004 \003" +
+      "(\0132\024.VO_PropsSpendResult\")\n\014VO_Attribute" +
+      "\022\n\n\002id\030\001 \002(\005\022\r\n\005value\030\002 \002(\005\"A\n\013VO_Refini" +
+      "ng\022\017\n\007quality\030\001 \002(\005\022!\n\nattributes\030\002 \003(\0132" +
+      "\r.VO_Attribute*$\n\nChangeType\022\007\n\003ONE\020\000\022\r\n" +
+      "\tMANYTIMES\020\001*$\n\tChangeWay\022\n\n\006COMMON\020\000\022\013\n" +
+      "\007USEGOLD\020\001B4\n$com.fanxing.server.io.prot" +
+      "o.protocolB\014StructProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -13431,7 +13431,7 @@ public final class StructProtos {
           internal_static_VO_Tank_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VO_Tank_descriptor,
-              new java.lang.String[] { "InstanceId", "TemplateId", "Exp", "Level", "Strengthen", "PlatingId", "Equipments", "Drivers", "TeamInstanceId", "Name", "CreateDate", "Skills", },
+              new java.lang.String[] { "InstanceId", "TemplateId", "Exp", "Level", "QualityLevel", "PlatingId", "Equipments", "Drivers", "TeamInstanceId", "Name", "CreateDate", "Skills", },
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Tank.class,
               com.fanxing.server.io.proto.protocol.StructProtos.VO_Tank.Builder.class);
           internal_static_VO_Warehouse_descriptor =

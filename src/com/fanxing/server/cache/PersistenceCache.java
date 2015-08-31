@@ -125,10 +125,11 @@ public abstract class PersistenceCache implements IScheduledCache {
 
 	@Override
 	public void run() {
+		long time = System.currentTimeMillis();
 		createSync();
 		updateSync();
 		deleteSync();
-		log.info("Sync finish.");
+		log.info("Sync finish use {} ms.", System.currentTimeMillis() - time);
 	}
 	
 	protected abstract void createSync();

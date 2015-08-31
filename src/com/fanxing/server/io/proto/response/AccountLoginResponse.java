@@ -26,7 +26,7 @@ public class AccountLoginResponse extends Response {
 	/**
 	 * 
 	 * @param	serverInfos
-	 * 			服务器列表
+	 * 			服务器列�?
 	 */
 	public void setServerInfos(Iterable<VO_ServerInfo> serverInfos) {
 		builder.addAllServerInfos(serverInfos);

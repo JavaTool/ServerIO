@@ -38,7 +38,7 @@ public class NewRoleInfoRequest extends Request {
 
 	/**
 	 * 
-	 * @return	性别，true=男性
+	 * @return	性别，true=男�??
 	 */
 	public Boolean getSex() {
 		return cS_NewRoleInfo.getSex();

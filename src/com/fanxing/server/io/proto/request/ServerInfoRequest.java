@@ -30,7 +30,7 @@ public class ServerInfoRequest extends Request {
 
 	/**
 	 * 
-	 * @return	服务器名称
+	 * @return	服务器名�?
 	 */
 	public String getName() {
 		return vO_ServerInfo.getName();
@@ -46,7 +46,7 @@ public class ServerInfoRequest extends Request {
 
 	/**
 	 * 
-	 * @return	服务器地址
+	 * @return	服务器地�?
 	 */
 	public String getUrl() {
 		return vO_ServerInfo.getUrl();
@@ -54,7 +54,7 @@ public class ServerInfoRequest extends Request {
 
 	/**
 	 * 
-	 * @return	服务器状态
+	 * @return	服务器状�?
 	 */
 	public String getStatus() {
 		return vO_ServerInfo.getStatus();

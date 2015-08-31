@@ -2391,9 +2391,9 @@ public final class TankProtos {
   public interface SC_TankStrengthenOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // required int32 tankStrengthenLevel = 1;
-    boolean hasTankStrengthenLevel();
-    int getTankStrengthenLevel();
+    // required int32 tankStrengthenId = 1;
+    boolean hasTankStrengthenId();
+    int getTankStrengthenId();
     
     // required .VO_SpendResult spendResult = 2;
     boolean hasSpendResult();
@@ -2429,14 +2429,14 @@ public final class TankProtos {
     }
     
     private int bitField0_;
-    // required int32 tankStrengthenLevel = 1;
-    public static final int TANKSTRENGTHENLEVEL_FIELD_NUMBER = 1;
-    private int tankStrengthenLevel_;
-    public boolean hasTankStrengthenLevel() {
+    // required int32 tankStrengthenId = 1;
+    public static final int TANKSTRENGTHENID_FIELD_NUMBER = 1;
+    private int tankStrengthenId_;
+    public boolean hasTankStrengthenId() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public int getTankStrengthenLevel() {
-      return tankStrengthenLevel_;
+    public int getTankStrengthenId() {
+      return tankStrengthenId_;
     }
     
     // required .VO_SpendResult spendResult = 2;
@@ -2453,7 +2453,7 @@ public final class TankProtos {
     }
     
     private void initFields() {
-      tankStrengthenLevel_ = 0;
+      tankStrengthenId_ = 0;
       spendResult_ = com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
@@ -2461,7 +2461,7 @@ public final class TankProtos {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
       
-      if (!hasTankStrengthenLevel()) {
+      if (!hasTankStrengthenId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2481,7 +2481,7 @@ public final class TankProtos {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, tankStrengthenLevel_);
+        output.writeInt32(1, tankStrengthenId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(2, spendResult_);
@@ -2497,7 +2497,7 @@ public final class TankProtos {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, tankStrengthenLevel_);
+          .computeInt32Size(1, tankStrengthenId_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -2628,7 +2628,7 @@ public final class TankProtos {
       
       public Builder clear() {
         super.clear();
-        tankStrengthenLevel_ = 0;
+        tankStrengthenId_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         if (spendResultBuilder_ == null) {
           spendResult_ = com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult.getDefaultInstance();
@@ -2677,7 +2677,7 @@ public final class TankProtos {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.tankStrengthenLevel_ = tankStrengthenLevel_;
+        result.tankStrengthenId_ = tankStrengthenId_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -2702,8 +2702,8 @@ public final class TankProtos {
       
       public Builder mergeFrom(com.fanxing.server.io.proto.protocol.TankProtos.SC_TankStrengthen other) {
         if (other == com.fanxing.server.io.proto.protocol.TankProtos.SC_TankStrengthen.getDefaultInstance()) return this;
-        if (other.hasTankStrengthenLevel()) {
-          setTankStrengthenLevel(other.getTankStrengthenLevel());
+        if (other.hasTankStrengthenId()) {
+          setTankStrengthenId(other.getTankStrengthenId());
         }
         if (other.hasSpendResult()) {
           mergeSpendResult(other.getSpendResult());
@@ -2713,7 +2713,7 @@ public final class TankProtos {
       }
       
       public final boolean isInitialized() {
-        if (!hasTankStrengthenLevel()) {
+        if (!hasTankStrengthenId()) {
           
           return false;
         }
@@ -2753,7 +2753,7 @@ public final class TankProtos {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              tankStrengthenLevel_ = input.readInt32();
+              tankStrengthenId_ = input.readInt32();
               break;
             }
             case 18: {
@@ -2771,23 +2771,23 @@ public final class TankProtos {
       
       private int bitField0_;
       
-      // required int32 tankStrengthenLevel = 1;
-      private int tankStrengthenLevel_ ;
-      public boolean hasTankStrengthenLevel() {
+      // required int32 tankStrengthenId = 1;
+      private int tankStrengthenId_ ;
+      public boolean hasTankStrengthenId() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public int getTankStrengthenLevel() {
-        return tankStrengthenLevel_;
+      public int getTankStrengthenId() {
+        return tankStrengthenId_;
       }
-      public Builder setTankStrengthenLevel(int value) {
+      public Builder setTankStrengthenId(int value) {
         bitField0_ |= 0x00000001;
-        tankStrengthenLevel_ = value;
+        tankStrengthenId_ = value;
         onChanged();
         return this;
       }
-      public Builder clearTankStrengthenLevel() {
+      public Builder clearTankStrengthenId() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        tankStrengthenLevel_ = 0;
+        tankStrengthenId_ = 0;
         onChanged();
         return this;
       }
@@ -2896,9 +2896,9 @@ public final class TankProtos {
   public interface SC_TankUpgradesStarOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
-    // required int32 tankTemplateId = 1;
-    boolean hasTankTemplateId();
-    int getTankTemplateId();
+    // required int32 tankStarLevel = 1;
+    boolean hasTankStarLevel();
+    int getTankStarLevel();
     
     // required .VO_SpendResult spendResult = 2;
     boolean hasSpendResult();
@@ -2934,14 +2934,14 @@ public final class TankProtos {
     }
     
     private int bitField0_;
-    // required int32 tankTemplateId = 1;
-    public static final int TANKTEMPLATEID_FIELD_NUMBER = 1;
-    private int tankTemplateId_;
-    public boolean hasTankTemplateId() {
+    // required int32 tankStarLevel = 1;
+    public static final int TANKSTARLEVEL_FIELD_NUMBER = 1;
+    private int tankStarLevel_;
+    public boolean hasTankStarLevel() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
-    public int getTankTemplateId() {
-      return tankTemplateId_;
+    public int getTankStarLevel() {
+      return tankStarLevel_;
     }
     
     // required .VO_SpendResult spendResult = 2;
@@ -2958,7 +2958,7 @@ public final class TankProtos {
     }
     
     private void initFields() {
-      tankTemplateId_ = 0;
+      tankStarLevel_ = 0;
       spendResult_ = com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
@@ -2966,7 +2966,7 @@ public final class TankProtos {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
       
-      if (!hasTankTemplateId()) {
+      if (!hasTankStarLevel()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2986,7 +2986,7 @@ public final class TankProtos {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, tankTemplateId_);
+        output.writeInt32(1, tankStarLevel_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeMessage(2, spendResult_);
@@ -3002,7 +3002,7 @@ public final class TankProtos {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, tankTemplateId_);
+          .computeInt32Size(1, tankStarLevel_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -3133,7 +3133,7 @@ public final class TankProtos {
       
       public Builder clear() {
         super.clear();
-        tankTemplateId_ = 0;
+        tankStarLevel_ = 0;
         bitField0_ = (bitField0_ & ~0x00000001);
         if (spendResultBuilder_ == null) {
           spendResult_ = com.fanxing.server.io.proto.protocol.StructProtos.VO_SpendResult.getDefaultInstance();
@@ -3182,7 +3182,7 @@ public final class TankProtos {
         if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
           to_bitField0_ |= 0x00000001;
         }
-        result.tankTemplateId_ = tankTemplateId_;
+        result.tankStarLevel_ = tankStarLevel_;
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
@@ -3207,8 +3207,8 @@ public final class TankProtos {
       
       public Builder mergeFrom(com.fanxing.server.io.proto.protocol.TankProtos.SC_TankUpgradesStar other) {
         if (other == com.fanxing.server.io.proto.protocol.TankProtos.SC_TankUpgradesStar.getDefaultInstance()) return this;
-        if (other.hasTankTemplateId()) {
-          setTankTemplateId(other.getTankTemplateId());
+        if (other.hasTankStarLevel()) {
+          setTankStarLevel(other.getTankStarLevel());
         }
         if (other.hasSpendResult()) {
           mergeSpendResult(other.getSpendResult());
@@ -3218,7 +3218,7 @@ public final class TankProtos {
       }
       
       public final boolean isInitialized() {
-        if (!hasTankTemplateId()) {
+        if (!hasTankStarLevel()) {
           
           return false;
         }
@@ -3258,7 +3258,7 @@ public final class TankProtos {
             }
             case 8: {
               bitField0_ |= 0x00000001;
-              tankTemplateId_ = input.readInt32();
+              tankStarLevel_ = input.readInt32();
               break;
             }
             case 18: {
@@ -3276,23 +3276,23 @@ public final class TankProtos {
       
       private int bitField0_;
       
-      // required int32 tankTemplateId = 1;
-      private int tankTemplateId_ ;
-      public boolean hasTankTemplateId() {
+      // required int32 tankStarLevel = 1;
+      private int tankStarLevel_ ;
+      public boolean hasTankStarLevel() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
-      public int getTankTemplateId() {
-        return tankTemplateId_;
+      public int getTankStarLevel() {
+        return tankStarLevel_;
       }
-      public Builder setTankTemplateId(int value) {
+      public Builder setTankStarLevel(int value) {
         bitField0_ |= 0x00000001;
-        tankTemplateId_ = value;
+        tankStarLevel_ = value;
         onChanged();
         return this;
       }
-      public Builder clearTankTemplateId() {
+      public Builder clearTankStarLevel() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        tankTemplateId_ = 0;
+        tankStarLevel_ = 0;
         onChanged();
         return this;
       }
@@ -3398,6 +3398,482 @@ public final class TankProtos {
     // @@protoc_insertion_point(class_scope:SC_TankUpgradesStar)
   }
   
+  public interface SC_TankChangeEquipmentOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+    
+    // required int32 equipPos = 1;
+    boolean hasEquipPos();
+    int getEquipPos();
+    
+    // required int32 equipmentId = 2;
+    boolean hasEquipmentId();
+    int getEquipmentId();
+    
+    // required int32 bagEquipId = 3;
+    boolean hasBagEquipId();
+    int getBagEquipId();
+  }
+  public static final class SC_TankChangeEquipment extends
+      com.google.protobuf.GeneratedMessage
+      implements SC_TankChangeEquipmentOrBuilder {
+    // Use SC_TankChangeEquipment.newBuilder() to construct.
+    private SC_TankChangeEquipment(Builder builder) {
+      super(builder);
+    }
+    private SC_TankChangeEquipment(boolean noInit) {}
+    
+    private static final SC_TankChangeEquipment defaultInstance;
+    public static SC_TankChangeEquipment getDefaultInstance() {
+      return defaultInstance;
+    }
+    
+    public SC_TankChangeEquipment getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+    
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.fanxing.server.io.proto.protocol.TankProtos.internal_static_SC_TankChangeEquipment_descriptor;
+    }
+    
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.fanxing.server.io.proto.protocol.TankProtos.internal_static_SC_TankChangeEquipment_fieldAccessorTable;
+    }
+    
+    private int bitField0_;
+    // required int32 equipPos = 1;
+    public static final int EQUIPPOS_FIELD_NUMBER = 1;
+    private int equipPos_;
+    public boolean hasEquipPos() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    public int getEquipPos() {
+      return equipPos_;
+    }
+    
+    // required int32 equipmentId = 2;
+    public static final int EQUIPMENTID_FIELD_NUMBER = 2;
+    private int equipmentId_;
+    public boolean hasEquipmentId() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    public int getEquipmentId() {
+      return equipmentId_;
+    }
+    
+    // required int32 bagEquipId = 3;
+    public static final int BAGEQUIPID_FIELD_NUMBER = 3;
+    private int bagEquipId_;
+    public boolean hasBagEquipId() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    public int getBagEquipId() {
+      return bagEquipId_;
+    }
+    
+    private void initFields() {
+      equipPos_ = 0;
+      equipmentId_ = 0;
+      bagEquipId_ = 0;
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+      
+      if (!hasEquipPos()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasEquipmentId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasBagEquipId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+    
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeInt32(1, equipPos_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeInt32(2, equipmentId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeInt32(3, bagEquipId_);
+      }
+      getUnknownFields().writeTo(output);
+    }
+    
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+    
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(1, equipPos_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(2, equipmentId_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(3, bagEquipId_);
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+    
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+    
+    public static com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return newBuilder().mergeFrom(data, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      Builder builder = newBuilder();
+      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
+        return builder.buildParsed();
+      } else {
+        return null;
+      }
+    }
+    public static com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input).buildParsed();
+    }
+    public static com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return newBuilder().mergeFrom(input, extensionRegistry)
+               .buildParsed();
+    }
+    
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+    
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipmentOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.fanxing.server.io.proto.protocol.TankProtos.internal_static_SC_TankChangeEquipment_descriptor;
+      }
+      
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.fanxing.server.io.proto.protocol.TankProtos.internal_static_SC_TankChangeEquipment_fieldAccessorTable;
+      }
+      
+      // Construct using com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+      
+      private Builder(BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+      
+      public Builder clear() {
+        super.clear();
+        equipPos_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        equipmentId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        bagEquipId_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+      
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+      
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment.getDescriptor();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment getDefaultInstanceForType() {
+        return com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment.getDefaultInstance();
+      }
+      
+      public com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment build() {
+        com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+      
+      private com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment buildParsed()
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(
+            result).asInvalidProtocolBufferException();
+        }
+        return result;
+      }
+      
+      public com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment buildPartial() {
+        com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment result = new com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.equipPos_ = equipPos_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.equipmentId_ = equipmentId_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.bagEquipId_ = bagEquipId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+      
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment) {
+          return mergeFrom((com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+      
+      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment other) {
+        if (other == com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment.getDefaultInstance()) return this;
+        if (other.hasEquipPos()) {
+          setEquipPos(other.getEquipPos());
+        }
+        if (other.hasEquipmentId()) {
+          setEquipmentId(other.getEquipmentId());
+        }
+        if (other.hasBagEquipId()) {
+          setBagEquipId(other.getBagEquipId());
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+      
+      public final boolean isInitialized() {
+        if (!hasEquipPos()) {
+          
+          return false;
+        }
+        if (!hasEquipmentId()) {
+          
+          return false;
+        }
+        if (!hasBagEquipId()) {
+          
+          return false;
+        }
+        return true;
+      }
+      
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder(
+            this.getUnknownFields());
+        while (true) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              this.setUnknownFields(unknownFields.build());
+              onChanged();
+              return this;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                this.setUnknownFields(unknownFields.build());
+                onChanged();
+                return this;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              equipPos_ = input.readInt32();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              equipmentId_ = input.readInt32();
+              break;
+            }
+            case 24: {
+              bitField0_ |= 0x00000004;
+              bagEquipId_ = input.readInt32();
+              break;
+            }
+          }
+        }
+      }
+      
+      private int bitField0_;
+      
+      // required int32 equipPos = 1;
+      private int equipPos_ ;
+      public boolean hasEquipPos() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      public int getEquipPos() {
+        return equipPos_;
+      }
+      public Builder setEquipPos(int value) {
+        bitField0_ |= 0x00000001;
+        equipPos_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearEquipPos() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        equipPos_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required int32 equipmentId = 2;
+      private int equipmentId_ ;
+      public boolean hasEquipmentId() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      public int getEquipmentId() {
+        return equipmentId_;
+      }
+      public Builder setEquipmentId(int value) {
+        bitField0_ |= 0x00000002;
+        equipmentId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearEquipmentId() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        equipmentId_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // required int32 bagEquipId = 3;
+      private int bagEquipId_ ;
+      public boolean hasBagEquipId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      public int getBagEquipId() {
+        return bagEquipId_;
+      }
+      public Builder setBagEquipId(int value) {
+        bitField0_ |= 0x00000004;
+        bagEquipId_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearBagEquipId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        bagEquipId_ = 0;
+        onChanged();
+        return this;
+      }
+      
+      // @@protoc_insertion_point(builder_scope:SC_TankChangeEquipment)
+    }
+    
+    static {
+      defaultInstance = new SC_TankChangeEquipment(true);
+      defaultInstance.initFields();
+    }
+    
+    // @@protoc_insertion_point(class_scope:SC_TankChangeEquipment)
+  }
+  
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_CS_TankUpgrade_descriptor;
   private static
@@ -3433,6 +3909,11 @@ public final class TankProtos {
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_SC_TankUpgradesStar_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_SC_TankChangeEquipment_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_SC_TankChangeEquipment_fieldAccessorTable;
   
   public static com.google.protobuf.Descriptors.FileDescriptor
       getDescriptor() {
@@ -3453,13 +3934,15 @@ public final class TankProtos {
       "nkId\030\001 \002(\005\022\023\n\013equipmentId\030\002 \002(\005\"o\n\016SC_Ta" +
       "nkUpgrade\022\017\n\007tankExp\030\001 \002(\005\022\023\n\013roleTankEx",
       "p\030\002 \002(\005\022\021\n\ttankLevel\030\003 \002(\005\022$\n\013spendResul" +
-      "t\030\004 \002(\0132\017.VO_SpendResult\"V\n\021SC_TankStren" +
-      "gthen\022\033\n\023tankStrengthenLevel\030\001 \002(\005\022$\n\013sp" +
-      "endResult\030\002 \002(\0132\017.VO_SpendResult\"S\n\023SC_T" +
-      "ankUpgradesStar\022\026\n\016tankTemplateId\030\001 \002(\005\022" +
-      "$\n\013spendResult\030\002 \002(\0132\017.VO_SpendResultB2\n" +
-      "$com.fanxing.server.io.proto.protocolB\nT" +
-      "ankProtos"
+      "t\030\004 \002(\0132\017.VO_SpendResult\"S\n\021SC_TankStren" +
+      "gthen\022\030\n\020tankStrengthenId\030\001 \002(\005\022$\n\013spend" +
+      "Result\030\002 \002(\0132\017.VO_SpendResult\"R\n\023SC_Tank" +
+      "UpgradesStar\022\025\n\rtankStarLevel\030\001 \002(\005\022$\n\013s" +
+      "pendResult\030\002 \002(\0132\017.VO_SpendResult\"S\n\026SC_" +
+      "TankChangeEquipment\022\020\n\010equipPos\030\001 \002(\005\022\023\n" +
+      "\013equipmentId\030\002 \002(\005\022\022\n\nbagEquipId\030\003 \002(\005B2" +
+      "\n$com.fanxing.server.io.proto.protocolB\n" +
+      "TankProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -3511,7 +3994,7 @@ public final class TankProtos {
           internal_static_SC_TankStrengthen_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_TankStrengthen_descriptor,
-              new java.lang.String[] { "TankStrengthenLevel", "SpendResult", },
+              new java.lang.String[] { "TankStrengthenId", "SpendResult", },
               com.fanxing.server.io.proto.protocol.TankProtos.SC_TankStrengthen.class,
               com.fanxing.server.io.proto.protocol.TankProtos.SC_TankStrengthen.Builder.class);
           internal_static_SC_TankUpgradesStar_descriptor =
@@ -3519,9 +4002,17 @@ public final class TankProtos {
           internal_static_SC_TankUpgradesStar_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_TankUpgradesStar_descriptor,
-              new java.lang.String[] { "TankTemplateId", "SpendResult", },
+              new java.lang.String[] { "TankStarLevel", "SpendResult", },
               com.fanxing.server.io.proto.protocol.TankProtos.SC_TankUpgradesStar.class,
               com.fanxing.server.io.proto.protocol.TankProtos.SC_TankUpgradesStar.Builder.class);
+          internal_static_SC_TankChangeEquipment_descriptor =
+            getDescriptor().getMessageTypes().get(7);
+          internal_static_SC_TankChangeEquipment_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_SC_TankChangeEquipment_descriptor,
+              new java.lang.String[] { "EquipPos", "EquipmentId", "BagEquipId", },
+              com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment.class,
+              com.fanxing.server.io.proto.protocol.TankProtos.SC_TankChangeEquipment.Builder.class);
           return null;
         }
       };

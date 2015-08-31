@@ -24,17 +24,17 @@ public class TankStrengthenResponse extends Response {
 
 	/**
 	 * 
-	 * @param	tankStrengthenLevel
-	 * 			坦克强化后的等级
+	 * @param	tankStrengthenId
+	 * 			坦克强化后的模板Id
 	 */
-	public void setTankStrengthenLevel(Integer tankStrengthenLevel) {
-		builder.setTankStrengthenLevel(tankStrengthenLevel);
+	public void setTankStrengthenId(Integer tankStrengthenId) {
+		builder.setTankStrengthenId(tankStrengthenId);
 	}
 
 	/**
 	 * 
 	 * @param	spendResult
-	 * 			消耗后的结果（货币，材料，道具）
+	 * 			消�?�后的结果（货币，材料，道具�?
 	 */
 	public void setSpendResult(VO_SpendResult spendResult) {
 		builder.setSpendResult(spendResult);

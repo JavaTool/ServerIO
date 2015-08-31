@@ -405,9 +405,9 @@ public final class TcpProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\tTcp.proto\032\tTcp.proto\"\034\n\rCS_TcpConnect\022" +
-      "\013\n\003key\030\001 \002(\tB1\n$com.fanxing.server.io.pr" +
-      "oto.protocolB\tTcpProtos"
+      "\n\tTcp.proto\"\034\n\rCS_TcpConnect\022\013\n\003key\030\001 \002(" +
+      "\tB1\n$com.fanxing.server.io.proto.protoco" +
+      "lB\tTcpProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -428,7 +428,6 @@ public final class TcpProtos {
     com.google.protobuf.Descriptors.FileDescriptor
       .internalBuildGeneratedFileFrom(descriptorData,
         new com.google.protobuf.Descriptors.FileDescriptor[] {
-          com.fanxing.server.io.proto.protocol.TcpProtos.getDescriptor(),
         }, assigner);
   }
   

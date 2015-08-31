@@ -8,1039 +8,6 @@ public final class RoleProtos {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
-  public interface VO_RoleSimpleInfoOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-    
-    // required int32 instanceId = 1;
-    boolean hasInstanceId();
-    int getInstanceId();
-    
-    // required string name = 2;
-    boolean hasName();
-    String getName();
-    
-    // required int32 exp = 3;
-    boolean hasExp();
-    int getExp();
-    
-    // required int32 level = 4;
-    boolean hasLevel();
-    int getLevel();
-    
-    // required int32 money = 5;
-    boolean hasMoney();
-    int getMoney();
-    
-    // required int32 gold = 6;
-    boolean hasGold();
-    int getGold();
-    
-    // required int32 oil = 7;
-    boolean hasOil();
-    int getOil();
-    
-    // required int32 oilMax = 8;
-    boolean hasOilMax();
-    int getOilMax();
-    
-    // required int32 tankExp = 9;
-    boolean hasTankExp();
-    int getTankExp();
-    
-    // required int32 accountId = 10;
-    boolean hasAccountId();
-    int getAccountId();
-    
-    // required int32 serverId = 11;
-    boolean hasServerId();
-    int getServerId();
-  }
-  public static final class VO_RoleSimpleInfo extends
-      com.google.protobuf.GeneratedMessage
-      implements VO_RoleSimpleInfoOrBuilder {
-    // Use VO_RoleSimpleInfo.newBuilder() to construct.
-    private VO_RoleSimpleInfo(Builder builder) {
-      super(builder);
-    }
-    private VO_RoleSimpleInfo(boolean noInit) {}
-    
-    private static final VO_RoleSimpleInfo defaultInstance;
-    public static VO_RoleSimpleInfo getDefaultInstance() {
-      return defaultInstance;
-    }
-    
-    public VO_RoleSimpleInfo getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-    
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_VO_RoleSimpleInfo_descriptor;
-    }
-    
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_VO_RoleSimpleInfo_fieldAccessorTable;
-    }
-    
-    private int bitField0_;
-    // required int32 instanceId = 1;
-    public static final int INSTANCEID_FIELD_NUMBER = 1;
-    private int instanceId_;
-    public boolean hasInstanceId() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    public int getInstanceId() {
-      return instanceId_;
-    }
-    
-    // required string name = 2;
-    public static final int NAME_FIELD_NUMBER = 2;
-    private java.lang.Object name_;
-    public boolean hasName() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    public String getName() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        return (String) ref;
-      } else {
-        com.google.protobuf.ByteString bs = 
-            (com.google.protobuf.ByteString) ref;
-        String s = bs.toStringUtf8();
-        if (com.google.protobuf.Internal.isValidUtf8(bs)) {
-          name_ = s;
-        }
-        return s;
-      }
-    }
-    private com.google.protobuf.ByteString getNameBytes() {
-      java.lang.Object ref = name_;
-      if (ref instanceof String) {
-        com.google.protobuf.ByteString b = 
-            com.google.protobuf.ByteString.copyFromUtf8((String) ref);
-        name_ = b;
-        return b;
-      } else {
-        return (com.google.protobuf.ByteString) ref;
-      }
-    }
-    
-    // required int32 exp = 3;
-    public static final int EXP_FIELD_NUMBER = 3;
-    private int exp_;
-    public boolean hasExp() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    public int getExp() {
-      return exp_;
-    }
-    
-    // required int32 level = 4;
-    public static final int LEVEL_FIELD_NUMBER = 4;
-    private int level_;
-    public boolean hasLevel() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    public int getLevel() {
-      return level_;
-    }
-    
-    // required int32 money = 5;
-    public static final int MONEY_FIELD_NUMBER = 5;
-    private int money_;
-    public boolean hasMoney() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
-    }
-    public int getMoney() {
-      return money_;
-    }
-    
-    // required int32 gold = 6;
-    public static final int GOLD_FIELD_NUMBER = 6;
-    private int gold_;
-    public boolean hasGold() {
-      return ((bitField0_ & 0x00000020) == 0x00000020);
-    }
-    public int getGold() {
-      return gold_;
-    }
-    
-    // required int32 oil = 7;
-    public static final int OIL_FIELD_NUMBER = 7;
-    private int oil_;
-    public boolean hasOil() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
-    }
-    public int getOil() {
-      return oil_;
-    }
-    
-    // required int32 oilMax = 8;
-    public static final int OILMAX_FIELD_NUMBER = 8;
-    private int oilMax_;
-    public boolean hasOilMax() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
-    }
-    public int getOilMax() {
-      return oilMax_;
-    }
-    
-    // required int32 tankExp = 9;
-    public static final int TANKEXP_FIELD_NUMBER = 9;
-    private int tankExp_;
-    public boolean hasTankExp() {
-      return ((bitField0_ & 0x00000100) == 0x00000100);
-    }
-    public int getTankExp() {
-      return tankExp_;
-    }
-    
-    // required int32 accountId = 10;
-    public static final int ACCOUNTID_FIELD_NUMBER = 10;
-    private int accountId_;
-    public boolean hasAccountId() {
-      return ((bitField0_ & 0x00000200) == 0x00000200);
-    }
-    public int getAccountId() {
-      return accountId_;
-    }
-    
-    // required int32 serverId = 11;
-    public static final int SERVERID_FIELD_NUMBER = 11;
-    private int serverId_;
-    public boolean hasServerId() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
-    }
-    public int getServerId() {
-      return serverId_;
-    }
-    
-    private void initFields() {
-      instanceId_ = 0;
-      name_ = "";
-      exp_ = 0;
-      level_ = 0;
-      money_ = 0;
-      gold_ = 0;
-      oil_ = 0;
-      oilMax_ = 0;
-      tankExp_ = 0;
-      accountId_ = 0;
-      serverId_ = 0;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-      
-      if (!hasInstanceId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasName()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasExp()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasLevel()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasMoney()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasGold()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasOil()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasOilMax()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasTankExp()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasAccountId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasServerId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-    
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt32(1, instanceId_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeBytes(2, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeInt32(3, exp_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeInt32(4, level_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeInt32(5, money_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeInt32(6, gold_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeInt32(7, oil_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeInt32(8, oilMax_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        output.writeInt32(9, tankExp_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        output.writeInt32(10, accountId_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeInt32(11, serverId_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-    
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-    
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(1, instanceId_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(2, getNameBytes());
-      }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(3, exp_);
-      }
-      if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(4, level_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(5, money_);
-      }
-      if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(6, gold_);
-      }
-      if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(7, oil_);
-      }
-      if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(8, oilMax_);
-      }
-      if (((bitField0_ & 0x00000100) == 0x00000100)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(9, tankExp_);
-      }
-      if (((bitField0_ & 0x00000200) == 0x00000200)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(10, accountId_);
-      }
-      if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt32Size(11, serverId_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-    
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-    
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data).buildParsed();
-    }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return newBuilder().mergeFrom(data, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      Builder builder = newBuilder();
-      if (builder.mergeDelimitedFrom(input, extensionRegistry)) {
-        return builder.buildParsed();
-      } else {
-        return null;
-      }
-    }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input).buildParsed();
-    }
-    public static com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return newBuilder().mergeFrom(input, extensionRegistry)
-               .buildParsed();
-    }
-    
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-    
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfoOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_VO_RoleSimpleInfo_descriptor;
-      }
-      
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return com.fanxing.server.io.proto.protocol.RoleProtos.internal_static_VO_RoleSimpleInfo_fieldAccessorTable;
-      }
-      
-      // Construct using com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-      
-      private Builder(BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-        }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
-      
-      public Builder clear() {
-        super.clear();
-        instanceId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        name_ = "";
-        bitField0_ = (bitField0_ & ~0x00000002);
-        exp_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
-        level_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
-        money_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
-        gold_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000020);
-        oil_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000040);
-        oilMax_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000080);
-        tankExp_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000100);
-        accountId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000200);
-        serverId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000400);
-        return this;
-      }
-      
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-      
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo.getDescriptor();
-      }
-      
-      public com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo getDefaultInstanceForType() {
-        return com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo.getDefaultInstance();
-      }
-      
-      public com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo build() {
-        com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(result);
-        }
-        return result;
-      }
-      
-      private com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo buildParsed()
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo result = buildPartial();
-        if (!result.isInitialized()) {
-          throw newUninitializedMessageException(
-            result).asInvalidProtocolBufferException();
-        }
-        return result;
-      }
-      
-      public com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo buildPartial() {
-        com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo result = new com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.instanceId_ = instanceId_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.name_ = name_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.exp_ = exp_;
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000008;
-        }
-        result.level_ = level_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
-        }
-        result.money_ = money_;
-        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
-          to_bitField0_ |= 0x00000020;
-        }
-        result.gold_ = gold_;
-        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
-          to_bitField0_ |= 0x00000040;
-        }
-        result.oil_ = oil_;
-        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
-          to_bitField0_ |= 0x00000080;
-        }
-        result.oilMax_ = oilMax_;
-        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
-          to_bitField0_ |= 0x00000100;
-        }
-        result.tankExp_ = tankExp_;
-        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
-          to_bitField0_ |= 0x00000200;
-        }
-        result.accountId_ = accountId_;
-        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
-          to_bitField0_ |= 0x00000400;
-        }
-        result.serverId_ = serverId_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
-      
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo) {
-          return mergeFrom((com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
-        }
-      }
-      
-      public Builder mergeFrom(com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo other) {
-        if (other == com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo.getDefaultInstance()) return this;
-        if (other.hasInstanceId()) {
-          setInstanceId(other.getInstanceId());
-        }
-        if (other.hasName()) {
-          setName(other.getName());
-        }
-        if (other.hasExp()) {
-          setExp(other.getExp());
-        }
-        if (other.hasLevel()) {
-          setLevel(other.getLevel());
-        }
-        if (other.hasMoney()) {
-          setMoney(other.getMoney());
-        }
-        if (other.hasGold()) {
-          setGold(other.getGold());
-        }
-        if (other.hasOil()) {
-          setOil(other.getOil());
-        }
-        if (other.hasOilMax()) {
-          setOilMax(other.getOilMax());
-        }
-        if (other.hasTankExp()) {
-          setTankExp(other.getTankExp());
-        }
-        if (other.hasAccountId()) {
-          setAccountId(other.getAccountId());
-        }
-        if (other.hasServerId()) {
-          setServerId(other.getServerId());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
-      
-      public final boolean isInitialized() {
-        if (!hasInstanceId()) {
-          
-          return false;
-        }
-        if (!hasName()) {
-          
-          return false;
-        }
-        if (!hasExp()) {
-          
-          return false;
-        }
-        if (!hasLevel()) {
-          
-          return false;
-        }
-        if (!hasMoney()) {
-          
-          return false;
-        }
-        if (!hasGold()) {
-          
-          return false;
-        }
-        if (!hasOil()) {
-          
-          return false;
-        }
-        if (!hasOilMax()) {
-          
-          return false;
-        }
-        if (!hasTankExp()) {
-          
-          return false;
-        }
-        if (!hasAccountId()) {
-          
-          return false;
-        }
-        if (!hasServerId()) {
-          
-          return false;
-        }
-        return true;
-      }
-      
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder(
-            this.getUnknownFields());
-        while (true) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              this.setUnknownFields(unknownFields.build());
-              onChanged();
-              return this;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                this.setUnknownFields(unknownFields.build());
-                onChanged();
-                return this;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              instanceId_ = input.readInt32();
-              break;
-            }
-            case 18: {
-              bitField0_ |= 0x00000002;
-              name_ = input.readBytes();
-              break;
-            }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              exp_ = input.readInt32();
-              break;
-            }
-            case 32: {
-              bitField0_ |= 0x00000008;
-              level_ = input.readInt32();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
-              money_ = input.readInt32();
-              break;
-            }
-            case 48: {
-              bitField0_ |= 0x00000020;
-              gold_ = input.readInt32();
-              break;
-            }
-            case 56: {
-              bitField0_ |= 0x00000040;
-              oil_ = input.readInt32();
-              break;
-            }
-            case 64: {
-              bitField0_ |= 0x00000080;
-              oilMax_ = input.readInt32();
-              break;
-            }
-            case 72: {
-              bitField0_ |= 0x00000100;
-              tankExp_ = input.readInt32();
-              break;
-            }
-            case 80: {
-              bitField0_ |= 0x00000200;
-              accountId_ = input.readInt32();
-              break;
-            }
-            case 88: {
-              bitField0_ |= 0x00000400;
-              serverId_ = input.readInt32();
-              break;
-            }
-          }
-        }
-      }
-      
-      private int bitField0_;
-      
-      // required int32 instanceId = 1;
-      private int instanceId_ ;
-      public boolean hasInstanceId() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      public int getInstanceId() {
-        return instanceId_;
-      }
-      public Builder setInstanceId(int value) {
-        bitField0_ |= 0x00000001;
-        instanceId_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearInstanceId() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        instanceId_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // required string name = 2;
-      private java.lang.Object name_ = "";
-      public boolean hasName() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      public String getName() {
-        java.lang.Object ref = name_;
-        if (!(ref instanceof String)) {
-          String s = ((com.google.protobuf.ByteString) ref).toStringUtf8();
-          name_ = s;
-          return s;
-        } else {
-          return (String) ref;
-        }
-      }
-      public Builder setName(String value) {
-        if (value == null) {
-    throw new NullPointerException();
-  }
-  bitField0_ |= 0x00000002;
-        name_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearName() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        name_ = getDefaultInstance().getName();
-        onChanged();
-        return this;
-      }
-      void setName(com.google.protobuf.ByteString value) {
-        bitField0_ |= 0x00000002;
-        name_ = value;
-        onChanged();
-      }
-      
-      // required int32 exp = 3;
-      private int exp_ ;
-      public boolean hasExp() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      public int getExp() {
-        return exp_;
-      }
-      public Builder setExp(int value) {
-        bitField0_ |= 0x00000004;
-        exp_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearExp() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        exp_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // required int32 level = 4;
-      private int level_ ;
-      public boolean hasLevel() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      public int getLevel() {
-        return level_;
-      }
-      public Builder setLevel(int value) {
-        bitField0_ |= 0x00000008;
-        level_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearLevel() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        level_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // required int32 money = 5;
-      private int money_ ;
-      public boolean hasMoney() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
-      }
-      public int getMoney() {
-        return money_;
-      }
-      public Builder setMoney(int value) {
-        bitField0_ |= 0x00000010;
-        money_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearMoney() {
-        bitField0_ = (bitField0_ & ~0x00000010);
-        money_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // required int32 gold = 6;
-      private int gold_ ;
-      public boolean hasGold() {
-        return ((bitField0_ & 0x00000020) == 0x00000020);
-      }
-      public int getGold() {
-        return gold_;
-      }
-      public Builder setGold(int value) {
-        bitField0_ |= 0x00000020;
-        gold_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearGold() {
-        bitField0_ = (bitField0_ & ~0x00000020);
-        gold_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // required int32 oil = 7;
-      private int oil_ ;
-      public boolean hasOil() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
-      }
-      public int getOil() {
-        return oil_;
-      }
-      public Builder setOil(int value) {
-        bitField0_ |= 0x00000040;
-        oil_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearOil() {
-        bitField0_ = (bitField0_ & ~0x00000040);
-        oil_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // required int32 oilMax = 8;
-      private int oilMax_ ;
-      public boolean hasOilMax() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
-      }
-      public int getOilMax() {
-        return oilMax_;
-      }
-      public Builder setOilMax(int value) {
-        bitField0_ |= 0x00000080;
-        oilMax_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearOilMax() {
-        bitField0_ = (bitField0_ & ~0x00000080);
-        oilMax_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // required int32 tankExp = 9;
-      private int tankExp_ ;
-      public boolean hasTankExp() {
-        return ((bitField0_ & 0x00000100) == 0x00000100);
-      }
-      public int getTankExp() {
-        return tankExp_;
-      }
-      public Builder setTankExp(int value) {
-        bitField0_ |= 0x00000100;
-        tankExp_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearTankExp() {
-        bitField0_ = (bitField0_ & ~0x00000100);
-        tankExp_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // required int32 accountId = 10;
-      private int accountId_ ;
-      public boolean hasAccountId() {
-        return ((bitField0_ & 0x00000200) == 0x00000200);
-      }
-      public int getAccountId() {
-        return accountId_;
-      }
-      public Builder setAccountId(int value) {
-        bitField0_ |= 0x00000200;
-        accountId_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearAccountId() {
-        bitField0_ = (bitField0_ & ~0x00000200);
-        accountId_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // required int32 serverId = 11;
-      private int serverId_ ;
-      public boolean hasServerId() {
-        return ((bitField0_ & 0x00000400) == 0x00000400);
-      }
-      public int getServerId() {
-        return serverId_;
-      }
-      public Builder setServerId(int value) {
-        bitField0_ |= 0x00000400;
-        serverId_ = value;
-        onChanged();
-        return this;
-      }
-      public Builder clearServerId() {
-        bitField0_ = (bitField0_ & ~0x00000400);
-        serverId_ = 0;
-        onChanged();
-        return this;
-      }
-      
-      // @@protoc_insertion_point(builder_scope:VO_RoleSimpleInfo)
-    }
-    
-    static {
-      defaultInstance = new VO_RoleSimpleInfo(true);
-      defaultInstance.initFields();
-    }
-    
-    // @@protoc_insertion_point(class_scope:VO_RoleSimpleInfo)
-  }
-  
   public interface CS_RoleInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
     
@@ -3293,6 +2260,10 @@ public final class RoleProtos {
         getTankTeamsOrBuilderList();
     com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeamOrBuilder getTankTeamsOrBuilder(
         int index);
+    
+    // required int32 refiningFree = 18;
+    boolean hasRefiningFree();
+    int getRefiningFree();
   }
   public static final class SC_RoleInfo extends
       com.google.protobuf.GeneratedMessage
@@ -3573,6 +2544,16 @@ public final class RoleProtos {
       return tankTeams_.get(index);
     }
     
+    // required int32 refiningFree = 18;
+    public static final int REFININGFREE_FIELD_NUMBER = 18;
+    private int refiningFree_;
+    public boolean hasRefiningFree() {
+      return ((bitField0_ & 0x00010000) == 0x00010000);
+    }
+    public int getRefiningFree() {
+      return refiningFree_;
+    }
+    
     private void initFields() {
       instanceId_ = 0;
       name_ = "";
@@ -3591,6 +2572,7 @@ public final class RoleProtos {
       sex_ = 0;
       roleModel_ = 0;
       tankTeams_ = java.util.Collections.emptyList();
+      refiningFree_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3661,6 +2643,10 @@ public final class RoleProtos {
         memoizedIsInitialized = 0;
         return false;
       }
+      if (!hasRefiningFree()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
       if (!getWarehouse().isInitialized()) {
         memoizedIsInitialized = 0;
         return false;
@@ -3728,6 +2714,9 @@ public final class RoleProtos {
       }
       for (int i = 0; i < tankTeams_.size(); i++) {
         output.writeMessage(17, tankTeams_.get(i));
+      }
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        output.writeInt32(18, refiningFree_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -3805,6 +2794,10 @@ public final class RoleProtos {
       for (int i = 0; i < tankTeams_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(17, tankTeams_.get(i));
+      }
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeInt32Size(18, refiningFree_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3974,6 +2967,8 @@ public final class RoleProtos {
         } else {
           tankTeamsBuilder_.clear();
         }
+        refiningFree_ = 0;
+        bitField0_ = (bitField0_ & ~0x00020000);
         return this;
       }
       
@@ -4089,6 +3084,10 @@ public final class RoleProtos {
         } else {
           result.tankTeams_ = tankTeamsBuilder_.build();
         }
+        if (((from_bitField0_ & 0x00020000) == 0x00020000)) {
+          to_bitField0_ |= 0x00010000;
+        }
+        result.refiningFree_ = refiningFree_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -4179,6 +3178,9 @@ public final class RoleProtos {
             }
           }
         }
+        if (other.hasRefiningFree()) {
+          setRefiningFree(other.getRefiningFree());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -4245,6 +3247,10 @@ public final class RoleProtos {
           return false;
         }
         if (!hasRoleModel()) {
+          
+          return false;
+        }
+        if (!hasRefiningFree()) {
           
           return false;
         }
@@ -4372,6 +3378,11 @@ public final class RoleProtos {
               com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.Builder subBuilder = com.fanxing.server.io.proto.protocol.StructProtos.VO_TankTeam.newBuilder();
               input.readMessage(subBuilder, extensionRegistry);
               addTankTeams(subBuilder.buildPartial());
+              break;
+            }
+            case 144: {
+              bitField0_ |= 0x00020000;
+              refiningFree_ = input.readInt32();
               break;
             }
           }
@@ -5016,6 +4027,27 @@ public final class RoleProtos {
         return tankTeamsBuilder_;
       }
       
+      // required int32 refiningFree = 18;
+      private int refiningFree_ ;
+      public boolean hasRefiningFree() {
+        return ((bitField0_ & 0x00020000) == 0x00020000);
+      }
+      public int getRefiningFree() {
+        return refiningFree_;
+      }
+      public Builder setRefiningFree(int value) {
+        bitField0_ |= 0x00020000;
+        refiningFree_ = value;
+        onChanged();
+        return this;
+      }
+      public Builder clearRefiningFree() {
+        bitField0_ = (bitField0_ & ~0x00020000);
+        refiningFree_ = 0;
+        onChanged();
+        return this;
+      }
+      
       // @@protoc_insertion_point(builder_scope:SC_RoleInfo)
     }
     
@@ -5591,11 +4623,6 @@ public final class RoleProtos {
   }
   
   private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_VO_RoleSimpleInfo_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_VO_RoleSimpleInfo_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_CS_RoleInfo_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -5639,45 +4666,33 @@ public final class RoleProtos {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\nRole.proto\032\014Struct.proto\"\301\001\n\021VO_RoleSi" +
-      "mpleInfo\022\022\n\ninstanceId\030\001 \002(\005\022\014\n\004name\030\002 \002" +
-      "(\t\022\013\n\003exp\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\r\n\005money\030" +
-      "\005 \002(\005\022\014\n\004gold\030\006 \002(\005\022\013\n\003oil\030\007 \002(\005\022\016\n\006oilM" +
-      "ax\030\010 \002(\005\022\017\n\007tankExp\030\t \002(\005\022\021\n\taccountId\030\n" +
-      " \002(\005\022\020\n\010serverId\030\013 \002(\005\"\037\n\013CS_RoleInfo\022\020\n" +
-      "\010playerId\030\001 \002(\005\"I\n\026CS_AccountAuthenticat" +
-      "e\022\021\n\taccountId\030\001 \002(\005\022\017\n\007account\030\002 \002(\t\022\013\n" +
-      "\003key\030\003 \002(\t\" \n\rCS_CreateRole\022\017\n\007account\030\001" +
-      " \002(\t\">\n\016CS_NewRoleInfo\022\014\n\004name\030\001 \002(\t\022\013\n\003",
-      "sex\030\002 \002(\010\022\021\n\troleModel\030\003 \002(\005\"$\n\025CS_Accou" +
-      "ntGetRoleList\022\013\n\003key\030\001 \002(\t\"\307\002\n\013SC_RoleIn" +
-      "fo\022\022\n\ninstanceId\030\001 \002(\005\022\014\n\004name\030\002 \002(\t\022\013\n\003" +
-      "exp\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\r\n\005money\030\005 \002(\005\022" +
-      "\014\n\004gold\030\006 \002(\005\022\013\n\003oil\030\007 \002(\005\022\016\n\006oilMax\030\010 \002" +
-      "(\005\022\017\n\007tankExp\030\t \002(\005\022\021\n\taccountId\030\n \002(\005\022\020" +
-      "\n\010serverId\030\013 \002(\005\022\024\n\014registerDate\030\014 \002(\t\022\021" +
-      "\n\tloginDate\030\r \002(\t\022 \n\twarehouse\030\016 \002(\0132\r.V" +
-      "O_Warehouse\022\013\n\003sex\030\017 \002(\005\022\021\n\troleModel\030\020 " +
-      "\002(\005\022\037\n\ttankTeams\030\021 \003(\0132\014.VO_TankTeam\"4\n\025",
-      "SC_AccountGetRoleList\022\033\n\005roles\030\001 \003(\0132\014.S" +
-      "C_RoleInfoB2\n$com.fanxing.server.io.prot" +
-      "o.protocolB\nRoleProtos"
+      "\n\nRole.proto\032\014Struct.proto\"\037\n\013CS_RoleInf" +
+      "o\022\020\n\010playerId\030\001 \002(\005\"I\n\026CS_AccountAuthent" +
+      "icate\022\021\n\taccountId\030\001 \002(\005\022\017\n\007account\030\002 \002(" +
+      "\t\022\013\n\003key\030\003 \002(\t\" \n\rCS_CreateRole\022\017\n\007accou" +
+      "nt\030\001 \002(\t\">\n\016CS_NewRoleInfo\022\014\n\004name\030\001 \002(\t" +
+      "\022\013\n\003sex\030\002 \002(\010\022\021\n\troleModel\030\003 \002(\005\"$\n\025CS_A" +
+      "ccountGetRoleList\022\013\n\003key\030\001 \002(\t\"\335\002\n\013SC_Ro" +
+      "leInfo\022\022\n\ninstanceId\030\001 \002(\005\022\014\n\004name\030\002 \002(\t" +
+      "\022\013\n\003exp\030\003 \002(\005\022\r\n\005level\030\004 \002(\005\022\r\n\005money\030\005 " +
+      "\002(\005\022\014\n\004gold\030\006 \002(\005\022\013\n\003oil\030\007 \002(\005\022\016\n\006oilMax",
+      "\030\010 \002(\005\022\017\n\007tankExp\030\t \002(\005\022\021\n\taccountId\030\n \002" +
+      "(\005\022\020\n\010serverId\030\013 \002(\005\022\024\n\014registerDate\030\014 \002" +
+      "(\t\022\021\n\tloginDate\030\r \002(\t\022 \n\twarehouse\030\016 \002(\013" +
+      "2\r.VO_Warehouse\022\013\n\003sex\030\017 \002(\005\022\021\n\troleMode" +
+      "l\030\020 \002(\005\022\037\n\ttankTeams\030\021 \003(\0132\014.VO_TankTeam" +
+      "\022\024\n\014refiningFree\030\022 \002(\005\"4\n\025SC_AccountGetR" +
+      "oleList\022\033\n\005roles\030\001 \003(\0132\014.SC_RoleInfoB2\n$" +
+      "com.fanxing.server.io.proto.protocolB\nRo" +
+      "leProtos"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
         public com.google.protobuf.ExtensionRegistry assignDescriptors(
             com.google.protobuf.Descriptors.FileDescriptor root) {
           descriptor = root;
-          internal_static_VO_RoleSimpleInfo_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_VO_RoleSimpleInfo_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_VO_RoleSimpleInfo_descriptor,
-              new java.lang.String[] { "InstanceId", "Name", "Exp", "Level", "Money", "Gold", "Oil", "OilMax", "TankExp", "AccountId", "ServerId", },
-              com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo.class,
-              com.fanxing.server.io.proto.protocol.RoleProtos.VO_RoleSimpleInfo.Builder.class);
           internal_static_CS_RoleInfo_descriptor =
-            getDescriptor().getMessageTypes().get(1);
+            getDescriptor().getMessageTypes().get(0);
           internal_static_CS_RoleInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_RoleInfo_descriptor,
@@ -5685,7 +4700,7 @@ public final class RoleProtos {
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_RoleInfo.class,
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_RoleInfo.Builder.class);
           internal_static_CS_AccountAuthenticate_descriptor =
-            getDescriptor().getMessageTypes().get(2);
+            getDescriptor().getMessageTypes().get(1);
           internal_static_CS_AccountAuthenticate_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_AccountAuthenticate_descriptor,
@@ -5693,7 +4708,7 @@ public final class RoleProtos {
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate.class,
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountAuthenticate.Builder.class);
           internal_static_CS_CreateRole_descriptor =
-            getDescriptor().getMessageTypes().get(3);
+            getDescriptor().getMessageTypes().get(2);
           internal_static_CS_CreateRole_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_CreateRole_descriptor,
@@ -5701,7 +4716,7 @@ public final class RoleProtos {
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_CreateRole.class,
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_CreateRole.Builder.class);
           internal_static_CS_NewRoleInfo_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(3);
           internal_static_CS_NewRoleInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_NewRoleInfo_descriptor,
@@ -5709,7 +4724,7 @@ public final class RoleProtos {
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_NewRoleInfo.class,
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_NewRoleInfo.Builder.class);
           internal_static_CS_AccountGetRoleList_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(4);
           internal_static_CS_AccountGetRoleList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CS_AccountGetRoleList_descriptor,
@@ -5717,15 +4732,15 @@ public final class RoleProtos {
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.class,
               com.fanxing.server.io.proto.protocol.RoleProtos.CS_AccountGetRoleList.Builder.class);
           internal_static_SC_RoleInfo_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(5);
           internal_static_SC_RoleInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_RoleInfo_descriptor,
-              new java.lang.String[] { "InstanceId", "Name", "Exp", "Level", "Money", "Gold", "Oil", "OilMax", "TankExp", "AccountId", "ServerId", "RegisterDate", "LoginDate", "Warehouse", "Sex", "RoleModel", "TankTeams", },
+              new java.lang.String[] { "InstanceId", "Name", "Exp", "Level", "Money", "Gold", "Oil", "OilMax", "TankExp", "AccountId", "ServerId", "RegisterDate", "LoginDate", "Warehouse", "Sex", "RoleModel", "TankTeams", "RefiningFree", },
               com.fanxing.server.io.proto.protocol.RoleProtos.SC_RoleInfo.class,
               com.fanxing.server.io.proto.protocol.RoleProtos.SC_RoleInfo.Builder.class);
           internal_static_SC_AccountGetRoleList_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_SC_AccountGetRoleList_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SC_AccountGetRoleList_descriptor,

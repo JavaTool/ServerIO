@@ -39,7 +39,7 @@ public class CheckVersionRequest extends Request {
 
 	/**
 	 * 
-	 * @return	客户端版本
+	 * @return	客户端版�?
 	 */
 	public String getClientVersion() {
 		return cS_CheckVersion.getClientVersion();

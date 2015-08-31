@@ -12,6 +12,8 @@ public interface Processors {
 
 	TankProcessor getTankProcessor();
 
+	EquipmentProcessor getEquipmentProcessor();
+
 	TcpProcessor getTcpProcessor();
 
 	CommonProcessor getCommonProcessor();

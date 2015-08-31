@@ -50,52 +50,60 @@ public final class MessageIdProto {
     MISC_TankStrengthenResp(37, 38),
     MICS_TankUpgradesStar(38, 39),
     MISC_TankUpgradesStarResp(39, 40),
-    MICS_HttpCheck(40, 41),
-    MISC_HttpCheckResp(41, 42),
-    MICS_TankChangeEquipment(42, 43),
-    MISC_TankChangeEquipmentResp(43, 44),
-    MICS_GetLegionInfo(44, 10101),
-    MISC_GetLegionInfoResp(45, 10102),
-    MICS_GetLegionMemberInfoList(46, 10103),
-    MISC_GetLegionMemberInfoListResp(47, 10104),
-    MICS_GetLegionLog(48, 10105),
-    MISC_GetLegionLogResp(49, 10106),
-    MICS_RecommendLegionList(50, 10107),
-    MISC_RecommendLegionListResp(51, 10108),
-    MICS_RankingLegionList(52, 10109),
-    MISC_RankingLegionListResp(53, 10110),
-    MICS_CreateLegion(54, 10111),
-    MISC_CreateLegionResp(55, 10112),
-    MICS_UpgradeLegion(56, 10113),
-    MISC_UpgradeLegionResp(57, 10114),
-    MICS_LeaveLegion(58, 10115),
-    MISC_LeaveLegionResp(59, 10116),
-    MICS_TransferLegion(60, 10117),
-    MISC_TransferLegionResp(61, 10118),
-    MICS_DelateLegionLeader(62, 10119),
-    MISC_DelateLegionLeaderResp(63, 10120),
-    MICS_ApplyJoinLegion(64, 10121),
-    MISC_ApplyJoinLegionResp(65, 10122),
-    MICS_ReplyApplyJoinLegion(66, 10123),
-    MISC_ReplyApplyJoinLegionResp(67, 10124),
-    MICS_InviteJoinLegion(68, 10125),
-    MISC_InviteJoinLegionResp(69, 10126),
-    MICS_ReplyInvitation(70, 10127),
-    MISC_ReplyInvitationResp(71, 10128),
-    MICS_DonateGoods(72, 10129),
-    MISC_DonateGoodsResp(73, 10130),
-    MICS_SendChatMessage(74, 10131),
-    MISC_SendChatMessageResp(75, 10132),
-    MICS_GainWelfare(76, 10133),
-    MISC_GainWelfareResp(77, 10134),
-    MICS_GainSupply(78, 10135),
-    MISC_GainSupplyResp(79, 10136),
-    MICS_BuyLegionGoods(80, 10137),
-    MISC_BuyLegionGoodsResp(81, 10138),
-    MICS_RemoveMember(82, 10139),
-    MISC_RemoveMemberResp(83, 10140),
-    MICS_PermissionManage(84, 10141),
-    MISC_PermissionManageResp(85, 10142),
+    MICS_TankChangeEquipment(40, 43),
+    MISC_TankChangeEquipmentResp(41, 44),
+    MICS_HttpCheck(42, 41),
+    MISC_HttpCheckResp(43, 42),
+    MICS_EquipmentRecast(44, 45),
+    MISC_EquipmentRecastResp(45, 46),
+    MICS_EquipmentRefin(46, 47),
+    MISC_EquipmentRefinResp(47, 48),
+    MICS_EquipmentRollback(48, 49),
+    MISC_EquipmentRollbackResp(49, 50),
+    MICS_EquipmentInherit(50, 51),
+    MISC_EquipmentInheritResp(51, 52),
+    MICS_GetLegionInfo(52, 10101),
+    MISC_GetLegionInfoResp(53, 10102),
+    MICS_GetLegionMemberInfoList(54, 10103),
+    MISC_GetLegionMemberInfoListResp(55, 10104),
+    MICS_GetLegionLog(56, 10105),
+    MISC_GetLegionLogResp(57, 10106),
+    MICS_RecommendLegionList(58, 10107),
+    MISC_RecommendLegionListResp(59, 10108),
+    MICS_RankingLegionList(60, 10109),
+    MISC_RankingLegionListResp(61, 10110),
+    MICS_CreateLegion(62, 10111),
+    MISC_CreateLegionResp(63, 10112),
+    MICS_UpgradeLegion(64, 10113),
+    MISC_UpgradeLegionResp(65, 10114),
+    MICS_LeaveLegion(66, 10115),
+    MISC_LeaveLegionResp(67, 10116),
+    MICS_TransferLegion(68, 10117),
+    MISC_TransferLegionResp(69, 10118),
+    MICS_DelateLegionLeader(70, 10119),
+    MISC_DelateLegionLeaderResp(71, 10120),
+    MICS_ApplyJoinLegion(72, 10121),
+    MISC_ApplyJoinLegionResp(73, 10122),
+    MICS_ReplyApplyJoinLegion(74, 10123),
+    MISC_ReplyApplyJoinLegionResp(75, 10124),
+    MICS_InviteJoinLegion(76, 10125),
+    MISC_InviteJoinLegionResp(77, 10126),
+    MICS_ReplyInvitation(78, 10127),
+    MISC_ReplyInvitationResp(79, 10128),
+    MICS_DonateGoods(80, 10129),
+    MISC_DonateGoodsResp(81, 10130),
+    MICS_SendChatMessage(82, 10131),
+    MISC_SendChatMessageResp(83, 10132),
+    MICS_GainWelfare(84, 10133),
+    MISC_GainWelfareResp(85, 10134),
+    MICS_GainSupply(86, 10135),
+    MISC_GainSupplyResp(87, 10136),
+    MICS_BuyLegionGoods(88, 10137),
+    MISC_BuyLegionGoodsResp(89, 10138),
+    MICS_RemoveMember(90, 10139),
+    MISC_RemoveMemberResp(91, 10140),
+    MICS_PermissionManage(92, 10141),
+    MISC_PermissionManageResp(93, 10142),
     ;
     
     public static final int MICS_Test1_VALUE = 1001;
@@ -138,10 +146,18 @@ public final class MessageIdProto {
     public static final int MISC_TankStrengthenResp_VALUE = 38;
     public static final int MICS_TankUpgradesStar_VALUE = 39;
     public static final int MISC_TankUpgradesStarResp_VALUE = 40;
-    public static final int MICS_HttpCheck_VALUE = 41;
-    public static final int MISC_HttpCheckResp_VALUE = 42;
     public static final int MICS_TankChangeEquipment_VALUE = 43;
     public static final int MISC_TankChangeEquipmentResp_VALUE = 44;
+    public static final int MICS_HttpCheck_VALUE = 41;
+    public static final int MISC_HttpCheckResp_VALUE = 42;
+    public static final int MICS_EquipmentRecast_VALUE = 45;
+    public static final int MISC_EquipmentRecastResp_VALUE = 46;
+    public static final int MICS_EquipmentRefin_VALUE = 47;
+    public static final int MISC_EquipmentRefinResp_VALUE = 48;
+    public static final int MICS_EquipmentRollback_VALUE = 49;
+    public static final int MISC_EquipmentRollbackResp_VALUE = 50;
+    public static final int MICS_EquipmentInherit_VALUE = 51;
+    public static final int MISC_EquipmentInheritResp_VALUE = 52;
     public static final int MICS_GetLegionInfo_VALUE = 10101;
     public static final int MISC_GetLegionInfoResp_VALUE = 10102;
     public static final int MICS_GetLegionMemberInfoList_VALUE = 10103;
@@ -230,10 +246,18 @@ public final class MessageIdProto {
         case 38: return MISC_TankStrengthenResp;
         case 39: return MICS_TankUpgradesStar;
         case 40: return MISC_TankUpgradesStarResp;
-        case 41: return MICS_HttpCheck;
-        case 42: return MISC_HttpCheckResp;
         case 43: return MICS_TankChangeEquipment;
         case 44: return MISC_TankChangeEquipmentResp;
+        case 41: return MICS_HttpCheck;
+        case 42: return MISC_HttpCheckResp;
+        case 45: return MICS_EquipmentRecast;
+        case 46: return MISC_EquipmentRecastResp;
+        case 47: return MICS_EquipmentRefin;
+        case 48: return MISC_EquipmentRefinResp;
+        case 49: return MICS_EquipmentRollback;
+        case 50: return MISC_EquipmentRollbackResp;
+        case 51: return MICS_EquipmentInherit;
+        case 52: return MISC_EquipmentInheritResp;
         case 10101: return MICS_GetLegionInfo;
         case 10102: return MISC_GetLegionInfoResp;
         case 10103: return MICS_GetLegionMemberInfoList;
@@ -306,7 +330,7 @@ public final class MessageIdProto {
     }
     
     private static final MessageId[] VALUES = {
-      MICS_Test1, MISC_Test1Resp, MICS_GetServerList, MISC_GetServerListResp, MIVO_ServerInfo, MIVO_Error, MICS_ServerStatus, MISC_ServerStatusResp, MICS_CheckVersion, MISC_CheckVersionResp, MICS_SelectServer, MISC_SelectServerResp, MICS_AccountRegister, MISC_AccountRegisterResp, MICS_AccountLogin, MISC_AccountLoginResp, MICS_Disconnect, MISC_DisconnectResp, MICS_AccountAuthenticate, MISC_AccountAuthenticateResp, MICS_TcpConnect, MISC_TcpConnectResp, MICS_AccountGetRoleList, MISC_AccountGetRoleListResp, MICS_CreateRole, MISC_CreateRoleResp, MICS_RoleInfo, MISC_RoleInfoResp, MICS_NewRoleInfo, MISC_NewRoleInfoResp, MICS_Reconnect, MISC_ReconnectResp, MICS_ServerHeart, MISC_ServerHeartResp, MICS_TankUpgrade, MISC_TankUpgradeResp, MICS_TankStrengthen, MISC_TankStrengthenResp, MICS_TankUpgradesStar, MISC_TankUpgradesStarResp, MICS_HttpCheck, MISC_HttpCheckResp, MICS_TankChangeEquipment, MISC_TankChangeEquipmentResp, MICS_GetLegionInfo, MISC_GetLegionInfoResp, MICS_GetLegionMemberInfoList, MISC_GetLegionMemberInfoListResp, MICS_GetLegionLog, MISC_GetLegionLogResp, MICS_RecommendLegionList, MISC_RecommendLegionListResp, MICS_RankingLegionList, MISC_RankingLegionListResp, MICS_CreateLegion, MISC_CreateLegionResp, MICS_UpgradeLegion, MISC_UpgradeLegionResp, MICS_LeaveLegion, MISC_LeaveLegionResp, MICS_TransferLegion, MISC_TransferLegionResp, MICS_DelateLegionLeader, MISC_DelateLegionLeaderResp, MICS_ApplyJoinLegion, MISC_ApplyJoinLegionResp, MICS_ReplyApplyJoinLegion, MISC_ReplyApplyJoinLegionResp, MICS_InviteJoinLegion, MISC_InviteJoinLegionResp, MICS_ReplyInvitation, MISC_ReplyInvitationResp, MICS_DonateGoods, MISC_DonateGoodsResp, MICS_SendChatMessage, MISC_SendChatMessageResp, MICS_GainWelfare, MISC_GainWelfareResp, MICS_GainSupply, MISC_GainSupplyResp, MICS_BuyLegionGoods, MISC_BuyLegionGoodsResp, MICS_RemoveMember, MISC_RemoveMemberResp, MICS_PermissionManage, MISC_PermissionManageResp, 
+      MICS_Test1, MISC_Test1Resp, MICS_GetServerList, MISC_GetServerListResp, MIVO_ServerInfo, MIVO_Error, MICS_ServerStatus, MISC_ServerStatusResp, MICS_CheckVersion, MISC_CheckVersionResp, MICS_SelectServer, MISC_SelectServerResp, MICS_AccountRegister, MISC_AccountRegisterResp, MICS_AccountLogin, MISC_AccountLoginResp, MICS_Disconnect, MISC_DisconnectResp, MICS_AccountAuthenticate, MISC_AccountAuthenticateResp, MICS_TcpConnect, MISC_TcpConnectResp, MICS_AccountGetRoleList, MISC_AccountGetRoleListResp, MICS_CreateRole, MISC_CreateRoleResp, MICS_RoleInfo, MISC_RoleInfoResp, MICS_NewRoleInfo, MISC_NewRoleInfoResp, MICS_Reconnect, MISC_ReconnectResp, MICS_ServerHeart, MISC_ServerHeartResp, MICS_TankUpgrade, MISC_TankUpgradeResp, MICS_TankStrengthen, MISC_TankStrengthenResp, MICS_TankUpgradesStar, MISC_TankUpgradesStarResp, MICS_TankChangeEquipment, MISC_TankChangeEquipmentResp, MICS_HttpCheck, MISC_HttpCheckResp, MICS_EquipmentRecast, MISC_EquipmentRecastResp, MICS_EquipmentRefin, MISC_EquipmentRefinResp, MICS_EquipmentRollback, MISC_EquipmentRollbackResp, MICS_EquipmentInherit, MISC_EquipmentInheritResp, MICS_GetLegionInfo, MISC_GetLegionInfoResp, MICS_GetLegionMemberInfoList, MISC_GetLegionMemberInfoListResp, MICS_GetLegionLog, MISC_GetLegionLogResp, MICS_RecommendLegionList, MISC_RecommendLegionListResp, MICS_RankingLegionList, MISC_RankingLegionListResp, MICS_CreateLegion, MISC_CreateLegionResp, MICS_UpgradeLegion, MISC_UpgradeLegionResp, MICS_LeaveLegion, MISC_LeaveLegionResp, MICS_TransferLegion, MISC_TransferLegionResp, MICS_DelateLegionLeader, MISC_DelateLegionLeaderResp, MICS_ApplyJoinLegion, MISC_ApplyJoinLegionResp, MICS_ReplyApplyJoinLegion, MISC_ReplyApplyJoinLegionResp, MICS_InviteJoinLegion, MISC_InviteJoinLegionResp, MICS_ReplyInvitation, MISC_ReplyInvitationResp, MICS_DonateGoods, MISC_DonateGoodsResp, MICS_SendChatMessage, MISC_SendChatMessageResp, MICS_GainWelfare, MISC_GainWelfareResp, MICS_GainSupply, MISC_GainSupplyResp, MICS_BuyLegionGoods, MISC_BuyLegionGoodsResp, MICS_RemoveMember, MISC_RemoveMemberResp, MICS_PermissionManage, MISC_PermissionManageResp, 
     };
     
     public static MessageId valueOf(
@@ -338,7 +362,7 @@ public final class MessageIdProto {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\017MessageId.proto*\206\022\n\tMessageId\022\017\n\nMICS_" +
+      "\n\017MessageId.proto*\352\023\n\tMessageId\022\017\n\nMICS_" +
       "Test1\020\351\007\022\023\n\016MISC_Test1Resp\020\352\007\022\026\n\022MICS_Ge" +
       "tServerList\020\001\022\032\n\026MISC_GetServerListResp\020" +
       "\002\022\023\n\017MIVO_ServerInfo\020\003\022\016\n\nMIVO_Error\020\004\022\025" +
@@ -363,41 +387,47 @@ public final class MessageIdProto {
       "\020#\022\030\n\024MISC_TankUpgradeResp\020$\022\027\n\023MICS_Tan" +
       "kStrengthen\020%\022\033\n\027MISC_TankStrengthenResp" +
       "\020&\022\031\n\025MICS_TankUpgradesStar\020\'\022\035\n\031MISC_Ta" +
-      "nkUpgradesStarResp\020(\022\022\n\016MICS_HttpCheck\020)" +
-      "\022\026\n\022MISC_HttpCheckResp\020*\022\034\n\030MICS_TankCha" +
-      "ngeEquipment\020+\022 \n\034MISC_TankChangeEquipme" +
-      "ntResp\020,\022\027\n\022MICS_GetLegionInfo\020\365N\022\033\n\026MIS" +
-      "C_GetLegionInfoResp\020\366N\022!\n\034MICS_GetLegion",
-      "MemberInfoList\020\367N\022%\n MISC_GetLegionMembe" +
-      "rInfoListResp\020\370N\022\026\n\021MICS_GetLegionLog\020\371N" +
-      "\022\032\n\025MISC_GetLegionLogResp\020\372N\022\035\n\030MICS_Rec" +
-      "ommendLegionList\020\373N\022!\n\034MISC_RecommendLeg" +
-      "ionListResp\020\374N\022\033\n\026MICS_RankingLegionList" +
-      "\020\375N\022\037\n\032MISC_RankingLegionListResp\020\376N\022\026\n\021" +
-      "MICS_CreateLegion\020\377N\022\032\n\025MISC_CreateLegio" +
-      "nResp\020\200O\022\027\n\022MICS_UpgradeLegion\020\201O\022\033\n\026MIS" +
-      "C_UpgradeLegionResp\020\202O\022\025\n\020MICS_LeaveLegi" +
-      "on\020\203O\022\031\n\024MISC_LeaveLegionResp\020\204O\022\030\n\023MICS",
-      "_TransferLegion\020\205O\022\034\n\027MISC_TransferLegio" +
-      "nResp\020\206O\022\034\n\027MICS_DelateLegionLeader\020\207O\022 " +
-      "\n\033MISC_DelateLegionLeaderResp\020\210O\022\031\n\024MICS" +
-      "_ApplyJoinLegion\020\211O\022\035\n\030MISC_ApplyJoinLeg" +
-      "ionResp\020\212O\022\036\n\031MICS_ReplyApplyJoinLegion\020" +
-      "\213O\022\"\n\035MISC_ReplyApplyJoinLegionResp\020\214O\022\032" +
-      "\n\025MICS_InviteJoinLegion\020\215O\022\036\n\031MISC_Invit" +
-      "eJoinLegionResp\020\216O\022\031\n\024MICS_ReplyInvitati" +
-      "on\020\217O\022\035\n\030MISC_ReplyInvitationResp\020\220O\022\025\n\020" +
-      "MICS_DonateGoods\020\221O\022\031\n\024MISC_DonateGoodsR",
-      "esp\020\222O\022\031\n\024MICS_SendChatMessage\020\223O\022\035\n\030MIS" +
-      "C_SendChatMessageResp\020\224O\022\025\n\020MICS_GainWel" +
-      "fare\020\225O\022\031\n\024MISC_GainWelfareResp\020\226O\022\024\n\017MI" +
-      "CS_GainSupply\020\227O\022\030\n\023MISC_GainSupplyResp\020" +
-      "\230O\022\030\n\023MICS_BuyLegionGoods\020\231O\022\034\n\027MISC_Buy" +
-      "LegionGoodsResp\020\232O\022\026\n\021MICS_RemoveMember\020" +
-      "\233O\022\032\n\025MISC_RemoveMemberResp\020\234O\022\032\n\025MICS_P" +
-      "ermissionManage\020\235O\022\036\n\031MISC_PermissionMan" +
-      "ageResp\020\236OB6\n$com.fanxing.server.io.prot" +
-      "o.protocolB\016MessageIdProto"
+      "nkUpgradesStarResp\020(\022\034\n\030MICS_TankChangeE" +
+      "quipment\020+\022 \n\034MISC_TankChangeEquipmentRe" +
+      "sp\020,\022\022\n\016MICS_HttpCheck\020)\022\026\n\022MISC_HttpChe" +
+      "ckResp\020*\022\030\n\024MICS_EquipmentRecast\020-\022\034\n\030MI" +
+      "SC_EquipmentRecastResp\020.\022\027\n\023MICS_Equipme",
+      "ntRefin\020/\022\033\n\027MISC_EquipmentRefinResp\0200\022\032" +
+      "\n\026MICS_EquipmentRollback\0201\022\036\n\032MISC_Equip" +
+      "mentRollbackResp\0202\022\031\n\025MICS_EquipmentInhe" +
+      "rit\0203\022\035\n\031MISC_EquipmentInheritResp\0204\022\027\n\022" +
+      "MICS_GetLegionInfo\020\365N\022\033\n\026MISC_GetLegionI" +
+      "nfoResp\020\366N\022!\n\034MICS_GetLegionMemberInfoLi" +
+      "st\020\367N\022%\n MISC_GetLegionMemberInfoListRes" +
+      "p\020\370N\022\026\n\021MICS_GetLegionLog\020\371N\022\032\n\025MISC_Get" +
+      "LegionLogResp\020\372N\022\035\n\030MICS_RecommendLegion" +
+      "List\020\373N\022!\n\034MISC_RecommendLegionListResp\020",
+      "\374N\022\033\n\026MICS_RankingLegionList\020\375N\022\037\n\032MISC_" +
+      "RankingLegionListResp\020\376N\022\026\n\021MICS_CreateL" +
+      "egion\020\377N\022\032\n\025MISC_CreateLegionResp\020\200O\022\027\n\022" +
+      "MICS_UpgradeLegion\020\201O\022\033\n\026MISC_UpgradeLeg" +
+      "ionResp\020\202O\022\025\n\020MICS_LeaveLegion\020\203O\022\031\n\024MIS" +
+      "C_LeaveLegionResp\020\204O\022\030\n\023MICS_TransferLeg" +
+      "ion\020\205O\022\034\n\027MISC_TransferLegionResp\020\206O\022\034\n\027" +
+      "MICS_DelateLegionLeader\020\207O\022 \n\033MISC_Delat" +
+      "eLegionLeaderResp\020\210O\022\031\n\024MICS_ApplyJoinLe" +
+      "gion\020\211O\022\035\n\030MISC_ApplyJoinLegionResp\020\212O\022\036",
+      "\n\031MICS_ReplyApplyJoinLegion\020\213O\022\"\n\035MISC_R" +
+      "eplyApplyJoinLegionResp\020\214O\022\032\n\025MICS_Invit" +
+      "eJoinLegion\020\215O\022\036\n\031MISC_InviteJoinLegionR" +
+      "esp\020\216O\022\031\n\024MICS_ReplyInvitation\020\217O\022\035\n\030MIS" +
+      "C_ReplyInvitationResp\020\220O\022\025\n\020MICS_DonateG" +
+      "oods\020\221O\022\031\n\024MISC_DonateGoodsResp\020\222O\022\031\n\024MI" +
+      "CS_SendChatMessage\020\223O\022\035\n\030MISC_SendChatMe" +
+      "ssageResp\020\224O\022\025\n\020MICS_GainWelfare\020\225O\022\031\n\024M" +
+      "ISC_GainWelfareResp\020\226O\022\024\n\017MICS_GainSuppl" +
+      "y\020\227O\022\030\n\023MISC_GainSupplyResp\020\230O\022\030\n\023MICS_B",
+      "uyLegionGoods\020\231O\022\034\n\027MISC_BuyLegionGoodsR" +
+      "esp\020\232O\022\026\n\021MICS_RemoveMember\020\233O\022\032\n\025MISC_R" +
+      "emoveMemberResp\020\234O\022\032\n\025MICS_PermissionMan" +
+      "age\020\235O\022\036\n\031MISC_PermissionManageResp\020\236OB6" +
+      "\n$com.fanxing.server.io.proto.protocolB\016" +
+      "MessageIdProto"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
