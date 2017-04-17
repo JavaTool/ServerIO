@@ -1,0 +1,42 @@
+package com.fanxing.server.sequence.impl;
+
+import java.util.Map;
+
+import com.fanxing.server.cache.ICache;
+import com.fanxing.server.sequence.IInstanceIdMaker;
+import com.fanxing.server.sequence.IInstanceIdManager;
+import com.google.common.collect.Maps;
+
+/**
+ * Redis-id管理器
+ * @author	fuhuiyuan
+ */
+public class RedisIdManager implements IInstanceIdManager {
+	
+	/**id生成器集合*/
+	protected Map<String, IInstanceIdMaker> idMakers;
+	
+	protected ICache<String, String, Integer> cache;
+
+	public RedisIdManager(ICache<String, String, Integer> cache) {
+		this.cache = cache;
+		idMakers = Maps.newHashMap();
+	}
+
+	@Override
+	public void create(String name, int baseValue) {
+		if (!idMakers.containsKey(name)) {
+			idMakers.put(name, new RedisIdMaker(name, cache, baseValue));
+		}
+	}
+
+	@Override
+	public int next(String name) {
+		if (idMakers.containsKey(name)) {
+			return idMakers.get(name).nextInstanceId();
+		} else {
+			throw new NullPointerException("Do not have " + name + " id maker.");
+		}
+	}
+
+}
