@@ -8,30 +8,33 @@ import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tool.server.io.INetServer;
 import org.tool.server.shutdown.MakeKillShutdownExecutor;
 
 /**
  * Jetty服务器
  * @author 	fuhuiyuan
  */
-public class JettyServer {
+public final class JettyServer implements INetServer {
 	
-	protected static final Logger log = LoggerFactory.getLogger(JettyServer.class);
+	private static final Logger log = LoggerFactory.getLogger(JettyServer.class);
 	
-	/**
-	 * 启动服务器
-	 * @param 	jettyConfig
-	 * 			Jetty配置加载对象
-	 * @throws 	Exception
-	 */
-	public void start(IJettyConfig jettyConfig) throws Exception {
+	private final IJettyConfig jettyConfig;
+	
+	private Server server;
+	
+	public JettyServer(IJettyConfig jettyConfig) {
+		this.jettyConfig = jettyConfig;
+	}
+	
+	@Override
+	public void bind() throws Exception {
 		DOMConfigurator.configureAndWatch(jettyConfig.getConfigPath());
 		new MakeKillShutdownExecutor().makeKill();
 		// 初始化配置
 		jettyConfig.init();
 		// 创建连接器
-		QueuedThreadPool threadPool = new QueuedThreadPool(jettyConfig.getThreadPoolSize());
-		Server server = new Server(threadPool);
+		server = new Server(new QueuedThreadPool(jettyConfig.getThreadPoolSize()));
 		ServerConnector serverConnector = new ServerConnector(server);
 		serverConnector.setPort(jettyConfig.getPort());
 		Connector[] connectors = {serverConnector};
@@ -48,8 +51,23 @@ public class JettyServer {
 		// 线程启动
 		server.setHandler(context);
 		server.start();
-		log.info("JettyServer start.");
+		log.info("JettyServer [{}] start.", jettyConfig.getContextPath());
 		server.join();
+	}
+
+	@Override
+	public void shutdown() {
+		try {
+			server.stop();
+			log.info("JettyServer [{}] shutdown.", jettyConfig.getContextPath());
+		} catch (Exception e) {
+			log.error("", e);
+		}
+	}
+
+	@Override
+	public int getPort() {
+		return jettyConfig.getPort();
 	}
 
 }
