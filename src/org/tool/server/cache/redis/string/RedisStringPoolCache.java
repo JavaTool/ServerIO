@@ -10,7 +10,7 @@ import org.tool.server.cache.IKVCache;
 import org.tool.server.cache.redis.IJedisReources;
 import org.tool.server.cache.redis.RedisPoolCache;
 import org.tool.server.coder.ICoder;
-import org.tool.server.coder.string.StringCodes;
+import org.tool.server.coder.string.StringCoders;
 
 import redis.clients.jedis.Jedis;
 import redis.clients.jedis.Transaction;
@@ -27,11 +27,11 @@ public class RedisStringPoolCache extends RedisPoolCache<String> {
 				@SuppressWarnings("unchecked")
 				Class<V> clz = (Class<V>) v.getClass();
 				if (Integer.class.equals(clz)) {
-					return StringCodes.createIntStringCoder().code((Integer) v);
+					return StringCoders.createIntStringCoder().code((Integer) v);
 				} else if (Date.class.equals(clz)) {
-					return StringCodes.createDateStringCoder().code((Date) v);
+					return StringCoders.createDateStringCoder().code((Date) v);
 				} else if (String.class.equals(clz)) {
-					return StringCodes.createStringStringCoder().code((String) v);
+					return StringCoders.createStringStringCoder().code((String) v);
 				} else {
 					throw new Exception("Unsupport serializa class " + clz);
 				}
@@ -45,11 +45,11 @@ public class RedisStringPoolCache extends RedisPoolCache<String> {
 				return null;
 			} else {
 				if (Integer.class.equals(clz)) {
-					return (V) StringCodes.createIntStringCoder().decode(t);
+					return (V) StringCoders.createIntStringCoder().decode(t);
 				} else if (Date.class.equals(clz)) {
-					return (V) StringCodes.createDateStringCoder().decode(t);
+					return (V) StringCoders.createDateStringCoder().decode(t);
 				} else if (String.class.equals(clz)) {
-					return (V) StringCodes.createStringStringCoder().decode(t);
+					return (V) StringCoders.createStringStringCoder().decode(t);
 				} else {
 					throw new Exception("Unsupport serializa class " + clz);
 				}

@@ -5,12 +5,12 @@ import java.util.Map;
 
 import com.google.common.collect.Maps;
 
-public final class StringCodes {
+public final class StringCoders {
 	
 	@SuppressWarnings("rawtypes")
 	private static final Map<Class, IStringCoder> map = Maps.newConcurrentMap();
 	
-	private StringCodes() {}
+	private StringCoders() {}
 	
 	@SuppressWarnings("unchecked")
 	public static IStringCoder<Date> createDateStringCoder() {
