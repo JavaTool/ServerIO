@@ -22,24 +22,24 @@ public class JSUtil {
 
 	    //从上下文引擎中取值
 	    String msg = (String) engine.get("msg");
-	    String name = (String) engine.get("name");
-	    String[] hb = (String[]) engine.get("hobbies");
+//	    String name = (String) engine.get("name");
+//	    String[] hb = (String[]) engine.get("hobbies");
 	    System.out.println(msg);
 //	    System.out.println(name + ":" + hb[0]);
 
 	    //定义数学函数
 	    engine.eval("function add (a, b, c, d) {e = a + b * c * d; return e; }");
 	    //取得调用接口
-	    Invocable jsInvoke = (Invocable) engine;
+//	    Invocable jsInvoke = (Invocable) engine;
 	    //定义加法函数
 	    TimeOutputer timeOutputer = new TimeOutputer();
 	    timeOutputer.timing();
 	    for (int i = 0;i < 10;i++) {
-	    	Object result1 = jsInvoke.invokeFunction("add", i, i, i, i);
+//	    	Object result1 = jsInvoke.invokeFunction("add", i, i, i, i);
 //	    System.out.println(result1);
 	    	timeOutputer.timing("js " + i);
 	    }
-	    int re = 10 + 5 * 3 * 4;
+//	    int re = 10 + 5 * 3 * 4;
 	    timeOutputer.timing("java");
 	    timeOutputer.outputAll();
 
