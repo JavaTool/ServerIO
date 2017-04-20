@@ -139,8 +139,12 @@ public class ProtoHandler extends IOC implements IContentHandler {
 		}
 
 		@Override
-		public void send(IMessage message) throws Exception {
-			content.getSender().send(message.toByteArray(), content.getSerial(), message.getMessageId(), 0);
+		public void send(IMessage message) {
+			try {
+				content.getSender().send(message.toByteArray(), content.getSerial(), message.getMessageId(), 0);
+			} catch (Exception e) {
+				ProtoHandler.log.error("", e);
+			}
 		}
 
 		@Override
