@@ -62,7 +62,7 @@ public class ProtoHandler extends IOC implements IContentHandler {
 	}
 
 	private IMessage createErrorResponse(IContent content, String error) throws Exception {
-		return errorHandler.createErrorResponse(new RedirectRequest(content), error);
+		return errorHandler.createErrorResponse(content, error);
 	}
 	
 	@Override
