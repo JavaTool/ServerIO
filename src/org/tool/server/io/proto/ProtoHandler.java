@@ -1,8 +1,5 @@
 package org.tool.server.io.proto;
 
-import static java.lang.System.currentTimeMillis;
-
-import java.lang.reflect.Constructor;
 import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Map;
@@ -29,13 +26,11 @@ public class ProtoHandler extends IOC implements IContentHandler {
 	
 	private static final String METHOD_HEAD = "process";
 	
-	private static final String REQUEST_HEAD = "MICS_";
+	private static final String REQUEST_HEAD = "MI_CS_";
 	
 	private final IMessageIdTransform messageIdTransform;
 	
 	private final String noProcessorError;
-
-	private int longTime;
 	
 	private Map<Integer, ProcessorMethod> methods;
 	
@@ -52,32 +47,22 @@ public class ProtoHandler extends IOC implements IContentHandler {
 
 	@Override
 	public void handle(IContent content) throws Exception {
-		long time = currentTimeMillis();
 		int messageId = content.getMessageId();
-		Response response = methods.containsKey(messageId) ? methods.get(messageId).invoke(content) : createNoProcessorResponse(content);
-		
-		time = currentTimeMillis() - time;
-		String sessionId = content.getSessionId();
-		if (time > longTime) {
-			log.warn("Too long time {} ms on {}, sessionId={}", time + "/" + longTime, messageId, sessionId);
+		if (methods.containsKey(messageId)) {
+			methods.get(messageId).invoke(content);
 		} else {
-			log.info("Use time {} ms on {}, sessionId={}", time, messageId, sessionId);
+			IMessage error = createNoProcessorResponse(content);
+			content.getSender().send(error.toByteArray(), 0, error.getMessageId(), 0);
 		}
-
-		response.build(time, content.getSerial());
 	}
 
-	private Response createNoProcessorResponse(IContent content) throws Exception {
+	private IMessage createNoProcessorResponse(IContent content) throws Exception {
 		log.error("NoProcessor : {}.", content.getMessageId());
 		return createErrorResponse(content, noProcessorError);
 	}
 
-	private Response createErrorResponse(IContent content, String error) throws Exception {
+	private IMessage createErrorResponse(IContent content, String error) throws Exception {
 		return errorHandler.createErrorResponse(new RedirectRequest(content), error);
-	}
-
-	public void setLongTime(int longTime) {
-		this.longTime = longTime;
 	}
 	
 	@Override
@@ -121,30 +106,25 @@ public class ProtoHandler extends IOC implements IContentHandler {
 		
 		private final Method method;
 		
-		private final Constructor<Request> requestConstructor;
+		private final Method fromMethod;
 		
-		private final Constructor<Response> responseConstructor;
-		
-		@SuppressWarnings("unchecked")
 		public ProcessorMethod(Object processor, Method method) throws Exception {
 			this.processor = processor;
 			this.method = method;
 			Class<?>[] types = method.getParameterTypes();
-			requestConstructor = (Constructor<Request>) types[0].getConstructor(IContent.class);
-			responseConstructor = (Constructor<Response>) types[1].getConstructor(Request.class);
+			fromMethod = Class.forName(types[0].getName().substring(1)).getMethod("from", byte[].class);
 		}
 		
-		public Response invoke(IContent content) throws Exception {
+		public void invoke(IContent content) throws Exception {
 			try {
-				Request request = requestConstructor.newInstance(content);
-				Response response = responseConstructor.newInstance(request);
-				method.invoke(processor, request, response);
-				return response;
+				IMessage request = (IMessage) fromMethod.invoke(null, content.getDatas());
+				method.invoke(processor, request, content.getSender());
 			} catch (Exception e) {
 				log.error("", e);
 				String error = e.getCause() == null ? null : e.getCause().getMessage();
 				error = error == null || error.length() == 0 ? "Unknow exception." : error;
-				return createErrorResponse(content, error);
+				IMessage response = createErrorResponse(content, error);
+				content.getSender().send(response.toByteArray(), 0, response.getMessageId(), 0);
 			}
 		}
 		
