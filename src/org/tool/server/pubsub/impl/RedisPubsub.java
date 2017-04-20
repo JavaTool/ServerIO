@@ -94,4 +94,9 @@ public class RedisPubsub implements IPubsub<ISubscribe> {
 		
 	}
 
+	@Override
+	public void unsubscribe(ISubscribe subscribe, String... channel) {
+		throw new UnsupportedOperationException();
+	}
+
 }

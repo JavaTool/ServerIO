@@ -49,4 +49,12 @@ public class EventBusPubsub implements IPubsub<Object> {
 		asyncEventBus.register(subscribe);
 	}
 
+	@Override
+	public void unsubscribe(Object subscribe, String... channel) {
+		if(channel == null || channel.length == 0 || !CHANNEL_ASYNC_OLNY.equals(channel[0])){
+			eventBus.unregister(subscribe);
+		}
+		asyncEventBus.unregister(subscribe);
+	}
+
 }
