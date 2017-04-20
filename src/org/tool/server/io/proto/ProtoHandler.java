@@ -118,7 +118,7 @@ public class ProtoHandler extends IOC implements IContentHandler {
 		public void invoke(IContent content) throws Exception {
 			try {
 				IMessage request = (IMessage) fromMethod.invoke(null, content.getDatas());
-				method.invoke(processor, request, content.getSender());
+				method.invoke(processor, request, new MessageSender(content));
 			} catch (Exception e) {
 				log.error("", e);
 				String error = e.getCause() == null ? null : e.getCause().getMessage();
@@ -126,6 +126,26 @@ public class ProtoHandler extends IOC implements IContentHandler {
 				IMessage response = createErrorResponse(content, error);
 				content.getSender().send(response.toByteArray(), 0, response.getMessageId(), 0);
 			}
+		}
+		
+	}
+	
+	private static class MessageSender implements IMessageSender {
+		
+		private final IContent content;
+		
+		public MessageSender(IContent content) {
+			this.content = content;
+		}
+
+		@Override
+		public void send(IMessage message) throws Exception {
+			content.getSender().send(message.toByteArray(), content.getSerial(), message.getMessageId(), 0);
+		}
+
+		@Override
+		public String getSessionId() {
+			return content.getSessionId();
 		}
 		
 	}
