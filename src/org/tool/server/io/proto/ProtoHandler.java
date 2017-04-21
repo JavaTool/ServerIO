@@ -112,13 +112,17 @@ public class ProtoHandler extends IOC implements IContentHandler {
 			this.processor = processor;
 			this.method = method;
 			Class<?>[] types = method.getParameterTypes();
-			fromMethod = Class.forName(types[0].getName().substring(1)).getMethod("from", byte[].class);
+			fromMethod = types.length == 1 ? null : Class.forName(types[0].getName().substring(1)).getMethod("from", byte[].class);
 		}
 		
 		public void invoke(IContent content) throws Exception {
 			try {
-				IMessage request = (IMessage) fromMethod.invoke(null, content.getDatas());
-				method.invoke(processor, request, new MessageSender(content));
+				if (fromMethod == null) {
+					method.invoke(processor, new MessageSender(content));
+				} else {
+					IMessage request = (IMessage) fromMethod.invoke(null, content.getDatas());
+					method.invoke(processor, request, new MessageSender(content));
+				}
 			} catch (Exception e) {
 				log.error("", e);
 				String error = e.getCause() == null ? null : e.getCause().getMessage();
