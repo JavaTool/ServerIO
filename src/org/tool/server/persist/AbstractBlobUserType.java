@@ -8,8 +8,12 @@ import java.sql.SQLException;
 import org.hibernate.HibernateException;
 import org.hibernate.engine.spi.SessionImplementor;
 import org.hibernate.type.StandardBasicTypes;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class AbstractBlobUserType implements BlobUserType {
+	
+	protected static final Logger log = LoggerFactory.getLogger(AbstractBlobUserType.class);
 	
 	private static final int[] SQL_TYPES = {StandardBasicTypes.BINARY.sqlType()};
 

@@ -136,6 +136,10 @@ public class ProtoHandler extends IOC implements IContentHandler {
 	
 	private static class MessageSender implements IMessageSender {
 		
+		private static final Map<Integer, IMessage> EMPTY_MESSAGES = Maps.newConcurrentMap();
+		
+		private static final byte[] EMPTY_DATAS = new byte[0];
+		
 		private final IContent content;
 		
 		public MessageSender(IContent content) {
@@ -154,6 +158,33 @@ public class ProtoHandler extends IOC implements IContentHandler {
 		@Override
 		public String getSessionId() {
 			return content.getSessionId();
+		}
+
+		@Override
+		public void send(final int messageid) {
+			IMessage message = EMPTY_MESSAGES.get(messageid);
+			if (message == null) {
+				message = new IMessage() {
+					
+					@Override
+					public byte[] toByteArray() {
+						return EMPTY_DATAS;
+					}
+					
+					@Override
+					public int getMessageId() {
+						return messageid;
+					}
+					
+				};
+				EMPTY_MESSAGES.put(messageid, message);
+			}
+			send(message);
+		}
+
+		@Override
+		public <X> X getAttribute(String key, Class<X> clz) {
+			return content.getSender().getAttribute(key, clz);
 		}
 		
 	}
