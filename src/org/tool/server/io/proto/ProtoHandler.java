@@ -186,6 +186,11 @@ public class ProtoHandler extends IOC implements IContentHandler {
 		public <X> X getAttribute(String key, Class<X> clz) {
 			return content.getSender().getAttribute(key, clz);
 		}
+
+		@Override
+		public <X, Y extends X> void setAttribute(String key, Class<X> clz, Y value) {
+			content.getSender().setAttribute(key, clz, value);
+		}
 		
 	}
 
