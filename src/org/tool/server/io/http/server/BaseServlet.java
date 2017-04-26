@@ -1,5 +1,6 @@
 package org.tool.server.io.http.server;
 
+import static com.alibaba.fastjson.JSON.parseObject;
 import static com.google.common.collect.Lists.asList;
 import static com.google.common.collect.Lists.newLinkedList;
 import static org.tool.server.io.IOParam.CODE_ERROR;
@@ -117,6 +118,10 @@ public abstract class BaseServlet extends HttpServlet {
 	protected static <T> T readObject(HttpServletRequest request) throws Exception {
 		byte[] data = getRequestProtoContent(request);
 		return read(data);
+	}
+	
+	protected static JSONObject readJson(HttpServletRequest request) throws Exception {
+		return parseObject(new String(getRequestProtoContent(request), "utf-8"));
 	}
 	
 	protected static interface Work {
