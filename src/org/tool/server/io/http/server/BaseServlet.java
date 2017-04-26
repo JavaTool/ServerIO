@@ -27,7 +27,7 @@ import org.tool.server.utils.Services;
 import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.Lists;
 
-public class BaseServlet extends HttpServlet {
+public abstract class BaseServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 	
