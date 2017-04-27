@@ -124,6 +124,10 @@ public abstract class BaseServlet extends HttpServlet {
 		return parseObject(new String(getRequestProtoContent(request), "utf-8"));
 	}
 	
+	protected static <T> T readJson(HttpServletRequest request, Class<T> clz) throws Exception {
+		return parseObject(new String(getRequestProtoContent(request), "utf-8"), clz);
+	}
+	
 	protected static interface Work {
 		
 		List<byte[]> work(HttpServletRequest req, HttpServletResponse resp, JSONObject jsonObject) throws Exception;
