@@ -13,8 +13,8 @@ public class Account implements IAuthenticateAccount, Serializable {
 	private String name;
 	/**帐号密码*/
 	private String password;
-	/**元宝*/
-	private int imoney;
+	/**货币*/
+	private int currency;
 	/**帐号id*/
 	private int id;
 	/**帐号邮箱*/
@@ -40,14 +40,6 @@ public class Account implements IAuthenticateAccount, Serializable {
 
 	public void setPassword(String password) {
 		this.password = password;
-	}
-
-	public int getImoney() {
-		return imoney;
-	}
-
-	public void setImoney(int imoney) {
-		this.imoney = imoney;
 	}
 
 	@Override
@@ -111,6 +103,14 @@ public class Account implements IAuthenticateAccount, Serializable {
 	@Override
 	public String getOpenId() {
 		return "";
+	}
+
+	public int getCurrency() {
+		return currency;
+	}
+
+	public void setCurrency(int currency) {
+		this.currency = currency;
 	}
 
 }
