@@ -1,7 +1,6 @@
 package org.tool.server.io.proto;
 
 import java.lang.reflect.Method;
-import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -12,13 +11,17 @@ import org.tool.server.ioc.IOC;
 import org.tool.server.ioc.IOCBean;
 
 import com.google.common.collect.ClassToInstanceMap;
-import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableListMultimap;
-import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
-import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+
+import gnu.trove.impl.unmodifiable.TUnmodifiableIntList;
+import gnu.trove.impl.unmodifiable.TUnmodifiableIntObjectMap;
+import gnu.trove.list.TIntList;
+import gnu.trove.list.linked.TIntLinkedList;
+import gnu.trove.map.TIntObjectMap;
+import gnu.trove.map.hash.TIntObjectHashMap;
 
 public class ProtoHandler extends IOC implements IContentHandler {
 
@@ -32,11 +35,11 @@ public class ProtoHandler extends IOC implements IContentHandler {
 	
 	private final String noProcessorError;
 	
-	private Map<Integer, ProcessorMethod> methods;
+	private TIntObjectMap<ProcessorMethod> methods;
 	
 	private ListMultimap<String, Integer> aloneMethods;
 	
-	private List<Integer> fireMessages;
+	private TIntList fireMessages;
 	
 	private IErrorHandler errorHandler;
 	
@@ -72,9 +75,9 @@ public class ProtoHandler extends IOC implements IContentHandler {
 	}
 	
 	public void loadMethods() throws Exception {
-		Map<Integer, ProcessorMethod> methods = Maps.newHashMap();
+		TIntObjectMap<ProcessorMethod> methods = new TIntObjectHashMap<>();
 		ListMultimap<String, Integer> aloneMethods = LinkedListMultimap.create();
-		List<Integer> fireMessages = Lists.newLinkedList();
+		TIntList fireMessages = new TIntLinkedList();
 		for (Class<?> clz: beans.keySet()) {
 			for (Method method : clz.getMethods()) {
 				String key = method.getName().replace(METHOD_HEAD, REQUEST_HEAD);
@@ -87,16 +90,16 @@ public class ProtoHandler extends IOC implements IContentHandler {
 				}
 			}
 		}
-		this.methods = ImmutableMap.copyOf(methods);
+		this.methods = new TUnmodifiableIntObjectMap<>(methods);
 		this.aloneMethods = ImmutableListMultimap.copyOf(aloneMethods);
-		this.fireMessages = ImmutableList.copyOf(fireMessages);
+		this.fireMessages = new TUnmodifiableIntList(fireMessages);
 	}
 
 	public <X, Y extends X> void addProcessor(Class<X> clz, Y processor) {
 		beans.put(clz, processor);
 	}
 	
-	public List<Integer> getFireMessages() {
+	public TIntList getFireMessages() {
 		return fireMessages;
 	}
 	

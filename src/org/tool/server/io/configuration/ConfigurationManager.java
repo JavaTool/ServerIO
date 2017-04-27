@@ -9,23 +9,29 @@ import org.tool.server.io.http.client.HttpConnectorFactory;
 import org.tool.server.io.http.client.IHttpConnector;
 
 import com.alibaba.fastjson.JSONObject;
+import com.google.common.collect.HashBasedTable;
 import com.google.common.collect.Maps;
+import com.google.common.collect.Table;
 
+/**
+ * 
+ * @author 	lisen
+ */
 public class ConfigurationManager implements IConfigurationManager {
 	
-	private final Map<String, Map<String,String>> configs;
+	private final Table<String, String, String> configs;
 	
 	private IConfigurationHolder configurationHolder;
 	
 	private static final String PREKEY = "Config_";
 	
 	protected ConfigurationManager() {
-		configs = Maps.newHashMap();
+		configs = HashBasedTable.create();
 	}
 	
 	@Override
 	public String getConfigValue(String configFileName, String key) {
-		Map<String, String> map = configs.get(configFileName);
+		Map<String, String> map = configs.row(configFileName);
 		return map != null ? map.get(key) : null;
 	}
 
@@ -36,33 +42,31 @@ public class ConfigurationManager implements IConfigurationManager {
 	}
 
 	@Override
-	public String getConfigurationValue(String key){
+	public String getConfigurationValue(String key) {
 		return configurationHolder!=null ? configurationHolder.getConfigurationValue(key) : null;
 	}
 
 	@Override
-	public String getConfigurationValue(String key, String defaultValue){
+	public String getConfigurationValue(String key, String defaultValue) {
 		return configurationHolder!=null ? configurationHolder.getConfigurationValue(key, defaultValue) : defaultValue;
 	}
 	
-	public static ConfigurationManager createConfigManager(int serverId, String address, List<String> configNames, IConfigurationHolder configuration) throws Exception{
+	public static ConfigurationManager createConfigManager(int serverId, String address, List<String> configNames, IConfigurationHolder configuration) throws Exception {
 		ConfigurationManager configManager = new ConfigurationManager();
 		configManager.configurationHolder = configuration;
 		IHttpConnector<JSONObject> connector = HttpConnectorFactory.createJSONObject();
 		connector.setUrl(address);
-		for(String config : configNames){
+		for (String config : configNames) {
 			Map<String, Object> params = Maps.newHashMap();
 			params.put(PARAM_SERVERID, serverId);
 			params.put(PARAM_CONFIG, config);
 			JSONObject jsonObject = connector.get(params);
-			if(jsonObject.getInteger(IOParam.RET_CODE) == IOParam.CODE_OK){
-				Map<String, String> values = Maps.newHashMap();
-				jsonObject.forEach((k,v)->{
-					if(k.startsWith(PREKEY)){
-						values.put(k, (String)v);
+			if (jsonObject.getInteger(IOParam.RET_CODE) == IOParam.CODE_OK) {
+				jsonObject.forEach((k,v) -> {
+					if (k.startsWith(PREKEY)) {
+						configManager.configs.put(config, k, (String)v);
 					}
 				});
-				configManager.configs.put(config, values);
 			}
 		}
 		return configManager;
