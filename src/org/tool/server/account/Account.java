@@ -2,6 +2,8 @@ package org.tool.server.account;
 
 import java.io.Serializable;
 
+import com.alibaba.fastjson.JSONObject;
+
 /**
  * 帐号信息
  * @author 	fuhuiyuan
@@ -25,6 +27,12 @@ public class Account implements IAuthenticateAccount, Serializable {
 	private String ip;
 	
 	private int lastServerId;
+	
+	private String appId;
+	
+	private String appKey;
+	
+	private String openId;
 
 	public String getName() {
 		return name;
@@ -61,7 +69,7 @@ public class Account implements IAuthenticateAccount, Serializable {
 
 	@Override
 	public String toString() {
-		return "id[" + getId() + "] name[" + getName() + "]";
+		return JSONObject.toJSONString(this);
 	}
 
 	public String getLoginKey() {
@@ -97,12 +105,12 @@ public class Account implements IAuthenticateAccount, Serializable {
 
 	@Override
 	public String getAppId() {
-		return "";
+		return appId;
 	}
 
 	@Override
 	public String getOpenId() {
-		return "";
+		return openId;
 	}
 
 	public int getCurrency() {
@@ -111,6 +119,22 @@ public class Account implements IAuthenticateAccount, Serializable {
 
 	public void setCurrency(int currency) {
 		this.currency = currency;
+	}
+
+	public void setAppId(String appId) {
+		this.appId = appId;
+	}
+
+	public String getAppKey() {
+		return appKey;
+	}
+
+	public void setAppKey(String appKey) {
+		this.appKey = appKey;
+	}
+
+	public void setOpenId(String openId) {
+		this.openId = openId;
 	}
 
 }
