@@ -40,8 +40,10 @@ public abstract class BaseServlet extends HttpServlet {
 	
 	protected static final String ENC = "utf-8";
 	
+	private static final String SERVICE_NAME = Services.class.getName();
+	
 	protected <X, Y extends X> Y getService(HttpServletRequest request, Class<X> clz) {
-		return ((Services) request.getServletContext().getAttribute(Services.class.getName())).getService(clz);
+		return ((Services) request.getServletContext().getAttribute(SERVICE_NAME)).getService(clz);
 	}
 	
 	protected void work(HttpServletRequest req, HttpServletResponse resp, Work work) throws ServletException, IOException {
