@@ -28,7 +28,7 @@ public class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> {
 	
 	protected static final AttributeKey<ISender> SENDER_KEY = AttributeKey.valueOf("SENDER_KEY");
 	
-	protected static final AttributeKey<String> SESSSION_ID_KEY = AttributeKey.valueOf(IContentFactory.SESSION_ID);
+	protected static final AttributeKey<String> SESSSION_ID_KEY = AttributeKey.valueOf(ISender.SESSION_ID);
 	
 	protected static final Logger log = LoggerFactory.getLogger(NettyTcpHandler.class);
 	/**消息处理器*/

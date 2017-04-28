@@ -11,11 +11,6 @@ import org.tool.server.anthenticate.IDataAnthenticate;
 public interface IContentFactory {
 	
 	/**
-	 * session id name.
-	 */
-	String SESSION_ID = "SESSION_ID";
-	
-	/**
 	 * To create a content from full params.
 	 * @param 	sessionId
 	 * 			Indicate a id of client who connect server.

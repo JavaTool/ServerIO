@@ -25,7 +25,7 @@ public final class MessageSender implements IMessageSender {
 
 	@Override
 	public String getSessionId() {
-		return sender.getAttribute(SESSION_ID, String.class);
+		return sender.getSessionId();
 	}
 
 	@Override

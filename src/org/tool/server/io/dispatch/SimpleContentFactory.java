@@ -45,7 +45,7 @@ public class SimpleContentFactory implements IContentFactory {
 		int messageId = dis.readShort();
 		byte[] datas = new byte[dis.available()];
 		dis.read(datas);
-		String sessionId = sender.getAttribute(SESSION_ID, String.class);
+		String sessionId = sender.getSessionId();
 		sessionId = sessionId == null ? "" : sessionId;
 		return createContent(ip, datas, sessionId, messageId, sender, serial);
 	}

@@ -11,6 +11,10 @@ import org.tool.server.io.NetType;
 public interface ISender {
 	
 	String FORMAT = "text/plain; charset=UTF-8; time={0}; messageid=";
+	/**
+	 * session id name.
+	 */
+	String SESSION_ID = "SESSION_ID";
 	
 	void send(byte[] datas, int serial, int messageId, long useTime) throws Exception;
 	
@@ -23,5 +27,9 @@ public interface ISender {
 	}
 	
 	NetType getNetType();
+	
+	String getIp();
+	
+	String getSessionId();
 
 }

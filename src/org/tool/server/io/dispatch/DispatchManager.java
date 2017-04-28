@@ -52,7 +52,7 @@ public class DispatchManager implements IDispatchManager {
 	}
 	
 	protected synchronized IDispatch fetch(byte[] datas, ISender sender) {
-		String key = sender.getAttribute(IContentHandler.SESSION_ID, String.class);
+		String key = sender.getSessionId();
 		IDispatch dispatch = dispatchs.get(key);
 		if (dispatch == null) {
 			Dispatch dis = new Dispatch(handler);

@@ -63,4 +63,15 @@ public class HttpResponseSender implements ISender {
 		return NetType.HTTP;
 	}
 
+	@Override
+	public String getIp() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String getSessionId() {
+		return getAttribute(SESSION_ID, String.class);
+	}
+
 }

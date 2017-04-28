@@ -75,4 +75,14 @@ public class NettyHttpSender implements ISender {
 		return NetType.HTTP;
 	}
 
+	@Override
+	public String getIp() {
+		return channel.remoteAddress().toString();
+	}
+
+	@Override
+	public String getSessionId() {
+		return getAttribute(SESSION_ID, String.class);
+	}
+
 }

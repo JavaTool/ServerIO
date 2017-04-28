@@ -65,4 +65,14 @@ public class NettyTcpSender implements ISender {
 		return NetType.TCP;
 	}
 
+	@Override
+	public String getIp() {
+		return channel.remoteAddress().toString();
+	}
+
+	@Override
+	public String getSessionId() {
+		return getAttribute(SESSION_ID, String.class);
+	}
+
 }

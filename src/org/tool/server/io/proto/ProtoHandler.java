@@ -60,6 +60,7 @@ public class ProtoHandler extends IOC implements IContentHandler {
 			// 解析
 			int serial = dis.readInt(); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
 			int messageId = dis.readShort();
+			log.info("Proto {} receive : [MessageId : {}] [SessionId : {}] [Ip : {}]", sender.getNetType(), messageId, sender.getSessionId(), sender.getIp());
 			byte[] datas = new byte[dis.available()];
 			dis.read(datas);
 			// 获取或创建消息发送器
