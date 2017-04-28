@@ -1,5 +1,6 @@
 package org.tool.server.io.netty.server.http;
 
+import java.io.ByteArrayOutputStream;
 import java.text.MessageFormat;
 import java.util.Date;
 import java.util.Map.Entry;
@@ -7,8 +8,6 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tool.server.io.dispatch.IContent;
-import org.tool.server.io.dispatch.IContentFactory;
 import org.tool.server.io.dispatch.IDispatchManager;
 import org.tool.server.io.dispatch.ISender;
 
@@ -42,13 +41,10 @@ public class NettyHttpHandler extends SimpleChannelInboundHandler<HttpObject> {
 	
 	private final IDispatchManager dispatchManager;
 	
-	private final IContentFactory nettyContentFactory;
-	
 	private final ChannelManager channelMangage;
 	
-	public NettyHttpHandler(IDispatchManager dispatchManager, IContentFactory nettyContentFactory, ChannelManager channelMangage) {
+	public NettyHttpHandler(IDispatchManager dispatchManager, ChannelManager channelMangage) {
 		this.dispatchManager = dispatchManager;
-		this.nettyContentFactory = nettyContentFactory;
 		this.channelMangage = channelMangage;
 	}
 	
@@ -118,12 +114,15 @@ public class NettyHttpHandler extends SimpleChannelInboundHandler<HttpObject> {
 		}
 	}
 	
-	private void readContent(Channel channel, NettyHttpSession httpSession, byte[] datas) {
-		String sessionId = httpSession.getId();
+	private void readContent(Channel channel, NettyHttpSession httpSession, byte[] datas) throws Exception {
+//		String sessionId = httpSession.getId();
 		int messageId = httpSession.getMessageId();
-		String ip = channel.remoteAddress().toString();
-		IContent content = nettyContentFactory.createContent(ip, datas, sessionId, messageId, httpSession.getSender(), 0);
-		dispatchManager.addDispatch(content);
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		baos.write(messageId);
+		baos.write(datas);
+//		String ip = channel.remoteAddress().toString();
+//		IContent content = nettyContentFactory.createContent(ip, datas, sessionId, messageId, httpSession.getSender(), 0);
+		dispatchManager.addDispatch(baos.toByteArray(), httpSession.getSender());
 	}
 
 	@Override

@@ -6,7 +6,6 @@ import java.util.concurrent.TimeUnit;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tool.server.io.INetServer;
-import org.tool.server.io.dispatch.IContentFactory;
 import org.tool.server.io.dispatch.IDispatchManager;
 import org.tool.server.io.netty.server.INettyServerConfig;
 import org.tool.server.shutdown.IShutdown;
@@ -32,8 +31,6 @@ public class NettyHttpServer implements INetServer, IShutdown {
 	
 	private final IDispatchManager dispatchManager;
 	
-	private final IContentFactory nettyContentFactory;
-	
 	private final int parentThreadNum;
 	
 	private final int childThreadNum;
@@ -56,7 +53,6 @@ public class NettyHttpServer implements INetServer, IShutdown {
 	
 	public NettyHttpServer(INettyServerConfig config) {
 		dispatchManager = config.getDispatchManager();
-		nettyContentFactory = config.getNettyContentFactory();
 		parentThreadNum = config.getParentThreadNum();
 		childThreadNum = config.getChildThreadNum();
 		soBacklog = config.getSoBacklog();
@@ -104,7 +100,7 @@ public class NettyHttpServer implements INetServer, IShutdown {
 	}
 	
 	protected SimpleChannelInboundHandler<HttpObject> createChannelHandler() {
-		return new NettyHttpHandler(dispatchManager, nettyContentFactory, channelMangage);
+		return new NettyHttpHandler(dispatchManager, channelMangage);
 	}
 
 	@Override

@@ -13,6 +13,7 @@ import com.google.common.util.concurrent.Service;
  * 默认的分配管理器
  * @author 	fuhuiyuan
  */
+@Deprecated
 public class DispatchManager implements IDispatchManager {
 	
 	/**分配器集合*/
@@ -39,25 +40,19 @@ public class DispatchManager implements IDispatchManager {
 	}
 
 	@Override
-	public void addDispatch(IContent content) {
-		IDispatch dispatch = fetch(content);
-		dispatch.addDispatch(content);
+	public void addDispatch(byte[] datas, ISender sender) {
+		IDispatch dispatch = fetch(datas, sender);
+		dispatch.addDispatch(datas, sender);
 	}
 
 	@Override
-	public void fireDispatch(IContent content) throws Exception {
-		IDispatch dispatch = fetch(content);
-		dispatch.fireDispatch(content);
+	public void fireDispatch(byte[] datas, ISender sender) throws Exception {
+		IDispatch dispatch = fetch(datas, sender);
+		dispatch.fireDispatch(datas, sender);
 	}
 	
-	/**
-	 * 获取一个分配器
-	 * @param 	content
-	 * 			消息内容
-	 * @return	分配器
-	 */
-	protected synchronized IDispatch fetch(IContent content) {
-		String key = content.getSessionId();
+	protected synchronized IDispatch fetch(byte[] datas, ISender sender) {
+		String key = sender.getAttribute(IContentHandler.SESSION_ID, String.class);
 		IDispatch dispatch = dispatchs.get(key);
 		if (dispatch == null) {
 			Dispatch dis = new Dispatch(handler);

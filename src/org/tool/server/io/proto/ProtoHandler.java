@@ -1,12 +1,18 @@
 package org.tool.server.io.proto;
 
+import static java.lang.System.currentTimeMillis;
+
+import java.io.ByteArrayInputStream;
+import java.io.DataInputStream;
 import java.lang.reflect.Method;
-import java.util.Map;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tool.server.io.dispatch.IContent;
 import org.tool.server.io.dispatch.IContentHandler;
+import org.tool.server.io.dispatch.ISender;
+import org.tool.server.io.message.IMessage;
+import org.tool.server.io.message.IMessageIdTransform;
+import org.tool.server.io.message.IMessageSender;
 import org.tool.server.ioc.IOC;
 import org.tool.server.ioc.IOCBean;
 
@@ -14,7 +20,6 @@ import com.google.common.collect.ClassToInstanceMap;
 import com.google.common.collect.ImmutableListMultimap;
 import com.google.common.collect.LinkedListMultimap;
 import com.google.common.collect.ListMultimap;
-import com.google.common.collect.Maps;
 
 import gnu.trove.impl.unmodifiable.TUnmodifiableIntList;
 import gnu.trove.impl.unmodifiable.TUnmodifiableIntObjectMap;
@@ -30,6 +35,8 @@ public class ProtoHandler extends IOC implements IContentHandler {
 	private static final String METHOD_HEAD = "process";
 	
 	private static final String REQUEST_HEAD = "MI_CS_";
+	
+	private static final String MESSAGE_SENDER_NAME = IMessageSender.class.getName();
 	
 	private final IMessageIdTransform messageIdTransform;
 	
@@ -49,23 +56,36 @@ public class ProtoHandler extends IOC implements IContentHandler {
 	}
 
 	@Override
-	public void handle(IContent content) throws Exception {
-		int messageId = content.getMessageId();
-		if (methods.containsKey(messageId)) {
-			methods.get(messageId).invoke(content);
-		} else {
-			IMessage error = createNoProcessorResponse(content);
-			content.getSender().send(error.toByteArray(), 0, error.getMessageId(), 0);
+	public void handle(byte[] bytes, ISender sender) throws Exception {
+		try (DataInputStream dis = new DataInputStream(new ByteArrayInputStream(bytes))) {
+			// 解析
+			int serial = dis.readInt(); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
+			int messageId = dis.readShort();
+			byte[] datas = new byte[dis.available()];
+			dis.read(datas);
+			// 获取或创建消息发送器
+			IMessageSender messageSender = sender.getAttribute(MESSAGE_SENDER_NAME, IMessageSender.class);
+			if (messageSender == null) {
+				messageSender = new MessageSender(sender);
+				sender.setAttribute(MESSAGE_SENDER_NAME, IMessageSender.class, messageSender);
+			}
+			// 处理消息
+			if (methods.containsKey(messageId)) {
+				methods.get(messageId).invoke(messageId, serial, datas, messageSender);
+			} else {
+				IMessage error = createNoProcessorResponse(messageId, serial);
+				messageSender.send(error);
+			}
 		}
 	}
 
-	private IMessage createNoProcessorResponse(IContent content) throws Exception {
-		log.error("NoProcessor : {}.", content.getMessageId());
-		return createErrorResponse(content, noProcessorError);
+	private IMessage createNoProcessorResponse(int messageId, int serial) throws Exception {
+		log.error("NoProcessor : {}.", messageId);
+		return createErrorResponse(messageId, serial, noProcessorError);
 	}
 
-	private IMessage createErrorResponse(IContent content, String error) throws Exception {
-		return errorHandler.createErrorResponse(content, error);
+	private IMessage createErrorResponse(int messageId, int serial, String error) throws Exception {
+		return errorHandler.createErrorResponse(messageId, serial, error);
 	}
 	
 	@Override
@@ -118,20 +138,20 @@ public class ProtoHandler extends IOC implements IContentHandler {
 			fromMethod = types.length == 1 ? null : Class.forName(types[0].getName().substring(1)).getMethod("from", byte[].class);
 		}
 		
-		public void invoke(IContent content) throws Exception {
+		public void invoke(int messageId, int serial, byte[] datas, IMessageSender sender) throws Exception {
 			try {
-				if (fromMethod == null) {
-					method.invoke(processor, new MessageSender(content));
-				} else {
-					IMessage request = (IMessage) fromMethod.invoke(null, content.getDatas());
-					method.invoke(processor, request, new MessageSender(content));
-				}
+//				if (fromMethod == null) {
+//					method.invoke(processor, serial, sender);
+//				} else {
+//					IMessage message = (IMessage) fromMethod.invoke(null, datas);
+//					method.invoke(processor, message, sender);
+//				}
+				method.invoke(processor, fromMethod == null ? serial : (IMessage) fromMethod.invoke(null, datas), sender);
 			} catch (Exception e) {
 				log.error("", e);
 				String error = e.getCause() == null ? null : e.getCause().getMessage();
 				error = error == null || error.length() == 0 ? "Unknow exception." : error;
-				IMessage response = createErrorResponse(content, error);
-				content.getSender().send(response.toByteArray(), 0, response.getMessageId(), 0);
+				sender.send(createErrorResponse(messageId, serial, error));
 			}
 		}
 		
@@ -139,60 +159,45 @@ public class ProtoHandler extends IOC implements IContentHandler {
 	
 	private static class MessageSender implements IMessageSender {
 		
-		private static final Map<Integer, IMessage> EMPTY_MESSAGES = Maps.newConcurrentMap();
-		
 		private static final byte[] EMPTY_DATAS = new byte[0];
 		
-		private final IContent content;
+		private final ISender sender;
 		
-		public MessageSender(IContent content) {
-			this.content = content;
+		public MessageSender(ISender sender) {
+			this.sender = sender;
 		}
 
 		@Override
 		public void send(IMessage message) {
+			send(message.toByteArray(), message.getSerial(), message.getMessageId(), message.getReceiveTime());
+		}
+
+		@Override
+		public String getSessionId() {
+			return sender.getAttribute(SESSION_ID, String.class);
+		}
+
+		@Override
+		public void send(int messageId, int serial, long receiveTime) {
+			send(EMPTY_DATAS, serial, messageId, receiveTime);
+		}
+		
+		private void send(byte[] datas, int serial, int messageId, long receiveTime) {
 			try {
-				content.getSender().send(message.toByteArray(), content.getSerial(), message.getMessageId(), 0);
+				sender.send(datas, serial, messageId, currentTimeMillis() - receiveTime);
 			} catch (Exception e) {
 				ProtoHandler.log.error("", e);
 			}
 		}
 
 		@Override
-		public String getSessionId() {
-			return content.getSessionId();
-		}
-
-		@Override
-		public void send(final int messageid) {
-			IMessage message = EMPTY_MESSAGES.get(messageid);
-			if (message == null) {
-				message = new IMessage() {
-					
-					@Override
-					public byte[] toByteArray() {
-						return EMPTY_DATAS;
-					}
-					
-					@Override
-					public int getMessageId() {
-						return messageid;
-					}
-					
-				};
-				EMPTY_MESSAGES.put(messageid, message);
-			}
-			send(message);
-		}
-
-		@Override
 		public <X> X getAttribute(String key, Class<X> clz) {
-			return content.getSender().getAttribute(key, clz);
+			return sender.getAttribute(key, clz);
 		}
 
 		@Override
 		public <X, Y extends X> void setAttribute(String key, Class<X> clz, Y value) {
-			content.getSender().setAttribute(key, clz, value);
+			sender.setAttribute(key, clz, value);
 		}
 		
 	}

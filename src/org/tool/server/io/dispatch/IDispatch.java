@@ -11,12 +11,12 @@ public interface IDispatch {
 	 * @param 	content
 	 * 			消息内容
 	 */
-	void addDispatch(IContent content);
+	void addDispatch(byte[] datas, ISender sender);
 	/**
 	 * 立即分配消息
 	 * @param 	content
 	 * 			消息内容
 	 */
-	void fireDispatch(IContent content) throws Exception;
+	void fireDispatch(byte[] datas, ISender sender) throws Exception;
 
 }

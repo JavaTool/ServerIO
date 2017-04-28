@@ -1,9 +1,9 @@
 package org.tool.server.io.proto;
 
-import org.tool.server.io.dispatch.IContent;
+import org.tool.server.io.message.IMessage;
 
 public interface IErrorHandler {
 	
-	IMessage createErrorResponse(IContent content, String error) throws Exception;
+	IMessage createErrorResponse(int messageId, int serial, String error) throws Exception;
 
 }

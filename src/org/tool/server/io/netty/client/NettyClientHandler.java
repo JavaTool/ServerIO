@@ -3,7 +3,6 @@ package org.tool.server.io.netty.client;
 import java.io.DataOutputStream;
 
 import org.tool.server.anthenticate.IDataAnthenticate;
-import org.tool.server.io.dispatch.IContent;
 import org.tool.server.io.dispatch.IContentFactory;
 import org.tool.server.io.dispatch.IContentHandler;
 import org.tool.server.io.netty.NettyTcpSender;
@@ -37,9 +36,9 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 		    Channel channel = ctx.channel();
 		    byte[] data = new byte[buf.readableBytes()];
 		    buf.readBytes(data);
-		    String ip = channel.remoteAddress().toString();
-		    IContent content = contentFactory.createContent(ip, data, new NettyTcpSender(channel, contentFactory.getDataAnthenticate()));
-		    contentHandler.handle(content);
+//		    String ip = channel.remoteAddress().toString();
+//		    IContent content = contentFactory.createContent(ip, data, new NettyTcpSender(channel, contentFactory.getDataAnthenticate()));
+		    contentHandler.handle(data, new NettyTcpSender(channel, contentFactory.getDataAnthenticate()));
 	    }
 	}
 	  

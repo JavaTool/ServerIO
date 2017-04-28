@@ -1,4 +1,4 @@
-package org.tool.server.io.proto;
+package org.tool.server.io.message;
 
 public interface IMessageIdTransform {
 	

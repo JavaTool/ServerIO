@@ -13,6 +13,7 @@ import com.google.common.util.concurrent.AbstractScheduledService;
  * 默认的消息分配器
  * @author 	fuhuiyuan
  */
+@Deprecated
 public class Dispatch extends AbstractScheduledService implements IDispatch {
 	
 	protected static final Logger log = LoggerFactory.getLogger(Dispatch.class);
@@ -33,19 +34,19 @@ public class Dispatch extends AbstractScheduledService implements IDispatch {
 	 */
 	protected void work() {
 		while (contents.size() > 0) {
-			fireDispatch(contents.poll());
+//			fireDispatch(contents.poll());
 		}
 	}
 
 	@Override
-	public void addDispatch(IContent content) {
-		contents.add(content);
+	public void addDispatch(byte[] datas, ISender sender) {
+//		contents.add(content);
 	}
 
 	@Override
-	public void fireDispatch(IContent content) {
+	public void fireDispatch(byte[] datas, ISender sender) {
 		try {
-			handler.handle(content);
+//			handler.handle(content);
 		} catch (Exception e) {
 			log.error("", e);
 		}

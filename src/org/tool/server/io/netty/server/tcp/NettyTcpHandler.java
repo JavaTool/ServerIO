@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.io.dispatch.Content;
-import org.tool.server.io.dispatch.IContent;
 import org.tool.server.io.dispatch.IContentFactory;
 import org.tool.server.io.dispatch.IDispatchManager;
 import org.tool.server.io.dispatch.ISender;
@@ -86,12 +85,12 @@ public class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> {
 	
 		    byte[] data = new byte[msg.readableBytes()];
 		    msg.readBytes(data);
-		    String ip = channel.remoteAddress().toString();
-			IContent content = contentFactory.createContent(ip, data, sender);
-			log.info("Netty tcp content : [MessageId : {}] [Cookie : {}] [Host : {}]", content.getMessageId(), content.getSessionId(), content.getIp());
-			if (content != null) {
-				dispatchManager.addDispatch(content);
-			}
+//		    String ip = channel.remoteAddress().toString();
+//			IContent content = contentFactory.createContent(ip, data, sender);
+//			log.info("Netty tcp receive : [MessageId : {}] [SessionId : {}] [Ip : {}]", content.getMessageId(), content.getSessionId(), ip);
+		    if (data.length > 0) {
+		    	dispatchManager.addDispatch(data, sender);
+		    }
 		}
 	}
 	

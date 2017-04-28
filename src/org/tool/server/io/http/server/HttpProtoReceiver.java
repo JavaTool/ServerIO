@@ -1,5 +1,6 @@
 package org.tool.server.io.http.server;
 
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
@@ -13,8 +14,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tool.server.anthenticate.DefaultEncrypt;
 import org.tool.server.anthenticate.IEncrypt;
-import org.tool.server.io.dispatch.Content;
-import org.tool.server.io.dispatch.IContent;
 import org.tool.server.io.dispatch.IContentHandler;
 import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.http.HttpStatus;
@@ -33,6 +32,8 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 	private static final String KEY = "MessageId";
 	
 	private static final IEncrypt ENCRYPT = new DefaultEncrypt();
+	
+	private static final String NAME = IContentHandler.class.getName();
 	
 	public static final String SESSION_IP = "sessionIp";
 
@@ -56,14 +57,14 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 		try {
 			int messageId = Integer.parseInt(req.getHeader(KEY));
 			byte[] decrypt = ENCRYPT.deEncrypt(HttpConnectUtil.getRequestProtoContent(req));
-			IContent content = new Content(getSessionId(req), messageId, ip, decrypt, sender, 0);
-			log.info("IP[{}]; Message id[{}]; Session[{}]", content.getIp(), content.getMessageId(), content.getSessionId());
-			IContentHandler contentHandler = (IContentHandler) req.getServletContext().getAttribute(IContentHandler.class.getName());
-			contentHandler.handle(content);
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			baos.write(messageId);
+			baos.write(decrypt);
+			log.info("Servlet http receive : [MessageId : {}] [SessionId : {}] [Ip : {}]", messageId, getSessionId(req), ip);
+			IContentHandler contentHandler = (IContentHandler) req.getServletContext().getAttribute(NAME);
+			contentHandler.handle(baos.toByteArray(), sender);
 		} catch (Exception e) {
 			error(e, response, os);
-//			os.flush();
-//			os.close();
 		}
 	}
 	
@@ -83,12 +84,6 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 	 */
 	private void error(Exception e, HttpServletResponse response, OutputStream os) throws IOException {
 		log.error("", e);
-//		VO_Error.Builder builder = VO_Error.newBuilder();
-//		builder.setErrorCode(0);
-//		builder.setErrorMsg("Unprocessor exception.");
-//		response.setContentType("text/plain; charset=UTF-8; " + KEY + "=" + MessageId.MIVO_Error.name());
-//		response.setStatus(HTTP_STATUS_SUCCESS);
-//		os.write(builder.build().toByteArray());
 	}
 	
 	/**
