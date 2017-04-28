@@ -1,7 +1,5 @@
 package org.tool.server.io.proto;
 
-import static java.lang.System.currentTimeMillis;
-
 import java.io.ByteArrayInputStream;
 import java.io.DataInputStream;
 import java.lang.reflect.Method;
@@ -13,6 +11,7 @@ import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.message.IMessage;
 import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.message.IMessageSender;
+import org.tool.server.io.message.MessageSender;
 import org.tool.server.ioc.IOC;
 import org.tool.server.ioc.IOCBean;
 
@@ -153,51 +152,6 @@ public class ProtoHandler extends IOC implements IContentHandler {
 				error = error == null || error.length() == 0 ? "Unknow exception." : error;
 				sender.send(createErrorResponse(messageId, serial, error));
 			}
-		}
-		
-	}
-	
-	private static class MessageSender implements IMessageSender {
-		
-		private static final byte[] EMPTY_DATAS = new byte[0];
-		
-		private final ISender sender;
-		
-		public MessageSender(ISender sender) {
-			this.sender = sender;
-		}
-
-		@Override
-		public void send(IMessage message) {
-			send(message.toByteArray(), message.getSerial(), message.getMessageId(), message.getReceiveTime());
-		}
-
-		@Override
-		public String getSessionId() {
-			return sender.getAttribute(SESSION_ID, String.class);
-		}
-
-		@Override
-		public void send(int messageId, int serial, long receiveTime) {
-			send(EMPTY_DATAS, serial, messageId, receiveTime);
-		}
-		
-		private void send(byte[] datas, int serial, int messageId, long receiveTime) {
-			try {
-				sender.send(datas, serial, messageId, currentTimeMillis() - receiveTime);
-			} catch (Exception e) {
-				ProtoHandler.log.error("", e);
-			}
-		}
-
-		@Override
-		public <X> X getAttribute(String key, Class<X> clz) {
-			return sender.getAttribute(key, clz);
-		}
-
-		@Override
-		public <X, Y extends X> void setAttribute(String key, Class<X> clz, Y value) {
-			sender.setAttribute(key, clz, value);
 		}
 		
 	}
