@@ -10,7 +10,7 @@ import org.tool.server.io.NetType;
  */
 public interface ISender {
 	
-	String FORMAT = "text/plain; charset=UTF-8; time={0}; messageid=";
+	String FORMAT = "text/plain; charset=UTF-8; time={0}; messageid={1}";
 	/**
 	 * session id name.
 	 */
@@ -23,7 +23,7 @@ public interface ISender {
 	<X> X getAttribute(String key, Class<X> clz);
 	
 	default String makeHead(int messageId, long useTime) {
-		return format(FORMAT, useTime) + messageId;
+		return format(FORMAT, useTime, messageId);
 	}
 	
 	NetType getNetType();

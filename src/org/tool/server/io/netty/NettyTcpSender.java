@@ -18,15 +18,22 @@ import io.netty.util.AttributeKey;
 
 public class NettyTcpSender implements ISender {
 	
-	protected static final IEncrypt encrypt = new DefaultEncrypt();
+	protected static final IEncrypt DEFAULT_ENCRYPT = new DefaultEncrypt();
+	
+	protected final IEncrypt encrypt;
 	
 	protected final Channel channel;
 	
 	protected final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
 	
 	public NettyTcpSender(Channel channel, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
+		this(channel, dataAnthenticate, DEFAULT_ENCRYPT);
+	}
+	
+	public NettyTcpSender(Channel channel, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate, IEncrypt encrypt) {
 		this.channel = channel;
 		this.dataAnthenticate = dataAnthenticate;
+		this.encrypt = encrypt;
 	}
 
 	@Override
