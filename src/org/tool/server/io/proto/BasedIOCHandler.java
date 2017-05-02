@@ -1,17 +1,14 @@
 package org.tool.server.io.proto;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
 import java.lang.reflect.Method;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.message.IMessage;
 import org.tool.server.io.message.IMessageHandler;
 import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.message.IMessageSender;
-import org.tool.server.io.message.MessageSender;
+import org.tool.server.io.message.MessageHandler;
 import org.tool.server.ioc.IOC;
 import org.tool.server.ioc.IOCBean;
 
@@ -27,19 +24,19 @@ import gnu.trove.list.linked.TIntLinkedList;
 import gnu.trove.map.TIntObjectMap;
 import gnu.trove.map.hash.TIntObjectHashMap;
 
-public class ProtoHandler extends IOC implements IMessageHandler {
+public class BasedIOCHandler extends MessageHandler implements IMessageHandler {
 
-	private static final Logger log = LoggerFactory.getLogger(ProtoHandler.class);
+	private static final Logger log = LoggerFactory.getLogger(BasedIOCHandler.class);
 	
 	private static final String METHOD_HEAD = "process";
 	
 	private static final String REQUEST_HEAD = "MI_CS_";
 	
-	private static final String MESSAGE_SENDER_NAME = IMessageSender.class.getName();
-	
 	private final IMessageIdTransform messageIdTransform;
 	
 	private final String noProcessorError;
+	
+	private final ProcessorIOC ioc;
 	
 	private TIntObjectMap<ProcessorMethod> methods;
 	
@@ -47,36 +44,10 @@ public class ProtoHandler extends IOC implements IMessageHandler {
 	
 	private TIntList fireMessages;
 	
-	private IErrorHandler errorHandler;
-	
-	public ProtoHandler(IMessageIdTransform messageIdTransform, String noProcessorError) {
+	public BasedIOCHandler(IMessageIdTransform messageIdTransform, String noProcessorError) {
 		this.messageIdTransform = messageIdTransform;
 		this.noProcessorError = noProcessorError;
-	}
-
-	@Override
-	public void handle(byte[] bytes, ISender sender) throws Exception {
-		try (DataInputStream dis = new DataInputStream(new ByteArrayInputStream(bytes))) {
-			// 解析
-			int serial = dis.readInt(); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
-			int messageId = dis.readShort();
-			log.info("Proto {} receive : [MessageId : {}] [SessionId : {}] [Ip : {}]", sender.getNetType(), messageId, sender.getSessionId(), sender.getIp());
-			byte[] datas = new byte[dis.available()];
-			dis.read(datas);
-			// 获取或创建消息发送器
-			IMessageSender messageSender = sender.getAttribute(MESSAGE_SENDER_NAME, IMessageSender.class);
-			if (messageSender == null) {
-				messageSender = new MessageSender(sender);
-				sender.setAttribute(MESSAGE_SENDER_NAME, IMessageSender.class, messageSender);
-			}
-			// 处理消息
-			if (methods.containsKey(messageId)) {
-				methods.get(messageId).invoke(messageId, serial, datas, messageSender);
-			} else {
-				IMessage error = createNoProcessorResponse(messageId, serial);
-				messageSender.send(error);
-			}
-		}
+		ioc = new ProcessorIOC();
 	}
 
 	private IMessage createNoProcessorResponse(int messageId, int serial) throws Exception {
@@ -88,9 +59,8 @@ public class ProtoHandler extends IOC implements IMessageHandler {
 		return errorHandler.createErrorResponse(messageId, serial, error);
 	}
 	
-	@Override
 	public void load(String pkg, Class<? extends IOCBean> annotation, String type, ClassToInstanceMap<Object> objects) throws Exception {
-		super.load(pkg, annotation, type, objects);
+		ioc.load(pkg, annotation, type, objects);
 		loadMethods();
 	}
 	
@@ -98,11 +68,11 @@ public class ProtoHandler extends IOC implements IMessageHandler {
 		TIntObjectMap<ProcessorMethod> methods = new TIntObjectHashMap<>();
 		ListMultimap<String, Integer> aloneMethods = LinkedListMultimap.create();
 		TIntList fireMessages = new TIntLinkedList();
-		for (Class<?> clz: beans.keySet()) {
+		for (Class<?> clz: ioc.getAll().keySet()) {
 			for (Method method : clz.getMethods()) {
 				String key = method.getName().replace(METHOD_HEAD, REQUEST_HEAD);
 				int messageId = messageIdTransform.transform(key);
-				methods.put(messageId, new ProcessorMethod(beans.get(clz), method));
+				methods.put(messageId, new ProcessorMethod(ioc.getBean(clz), method));
 				if (method.isAnnotationPresent(Alone.class)) {
 					aloneMethods.put(clz.getSimpleName(), messageId);
 				} else if (method.isAnnotationPresent(Fire.class)) {
@@ -113,10 +83,6 @@ public class ProtoHandler extends IOC implements IMessageHandler {
 		this.methods = new TUnmodifiableIntObjectMap<>(methods);
 		this.aloneMethods = ImmutableListMultimap.copyOf(aloneMethods);
 		this.fireMessages = new TUnmodifiableIntList(fireMessages);
-	}
-
-	public <X, Y extends X> void addProcessor(Class<X> clz, Y processor) {
-		beans.put(clz, processor);
 	}
 	
 	public TIntList getFireMessages() {
@@ -162,8 +128,25 @@ public class ProtoHandler extends IOC implements IMessageHandler {
 	}
 
 	@Override
-	public void setErrorHandler(IErrorHandler errorHandler) {
-		this.errorHandler = errorHandler;
+	protected void handle(int messageId, int serial, byte[] datas, IMessageSender messageSender) throws Exception {
+		if (methods.containsKey(messageId)) {
+			methods.get(messageId).invoke(messageId, serial, datas, messageSender);
+		} else {
+			IMessage error = createNoProcessorResponse(messageId, serial);
+			messageSender.send(error);
+		}
+	}
+	
+	public <X, Y extends X> void addProcessor(Y processor, Class<X> clz) {
+		ioc.addProcessor(processor, clz);
+	}
+	
+	private final class ProcessorIOC extends IOC {
+		
+		public  <X, Y extends X>void addProcessor(Y processor, Class<X> clz) {
+			beans.put(clz, processor);
+		}
+		
 	}
 
 }
