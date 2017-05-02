@@ -1,12 +1,10 @@
 package org.tool.server.io.dispatch;
 
-import java.util.Queue;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.collect.Queues;
 import com.google.common.util.concurrent.AbstractScheduledService;
 
 /**
@@ -20,22 +18,22 @@ public class Dispatch extends AbstractScheduledService implements IDispatch {
 	/**休眠时间*/
 	private static int SLEEP_TIME;
 	/**消息队列*/
-	protected final Queue<IContent> contents;
+//	protected final Queue<IContent> contents;
 	/**消息接收器*/
 	protected final IContentHandler handler;
 	
 	public Dispatch(IContentHandler handler) {
 		this.handler = handler;
-		contents = Queues.newConcurrentLinkedQueue();
+//		contents = Queues.newConcurrentLinkedQueue();
 	}
 	
 	/**
 	 * 分配工作
 	 */
 	protected void work() {
-		while (contents.size() > 0) {
+//		while (contents.size() > 0) {
 //			fireDispatch(contents.poll());
-		}
+//		}
 	}
 
 	@Override

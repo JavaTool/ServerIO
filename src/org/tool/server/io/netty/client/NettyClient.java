@@ -1,7 +1,9 @@
 package org.tool.server.io.netty.client;
 
+import java.io.DataOutputStream;
+
+import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.io.INetClient;
-import org.tool.server.io.dispatch.IContentFactory;
 import org.tool.server.io.dispatch.IContentHandler;
 
 import io.netty.bootstrap.Bootstrap;
@@ -28,12 +30,12 @@ public class NettyClient implements INetClient {
 	
 	protected final NettyClientHandler nettyClientHandler;
 	
-	public NettyClient(final IContentHandler contentHandler, final IContentFactory contentFactory) {
-		nettyClientHandler = createNettyClientHandler(contentHandler, contentFactory);
+	public NettyClient(final IContentHandler contentHandler, final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
+		nettyClientHandler = createNettyClientHandler(contentHandler, dataAnthenticate);
 	}
 	
-	protected NettyClientHandler createNettyClientHandler(IContentHandler contentHandler, IContentFactory contentFactory) {
-		return new NettyClientHandler(contentHandler, contentFactory);
+	protected NettyClientHandler createNettyClientHandler(IContentHandler contentHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
+		return new NettyClientHandler(contentHandler, dataAnthenticate);
 	}
 	
 	@Override
