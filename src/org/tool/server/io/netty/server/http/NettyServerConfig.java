@@ -3,15 +3,12 @@ package org.tool.server.io.netty.server.http;
 import java.io.DataOutputStream;
 
 import org.tool.server.anthenticate.IDataAnthenticate;
-import org.tool.server.io.dispatch.IContentFactory;
 import org.tool.server.io.dispatch.IDispatchManager;
 import org.tool.server.io.netty.server.INettyServerConfig;
 
 public class NettyServerConfig implements INettyServerConfig {
 	
 	private IDispatchManager dispatchManager;
-	
-	private IContentFactory nettyContentFactory;
 	
 	private IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
 	
@@ -38,15 +35,6 @@ public class NettyServerConfig implements INettyServerConfig {
 
 	public void setDispatchManager(IDispatchManager dispatchManager) {
 		this.dispatchManager = dispatchManager;
-	}
-
-	@Override
-	public IContentFactory getNettyContentFactory() {
-		return nettyContentFactory;
-	}
-
-	public void setNettyContentFactory(IContentFactory nettyContentFactory) {
-		this.nettyContentFactory = nettyContentFactory;
 	}
 
 	@Override
