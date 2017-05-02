@@ -8,12 +8,7 @@ import java.util.List;
  */
 public interface IDispatchManager extends IDispatch {
 	
-	/**
-	 * 断开
-	 * @param 	content
-	 * 			断开消息
-	 */
-	void disconnect(IContent content);
+	void disconnect(ISender sender);
 	
 	void addAlone(String tag, int... messageIds);
 	

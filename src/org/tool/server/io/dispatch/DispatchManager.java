@@ -65,11 +65,11 @@ public class DispatchManager implements IDispatchManager {
 		}
 	}
 
-	@Override
-	public void disconnect(IContent content) {
-		String key = content.getSessionId();
-		dispatchs.remove(key);
-	}
+//	@Override
+//	public void disconnect(IContent content) {
+//		String key = content.getSessionId();
+//		dispatchs.remove(key);
+//	}
 
 	@Override
 	public void addAlone(String tag, int... messageIds) {
@@ -85,6 +85,12 @@ public class DispatchManager implements IDispatchManager {
 
 	@Override
 	public void addFire(List<Integer> messageIds) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void disconnect(ISender sender) {
 		// TODO Auto-generated method stub
 		
 	}

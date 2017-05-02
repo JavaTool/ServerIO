@@ -6,11 +6,9 @@ import java.util.UUID;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tool.server.anthenticate.IDataAnthenticate;
-import org.tool.server.io.dispatch.Content;
 import org.tool.server.io.dispatch.IDispatchManager;
 import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.netty.NettyTcpSender;
-import org.tool.server.io.netty.server.http.NettyHttpSender;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
@@ -23,7 +21,7 @@ import io.netty.util.AttributeKey;
  * TCP处理器
  * @author 	fuhuiyuan
  */
-public class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> {
+public final class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> {
 	
 	protected static final AttributeKey<ISender> SENDER_KEY = AttributeKey.valueOf("SENDER_KEY");
 	
@@ -57,7 +55,7 @@ public class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> {
 		channel.close();
 		ctx.close();
 		if (sessionId != null) {
-			dispatchManager.disconnect(new Content(sessionId, 0, "", null, new NettyHttpSender(true, sessionId, channel), 0));
+			dispatchManager.disconnect(new NettyTcpSender(channel, dataAnthenticate));
 		}
 	}
 
