@@ -11,6 +11,7 @@ import org.tool.server.io.message.IMessageSender;
 import org.tool.server.io.message.MessageHandler;
 import org.tool.server.ioc.IOC;
 import org.tool.server.ioc.IOCBean;
+import org.tool.server.utils.StringUtil;
 
 import com.google.common.collect.ClassToInstanceMap;
 import com.google.common.collect.ImmutableListMultimap;
@@ -28,9 +29,9 @@ public class BasedIOCHandler extends MessageHandler implements IMessageHandler {
 
 	private static final Logger log = LoggerFactory.getLogger(BasedIOCHandler.class);
 	
-	private static final String METHOD_HEAD = "process";
+	private static final String METHOD_HEAD = "PROCESS";
 	
-	private static final String REQUEST_HEAD = "MI_CS_";
+	private static final String REQUEST_HEAD = "MI_CS";
 	
 	private final IMessageIdTransform messageIdTransform;
 	
@@ -74,7 +75,7 @@ public class BasedIOCHandler extends MessageHandler implements IMessageHandler {
 		TIntList fireMessages = new TIntLinkedList();
 		for (Class<?> clz: ioc.getAll().keySet()) {
 			for (Method method : clz.getMethods()) {
-				String key = method.getName().replace(METHOD_HEAD, REQUEST_HEAD);
+				String key = StringUtil.uppercaseTo_(method.getName()).replace(METHOD_HEAD, REQUEST_HEAD);
 				int messageId = messageIdTransform.transform(key);
 				methods.put(messageId, new ProcessorMethod(ioc.getBean(clz), method));
 				if (method.isAnnotationPresent(Alone.class)) {
@@ -105,7 +106,7 @@ public class BasedIOCHandler extends MessageHandler implements IMessageHandler {
 			this.processor = processor;
 			this.method = method;
 			Class<?>[] types = method.getParameterTypes();
-			fromMethod = types.length == 1 ? null : Class.forName(types[0].getName().substring(1)).getMethod("from", byte[].class);
+			fromMethod = types.length == 1 ? null : Class.forName(types[0].getName().replace("interfaces.I", "proto.")).getMethod("from", byte[].class);
 		}
 		
 		public void invoke(int messageId, int serial, byte[] datas, IMessageSender sender) throws Exception {

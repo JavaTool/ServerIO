@@ -85,4 +85,29 @@ public final class StringUtil {
 		}
 		return list;
 	}
+	
+	public static String uppercaseTo_(String info) {
+		StringBuilder builder = new StringBuilder(info.substring(0, 1).toUpperCase());
+		for (int i = 1;i < info.length();i++) {
+			if (Character.isUpperCase(info.charAt(i))) {
+				builder.append("_");
+			}
+			builder.append(info.substring(i, i + 1).toUpperCase());
+		}
+		return builder.toString();
+	}
+	
+	public static String _ToUppercase(String info) {
+		StringBuilder builder = new StringBuilder();
+		String[] infos = info.split("_");
+		if (infos.length > 1) {
+			for (String str : infos) {
+				builder.append(firstUpper(str.toLowerCase()));
+			}
+			return builder.toString();
+		} else {
+			return firstUpper(info.toLowerCase());
+		}
+	}
+	
 }

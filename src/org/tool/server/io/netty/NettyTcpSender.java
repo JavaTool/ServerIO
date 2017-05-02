@@ -56,10 +56,10 @@ public class NettyTcpSender implements ISender {
 		if (dataAnthenticate != null) {
 			dataAnthenticate.write(dos);
 		}
-		dos.writeInt(serial); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
 		dos.writeShort(messageId);
-		dos.write(encrypt.encrypt(datas));
-		byte[] bytes = bout.toByteArray();
+		dos.writeInt(serial); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
+		dos.write(datas);
+		byte[] bytes = encrypt.encrypt(bout.toByteArray());
 		int length = bytes.length;
 		ByteBuf result = buffer(length);
 		result.writeShort(length);

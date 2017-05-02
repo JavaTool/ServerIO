@@ -29,8 +29,6 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 
 	private static final long serialVersionUID = 1L;
 	
-	private static final String KEY = "MessageId";
-	
 	private static final IEncrypt ENCRYPT = new DefaultEncrypt();
 	
 	private static final String NAME = IMessageHandler.class.getName();
@@ -65,12 +63,11 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 		}
 		
 		try {
-			int messageId = Integer.parseInt(req.getHeader(KEY));
+//			int messageId = Integer.parseInt(req.getHeader(KEY));
 			byte[] decrypt = ENCRYPT.deEncrypt(getRequestProtoContent(req));
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
-			baos.write(messageId);
 			baos.write(decrypt);
-			log.info("Servlet http receive : [MessageId : {}] [SessionId : {}] [Ip : {}]", messageId, getSessionId(req), ip);
+			log.info("Servlet http receive : [SessionId : {}] [Ip : {}]", getSessionId(req), ip);
 			IMessageHandler contentHandler = (IMessageHandler) req.getServletContext().getAttribute(NAME);
 			contentHandler.handle(baos.toByteArray(), sender);
 		} catch (Exception e) {
