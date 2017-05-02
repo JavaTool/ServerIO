@@ -8,8 +8,8 @@ import static org.tool.server.io.IOParam.CODE_OK;
 import static org.tool.server.io.IOParam.RET_CODE;
 import static org.tool.server.io.IOParam.RET_LIST_SIZE;
 import static org.tool.server.io.IOParam.RET_MSG;
-import static org.tool.server.utils.HttpConnectUtil.getRequestProtoContent;
 
+import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
@@ -34,13 +34,17 @@ public abstract class BaseServlet extends HttpServlet {
 	
 	private static final IStreamCoder coder = StreamCoders.newProtoStuffCoder();
 	
+	private static final String SERVICE_NAME = Services.class.getName();
+	
+	private static final byte[] NULL_REQUEST = new byte[0];
+	/**最大数据读取次数*/
+	private static final int CONTENT_MAX_READ_TIMES = 5;
+	
 	protected static final Logger log = LoggerFactory.getLogger(Logger.class);
 	
 	protected static final List<byte[]> EMPTY_LIST = newLinkedList();
 	
 	protected static final String ENC = "utf-8";
-	
-	private static final String SERVICE_NAME = Services.class.getName();
 	
 	protected <X, Y extends X> Y getService(HttpServletRequest request, Class<X> clz) {
 		return ((Services) request.getServletContext().getAttribute(SERVICE_NAME)).getService(clz);
@@ -118,16 +122,41 @@ public abstract class BaseServlet extends HttpServlet {
 	}
 	
 	protected static <T> T readObject(HttpServletRequest request) throws Exception {
-		byte[] data = getRequestProtoContent(request);
+		byte[] data = readBytes(request);
 		return read(data);
 	}
 	
 	protected static JSONObject readJson(HttpServletRequest request) throws Exception {
-		return parseObject(new String(getRequestProtoContent(request), "utf-8"));
+		return parseObject(new String(readBytes(request), "utf-8"));
 	}
 	
 	protected static <T> T readJson(HttpServletRequest request, Class<T> clz) throws Exception {
-		return parseObject(new String(getRequestProtoContent(request), "utf-8"), clz);
+		return parseObject(new String(readBytes(request), "utf-8"), clz);
+	}
+
+	protected static byte[] readBytes(HttpServletRequest request) throws Exception {
+		// get request content length
+		final int contentLength = request.getContentLength();
+		if (contentLength < 0) {
+			throw new Exception("contentLength < 0");
+		} else if (contentLength == 0) {
+			return NULL_REQUEST;
+		} else {
+			// get request content
+			byte[] data = new byte[contentLength];
+			BufferedInputStream bis = new BufferedInputStream(request.getInputStream());
+			int readLength = bis.read(data, 0, contentLength);
+			
+			int count = 0;
+			while (readLength < contentLength) {
+				// 读取次数超过最大设置读取次数时还没有读取全部请求内容，返回错误
+				if ((++count) > CONTENT_MAX_READ_TIMES) {
+					throw new Exception();
+				}
+				readLength += bis.read(data, readLength, contentLength - readLength);
+			}
+			return data;
+		}
 	}
 	
 	protected static interface Work {

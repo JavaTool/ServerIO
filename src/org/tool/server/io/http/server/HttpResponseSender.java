@@ -14,7 +14,7 @@ import org.tool.server.io.dispatch.ISender;
  * HTTP响应发送器
  * @author 	fuhuiyuan
  */
-public class HttpResponseSender implements ISender {
+public final class HttpResponseSender implements ISender {
 	
 	private static final String CLOSE_EXCEPTION = "Closed";
 	
@@ -65,8 +65,7 @@ public class HttpResponseSender implements ISender {
 
 	@Override
 	public String getIp() {
-		// TODO Auto-generated method stub
-		return null;
+		return getAttribute(HttpProtoReceiver.SESSION_IP, String.class);
 	}
 
 	@Override
