@@ -1,12 +1,13 @@
-package org.tool.server.io.dispatch;
+package org.tool.server.io.message;
 
+import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.proto.IErrorHandler;
 
 /**
  * 消息接收器
  * @author 	fuhuiyuan
  */
-public interface IContentHandler {
+public interface IMessageHandler {
 	
 	/**
 	 * 接收消息

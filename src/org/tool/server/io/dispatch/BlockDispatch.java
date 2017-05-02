@@ -5,6 +5,7 @@ import java.util.concurrent.BlockingQueue;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tool.server.io.message.IMessageHandler;
 
 import com.google.common.collect.Maps;
 import com.google.common.collect.Queues;
@@ -15,11 +16,11 @@ public class BlockDispatch implements IDispatch, Runnable {
 	
 	protected BlockingQueue<byte[]> queue;
 	/**消息接收器*/
-	protected final IContentHandler handler;
+	protected final IMessageHandler handler;
 	
 	protected final Map<byte[], ISender> senders;
 	
-	public BlockDispatch(IContentHandler handler) {
+	public BlockDispatch(IMessageHandler handler) {
 		this.handler = handler;
 		queue = Queues.newLinkedBlockingQueue();
 		senders = Maps.newHashMap();

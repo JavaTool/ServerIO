@@ -14,9 +14,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tool.server.anthenticate.DefaultEncrypt;
 import org.tool.server.anthenticate.IEncrypt;
-import org.tool.server.io.dispatch.IContentHandler;
 import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.http.HttpStatus;
+import org.tool.server.io.message.IMessageHandler;
 import org.tool.server.utils.HttpConnectUtil;
 
 /**
@@ -33,7 +33,7 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 	
 	private static final IEncrypt ENCRYPT = new DefaultEncrypt();
 	
-	private static final String NAME = IContentHandler.class.getName();
+	private static final String NAME = IMessageHandler.class.getName();
 	
 	public static final String SESSION_IP = "sessionIp";
 
@@ -61,7 +61,7 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 			baos.write(messageId);
 			baos.write(decrypt);
 			log.info("Servlet http receive : [MessageId : {}] [SessionId : {}] [Ip : {}]", messageId, getSessionId(req), ip);
-			IContentHandler contentHandler = (IContentHandler) req.getServletContext().getAttribute(NAME);
+			IMessageHandler contentHandler = (IMessageHandler) req.getServletContext().getAttribute(NAME);
 			contentHandler.handle(baos.toByteArray(), sender);
 		} catch (Exception e) {
 			error(e, response, os);

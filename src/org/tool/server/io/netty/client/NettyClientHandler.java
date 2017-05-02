@@ -3,7 +3,7 @@ package org.tool.server.io.netty.client;
 import java.io.DataOutputStream;
 
 import org.tool.server.anthenticate.IDataAnthenticate;
-import org.tool.server.io.dispatch.IContentHandler;
+import org.tool.server.io.message.IMessageHandler;
 import org.tool.server.io.netty.NettyTcpSender;
 
 import io.netty.buffer.ByteBuf;
@@ -15,13 +15,13 @@ import io.netty.channel.ChannelInboundHandlerAdapter;
 @Sharable
 public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 	
-	private final IContentHandler contentHandler;
+	private final IMessageHandler contentHandler;
 	
 	private final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
 	
 	private final int anthencateLength;
 
-	public NettyClientHandler(IContentHandler contentHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
+	public NettyClientHandler(IMessageHandler contentHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
 		this.contentHandler = contentHandler;
 		this.dataAnthenticate = dataAnthenticate;
 		anthencateLength =  dataAnthenticate == null ? 0 : dataAnthenticate.getAnthenticateLength();

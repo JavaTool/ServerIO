@@ -6,9 +6,9 @@ import java.lang.reflect.Method;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tool.server.io.dispatch.IContentHandler;
 import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.message.IMessage;
+import org.tool.server.io.message.IMessageHandler;
 import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.message.IMessageSender;
 import org.tool.server.io.message.MessageSender;
@@ -27,7 +27,7 @@ import gnu.trove.list.linked.TIntLinkedList;
 import gnu.trove.map.TIntObjectMap;
 import gnu.trove.map.hash.TIntObjectHashMap;
 
-public class ProtoHandler extends IOC implements IContentHandler {
+public class ProtoHandler extends IOC implements IMessageHandler {
 
 	private static final Logger log = LoggerFactory.getLogger(ProtoHandler.class);
 	

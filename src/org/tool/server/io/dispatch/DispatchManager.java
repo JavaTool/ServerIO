@@ -6,6 +6,8 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.ScheduledThreadPoolExecutor;
 
+import org.tool.server.io.message.IMessageHandler;
+
 import com.google.common.collect.Maps;
 import com.google.common.util.concurrent.Service;
 
@@ -19,7 +21,7 @@ public class DispatchManager implements IDispatchManager {
 	/**分配器集合*/
 	protected final Map<String, IDispatch> dispatchs;
 	/**消息接收器*/
-	protected final IContentHandler handler;
+	protected final IMessageHandler handler;
 	/**任务执行服务*/
 	protected final ScheduledExecutorService executorService;
 	
@@ -29,7 +31,7 @@ public class DispatchManager implements IDispatchManager {
 	
 	private final Map<String, BlockDispatch> tagDispatchs;
 	
-	public DispatchManager(IContentHandler handler, int sleepTime, int corePoolSize, List<Service> serviceList) {
+	public DispatchManager(IMessageHandler handler, int sleepTime, int corePoolSize, List<Service> serviceList) {
 		this.handler = handler;
 		this.serviceList = serviceList;
 		Dispatch.setSLEEP_TIME(sleepTime);

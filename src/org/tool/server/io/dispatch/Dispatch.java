@@ -4,6 +4,7 @@ import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tool.server.io.message.IMessageHandler;
 
 import com.google.common.util.concurrent.AbstractScheduledService;
 
@@ -20,9 +21,9 @@ public class Dispatch extends AbstractScheduledService implements IDispatch {
 	/**消息队列*/
 //	protected final Queue<IContent> contents;
 	/**消息接收器*/
-	protected final IContentHandler handler;
+	protected final IMessageHandler handler;
 	
-	public Dispatch(IContentHandler handler) {
+	public Dispatch(IMessageHandler handler) {
 		this.handler = handler;
 //		contents = Queues.newConcurrentLinkedQueue();
 	}

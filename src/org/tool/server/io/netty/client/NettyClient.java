@@ -4,7 +4,7 @@ import java.io.DataOutputStream;
 
 import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.io.INetClient;
-import org.tool.server.io.dispatch.IContentHandler;
+import org.tool.server.io.message.IMessageHandler;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
@@ -30,11 +30,11 @@ public class NettyClient implements INetClient {
 	
 	protected final NettyClientHandler nettyClientHandler;
 	
-	public NettyClient(final IContentHandler contentHandler, final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
+	public NettyClient(final IMessageHandler contentHandler, final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
 		nettyClientHandler = createNettyClientHandler(contentHandler, dataAnthenticate);
 	}
 	
-	protected NettyClientHandler createNettyClientHandler(IContentHandler contentHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
+	protected NettyClientHandler createNettyClientHandler(IMessageHandler contentHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
 		return new NettyClientHandler(contentHandler, dataAnthenticate);
 	}
 	
