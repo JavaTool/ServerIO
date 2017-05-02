@@ -10,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tool.server.io.INetClient;
 
-public class JDKUDPClient implements INetClient {
+public class JDKUDPClient implements INetClient<byte[]> {
 	
 	private static final Logger log = LoggerFactory.getLogger(JDKUDPClient.class);
 	
@@ -51,7 +51,7 @@ public class JDKUDPClient implements INetClient {
 	
 	public static void main(String[] args) {
 		try {
-			INetClient client = new JDKUDPClient();
+			INetClient<byte[]> client = new JDKUDPClient();
 			client.connect("115.159.181.147", 10001);
 			client.send("MoneyFlow|7001|2016-10-27 11:38:57||0|0||100181|5|血斧奥顿|0|1674|186|23|-1|0|0".getBytes());
 	        System.out.println("发送结束");

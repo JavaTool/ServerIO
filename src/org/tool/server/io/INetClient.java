@@ -4,7 +4,7 @@ package org.tool.server.io;
  * A client of net connect.
  * @author 	fuhuiyuan
  */
-public interface INetClient {
+public interface INetClient<T> {
 	
 	/**
 	 * Connect a server.
@@ -14,9 +14,9 @@ public interface INetClient {
 	/**
 	 * Send data of byte array.
 	 * @param 	data
-	 * 			byte array
+	 * 			T
 	 */
-	void send(byte[] data);
+	void send(T data);
 	/**
 	 * Close the connect.
 	 * @throws 	Exception

@@ -20,7 +20,7 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 
-public class NettyClient implements INetClient {
+public class NettyClient implements INetClient<byte[]> {
 	
     protected EventLoopGroup group;
     
