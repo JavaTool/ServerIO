@@ -7,7 +7,6 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.io.dispatch.Content;
-import org.tool.server.io.dispatch.IContentFactory;
 import org.tool.server.io.dispatch.IDispatchManager;
 import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.netty.NettyTcpSender;
@@ -34,14 +33,13 @@ public class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> {
 	/**消息处理器*/
 	protected final IDispatchManager dispatchManager;
 	/**消息工厂*/
-	protected final IContentFactory contentFactory;
+	protected final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
 	
 	protected final int anthencateLength;
 	
-	public NettyTcpHandler(IDispatchManager dispatchManager, IContentFactory contentFactory) {
+	public NettyTcpHandler(IDispatchManager dispatchManager, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
 		this.dispatchManager = dispatchManager;
-		this.contentFactory = contentFactory;
-		IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate = contentFactory.getDataAnthenticate();
+		this.dataAnthenticate = dataAnthenticate;
 		anthencateLength =  dataAnthenticate == null ? 0 : dataAnthenticate.getAnthenticateLength();
 	}
 
@@ -77,7 +75,7 @@ public class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> {
 			Attribute<ISender> attribute = channel.attr(SENDER_KEY);
 			ISender sender = attribute.get();
 			if (sender == null) {
-				sender = new NettyTcpSender(channel, contentFactory.getDataAnthenticate());
+				sender = new NettyTcpSender(channel, dataAnthenticate);
 				attribute.set(sender);
 				Attribute<String> session = channel.attr(SESSSION_ID_KEY);
 				session.set(UUID.randomUUID().toString());
@@ -98,7 +96,7 @@ public class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> {
 		if (anthencateLength > 0) {
 			byte[] data = new byte[anthencateLength];
 			msg.readBytes(data);
-			return contentFactory.getDataAnthenticate().read(data);
+			return dataAnthenticate.read(data);
 		} else {
 			return true;
 		}

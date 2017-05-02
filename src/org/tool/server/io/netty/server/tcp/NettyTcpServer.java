@@ -4,10 +4,11 @@ import static io.netty.channel.ChannelOption.SO_BACKLOG;
 import static io.netty.handler.logging.LogLevel.INFO;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
+import java.io.DataOutputStream;
 import java.net.InetSocketAddress;
 
+import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.io.INetServer;
-import org.tool.server.io.dispatch.IContentFactory;
 import org.tool.server.io.dispatch.IDispatchManager;
 import org.tool.server.io.netty.server.INettyServerConfig;
 
@@ -30,8 +31,6 @@ public class NettyTcpServer implements INetServer {
 	
 	private final IDispatchManager dispatchManager;
 	
-	private final IContentFactory nettyContentFactory;
-	
 	private final int parentThreadNum;
 	
 	private final int childThreadNum;
@@ -48,11 +47,12 @@ public class NettyTcpServer implements INetServer {
 	
 	private final long allIdleTime;
 	
+	private final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
+	
 	private ServerBootstrap serverBootstrap;
 
 	public NettyTcpServer(INettyServerConfig config) {
 		dispatchManager = config.getDispatchManager();
-		nettyContentFactory = config.getNettyContentFactory();
 		parentThreadNum = config.getParentThreadNum();
 		childThreadNum = config.getChildThreadNum();
 		soBacklog = config.getSoBacklog();
@@ -61,6 +61,7 @@ public class NettyTcpServer implements INetServer {
 		readerIdleTime = config.getReaderIdleTime();
 		writerIdleTime = config.getWriterIdleTime();
 		allIdleTime = config.getAllIdleTime();
+		dataAnthenticate = config.getDataAnthenticate();
 	}
 
 	@Override
@@ -82,7 +83,7 @@ public class NettyTcpServer implements INetServer {
 					// 粘包处理
 					pipeline.addLast("Decoder", new LengthFieldBasedFrameDecoder(Short.MAX_VALUE, 0, 2, 0, 2));
 					// 业务逻辑处理
-					pipeline.addLast("Handler", new NettyTcpHandler(dispatchManager, nettyContentFactory));
+					pipeline.addLast("Handler", new NettyTcpHandler(dispatchManager, dataAnthenticate));
 				}
 				
 			});

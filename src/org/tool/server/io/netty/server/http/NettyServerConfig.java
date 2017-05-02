@@ -1,5 +1,8 @@
 package org.tool.server.io.netty.server.http;
 
+import java.io.DataOutputStream;
+
+import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.io.dispatch.IContentFactory;
 import org.tool.server.io.dispatch.IDispatchManager;
 import org.tool.server.io.netty.server.INettyServerConfig;
@@ -9,6 +12,8 @@ public class NettyServerConfig implements INettyServerConfig {
 	private IDispatchManager dispatchManager;
 	
 	private IContentFactory nettyContentFactory;
+	
+	private IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
 	
 	private int parentThreadNum;
 	
@@ -114,6 +119,15 @@ public class NettyServerConfig implements INettyServerConfig {
 
 	public void setSoBacklog(int soBacklog) {
 		this.soBacklog = soBacklog;
+	}
+
+	@Override
+	public IDataAnthenticate<byte[], DataOutputStream> getDataAnthenticate() {
+		return dataAnthenticate;
+	}
+
+	public void setDataAnthenticate(IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
+		this.dataAnthenticate = dataAnthenticate;
 	}
 
 }
