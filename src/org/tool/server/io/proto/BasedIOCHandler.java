@@ -44,6 +44,10 @@ public class BasedIOCHandler extends MessageHandler implements IMessageHandler {
 	
 	private TIntList fireMessages;
 	
+	public BasedIOCHandler(IMessageIdTransform messageIdTransform) {
+		this(messageIdTransform, "noProcessorError");
+	}
+	
 	public BasedIOCHandler(IMessageIdTransform messageIdTransform, String noProcessorError) {
 		this.messageIdTransform = messageIdTransform;
 		this.noProcessorError = noProcessorError;
@@ -137,13 +141,13 @@ public class BasedIOCHandler extends MessageHandler implements IMessageHandler {
 		}
 	}
 	
-	public <X, Y extends X> void addProcessor(Y processor, Class<X> clz) {
-		ioc.addProcessor(processor, clz);
+	public <X, Y extends X> void addProcessor(Class<X> clz, Y processor) {
+		ioc.addProcessor(clz, processor);
 	}
 	
 	private final class ProcessorIOC extends IOC {
 		
-		public  <X, Y extends X>void addProcessor(Y processor, Class<X> clz) {
+		public  <X, Y extends X>void addProcessor(Class<X> clz, Y processor) {
 			beans.put(clz, processor);
 		}
 		
