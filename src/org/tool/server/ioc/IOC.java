@@ -82,10 +82,21 @@ public class IOC {
 	}
 	
 	private void loadMethod(List<Class<?>> list) throws Exception {
-		List<Integer> levels = Lists.newArrayList(list.size());
+		invoke((level, clz, bean) -> {
+			for (Method method : getDeclaredMethods(clz, Lists.newLinkedList())) {
+				if (method.isAnnotationPresent(IOCMethod.class)) {
+					method.setAccessible(true);
+					method.invoke(bean);
+				}
+			}
+		});
+	}
+	
+	public void invoke(LevelLoader levelLoader) throws Exception {
+		List<Integer> levels = Lists.newArrayList(beans.size());
 		Multimap<Integer, Class<?>> levelSort = LinkedListMultimap.create();
-		for (Class<?> clz : list) {
-			int level = clz.getAnnotation(IOCBean.class).level();
+		for (Class<?> clz : beans.keySet()) {
+			int level = beans.get(clz).getClass().getAnnotation(IOCBean.class).level();
 			if (!levels.contains(level)) {
 				levels.add(level);
 			}
@@ -94,15 +105,16 @@ public class IOC {
 		Collections.sort(levels);
 		for (Integer level : levels) {
 			for (Class<?> clz : levelSort.get(level)) {
-				Object bean = beans.get(clz.getAnnotation(IOCBean.class).registerClass());
-				for (Method method : getDeclaredMethods(clz, Lists.newLinkedList())) {
-					if (method.isAnnotationPresent(IOCMethod.class)) {
-						method.setAccessible(true);
-						method.invoke(bean);
-					}
-				}
+				Object bean = beans.get(clz);
+				levelLoader.load(level, clz, bean);
 			}
 		}
+	}
+	
+	public static interface LevelLoader {
+		
+		void load(int level, Class<?> clz, Object bean) throws Exception;
+		
 	}
 	
 	private List<Method> getDeclaredMethods(Class<?> clz, List<Method> methods) {
