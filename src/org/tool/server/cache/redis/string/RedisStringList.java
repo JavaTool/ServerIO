@@ -27,7 +27,11 @@ public class RedisStringList extends ExistsJedisReources implements ICacheList<S
 
 	@Override
 	public void tailPush(String key, Object... objects) {
-		exec((jedis) -> jedis.lpush(key, (String[]) objects));
+		String[] array = new String[objects.length];
+		for (int i = 0;i < objects.length;i++) {
+			array[i] = objects[i].toString();
+		}
+		exec((jedis) -> jedis.lpush(key, array));
 	}
 
 	@Override
