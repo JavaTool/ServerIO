@@ -112,13 +112,19 @@ public class BasedIOCHandler extends MessageHandler {
 		
 		public void invoke(int messageId, int serial, byte[] datas, IMessageSender sender) throws Exception {
 			try {
-				method.invoke(processor, fromMethod == null ? serial : (IMessage) fromMethod.invoke(null, datas), sender);
+				method.invoke(processor, fromMethod == null ? serial : createMessage(serial, datas), sender);
 			} catch (Exception e) {
 				log.error("", e);
 				String error = e.getCause() == null ? null : e.getCause().getMessage();
 				error = error == null || error.length() == 0 ? "Unknow exception." : error;
 				sender.send(createErrorResponse(messageId, serial, error));
 			}
+		}
+		
+		private IMessage createMessage(int serial, byte[] datas) throws Exception {
+			IMessage message = (IMessage) fromMethod.invoke(null, datas);
+			message.setSerial(serial);
+			return message;
 		}
 		
 	}

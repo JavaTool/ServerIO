@@ -6,6 +6,8 @@ public interface IMessage {
 	
 	int getSerial();
 	
+	void setSerial(int serial);
+	
 	byte[] toByteArray();
 	
 	long getReceiveTime();

@@ -4,9 +4,9 @@ import static java.lang.System.currentTimeMillis;
 
 public abstract class Message implements IMessage {
 	
-	private final int messageId;
+	private int serial;
 	
-	private final int serial;
+	private final int messageId;
 	
 	private final long receiveTime;
 	
@@ -16,7 +16,7 @@ public abstract class Message implements IMessage {
 	
 	public Message(int messageId, int serial) {
 		this.messageId = messageId;
-		this.serial = serial;
+		setSerial(serial);
 		receiveTime = currentTimeMillis();
 	}
 
@@ -33,6 +33,11 @@ public abstract class Message implements IMessage {
 	@Override
 	public long getReceiveTime() {
 		return receiveTime;
+	}
+
+	@Override
+	public void setSerial(int serial) {
+		this.serial = serial;
 	}
 
 }
