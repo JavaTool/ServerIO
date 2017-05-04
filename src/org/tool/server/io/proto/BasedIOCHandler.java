@@ -34,8 +34,6 @@ public class BasedIOCHandler extends MessageHandler {
 	
 	private final IMessageIdTransform messageIdTransform;
 	
-	private final String noProcessorError;
-	
 	private final ProcessorIOC ioc;
 	
 	private TIntObjectMap<ProcessorMethod> methods;
@@ -47,22 +45,8 @@ public class BasedIOCHandler extends MessageHandler {
 	private IErrorHandler errorHandler;
 	
 	public BasedIOCHandler(IMessageIdTransform messageIdTransform) {
-		this(messageIdTransform, "noProcessorError");
-	}
-	
-	public BasedIOCHandler(IMessageIdTransform messageIdTransform, String noProcessorError) {
 		this.messageIdTransform = messageIdTransform;
-		this.noProcessorError = noProcessorError;
 		ioc = new ProcessorIOC();
-	}
-
-	private IMessage createNoProcessorResponse(int messageId, int serial) throws Exception {
-		log.error("NoProcessor : {}.", messageId);
-		return createErrorResponse(messageId, serial, noProcessorError);
-	}
-
-	private IMessage createErrorResponse(int messageId, int serial, String error) throws Exception {
-		return errorHandler.createErrorResponse(messageId, serial, error);
 	}
 	
 	public void load(String pkg, Class<? extends IOCBean> annotation, String type, ClassToInstanceMap<Object> objects) throws Exception {
@@ -110,14 +94,14 @@ public class BasedIOCHandler extends MessageHandler {
 			fromMethod = types.length == 1 ? null : Class.forName(types[0].getName().replace("interfaces.I", "proto.")).getMethod("from", byte[].class);
 		}
 		
-		public void invoke(int messageId, int serial, byte[] datas, IMessageSender sender) throws Exception {
+		public void invoke(int messageId, int serial, byte[] datas, IMessageSender sender) {
 			try {
 				method.invoke(processor, fromMethod == null ? serial : createMessage(serial, datas), sender);
 			} catch (Exception e) {
 				log.error("", e);
 				String error = e.getCause() == null ? null : e.getCause().getMessage();
 				error = error == null || error.length() == 0 ? "Unknow exception." : error;
-				sender.send(createErrorResponse(messageId, serial, error));
+				sender.send(errorHandler.createErrorResponse(messageId, serial, error));
 			}
 		}
 		
@@ -138,8 +122,7 @@ public class BasedIOCHandler extends MessageHandler {
 		if (methods.containsKey(messageId)) {
 			methods.get(messageId).invoke(messageId, serial, datas, messageSender);
 		} else {
-			IMessage error = createNoProcessorResponse(messageId, serial);
-			messageSender.send(error);
+			log.error("Do not have processor handle message {}.", messageId);
 		}
 	}
 	

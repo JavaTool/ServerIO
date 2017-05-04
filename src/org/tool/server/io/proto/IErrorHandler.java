@@ -4,6 +4,6 @@ import org.tool.server.io.message.IMessage;
 
 public interface IErrorHandler {
 	
-	IMessage createErrorResponse(int messageId, int serial, String error) throws Exception;
+	IMessage createErrorResponse(int messageId, int serial, String error);
 
 }
