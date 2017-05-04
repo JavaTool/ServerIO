@@ -2,11 +2,6 @@ package org.tool.server.io.message;
 
 public interface IMessageSender {
 	
-	/**
-	 * session id name.
-	 */
-	String SESSION_ID = "SESSION_ID";
-	
 	void send(IMessage message);
 	
 	void send(int messageId, int serial, long receiveTime);
