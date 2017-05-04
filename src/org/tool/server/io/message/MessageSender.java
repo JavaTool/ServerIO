@@ -20,7 +20,7 @@ public final class MessageSender implements IMessageSender {
 
 	@Override
 	public void send(IMessage message) {
-		send(message.toByteArray(), message.getSerial(), message.getMessageId(), message.getReceiveTime());
+		send(message.toByteArray(), message.getMessageId(), message.getSerial(), message.getReceiveTime());
 	}
 
 	@Override
@@ -30,25 +30,15 @@ public final class MessageSender implements IMessageSender {
 
 	@Override
 	public void send(int messageId, int serial, long receiveTime) {
-		send(EMPTY_DATAS, serial, messageId, receiveTime);
+		send(EMPTY_DATAS, messageId, serial, receiveTime);
 	}
 	
-	private void send(byte[] datas, int serial, int messageId, long receiveTime) {
+	private void send(byte[] datas, int messageId, int serial, long receiveTime) {
 		try {
 			sender.send(datas, serial, messageId, receiveTime <= 0 ? 0 : (currentTimeMillis() - receiveTime));
 		} catch (Exception e) {
 			log.error("", e);
 		}
-	}
-
-	@Override
-	public <X> X getAttribute(String key, Class<X> clz) {
-		return sender.getAttribute(key, clz);
-	}
-
-	@Override
-	public <X, Y extends X> void setAttribute(String key, Class<X> clz, Y value) {
-		sender.setAttribute(key, clz, value);
 	}
 
 }
