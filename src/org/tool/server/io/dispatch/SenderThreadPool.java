@@ -2,16 +2,16 @@ package org.tool.server.io.dispatch;
 
 import java.util.Collection;
 
-import org.tool.server.io.dispatch.ISender;
+import org.tool.server.io.message.IMessageSender;
 
 public interface SenderThreadPool {
 	
-	String allocation(ISender sender);
+	String allocation(IMessageSender sender);
 	
 	void disconnect(String session);
 	
-	ISender getSender(String session);
+	IMessageSender getSender(String session);
 	
-	Collection<ISender> getAllSender();
+	Collection<IMessageSender> getAllSender();
 
 }

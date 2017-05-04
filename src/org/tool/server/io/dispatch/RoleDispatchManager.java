@@ -8,11 +8,8 @@ import java.util.concurrent.Executors;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tool.server.io.dispatch.BlockDispatch;
-import org.tool.server.io.dispatch.IDispatch;
-import org.tool.server.io.dispatch.IDispatchManager;
-import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.message.IMessageHandler;
+import org.tool.server.io.message.IMessageSender;
 import org.tool.server.sequence.IInstanceIdMaker;
 import org.tool.server.sequence.impl.JavaAutoIdMaker;
 import org.tool.server.system.SystemUtil;
@@ -35,6 +32,8 @@ public class RoleDispatchManager implements IDispatchManager, SenderThreadPool {
 	
 	private final Map<Integer, Integer> fires;
 	
+	private final Map<String, IMessageSender> senders;
+	
 	@SuppressWarnings("unused")
 	private final IDispatch[] singleDispatches;
 	
@@ -52,6 +51,7 @@ public class RoleDispatchManager implements IDispatchManager, SenderThreadPool {
 		aloneTags = Maps.newConcurrentMap();
 		tagDispatchs = Maps.newConcurrentMap();
 		fires = Maps.newConcurrentMap();
+		senders = Maps.newConcurrentMap();
 		singleDispatches = new IDispatch[]{createSingleDispatch(), createSingleDispatch()};
 		idMaker = new JavaAutoIdMaker();
 
@@ -106,7 +106,7 @@ public class RoleDispatchManager implements IDispatchManager, SenderThreadPool {
 	}
 
 	@Override
-	public String allocation(ISender sender) {
+	public String allocation(IMessageSender sender) {
 		String session = sender.getSessionId();
 		session = createRequestKey(session);
 		int min = -1;
@@ -125,6 +125,7 @@ public class RoleDispatchManager implements IDispatchManager, SenderThreadPool {
 		RoleDispatch dispatch = dispatchs.get(key);
 		dispatch.changeCount(true);
 		roleThreads.put(session, key);
+		senders.put(session, sender);
 		return session;
 	}
 
@@ -162,13 +163,13 @@ public class RoleDispatchManager implements IDispatchManager, SenderThreadPool {
 	}
 
 	@Override
-	public ISender getSender(String session) {
-		return null;
+	public IMessageSender getSender(String session) {
+		return senders.get(session);
 	}
 
 	@Override
-	public Collection<ISender> getAllSender() {
-		return null;
+	public Collection<IMessageSender> getAllSender() {
+		return senders.values();
 	}
 	
 	public static String createRequestKey(ISender sender) {
