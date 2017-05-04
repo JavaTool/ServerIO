@@ -45,6 +45,36 @@ public final class ExcelUtil {
 		}
 	}
 	
+	public static int readCellAsInt(Cell cell) {
+		switch (cell.getCellType()) {
+		case Cell.CELL_TYPE_BLANK : 
+			return 0;
+		case Cell.CELL_TYPE_NUMERIC : 
+			return (int) cell.getNumericCellValue();
+		case Cell.CELL_TYPE_STRING : 
+			return Integer.parseInt(cell.getStringCellValue());
+		case Cell.CELL_TYPE_BOOLEAN : 
+			return cell.getBooleanCellValue() ? 0 : 1;
+		default : 
+			throw new IllegalArgumentException("Unknow cell type : " + cell.getCellType() + ".");
+		}
+	}
+	
+	public static boolean readCellAsBoolean(Cell cell) {
+		switch (cell.getCellType()) {
+		case Cell.CELL_TYPE_BLANK : 
+			return false;
+		case Cell.CELL_TYPE_NUMERIC : 
+			return cell.getNumericCellValue() != 1;
+		case Cell.CELL_TYPE_STRING : 
+			return cell.getStringCellValue().equals("TRUE".toLowerCase());
+		case Cell.CELL_TYPE_BOOLEAN : 
+			return cell.getBooleanCellValue();
+		default : 
+			throw new IllegalArgumentException("Unknow cell type : " + cell.getCellType() + ".");
+		}
+	}
+	
 	public static Workbook getWorkbook(String name) throws Exception {
 		return getWorkbook(new FileInputStream(name), name);
 	}
