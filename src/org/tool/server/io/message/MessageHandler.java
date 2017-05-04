@@ -6,7 +6,6 @@ import java.io.DataInputStream;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tool.server.io.dispatch.ISender;
-import org.tool.server.io.proto.IErrorHandler;
 import org.tool.server.io.proto.BasedIOCHandler;
 
 public abstract class MessageHandler implements IMessageHandler {
@@ -14,8 +13,6 @@ public abstract class MessageHandler implements IMessageHandler {
 	protected static final Logger log = LoggerFactory.getLogger(BasedIOCHandler.class);
 	
 	private static final String MESSAGE_SENDER_NAME = IMessageSender.class.getName();
-	
-	protected IErrorHandler errorHandler;
 
 	@Override
 	public final void handle(byte[] bytes, ISender sender) throws Exception {
@@ -38,10 +35,5 @@ public abstract class MessageHandler implements IMessageHandler {
 	}
 	
 	protected abstract void handle(int messageId, int serial, byte[] datas, IMessageSender messageSender) throws Exception;
-
-	@Override
-	public void setErrorHandler(IErrorHandler errorHandler) {
-		this.errorHandler = errorHandler;
-	}
 
 }

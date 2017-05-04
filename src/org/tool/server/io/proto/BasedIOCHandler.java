@@ -5,7 +5,6 @@ import java.lang.reflect.Method;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tool.server.io.message.IMessage;
-import org.tool.server.io.message.IMessageHandler;
 import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.message.IMessageSender;
 import org.tool.server.io.message.MessageHandler;
@@ -25,7 +24,7 @@ import gnu.trove.list.linked.TIntLinkedList;
 import gnu.trove.map.TIntObjectMap;
 import gnu.trove.map.hash.TIntObjectHashMap;
 
-public class BasedIOCHandler extends MessageHandler implements IMessageHandler {
+public class BasedIOCHandler extends MessageHandler {
 
 	private static final Logger log = LoggerFactory.getLogger(BasedIOCHandler.class);
 	
@@ -44,6 +43,8 @@ public class BasedIOCHandler extends MessageHandler implements IMessageHandler {
 	private ListMultimap<String, Integer> aloneMethods;
 	
 	private TIntList fireMessages;
+	
+	private IErrorHandler errorHandler;
 	
 	public BasedIOCHandler(IMessageIdTransform messageIdTransform) {
 		this(messageIdTransform, "noProcessorError");
@@ -111,12 +112,6 @@ public class BasedIOCHandler extends MessageHandler implements IMessageHandler {
 		
 		public void invoke(int messageId, int serial, byte[] datas, IMessageSender sender) throws Exception {
 			try {
-//				if (fromMethod == null) {
-//					method.invoke(processor, serial, sender);
-//				} else {
-//					IMessage message = (IMessage) fromMethod.invoke(null, datas);
-//					method.invoke(processor, message, sender);
-//				}
 				method.invoke(processor, fromMethod == null ? serial : (IMessage) fromMethod.invoke(null, datas), sender);
 			} catch (Exception e) {
 				log.error("", e);
@@ -152,6 +147,15 @@ public class BasedIOCHandler extends MessageHandler implements IMessageHandler {
 			beans.put(clz, processor);
 		}
 		
+	}
+	
+	/**
+	 * 设置错误处理器
+	 * @param 	errorHandler
+	 * 			错误处理器
+	 */
+	public void setErrorHandler(IErrorHandler errorHandler) {
+		this.errorHandler = errorHandler;
 	}
 
 }
