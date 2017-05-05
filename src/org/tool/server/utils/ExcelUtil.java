@@ -60,6 +60,51 @@ public final class ExcelUtil {
 		}
 	}
 	
+	public static byte readCellAsByte(Cell cell) {
+		switch (cell.getCellType()) {
+		case Cell.CELL_TYPE_BLANK : 
+			return 0;
+		case Cell.CELL_TYPE_NUMERIC : 
+			return (byte) cell.getNumericCellValue();
+		case Cell.CELL_TYPE_STRING : 
+			return Byte.parseByte(cell.getStringCellValue());
+		case Cell.CELL_TYPE_BOOLEAN : 
+			return (byte) (cell.getBooleanCellValue() ? 0 : 1);
+		default : 
+			throw new IllegalArgumentException("Unknow cell type : " + cell.getCellType() + ".");
+		}
+	}
+	
+	public static short readCellAsShort(Cell cell) {
+		switch (cell.getCellType()) {
+		case Cell.CELL_TYPE_BLANK : 
+			return 0;
+		case Cell.CELL_TYPE_NUMERIC : 
+			return (short) cell.getNumericCellValue();
+		case Cell.CELL_TYPE_STRING : 
+			return Short.parseShort(cell.getStringCellValue());
+		case Cell.CELL_TYPE_BOOLEAN : 
+			return (short) (cell.getBooleanCellValue() ? 0 : 1);
+		default : 
+			throw new IllegalArgumentException("Unknow cell type : " + cell.getCellType() + ".");
+		}
+	}
+	
+	public static double readCellAsDouble(Cell cell) {
+		switch (cell.getCellType()) {
+		case Cell.CELL_TYPE_BLANK : 
+			return 0d;
+		case Cell.CELL_TYPE_NUMERIC : 
+			return cell.getNumericCellValue();
+		case Cell.CELL_TYPE_STRING : 
+			return Double.parseDouble(cell.getStringCellValue());
+		case Cell.CELL_TYPE_BOOLEAN : 
+			return cell.getBooleanCellValue() ? 0d : 1d;
+		default : 
+			throw new IllegalArgumentException("Unknow cell type : " + cell.getCellType() + ".");
+		}
+	}
+	
 	public static boolean readCellAsBoolean(Cell cell) {
 		switch (cell.getCellType()) {
 		case Cell.CELL_TYPE_BLANK : 
