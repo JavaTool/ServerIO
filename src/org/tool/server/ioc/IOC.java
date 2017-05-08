@@ -53,7 +53,9 @@ public class IOC {
 	
 	private void load(List<Class<?>> list, Class<? extends IOCBean> annotation, ClassToInstanceMap<Object> objects) throws Exception {
 		loadBean(list, annotation);
-		loadFields(list, objects);
+		if (objects != null) {
+			loadFields(list, objects);
+		}
 		loadMethod(list);
 	}
 	
