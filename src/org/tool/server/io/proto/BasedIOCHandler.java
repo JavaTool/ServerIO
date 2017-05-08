@@ -91,7 +91,8 @@ public class BasedIOCHandler extends MessageHandler {
 			this.processor = processor;
 			this.method = method;
 			Class<?>[] types = method.getParameterTypes();
-			fromMethod = types.length == 1 ? null : Class.forName(types[0].getName().replace("interfaces.I", "proto.")).getMethod("from", byte[].class);
+			String firstType = types[0].getName();
+			fromMethod = firstType.equals("int") ? null : Class.forName(firstType.replace("interfaces.I", "proto.")).getMethod("from", byte[].class);
 		}
 		
 		public void invoke(int messageId, int serial, byte[] datas, IMessageSender sender) {

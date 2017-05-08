@@ -9,7 +9,6 @@ import static java.lang.reflect.Modifier.isStatic;
 import static java.lang.reflect.Modifier.isTransient;
 
 import java.io.File;
-import java.io.FileFilter;
 import java.io.IOException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -66,7 +65,6 @@ public final class ClassUtil {
             if (url != null) {
                 String protocol = url.getProtocol();
                 String pkgPath = url.getPath();
-//                System.out.println("protocol:" + protocol +" path:" + pkgPath);
                 if ("file".equals(protocol)) { // 本地自己可见的代码
                     findClassName(classList, pkgName, pkgPath, isRecursive, annotation);
                 } else if ("jar".equals(protocol)) { // 引用第三方jar的代码
@@ -80,7 +78,6 @@ public final class ClassUtil {
     public static void findClassName(List<Class<?>> clazzList, String pkgName, String pkgPath, boolean isRecursive, Class<? extends Annotation> annotation) throws Exception {
         checkNotNull(clazzList, "findClassName but clazzList is null.");
         File[] files = filterClassFiles(pkgPath);// 过滤出.class文件及文件夹
-//        System.out.println("files:" +((files == null)?"null" : "length=" + files.length));
         if (files != null) {
             for (File f : files) {
                 String fileName = f.getName();
@@ -105,7 +102,6 @@ public final class ClassUtil {
     public static void findClassName(List<Class<?>> clazzList, String pkgName, URL url, boolean isRecursive, Class<? extends Annotation> annotation) throws Exception {
         JarURLConnection jarURLConnection = (JarURLConnection) url.openConnection();
         JarFile jarFile = jarURLConnection.getJarFile();
-//        System.out.println("jarFile:" + jarFile.getName());
         Enumeration<JarEntry> jarEntries = jarFile.entries();
         while (jarEntries.hasMoreElements()) {
             JarEntry jarEntry = jarEntries.nextElement();
@@ -122,12 +118,9 @@ public final class ClassUtil {
                 }
             }  
             if (prefix != null && jarEntryName.endsWith(".class")) {
-//              System.out.println("prefix:" + prefix +" pkgName:" + pkgName);
                 if (prefix.equals(pkgName)) {
-//                    System.out.println("jar entryName:" + jarEntryName);
                     addClassName(clazzList, clazzName, annotation);  
                 } else if (isRecursive && prefix.startsWith(pkgName)) { // 遍历子包名：子类  
-//                    System.out.println("jar entryName:" + jarEntryName +" isRecursive:" + isRecursive);
                     addClassName(clazzList, prefix_name, annotation);  
                 }  
             }  
@@ -137,13 +130,8 @@ public final class ClassUtil {
     private static File[] filterClassFiles(String pkgPath) {
         checkNotNull(pkgPath, "filterClassFiles but pkgPath is null.");
         // 接收 .class 文件 或 类文件夹  
-        return new File(pkgPath).listFiles(new FileFilter() {
-        	
-            @Override
-            public boolean accept(File file) {
-                return (file.isFile() && file.getName().endsWith(".class")) || file.isDirectory();
-            }
-            
+        return new File(pkgPath).listFiles(file -> {
+            return (file.isFile() && file.getName().endsWith(".class")) || file.isDirectory();
         });  
     }  
       
@@ -155,18 +143,10 @@ public final class ClassUtil {
     }
       
     private static void addClassName(List<Class<?>> clazzList, String clazzName, Class<? extends Annotation> annotation) throws Exception {
-        if (clazzList != null && clazzName != null) {
+        if (clazzList != null && clazzName != null && !clazzName.contains("$")) {
             Class<?> clazz = forName(clazzName);
-//          System.out.println("isAnnotation=" + clazz.isAnnotation() +" author:" + clazz.isAnnotationPresent(author.class));  
-              
-            if (clazz != null) {
-                if (annotation == null) {
-                    clazzList.add(clazz);
-//                    System.out.println("add:" + clazz);
-                } else if (clazz.isAnnotationPresent(annotation)) {
-                    clazzList.add(clazz);
-//                    System.out.println("add annotation:" + clazz);
-                }
+            if (clazz != null && (annotation == null || clazz.isAnnotationPresent(annotation))) {
+                clazzList.add(clazz);
             }
         }
     }

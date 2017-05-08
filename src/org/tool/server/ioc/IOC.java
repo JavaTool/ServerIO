@@ -62,8 +62,9 @@ public class IOC {
 	private void loadBean(List<Class<?>> list, Class<? extends IOCBean> annotation) throws Exception {
 		for (Class<?> clz : list) {
 			Class<?> key = clz.getAnnotation(annotation).registerClass();
+			key = key.equals(Class.class) ? clz : key;
 			checkArgument(!beans.containsKey(key), "Repeat IOCBean : " + key);
-			Constructor<?> constructor = clz.getConstructor();
+			Constructor<?> constructor = clz.getDeclaredConstructor();
 			constructor.setAccessible(true);
 			beans.put(key, constructor.newInstance());
 			log.info("Create ioc bean : {}.", clz.getName());
