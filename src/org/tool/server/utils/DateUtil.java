@@ -338,4 +338,8 @@ public final class DateUtil {
 		return (int) (ms / SECOND_MILLIS + 1);
 	}
 	
+	public static int getMinuteOfHour() {
+		return DateTime.now().getMinuteOfHour();
+	}
+	
 }
