@@ -6,9 +6,9 @@ public abstract class Message implements IMessage {
 	
 	private int serial;
 	
-	private final int messageId;
+	private long receiveTime;
 	
-	private final long receiveTime;
+	private final int messageId;
 	
 	public Message(int messageId) {
 		this(messageId, 0);
@@ -17,7 +17,7 @@ public abstract class Message implements IMessage {
 	public Message(int messageId, int serial) {
 		this.messageId = messageId;
 		setSerial(serial);
-		receiveTime = currentTimeMillis();
+		setReceiveTime(currentTimeMillis());
 	}
 
 	@Override
@@ -38,6 +38,10 @@ public abstract class Message implements IMessage {
 	@Override
 	public void setSerial(int serial) {
 		this.serial = serial;
+	}
+	
+	public void setReceiveTime(long receiveTime) {
+		this.receiveTime = receiveTime;
 	}
 
 }
