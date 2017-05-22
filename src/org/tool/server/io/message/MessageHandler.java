@@ -18,7 +18,7 @@ public abstract class MessageHandler implements IMessageHandler {
 	public final void handle(byte[] bytes, ISender sender) throws Exception {
 		try (DataInputStream dis = new DataInputStream(new ByteArrayInputStream(bytes))) {
 			// 解析
-			short messageId = dis.readShort();
+			int messageId = dis.readInt();
 			int serial = dis.readInt(); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
 			log.info("Message {} received : [MessageId : {}] [SessionId : {}] [Ip : {}]", sender.getNetType(), messageId, sender.getSessionId(), sender.getIp());
 			byte[] datas = new byte[dis.available()];

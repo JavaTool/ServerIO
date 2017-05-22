@@ -34,8 +34,6 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 	private static final String NAME = IMessageHandler.class.getName();
 	
 	private static final byte[] NULL_REQUEST = new byte[0];
-	/**最大数据读取次数*/
-	private static final int CONTENT_MAX_READ_TIMES = 5;
 	
 	private static final String SESSION_SENDER = "sessionSender";
 	
@@ -125,19 +123,15 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 			return NULL_REQUEST;
 		} else {
 			// get request content
-			byte[] data = new byte[contentLength];
-			BufferedInputStream bis = new BufferedInputStream(request.getInputStream());
-			int readLength = bis.read(data, 0, contentLength);
-			
-			int count = 0;
-			while (readLength < contentLength) {
-				// 读取次数超过最大设置读取次数时还没有读取全部请求内容，返回错误
-				if ((++count) > CONTENT_MAX_READ_TIMES) {
-					throw new Exception();
+			try (BufferedInputStream bis = new BufferedInputStream(request.getInputStream())) {
+				byte[] b = new byte[contentLength];
+				int n;
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				while ((n = bis.read(b, 0, contentLength)) > 0) {
+					baos.write(b, 0, n);
 				}
-				readLength += bis.read(data, readLength, contentLength - readLength);
+				return baos.toByteArray();
 			}
-			return data;
 		}
 	}
 
