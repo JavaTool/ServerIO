@@ -32,13 +32,13 @@ public final class HttpResponseSender implements ISender {
 	}
 
 	@Override
-	public void send(byte[] datas, int receiveMessageId, int messageId, long useTime) throws Exception {
+	public void send(byte[] datas, int serial, int messageId, long useTime) throws Exception {
 		try (OutputStream os = response.getOutputStream()) {
 			response.setContentType(makeHead(messageId, useTime));
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			DataOutputStream dos = new DataOutputStream(baos);
 			dos.writeShort(messageId);
-			dos.writeInt(0); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
+			dos.writeInt(serial); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
 			dos.write(datas);
 			os.write(ENCRYPT.encrypt(baos.toByteArray()));
 		} catch (Exception e) {
