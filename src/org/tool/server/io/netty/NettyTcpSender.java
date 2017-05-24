@@ -69,7 +69,7 @@ public class NettyTcpSender implements ISender {
 		result.writeInt(length);
 		result.writeBytes(bytes);
 		channel.writeAndFlush(result);
-		log.info("Send message[{}], serial[{}], use {} ms.", messageId, serial, useTime);
+		log.info("Send message[{}], serial[{}], size[{}], use {} ms.", messageId, serial, datas.length, useTime);
 	}
 
 	@Override
