@@ -5,6 +5,8 @@ import static io.netty.buffer.Unpooled.buffer;
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.tool.server.anthenticate.DefaultEncrypt;
 import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.anthenticate.IEncrypt;
@@ -17,6 +19,8 @@ import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
 
 public class NettyTcpSender implements ISender {
+	
+	protected static final Logger log = LoggerFactory.getLogger(NettyTcpSender.class);
 	
 	protected static final IEncrypt DEFAULT_ENCRYPT = new DefaultEncrypt();
 	
@@ -62,9 +66,10 @@ public class NettyTcpSender implements ISender {
 		byte[] bytes = encrypt.encrypt(bout.toByteArray());
 		int length = bytes.length;
 		ByteBuf result = buffer(length);
-		result.writeShort(length);
+		result.writeInt(length);
 		result.writeBytes(bytes);
 		channel.writeAndFlush(result);
+		log.info("Send message[{}], serial[{}], use {} ms.", messageId, serial, useTime);
 	}
 
 	@Override

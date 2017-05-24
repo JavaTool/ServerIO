@@ -7,6 +7,8 @@ import java.io.OutputStream;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.tool.server.anthenticate.DefaultEncrypt;
 import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.NetType;
@@ -17,6 +19,8 @@ import org.tool.server.io.dispatch.ISender;
  * @author 	fuhuiyuan
  */
 public final class HttpResponseSender implements ISender {
+	
+	private static final Logger log = LoggerFactory.getLogger(HttpResponseSender.class);
 	
 	private static final IEncrypt ENCRYPT = new DefaultEncrypt();
 	/**响应*/
@@ -39,7 +43,9 @@ public final class HttpResponseSender implements ISender {
 			dos.writeInt(serial); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
 			dos.write(datas);
 			os.write(ENCRYPT.encrypt(baos.toByteArray()));
+			log.info("Send message[{}], serial[{}], use {} ms.", messageId, serial, useTime);
 		} catch (Exception e) {
+			log.info("Exception message[{}], serial[{}], use {} ms.", messageId, serial, useTime);
 			throw e;
 		}
 	}

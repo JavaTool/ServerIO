@@ -86,7 +86,7 @@ public class IOC {
 	
 	private void loadMethod(List<Class<?>> list) throws Exception {
 		invoke((level, clz, bean) -> {
-			for (Method method : getDeclaredMethods(clz, Lists.newLinkedList())) {
+			for (Method method : getDeclaredMethods(bean.getClass(), Lists.newLinkedList())) {
 				if (method.isAnnotationPresent(IOCMethod.class)) {
 					method.setAccessible(true);
 					method.invoke(bean);

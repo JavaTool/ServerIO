@@ -3,6 +3,7 @@ package org.tool.server.io.netty.client;
 import java.io.DataOutputStream;
 
 import org.tool.server.anthenticate.IDataAnthenticate;
+import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.message.IMessageHandler;
 import org.tool.server.io.netty.NettyTcpSender;
 
@@ -20,11 +21,14 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 	private final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
 	
 	private final int anthencateLength;
+	
+	private final IEncrypt encrypt;
 
-	public NettyClientHandler(IMessageHandler contentHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
+	public NettyClientHandler(IMessageHandler contentHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate, IEncrypt encrypt) {
 		this.contentHandler = contentHandler;
 		this.dataAnthenticate = dataAnthenticate;
 		anthencateLength =  dataAnthenticate == null ? 0 : dataAnthenticate.getAnthenticateLength();
+		this.encrypt = encrypt;
 	}
 	  
 	@Override
@@ -34,9 +38,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 		    Channel channel = ctx.channel();
 		    byte[] data = new byte[buf.readableBytes()];
 		    buf.readBytes(data);
-//		    String ip = channel.remoteAddress().toString();
-//		    IContent content = contentFactory.createContent(ip, data, new NettyTcpSender(channel, contentFactory.getDataAnthenticate()));
-		    contentHandler.handle(data, new NettyTcpSender(channel, dataAnthenticate));
+		    contentHandler.handle(encrypt.deEncrypt(data), new NettyTcpSender(channel, dataAnthenticate));
 	    }
 	}
 	  

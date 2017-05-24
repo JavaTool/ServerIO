@@ -35,12 +35,12 @@ public class NettyClient implements INetClient<byte[]> {
 	protected final IEncrypt encrypt;
 	
 	public NettyClient(final IMessageHandler contentHandler, final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
-		nettyClientHandler = createNettyClientHandler(contentHandler, dataAnthenticate);
 		encrypt = new DefaultEncrypt();
+		nettyClientHandler = createNettyClientHandler(contentHandler, dataAnthenticate);
 	}
 	
 	protected NettyClientHandler createNettyClientHandler(IMessageHandler contentHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
-		return new NettyClientHandler(contentHandler, dataAnthenticate);
+		return new NettyClientHandler(contentHandler, dataAnthenticate, encrypt);
 	}
 	
 	@Override
