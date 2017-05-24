@@ -81,7 +81,7 @@ public class NettyTcpServer implements INetServer {
 					// 读信道空闲,写信道空闲,读，写信道空闲
 					pipeline.addLast("idleStateHandler", new IdleStateHandler(readerIdleTime, writerIdleTime, allIdleTime, SECONDS));
 					// 粘包处理
-					pipeline.addLast("Decoder", new LengthFieldBasedFrameDecoder(Short.MAX_VALUE, 0, 2, 0, 2));
+					pipeline.addLast("Decoder", new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
 					// 业务逻辑处理
 					pipeline.addLast("Handler", new NettyTcpHandler(dispatchManager, dataAnthenticate));
 				}

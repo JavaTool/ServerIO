@@ -2,7 +2,9 @@ package org.tool.server.io.netty.client;
 
 import java.io.DataOutputStream;
 
+import org.tool.server.anthenticate.DefaultEncrypt;
 import org.tool.server.anthenticate.IDataAnthenticate;
+import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.INetClient;
 import org.tool.server.io.message.IMessageHandler;
 
@@ -30,8 +32,11 @@ public class NettyClient implements INetClient<byte[]> {
 	
 	protected final NettyClientHandler nettyClientHandler;
 	
+	protected final IEncrypt encrypt;
+	
 	public NettyClient(final IMessageHandler contentHandler, final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
 		nettyClientHandler = createNettyClientHandler(contentHandler, dataAnthenticate);
+		encrypt = new DefaultEncrypt();
 	}
 	
 	protected NettyClientHandler createNettyClientHandler(IMessageHandler contentHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
@@ -42,7 +47,7 @@ public class NettyClient implements INetClient<byte[]> {
 	public void send(final byte[] data) {
 		ByteBuf clientMessage = Unpooled.buffer(data.length);
 		clientMessage.writeInt(data.length);
-	    clientMessage.writeBytes(data);
+	    clientMessage.writeBytes(encrypt.encrypt(data));
     	socketChannel.writeAndFlush(clientMessage);
 	}
 

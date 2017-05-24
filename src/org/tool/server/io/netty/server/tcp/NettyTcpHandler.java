@@ -5,7 +5,9 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tool.server.anthenticate.DefaultEncrypt;
 import org.tool.server.anthenticate.IDataAnthenticate;
+import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.dispatch.IDispatchManager;
 import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.netty.NettyTcpSender;
@@ -35,10 +37,13 @@ public final class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> 
 	
 	protected final int anthencateLength;
 	
+	protected final IEncrypt encrypt;
+	
 	public NettyTcpHandler(IDispatchManager dispatchManager, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
 		this.dispatchManager = dispatchManager;
 		this.dataAnthenticate = dataAnthenticate;
 		anthencateLength =  dataAnthenticate == null ? 0 : dataAnthenticate.getAnthenticateLength();
+		encrypt = new DefaultEncrypt();
 	}
 
 	@Override
@@ -85,7 +90,7 @@ public final class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> 
 //			IContent content = contentFactory.createContent(ip, data, sender);
 //			log.info("Netty tcp receive : [MessageId : {}] [SessionId : {}] [Ip : {}]", content.getMessageId(), content.getSessionId(), ip);
 		    if (data.length > 0) {
-		    	dispatchManager.addDispatch(data, sender);
+		    	dispatchManager.addDispatch(encrypt.deEncrypt(data), sender);
 		    }
 		}
 	}

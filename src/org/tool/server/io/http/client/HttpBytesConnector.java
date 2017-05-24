@@ -8,7 +8,7 @@ import org.apache.http.HttpResponse;
 
 class HttpBytesConnector extends DecorateHttpConnector<byte[], HttpResponse> {
 	
-	private static final int LENGTH = 4096;
+	private static final int LENGTH = 128;
 	
 	public HttpBytesConnector(IHttpConnector<HttpResponse> connector) {
 		super(connector);

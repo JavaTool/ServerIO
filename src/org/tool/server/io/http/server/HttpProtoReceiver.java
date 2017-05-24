@@ -3,7 +3,6 @@ package org.tool.server.io.http.server;
 import java.io.BufferedInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -47,7 +46,6 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse response) throws ServletException, IOException {
 		response.setCharacterEncoding("UTF-8");
-		OutputStream os = response.getOutputStream();
 		HttpSession session = req.getSession();
 		String ip = getIpAddr(req);
 		
@@ -61,15 +59,13 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 		}
 		
 		try {
-//			int messageId = Integer.parseInt(req.getHeader(KEY));
 			byte[] decrypt = ENCRYPT.deEncrypt(getRequestProtoContent(req));
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			baos.write(decrypt);
-			log.info("Servlet http receive : [SessionId : {}] [Ip : {}]", getSessionId(req), ip);
 			IMessageHandler contentHandler = (IMessageHandler) req.getServletContext().getAttribute(NAME);
 			contentHandler.handle(baos.toByteArray(), sender);
 		} catch (Exception e) {
-			error(e, response, os);
+			error(e);
 		}
 	}
 	
@@ -81,13 +77,8 @@ public class HttpProtoReceiver extends HttpServlet implements HttpStatus {
 	 * 处理异常
 	 * @param 	e
 	 * 			异常
-	 * @param 	response
-	 * 			响应
-	 * @param 	os
-	 * 			输出流
-	 * @throws 	IOException
 	 */
-	private void error(Exception e, HttpServletResponse response, OutputStream os) throws IOException {
+	private void error(Exception e) {
 		log.error("", e);
 	}
 	

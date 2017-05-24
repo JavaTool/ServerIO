@@ -34,7 +34,6 @@ public class RoleDispatchManager implements IDispatchManager, SenderThreadPool {
 	
 	private final Map<String, IMessageSender> senders;
 	
-	@SuppressWarnings("unused")
 	private final IDispatch[] singleDispatches;
 	
 	private final ExecutorService executorService;
@@ -52,7 +51,7 @@ public class RoleDispatchManager implements IDispatchManager, SenderThreadPool {
 		tagDispatchs = Maps.newConcurrentMap();
 		fires = Maps.newConcurrentMap();
 		senders = Maps.newConcurrentMap();
-		singleDispatches = new IDispatch[]{createSingleDispatch(), createSingleDispatch()};
+		singleDispatches = new IDispatch[]{createSingleDispatch()};
 		idMaker = new JavaAutoIdMaker();
 
 		log.info("CPU amount is {}.", SystemUtil.CPU_AMOUNT);
@@ -84,7 +83,7 @@ public class RoleDispatchManager implements IDispatchManager, SenderThreadPool {
 //		} else {
 //			return dispatchs.get(roleThreads.get(session));
 //		}
-		return dispatchs.get(roleThreads.get(session));
+		return roleThreads.containsKey(session) ? dispatchs.get(roleThreads.get(session)) : singleDispatches[0];
 	}
 
 	@Override

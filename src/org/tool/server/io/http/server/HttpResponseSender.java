@@ -18,8 +18,6 @@ import org.tool.server.io.dispatch.ISender;
  */
 public final class HttpResponseSender implements ISender {
 	
-	private static final String CLOSE_EXCEPTION = "Closed";
-	
 	private static final IEncrypt ENCRYPT = new DefaultEncrypt();
 	/**响应*/
 	private final ServletResponse response;
@@ -42,11 +40,7 @@ public final class HttpResponseSender implements ISender {
 			dos.write(datas);
 			os.write(ENCRYPT.encrypt(baos.toByteArray()));
 		} catch (Exception e) {
-			if (CLOSE_EXCEPTION.equals(e.getMessage())) {
-				// unprocess close exception
-			} else {
-				throw e;
-			}
+			throw e;
 		}
 	}
 
@@ -73,7 +67,7 @@ public final class HttpResponseSender implements ISender {
 
 	@Override
 	public String getSessionId() {
-		return getAttribute(SESSION_ID, String.class);
+		return session.getId();
 	}
 
 }
