@@ -48,7 +48,7 @@ public final class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> 
 
 	@Override
 	public void channelActive(final ChannelHandlerContext ctx) throws Exception {
-//		log.info("[Coming Active]IP:{}", ctx.channel().remoteAddress());
+		log.info("[Coming Active]IP:{}", ctx.channel().remoteAddress());
 	}
 
 	@Override

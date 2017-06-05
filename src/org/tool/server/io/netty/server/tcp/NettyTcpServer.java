@@ -1,7 +1,6 @@
 package org.tool.server.io.netty.server.tcp;
 
 import static io.netty.channel.ChannelOption.SO_BACKLOG;
-import static io.netty.handler.logging.LogLevel.INFO;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 import java.io.DataOutputStream;
@@ -20,7 +19,6 @@ import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
-import io.netty.handler.logging.LoggingHandler;
 import io.netty.handler.timeout.IdleStateHandler;
 
 /**
@@ -70,8 +68,7 @@ public class NettyTcpServer implements INetServer {
 		EventLoopGroup workerGroup = new NioEventLoopGroup(childThreadNum);
 		try {
 			serverBootstrap = new ServerBootstrap();
-			serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).option(SO_BACKLOG, soBacklog)
-			.handler(new LoggingHandler(INFO));
+			serverBootstrap.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).option(SO_BACKLOG, soBacklog);
 			// 注册TCP处理流水线
 			serverBootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
 
