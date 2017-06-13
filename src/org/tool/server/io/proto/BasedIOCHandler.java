@@ -133,7 +133,7 @@ public class BasedIOCHandler extends MessageHandler {
 	
 	private final class ProcessorIOC extends IOC {
 		
-		public  <X, Y extends X>void addProcessor(Class<X> clz, Y processor) {
+		public <X, Y extends X> void addProcessor(Class<X> clz, Y processor) {
 			beans.put(clz, processor);
 		}
 		
