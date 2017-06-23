@@ -3,11 +3,11 @@ package org.tool.server.io.netty.server;
 import java.io.DataOutputStream;
 
 import org.tool.server.anthenticate.IDataAnthenticate;
-import org.tool.server.io.dispatch.IDispatchManager;
+import org.tool.server.io.message.IMessageHandler;
 
 public interface INettyServerConfig {
 
-	IDispatchManager getDispatchManager();
+	IMessageHandler getMessageHandler();
 	
 	IDataAnthenticate<byte[], DataOutputStream> getDataAnthenticate();
 

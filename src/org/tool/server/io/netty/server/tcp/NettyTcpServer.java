@@ -8,7 +8,7 @@ import java.net.InetSocketAddress;
 
 import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.io.INetServer;
-import org.tool.server.io.dispatch.IDispatchManager;
+import org.tool.server.io.message.IMessageHandler;
 import org.tool.server.io.netty.server.INettyServerConfig;
 
 import io.netty.bootstrap.ServerBootstrap;
@@ -27,7 +27,7 @@ import io.netty.handler.timeout.IdleStateHandler;
  */
 public class NettyTcpServer implements INetServer {
 	
-	private final IDispatchManager dispatchManager;
+	private final IMessageHandler messageHandler;
 	
 	private final int parentThreadNum;
 	
@@ -50,7 +50,7 @@ public class NettyTcpServer implements INetServer {
 	private ServerBootstrap serverBootstrap;
 
 	public NettyTcpServer(INettyServerConfig config) {
-		dispatchManager = config.getDispatchManager();
+		messageHandler = config.getMessageHandler();
 		parentThreadNum = config.getParentThreadNum();
 		childThreadNum = config.getChildThreadNum();
 		soBacklog = config.getSoBacklog();
@@ -80,7 +80,7 @@ public class NettyTcpServer implements INetServer {
 					// 粘包处理
 					pipeline.addLast("Decoder", new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
 					// 业务逻辑处理
-					pipeline.addLast("Handler", new NettyTcpHandler(dispatchManager, dataAnthenticate));
+					pipeline.addLast("Handler", new NettyTcpHandler(messageHandler, dataAnthenticate));
 				}
 				
 			});

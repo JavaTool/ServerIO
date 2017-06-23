@@ -3,12 +3,12 @@ package org.tool.server.io.netty.server.http;
 import java.io.DataOutputStream;
 
 import org.tool.server.anthenticate.IDataAnthenticate;
-import org.tool.server.io.dispatch.IDispatchManager;
+import org.tool.server.io.message.IMessageHandler;
 import org.tool.server.io.netty.server.INettyServerConfig;
 
 public class NettyServerConfig implements INettyServerConfig {
 	
-	private IDispatchManager dispatchManager;
+	private IMessageHandler messageHandler;
 	
 	private IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
 	
@@ -29,12 +29,12 @@ public class NettyServerConfig implements INettyServerConfig {
 	private long allIdleTime;
 
 	@Override
-	public IDispatchManager getDispatchManager() {
-		return dispatchManager;
+	public IMessageHandler getMessageHandler() {
+		return messageHandler;
 	}
 
-	public void setDispatchManager(IDispatchManager dispatchManager) {
-		this.dispatchManager = dispatchManager;
+	public void setMessageHandler(IMessageHandler messageHandler) {
+		this.messageHandler = messageHandler;
 	}
 
 	@Override

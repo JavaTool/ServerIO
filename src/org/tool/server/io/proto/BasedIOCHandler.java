@@ -10,17 +10,17 @@ import org.tool.server.io.message.IMessageSender;
 import org.tool.server.io.message.MessageHandler;
 import org.tool.server.ioc.IOC;
 import org.tool.server.ioc.IOCBean;
+import org.tool.server.thread.BaseMessageProcessorFactory;
+import org.tool.server.thread.IMessagePackage;
+import org.tool.server.thread.IMessageProcessor;
+import org.tool.server.thread.IMessageProcessorFactory;
+import org.tool.server.thread.IThreadType;
+import org.tool.server.thread.MessageProcessorGroup;
 import org.tool.server.utils.StringUtil;
 
 import com.google.common.collect.ClassToInstanceMap;
-import com.google.common.collect.ImmutableListMultimap;
-import com.google.common.collect.LinkedListMultimap;
-import com.google.common.collect.ListMultimap;
 
-import gnu.trove.impl.unmodifiable.TUnmodifiableIntList;
 import gnu.trove.impl.unmodifiable.TUnmodifiableIntObjectMap;
-import gnu.trove.list.TIntList;
-import gnu.trove.list.linked.TIntLinkedList;
 import gnu.trove.map.TIntObjectMap;
 import gnu.trove.map.hash.TIntObjectHashMap;
 
@@ -32,15 +32,21 @@ public class BasedIOCHandler extends MessageHandler {
 	
 	private static final String REQUEST_HEAD = "MI_CS";
 	
+	private static final int LIMIT = 1000;
+	
+	private static final int EACH_COUNT = 10;
+	
+	private static final IThreadType DEFAULT_THREAD_ID = new IThreadType() {};
+	
 	private final IMessageIdTransform messageIdTransform;
 	
 	private final ProcessorIOC ioc;
 	
+	private IMessageProcessor<IMessagePackage> messageProcessor;
+	
 	private TIntObjectMap<ProcessorMethod> methods;
 	
-	private ListMultimap<String, Integer> aloneMethods;
-	
-	private TIntList fireMessages;
+	private TIntObjectMap<IThreadType> threadTypes;
 	
 	private IErrorHandler errorHandler;
 	
@@ -56,27 +62,29 @@ public class BasedIOCHandler extends MessageHandler {
 	
 	public void loadMethods() throws Exception {
 		TIntObjectMap<ProcessorMethod> methods = new TIntObjectHashMap<>();
-		ListMultimap<String, Integer> aloneMethods = LinkedListMultimap.create();
-		TIntList fireMessages = new TIntLinkedList();
 		for (Class<?> clz: ioc.getAll().keySet()) {
 			for (Method method : clz.getMethods()) {
 				String key = StringUtil.uppercaseTo_(method.getName()).replace(METHOD_HEAD, REQUEST_HEAD);
 				int messageId = messageIdTransform.transform(key);
 				methods.put(messageId, new ProcessorMethod(ioc.getBean(clz), method));
-				if (method.isAnnotationPresent(Alone.class)) {
-					aloneMethods.put(clz.getSimpleName(), messageId);
-				} else if (method.isAnnotationPresent(Fire.class)) {
-					fireMessages.add(messageId);
-				}
 			}
 		}
 		this.methods = new TUnmodifiableIntObjectMap<>(methods);
-		this.aloneMethods = ImmutableListMultimap.copyOf(aloneMethods);
-		this.fireMessages = new TUnmodifiableIntList(fireMessages);
+		
+		IMessageProcessorFactory<IMessagePackage> factory = new BaseMessageProcessorFactory(LIMIT, EACH_COUNT, this::handleMessagePackage);
+		messageProcessor = new MessageProcessorGroup(getThreadTypes(), factory);
 	}
 	
-	public TIntList getFireMessages() {
-		return fireMessages;
+	private void handleMessagePackage(IMessagePackage messagePackage) {
+		int messageId = messagePackage.getMessageId();
+		int serial = messagePackage.getSerial();
+		byte[] datas = messagePackage.getDatas();
+		IMessageSender messageSender = messagePackage.getMessageSender();
+		if (methods.containsKey(messageId)) {
+			methods.get(messageId).invoke(messageId, serial, datas, messageSender);
+		} else {
+			log.error("Do not have processor handle message {}.", messageId);
+		}
 	}
 	
 	private class ProcessorMethod {
@@ -107,24 +115,36 @@ public class BasedIOCHandler extends MessageHandler {
 		}
 		
 		private IMessage createMessage(int serial, byte[] datas) throws Exception {
-			IMessage message = (IMessage) fromMethod.invoke(null, datas);
-			message.setSerial(serial);
-			return message;
+			return ((IMessage) fromMethod.invoke(null, datas)).setSerial(serial);
 		}
 		
 	}
 
-	public ListMultimap<String, Integer> getAloneMethods() {
-		return aloneMethods;
-	}
-
 	@Override
 	protected void handle(int messageId, int serial, byte[] datas, IMessageSender messageSender) throws Exception {
-		if (methods.containsKey(messageId)) {
-			methods.get(messageId).invoke(messageId, serial, datas, messageSender);
-		} else {
-			log.error("Do not have processor handle message {}.", messageId);
-		}
+		messageProcessor.put(new IMessagePackage() {
+			
+			@Override
+			public int getSerial() {
+				return serial;
+			}
+			
+			@Override
+			public IMessageSender getMessageSender() {
+				return messageSender;
+			}
+			
+			@Override
+			public int getMessageId() {
+				return messageId;
+			}
+			
+			@Override
+			public byte[] getDatas() {
+				return datas;
+			}
+			
+		});
 	}
 	
 	public <X, Y extends X> void addProcessor(Class<X> clz, Y processor) {
@@ -146,6 +166,22 @@ public class BasedIOCHandler extends MessageHandler {
 	 */
 	public void setErrorHandler(IErrorHandler errorHandler) {
 		this.errorHandler = errorHandler;
+	}
+
+	public void setThreadTypes(TIntObjectMap<IThreadType> threadTypes) {
+		this.threadTypes = new TUnmodifiableIntObjectMap<>(threadTypes);
+	}
+	
+	private TIntObjectMap<IThreadType> getThreadTypes() {
+		if (threadTypes == null) {
+			TIntObjectMap<IThreadType> threadTypes = new TIntObjectHashMap<>();
+			methods.forEachKey(messageId -> {
+				threadTypes.put(messageId, DEFAULT_THREAD_ID);
+				return true;
+			});
+			setThreadTypes(threadTypes);
+		}
+		return threadTypes;
 	}
 
 }

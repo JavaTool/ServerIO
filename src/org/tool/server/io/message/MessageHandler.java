@@ -12,26 +12,36 @@ public abstract class MessageHandler implements IMessageHandler {
 
 	protected static final Logger log = LoggerFactory.getLogger(BasedIOCHandler.class);
 	
+	private static final String LOG_RECEIVED = "Net {} received : [MessageId : {}] [SessionId : {}] [Ip : {}]";
+	
 	private static final String MESSAGE_SENDER_NAME = IMessageSender.class.getName();
 
 	@Override
 	public final void handle(byte[] bytes, ISender sender) throws Exception {
 		try (DataInputStream dis = new DataInputStream(new ByteArrayInputStream(bytes))) {
-			// 解析
+			// 解析消息
 			int messageId = dis.readInt();
 			int serial = dis.readInt(); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
-			log.info("Net {} received : [MessageId : {}] [SessionId : {}] [Ip : {}]", sender.getNetType(), messageId, sender.getSessionId(), sender.getIp());
-			byte[] datas = new byte[dis.available()];
-			dis.read(datas);
-			// 获取或创建消息发送器
-			IMessageSender messageSender = sender.getAttribute(MESSAGE_SENDER_NAME, IMessageSender.class);
-			if (messageSender == null) {
-				messageSender = new MessageSender(sender);
-				sender.setAttribute(MESSAGE_SENDER_NAME, IMessageSender.class, messageSender);
-			}
+			byte[] datas = readAvailable(dis);
+			log.info(LOG_RECEIVED, sender.getNetType(), messageId, sender.getSessionId(), sender.getIp());
 			// 处理消息
-			handle(messageId, serial, datas, messageSender);
+			handle(messageId, serial, datas, getMessageSender(sender));
 		}
+	}
+	
+	private static byte[] readAvailable(DataInputStream dis) throws Exception {
+		byte[] datas = new byte[dis.available()];
+		dis.read(datas);
+		return datas;
+	}
+	
+	private static IMessageSender getMessageSender(ISender sender) {
+		IMessageSender messageSender = sender.getAttribute(MESSAGE_SENDER_NAME, IMessageSender.class);
+		if (messageSender == null) {
+			messageSender = new MessageSender(sender);
+			sender.setAttribute(MESSAGE_SENDER_NAME, IMessageSender.class, messageSender);
+		}
+		return messageSender;
 	}
 	
 	protected abstract void handle(int messageId, int serial, byte[] datas, IMessageSender messageSender) throws Exception;

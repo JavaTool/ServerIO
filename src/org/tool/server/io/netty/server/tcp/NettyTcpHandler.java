@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.tool.server.anthenticate.DefaultEncrypt;
 import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.anthenticate.IEncrypt;
-import org.tool.server.io.dispatch.IDispatchManager;
 import org.tool.server.io.dispatch.ISender;
+import org.tool.server.io.message.IMessageHandler;
 import org.tool.server.io.netty.NettyTcpSender;
 
 import io.netty.buffer.ByteBuf;
@@ -31,7 +31,7 @@ public final class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> 
 	
 	protected static final Logger log = LoggerFactory.getLogger(NettyTcpHandler.class);
 	/**消息处理器*/
-	protected final IDispatchManager dispatchManager;
+	protected final IMessageHandler messageHandler;
 	/**消息工厂*/
 	protected final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
 	
@@ -39,8 +39,8 @@ public final class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> 
 	
 	protected final IEncrypt encrypt;
 	
-	public NettyTcpHandler(IDispatchManager dispatchManager, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
-		this.dispatchManager = dispatchManager;
+	public NettyTcpHandler(IMessageHandler messageHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
+		this.messageHandler = messageHandler;
 		this.dataAnthenticate = dataAnthenticate;
 		anthencateLength =  dataAnthenticate == null ? 0 : dataAnthenticate.getAnthenticateLength();
 		encrypt = new DefaultEncrypt();
@@ -60,7 +60,7 @@ public final class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> 
 		channel.close();
 		ctx.close();
 		if (sessionId != null) {
-			dispatchManager.disconnect(new NettyTcpSender(channel, dataAnthenticate));
+//			dispatchManager.disconnect(new NettyTcpSender(channel, dataAnthenticate));
 		}
 	}
 
@@ -90,7 +90,8 @@ public final class NettyTcpHandler extends SimpleChannelInboundHandler<ByteBuf> 
 //			IContent content = contentFactory.createContent(ip, data, sender);
 //			log.info("Netty tcp receive : [MessageId : {}] [SessionId : {}] [Ip : {}]", content.getMessageId(), content.getSessionId(), ip);
 		    if (data.length > 0) {
-		    	dispatchManager.addDispatch(encrypt.deEncrypt(data), sender);
+//		    	dispatchManager.addDispatch(encrypt.deEncrypt(data), sender);
+		    	messageHandler.handle(encrypt.deEncrypt(data), sender);
 		    }
 		}
 	}

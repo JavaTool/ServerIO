@@ -8,8 +8,8 @@ import java.util.UUID;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tool.server.io.dispatch.IDispatchManager;
 import org.tool.server.io.dispatch.ISender;
+import org.tool.server.io.message.IMessageHandler;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
@@ -39,12 +39,12 @@ public class NettyHttpHandler extends SimpleChannelInboundHandler<HttpObject> {
 	
 	private static final String MESSAGE_ID = "messageId";
 	
-	private final IDispatchManager dispatchManager;
+	private final IMessageHandler messageHandler;
 	
 	private final ChannelManager channelMangage;
 	
-	public NettyHttpHandler(IDispatchManager dispatchManager, ChannelManager channelMangage) {
-		this.dispatchManager = dispatchManager;
+	public NettyHttpHandler(IMessageHandler messageHandler, ChannelManager channelMangage) {
+		this.messageHandler = messageHandler;
 		this.channelMangage = channelMangage;
 	}
 	
@@ -115,14 +115,11 @@ public class NettyHttpHandler extends SimpleChannelInboundHandler<HttpObject> {
 	}
 	
 	private void readContent(Channel channel, NettyHttpSession httpSession, byte[] datas) throws Exception {
-//		String sessionId = httpSession.getId();
 		int messageId = httpSession.getMessageId();
 		ByteArrayOutputStream baos = new ByteArrayOutputStream();
 		baos.write(messageId);
 		baos.write(datas);
-//		String ip = channel.remoteAddress().toString();
-//		IContent content = nettyContentFactory.createContent(ip, datas, sessionId, messageId, httpSession.getSender(), 0);
-		dispatchManager.addDispatch(baos.toByteArray(), httpSession.getSender());
+		messageHandler.handle(baos.toByteArray(), httpSession.getSender());
 	}
 
 	@Override

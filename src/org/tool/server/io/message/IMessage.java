@@ -6,10 +6,14 @@ public interface IMessage {
 	
 	int getSerial();
 	
-	void setSerial(int serial);
+	IMessage setSerial(int serial);
 	
 	byte[] toByteArray();
 	
 	long getReceiveTime();
+	
+	int getThreadId();
+	
+	IMessage setThreadId(int threadId);
 
 }
