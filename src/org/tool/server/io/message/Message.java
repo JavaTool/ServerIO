@@ -13,13 +13,18 @@ public abstract class Message implements IMessage {
 	private final int messageId;
 	
 	public Message(int messageId) {
-		this(messageId, 0);
+		this.messageId = messageId;
+		setReceiveTime(currentTimeMillis());
 	}
 	
 	public Message(int messageId, int serial) {
-		this.messageId = messageId;
+		this(messageId);
 		setSerial(serial);
-		setReceiveTime(currentTimeMillis());
+	}
+	
+	public Message(int messageId, int serial, int threadId) {
+		this(messageId, serial);
+		setThreadId(threadId);
 	}
 
 	@Override

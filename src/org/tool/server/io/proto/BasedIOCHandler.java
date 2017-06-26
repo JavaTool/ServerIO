@@ -10,8 +10,8 @@ import org.tool.server.io.message.IMessageSender;
 import org.tool.server.io.message.MessageHandler;
 import org.tool.server.ioc.IOC;
 import org.tool.server.ioc.IOCBean;
-import org.tool.server.thread.BaseMessageProcessorFactory;
 import org.tool.server.thread.IMessagePackage;
+import org.tool.server.thread.IMessagePackageHandler;
 import org.tool.server.thread.IMessageProcessor;
 import org.tool.server.thread.IMessageProcessorFactory;
 import org.tool.server.thread.IThreadType;
@@ -24,17 +24,13 @@ import gnu.trove.impl.unmodifiable.TUnmodifiableIntObjectMap;
 import gnu.trove.map.TIntObjectMap;
 import gnu.trove.map.hash.TIntObjectHashMap;
 
-public class BasedIOCHandler extends MessageHandler {
+public abstract class BasedIOCHandler extends MessageHandler {
 
 	private static final Logger log = LoggerFactory.getLogger(BasedIOCHandler.class);
 	
 	private static final String METHOD_HEAD = "PROCESS";
 	
 	private static final String REQUEST_HEAD = "MI_CS";
-	
-	private static final int LIMIT = 1000;
-	
-	private static final int EACH_COUNT = 10;
 	
 	private static final IThreadType DEFAULT_THREAD_ID = new IThreadType() {};
 	
@@ -71,9 +67,11 @@ public class BasedIOCHandler extends MessageHandler {
 		}
 		this.methods = new TUnmodifiableIntObjectMap<>(methods);
 		
-		IMessageProcessorFactory<IMessagePackage> factory = new BaseMessageProcessorFactory(LIMIT, EACH_COUNT, this::handleMessagePackage);
+		IMessageProcessorFactory<IMessagePackage> factory = createMessageProcessorFactory(this::handleMessagePackage);
 		messageProcessor = new MessageProcessorGroup(getThreadTypes(), factory);
 	}
+	
+	protected abstract IMessageProcessorFactory<IMessagePackage> createMessageProcessorFactory(IMessagePackageHandler handler);
 	
 	private void handleMessagePackage(IMessagePackage messagePackage) {
 		int messageId = messagePackage.getMessageId();

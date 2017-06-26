@@ -1,6 +1,6 @@
 package org.tool.server.thread;
 
-public final class BaseMessageProcessorFactory implements IMessageProcessorFactory<IMessagePackage> {
+public final class AsynchronousMessageProcessorFactory implements IMessageProcessorFactory<IMessagePackage> {
 	
 	private static final int LIMIT = 1000;
 	
@@ -12,11 +12,11 @@ public final class BaseMessageProcessorFactory implements IMessageProcessorFacto
 	
 	private final int eachLoopProcessCount;
 	
-	public BaseMessageProcessorFactory(IMessagePackageHandler handler) {
+	public AsynchronousMessageProcessorFactory(IMessagePackageHandler handler) {
 		this(LIMIT, EACH_COUNT, handler);
 	}
 	
-	public BaseMessageProcessorFactory(int msgLimit, int eachLoopProcessCount, IMessagePackageHandler handler) {
+	public AsynchronousMessageProcessorFactory(int msgLimit, int eachLoopProcessCount, IMessagePackageHandler handler) {
 		this.msgLimit = msgLimit;
 		this.handler = handler;
 		this.eachLoopProcessCount = eachLoopProcessCount;
@@ -24,7 +24,7 @@ public final class BaseMessageProcessorFactory implements IMessageProcessorFacto
 
 	@Override
 	public IMessageProcessor<IMessagePackage> create() {
-		BaseMessageProcessor messageProcessor = new BaseMessageProcessor(msgLimit, handler);
+		AsynchronousMessageProcessor messageProcessor = new AsynchronousMessageProcessor(msgLimit, handler);
 		messageProcessor.setEachLoopProcessCount(eachLoopProcessCount);
 		messageProcessor.startAsync().awaitRunning();
 		return messageProcessor;

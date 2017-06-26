@@ -9,9 +9,9 @@ import org.slf4j.LoggerFactory;
 import com.google.common.collect.Queues;
 import com.google.common.util.concurrent.AbstractScheduledService;
 
-public final class BaseMessageProcessor extends AbstractScheduledService implements IMessageProcessor<IMessagePackage> {
+final class AsynchronousMessageProcessor extends AbstractScheduledService implements IMessageProcessor<IMessagePackage> {
 	
-	private static final Logger log = LoggerFactory.getLogger(BaseMessageProcessor.class);
+	private static final Logger log = LoggerFactory.getLogger(AsynchronousMessageProcessor.class);
 	
 	private static final long DELAY = 50;
 	
@@ -23,7 +23,7 @@ public final class BaseMessageProcessor extends AbstractScheduledService impleme
 	
 	private int eachLoopProcessCount;
 	
-	public BaseMessageProcessor(int msgLimit, IMessagePackageHandler handler) {
+	public AsynchronousMessageProcessor(int msgLimit, IMessagePackageHandler handler) {
 		this.msgLimit = msgLimit;
 		this.handler = handler;
 		msgQueue = Queues.newLinkedBlockingQueue(msgLimit);
