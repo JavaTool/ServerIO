@@ -48,8 +48,9 @@ public abstract class Message implements IMessage {
 		return this;
 	}
 	
-	public void setReceiveTime(long receiveTime) {
+	public IMessage setReceiveTime(long receiveTime) {
 		this.receiveTime = receiveTime;
+		return this;
 	}
 
 	@Override

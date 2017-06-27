@@ -15,5 +15,7 @@ public interface IMessage {
 	int getThreadId();
 	
 	IMessage setThreadId(int threadId);
+	
+	IMessage setReceiveTime(long receiveTime);
 
 }
