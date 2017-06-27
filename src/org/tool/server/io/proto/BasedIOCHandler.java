@@ -4,6 +4,7 @@ import java.lang.reflect.Method;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.message.IMessage;
 import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.message.IMessageSender;
@@ -32,6 +33,8 @@ public abstract class BasedIOCHandler extends MessageHandler {
 	
 	private static final String REQUEST_HEAD = "MI_CS";
 	
+	private static final String LOG_RECEIVED = "Net {} received : [MessageId : {}] [SessionId : {}] [Ip : {}]";
+	
 	private static final IThreadType DEFAULT_THREAD_ID = new IThreadType() {};
 	
 	private final IMessageIdTransform messageIdTransform;
@@ -50,7 +53,12 @@ public abstract class BasedIOCHandler extends MessageHandler {
 		this.messageIdTransform = messageIdTransform;
 		ioc = new ProcessorIOC();
 	}
-	
+
+	@Override
+	protected void logReceive(int messageId, ISender sender) {
+		log.info(LOG_RECEIVED, sender.getNetType(), messageIdTransform.transform(messageId), sender.getSessionId(), sender.getIp());
+	}
+
 	public void load(String pkg, Class<? extends IOCBean> annotation, String type, ClassToInstanceMap<Object> objects) throws Exception {
 		ioc.load(pkg, annotation, type, objects);
 		loadMethods();
