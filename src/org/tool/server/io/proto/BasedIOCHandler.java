@@ -33,7 +33,7 @@ public abstract class BasedIOCHandler extends MessageHandler {
 	
 	private static final String REQUEST_HEAD = "MI_CS";
 	
-	private static final String LOG_RECEIVED = "Net {} received : [MessageId : {}] [SessionId : {}] [Ip : {}]";
+	private static final String LOG_RECEIVED = "Net {} received : [MessageId : {}({})] [SessionId : {}] [Ip : {}]";
 	
 	private static final IThreadType DEFAULT_THREAD_ID = new IThreadType() {};
 	
@@ -56,7 +56,7 @@ public abstract class BasedIOCHandler extends MessageHandler {
 
 	@Override
 	protected void logReceive(int messageId, ISender sender) {
-		log.info(LOG_RECEIVED, sender.getNetType(), messageIdTransform.transform(messageId), sender.getSessionId(), sender.getIp());
+		log.info(LOG_RECEIVED, sender.getNetType(), messageIdTransform.transform(messageId), messageId, sender.getSessionId(), sender.getIp());
 	}
 
 	public void load(String pkg, Class<? extends IOCBean> annotation, String type, ClassToInstanceMap<Object> objects) throws Exception {

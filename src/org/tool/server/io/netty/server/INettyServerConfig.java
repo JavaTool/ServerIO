@@ -1,15 +1,16 @@
 package org.tool.server.io.netty.server;
 
-import java.io.DataOutputStream;
-
-import org.tool.server.anthenticate.IDataAnthenticate;
+import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.message.IMessageHandler;
+import org.tool.server.io.message.IMessageIdTransform;
 
 public interface INettyServerConfig {
 
 	IMessageHandler getMessageHandler();
 	
-	IDataAnthenticate<byte[], DataOutputStream> getDataAnthenticate();
+	IEncrypt getEncrypt();
+	
+	IMessageIdTransform getMessageIdTransform();
 
 	int getParentThreadNum();
 

@@ -1,12 +1,10 @@
 package org.tool.server.io.netty.client;
 
-import java.io.DataOutputStream;
-
 import org.tool.server.anthenticate.DefaultEncrypt;
-import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.INetClient;
 import org.tool.server.io.message.IMessageHandler;
+import org.tool.server.io.message.IMessageIdTransform;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
@@ -34,13 +32,13 @@ public class NettyClient implements INetClient<byte[]> {
 	
 	protected final IEncrypt encrypt;
 	
-	public NettyClient(final IMessageHandler contentHandler, final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
+	public NettyClient(final IMessageHandler contentHandler, IMessageIdTransform messageIdTransform) {
 		encrypt = new DefaultEncrypt();
-		nettyClientHandler = createNettyClientHandler(contentHandler, dataAnthenticate);
+		nettyClientHandler = createNettyClientHandler(contentHandler, messageIdTransform);
 	}
 	
-	protected NettyClientHandler createNettyClientHandler(IMessageHandler contentHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
-		return new NettyClientHandler(contentHandler, dataAnthenticate, encrypt);
+	protected NettyClientHandler createNettyClientHandler(IMessageHandler contentHandler, IMessageIdTransform messageIdTransform) {
+		return new NettyClientHandler(contentHandler, messageIdTransform, encrypt);
 	}
 	
 	@Override

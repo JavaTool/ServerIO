@@ -7,36 +7,31 @@ import java.io.DataOutputStream;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.tool.server.anthenticate.DefaultEncrypt;
-import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.NetType;
 import org.tool.server.io.dispatch.ISender;
+import org.tool.server.io.message.IMessageIdTransform;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
 
-public class NettyTcpSender implements ISender {
+public final class NettyTcpSender implements ISender {
 	
-	protected static final Logger log = LoggerFactory.getLogger(NettyTcpSender.class);
+	private static final Logger log = LoggerFactory.getLogger(NettyTcpSender.class);
 	
-	protected static final IEncrypt DEFAULT_ENCRYPT = new DefaultEncrypt();
+	private static final String LOG_SEND = "Send message[{}({})], serial[{}], size[{}], use {} ms.";
 	
-	protected final IEncrypt encrypt;
+	private final IEncrypt encrypt;
 	
-	protected final Channel channel;
+	private final Channel channel;
 	
-	protected final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
+	private final IMessageIdTransform messageIdTransform;
 	
-	public NettyTcpSender(Channel channel, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
-		this(channel, dataAnthenticate, DEFAULT_ENCRYPT);
-	}
-	
-	public NettyTcpSender(Channel channel, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate, IEncrypt encrypt) {
+	public NettyTcpSender(Channel channel, IMessageIdTransform messageIdTransform, IEncrypt encrypt) {
 		this.channel = channel;
-		this.dataAnthenticate = dataAnthenticate;
+		this.messageIdTransform = messageIdTransform;
 		this.encrypt = encrypt;
 	}
 
@@ -55,21 +50,25 @@ public class NettyTcpSender implements ISender {
 
 	@Override
 	public void send(byte[] datas, int serial, int messageId, long useTime) throws Exception {
+		channel.writeAndFlush(createByteBuf(packageDatas(datas, serial, messageId)));
+		log.info(LOG_SEND, messageIdTransform.transform(messageId), messageId, serial, datas.length, useTime);
+	}
+	
+	private byte[] packageDatas(byte[] datas, int serial, int messageId) throws Exception {
 		ByteArrayOutputStream bout = new ByteArrayOutputStream();
 		DataOutputStream dos = new DataOutputStream(bout);
-		if (dataAnthenticate != null) {
-			dataAnthenticate.write(dos);
-		}
 		dos.writeInt(messageId);
 		dos.writeInt(serial); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
 		dos.write(datas);
-		byte[] bytes = encrypt.encrypt(bout.toByteArray());
+		return encrypt.encrypt(bout.toByteArray());
+	}
+	
+	private ByteBuf createByteBuf(byte[] bytes) {
 		int length = bytes.length;
 		ByteBuf result = buffer(length);
 		result.writeInt(length);
 		result.writeBytes(bytes);
-		channel.writeAndFlush(result);
-		log.info("Send message[{}], serial[{}], size[{}], use {} ms.", messageId, serial, datas.length, useTime);
+		return result;
 	}
 
 	@Override

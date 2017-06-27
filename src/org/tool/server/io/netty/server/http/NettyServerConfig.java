@@ -1,16 +1,17 @@
 package org.tool.server.io.netty.server.http;
 
-import java.io.DataOutputStream;
-
-import org.tool.server.anthenticate.IDataAnthenticate;
+import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.message.IMessageHandler;
+import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.netty.server.INettyServerConfig;
 
-public class NettyServerConfig implements INettyServerConfig {
+public final class NettyServerConfig implements INettyServerConfig {
 	
 	private IMessageHandler messageHandler;
 	
-	private IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
+	private IMessageIdTransform messageIdTransform;
+	
+	private IEncrypt encrypt;
 	
 	private int parentThreadNum;
 	
@@ -110,12 +111,21 @@ public class NettyServerConfig implements INettyServerConfig {
 	}
 
 	@Override
-	public IDataAnthenticate<byte[], DataOutputStream> getDataAnthenticate() {
-		return dataAnthenticate;
+	public IEncrypt getEncrypt() {
+		return encrypt;
 	}
 
-	public void setDataAnthenticate(IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate) {
-		this.dataAnthenticate = dataAnthenticate;
+	public void setEncrypt(IEncrypt encrypt) {
+		this.encrypt = encrypt;
+	}
+
+	@Override
+	public IMessageIdTransform getMessageIdTransform() {
+		return messageIdTransform;
+	}
+
+	public void getMessageIdTransform(IMessageIdTransform messageIdTransform) {
+		this.messageIdTransform = messageIdTransform;
 	}
 
 }

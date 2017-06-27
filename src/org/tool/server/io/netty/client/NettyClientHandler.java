@@ -1,10 +1,8 @@
 package org.tool.server.io.netty.client;
 
-import java.io.DataOutputStream;
-
-import org.tool.server.anthenticate.IDataAnthenticate;
 import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.message.IMessageHandler;
+import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.netty.NettyTcpSender;
 
 import io.netty.buffer.ByteBuf;
@@ -18,16 +16,13 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 	
 	private final IMessageHandler contentHandler;
 	
-	private final IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate;
-	
-	private final int anthencateLength;
+	private final IMessageIdTransform messageIdTransform;
 	
 	private final IEncrypt encrypt;
 
-	public NettyClientHandler(IMessageHandler contentHandler, IDataAnthenticate<byte[], DataOutputStream> dataAnthenticate, IEncrypt encrypt) {
+	public NettyClientHandler(IMessageHandler contentHandler, IMessageIdTransform messageIdTransform, IEncrypt encrypt) {
 		this.contentHandler = contentHandler;
-		this.dataAnthenticate = dataAnthenticate;
-		anthencateLength =  dataAnthenticate == null ? 0 : dataAnthenticate.getAnthenticateLength();
+		this.messageIdTransform = messageIdTransform;
 		this.encrypt = encrypt;
 	}
 	  
@@ -38,7 +33,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 		    Channel channel = ctx.channel();
 		    byte[] data = new byte[buf.readableBytes()];
 		    buf.readBytes(data);
-		    contentHandler.handle(encrypt.deEncrypt(data), new NettyTcpSender(channel, dataAnthenticate));
+		    contentHandler.handle(encrypt.deEncrypt(data), new NettyTcpSender(channel, messageIdTransform, encrypt));
 	    }
 	}
 	  
@@ -48,13 +43,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 	}
 	
 	private boolean check(ByteBuf msg) {
-		if (anthencateLength > 0) {
-			byte[] data = new byte[anthencateLength];
-			msg.readBytes(data);
-			return dataAnthenticate.read(data);
-		} else {
-			return true;
-		}
+		return true;
 	}
 	
 }
