@@ -27,6 +27,9 @@ public final class ExcelUtil {
 	private ExcelUtil() {}
 	
 	public static String readCellAsString(Cell cell) {
+		if (cell == null) {
+			return "";
+		}
 		switch (cell.getCellType()) {
 		case Cell.CELL_TYPE_BLANK : 
 			return "";
@@ -46,6 +49,9 @@ public final class ExcelUtil {
 	}
 	
 	public static int readCellAsInt(Cell cell) {
+		if (cell == null) {
+			return 0;
+		}
 		switch (cell.getCellType()) {
 		case Cell.CELL_TYPE_BLANK : 
 			return 0;
@@ -61,6 +67,9 @@ public final class ExcelUtil {
 	}
 	
 	public static byte readCellAsByte(Cell cell) {
+		if (cell == null) {
+			return 0;
+		}
 		switch (cell.getCellType()) {
 		case Cell.CELL_TYPE_BLANK : 
 			return 0;
@@ -76,6 +85,9 @@ public final class ExcelUtil {
 	}
 	
 	public static short readCellAsShort(Cell cell) {
+		if (cell == null) {
+			return 0;
+		}
 		switch (cell.getCellType()) {
 		case Cell.CELL_TYPE_BLANK : 
 			return 0;
@@ -91,6 +103,9 @@ public final class ExcelUtil {
 	}
 	
 	public static double readCellAsDouble(Cell cell) {
+		if (cell == null) {
+			return 0d;
+		}
 		switch (cell.getCellType()) {
 		case Cell.CELL_TYPE_BLANK : 
 			return 0d;
@@ -106,6 +121,9 @@ public final class ExcelUtil {
 	}
 	
 	public static boolean readCellAsBoolean(Cell cell) {
+		if (cell == null) {
+			return false;
+		}
 		switch (cell.getCellType()) {
 		case Cell.CELL_TYPE_BLANK : 
 			return false;
