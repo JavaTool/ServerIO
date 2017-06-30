@@ -58,7 +58,8 @@ public final class ExcelUtil {
 		case Cell.CELL_TYPE_NUMERIC : 
 			return (int) cell.getNumericCellValue();
 		case Cell.CELL_TYPE_STRING : 
-			return Integer.parseInt(cell.getStringCellValue());
+			String value = cell.getStringCellValue().trim();
+			return value.length() == 0 ? 0 : Integer.parseInt(value);
 		case Cell.CELL_TYPE_BOOLEAN : 
 			return cell.getBooleanCellValue() ? 0 : 1;
 		default : 
