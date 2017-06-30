@@ -50,16 +50,16 @@ public final class ExcelUtil {
 	
 	public static int readCellAsInt(Cell cell) {
 		if (cell == null) {
-			return 0;
+			return -1;
 		}
 		switch (cell.getCellType()) {
 		case Cell.CELL_TYPE_BLANK : 
-			return 0;
+			return -1;
 		case Cell.CELL_TYPE_NUMERIC : 
 			return (int) cell.getNumericCellValue();
 		case Cell.CELL_TYPE_STRING : 
 			String value = cell.getStringCellValue().trim();
-			return value.length() == 0 ? 0 : Integer.parseInt(value);
+			return value.length() == 0 ? -1 : Integer.parseInt(value);
 		case Cell.CELL_TYPE_BOOLEAN : 
 			return cell.getBooleanCellValue() ? 0 : 1;
 		default : 
