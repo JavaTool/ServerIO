@@ -38,7 +38,7 @@ public final class MessageProcessorGroup implements IMessageProcessor<IMessagePa
 	private static void addMessageProcessor(IThreadType threadType, 
 			IMessageProcessorFactory<IMessagePackage> factory, 
 			Map<IThreadType, IMessageProcessor<IMessagePackage>> processors) {
-		processors.put(threadType, factory.create());
+		processors.put(threadType, factory.create(threadType.name()));
 		log.info("Start messageProcessor {}.", threadType);
 	}
 

@@ -9,7 +9,7 @@ public final class SynchronizedMessageProcessorFactory implements IMessageProces
 	}
 
 	@Override
-	public IMessageProcessor<IMessagePackage> create() {
+	public IMessageProcessor<IMessagePackage> create(String name) {
 		return new SynchronizedMessageProcessor(handler);
 	}
 

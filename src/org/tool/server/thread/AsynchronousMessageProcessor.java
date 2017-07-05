@@ -1,11 +1,14 @@
 package org.tool.server.thread;
 
+import java.util.List;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.Joiner;
+import com.google.common.collect.Lists;
 import com.google.common.collect.Queues;
 import com.google.common.util.concurrent.AbstractScheduledService;
 
@@ -21,12 +24,32 @@ final class AsynchronousMessageProcessor extends AbstractScheduledService implem
 	
 	private final IMessagePackageHandler handler;
 	
+	private final String name;
+	
+	private final List<Runnable> runList;
+	
 	private int eachLoopProcessCount;
 	
 	public AsynchronousMessageProcessor(int msgLimit, IMessagePackageHandler handler) {
+		this(msgLimit, handler, AsynchronousMessageProcessor.class.getName());
+	}
+	
+	public AsynchronousMessageProcessor(int msgLimit, IMessagePackageHandler handler, String name) {
+		this(msgLimit, handler, name, Lists.newLinkedList());
+	}
+	
+	public AsynchronousMessageProcessor(int msgLimit, IMessagePackageHandler handler, String name, List<Runnable> runList) {
 		this.msgLimit = msgLimit;
 		this.handler = handler;
+		this.name = "MessageProcessor_" + name;
+		this.runList = runList;
+		log.info("Add runnables {}.", Joiner.on(';').join(runList).toString());
 		msgQueue = Queues.newLinkedBlockingQueue(msgLimit);
+	}
+
+	@Override
+	protected String serviceName() {
+		return name;
 	}
 
 	@Override
@@ -53,6 +76,7 @@ final class AsynchronousMessageProcessor extends AbstractScheduledService implem
 
 	@Override
 	protected void runOneIteration() throws Exception {
+		// process messages
 		int processCount = 0;
 		while (!msgQueue.isEmpty()) {
 			IMessagePackage msg = msgQueue.poll();
@@ -64,6 +88,14 @@ final class AsynchronousMessageProcessor extends AbstractScheduledService implem
 
 			if (processCount >= eachLoopProcessCount) {
 				break;
+			}
+		}
+		// run runnables
+		for (Runnable runnable : runList) {
+			try {
+				runnable.run();
+			} catch (Exception e) {
+				log.error("", e);
 			}
 		}
 	}

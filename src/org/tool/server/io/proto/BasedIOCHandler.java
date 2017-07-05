@@ -35,7 +35,7 @@ public abstract class BasedIOCHandler extends MessageHandler {
 	
 	private static final String LOG_RECEIVED = "Net {} received : [MessageId : {}({})] [SessionId : {}] [Ip : {}]";
 	
-	private static final IThreadType DEFAULT_THREAD_ID = new IThreadType() {};
+	private static final IThreadType DEFAULT_THREAD_ID = () -> { return "DEFAULT_THREAD"; };
 	
 	private final IMessageIdTransform messageIdTransform;
 	

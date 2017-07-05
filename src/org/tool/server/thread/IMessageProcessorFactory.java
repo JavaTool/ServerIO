@@ -2,6 +2,6 @@ package org.tool.server.thread;
 
 public interface IMessageProcessorFactory<T> {
 	
-	IMessageProcessor<T> create();
+	IMessageProcessor<T> create(String name);
 
 }

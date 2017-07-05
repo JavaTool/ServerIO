@@ -1,10 +1,14 @@
 package org.tool.server.thread;
 
+import java.util.List;
+
+import com.google.common.base.Function;
+
 public final class AsynchronousMessageProcessorFactory implements IMessageProcessorFactory<IMessagePackage> {
 	
-	private static final int LIMIT = 1000;
+	private static final int LIMIT = 4000;
 	
-	private static final int EACH_COUNT = 10;
+	private static final int EACH_COUNT = 2000;
 	
 	private final int msgLimit;
 	
@@ -12,19 +16,26 @@ public final class AsynchronousMessageProcessorFactory implements IMessageProces
 	
 	private final int eachLoopProcessCount;
 	
-	public AsynchronousMessageProcessorFactory(IMessagePackageHandler handler) {
-		this(LIMIT, EACH_COUNT, handler);
+	private final Function<String, List<Runnable>> listSupplier;
+	
+	public AsynchronousMessageProcessorFactory(IMessagePackageHandler handler, Function<String, List<Runnable>> listSupplier) {
+		this(LIMIT, EACH_COUNT, handler, listSupplier);
 	}
 	
-	public AsynchronousMessageProcessorFactory(int msgLimit, int eachLoopProcessCount, IMessagePackageHandler handler) {
+	public AsynchronousMessageProcessorFactory(
+			int msgLimit, 
+			int eachLoopProcessCount, 
+			IMessagePackageHandler handler, 
+			Function<String, List<Runnable>> listSupplier) {
 		this.msgLimit = msgLimit;
 		this.handler = handler;
 		this.eachLoopProcessCount = eachLoopProcessCount;
+		this.listSupplier = listSupplier;
 	}
 
 	@Override
-	public IMessageProcessor<IMessagePackage> create() {
-		AsynchronousMessageProcessor messageProcessor = new AsynchronousMessageProcessor(msgLimit, handler);
+	public IMessageProcessor<IMessagePackage> create(String name) {
+		AsynchronousMessageProcessor messageProcessor = new AsynchronousMessageProcessor(msgLimit, handler, name, listSupplier.apply(name));
 		messageProcessor.setEachLoopProcessCount(eachLoopProcessCount);
 		messageProcessor.startAsync().awaitRunning();
 		return messageProcessor;
