@@ -3,7 +3,7 @@ package org.tool.server.io.netty.server.tcp;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
 import org.tool.server.anthenticate.IEncrypt;
-import org.tool.server.io.message.IMessageHandler;
+import org.tool.server.io.message.IConncetHandler;
 import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.netty.server.INettyServerConfig;
 
@@ -29,7 +29,7 @@ public final class NettyTcpServer extends AbstractNettyTcpServer<INettyServerCon
 		final long readerIdleTime = config.getReaderIdleTime();
 		final long writerIdleTime = config.getWriterIdleTime();
 		final long allIdleTime = config.getAllIdleTime();
-		final IMessageHandler messageHandler = config.getMessageHandler();
+		final IConncetHandler messageHandler = config.getConncetHandler();
 		final IMessageIdTransform messageIdTransform = config.getMessageIdTransform();
 		final IEncrypt encrypt = config.getEncrypt();
 		return new ChannelInitializer<SocketChannel>() {

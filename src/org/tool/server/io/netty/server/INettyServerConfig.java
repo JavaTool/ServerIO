@@ -1,12 +1,12 @@
 package org.tool.server.io.netty.server;
 
 import org.tool.server.anthenticate.IEncrypt;
-import org.tool.server.io.message.IMessageHandler;
+import org.tool.server.io.message.IConncetHandler;
 import org.tool.server.io.message.IMessageIdTransform;
 
 public interface INettyServerConfig {
 
-	IMessageHandler getMessageHandler();
+	IConncetHandler getConncetHandler();
 	
 	IEncrypt getEncrypt();
 	

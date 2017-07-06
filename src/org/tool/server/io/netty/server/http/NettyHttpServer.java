@@ -52,7 +52,7 @@ public class NettyHttpServer implements INetServer, IShutdown {
 	private ServerBootstrap serverBootstrap;
 	
 	public NettyHttpServer(INettyServerConfig config) {
-		messageHandler = config.getMessageHandler();
+		messageHandler = config.getConncetHandler();
 		parentThreadNum = config.getParentThreadNum();
 		childThreadNum = config.getChildThreadNum();
 		soBacklog = config.getSoBacklog();

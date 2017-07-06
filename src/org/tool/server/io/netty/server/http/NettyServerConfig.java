@@ -1,13 +1,13 @@
 package org.tool.server.io.netty.server.http;
 
 import org.tool.server.anthenticate.IEncrypt;
-import org.tool.server.io.message.IMessageHandler;
+import org.tool.server.io.message.IConncetHandler;
 import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.netty.server.INettyServerConfig;
 
 public final class NettyServerConfig implements INettyServerConfig {
 	
-	private IMessageHandler messageHandler;
+	private IConncetHandler conncetHandler;
 	
 	private IMessageIdTransform messageIdTransform;
 	
@@ -30,12 +30,12 @@ public final class NettyServerConfig implements INettyServerConfig {
 	private long allIdleTime;
 
 	@Override
-	public IMessageHandler getMessageHandler() {
-		return messageHandler;
+	public IConncetHandler getConncetHandler() {
+		return conncetHandler;
 	}
 
-	public void setMessageHandler(IMessageHandler messageHandler) {
-		this.messageHandler = messageHandler;
+	public void setConncetHandler(IConncetHandler conncetHandler) {
+		this.conncetHandler = conncetHandler;
 	}
 
 	@Override

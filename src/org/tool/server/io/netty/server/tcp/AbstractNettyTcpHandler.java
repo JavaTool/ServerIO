@@ -6,7 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.dispatch.ISender;
-import org.tool.server.io.message.IMessageHandler;
+import org.tool.server.io.message.IConncetHandler;
 import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.netty.NettyTcpSender;
 
@@ -33,13 +33,13 @@ public abstract class AbstractNettyTcpHandler extends SimpleChannelInboundHandle
 	
 	protected static final String LOG_INACTIVE = "[Coming Out]IP:{}, session{}";
 	/**消息处理器*/
-	protected final IMessageHandler messageHandler;
+	protected final IConncetHandler messageHandler;
 	/**消息工厂*/
 	protected final IMessageIdTransform messageIdTransform;
 	
 	protected final IEncrypt encrypt;
 	
-	public AbstractNettyTcpHandler(IMessageHandler messageHandler, IMessageIdTransform messageIdTransform, IEncrypt encrypt) {
+	public AbstractNettyTcpHandler(IConncetHandler messageHandler, IMessageIdTransform messageIdTransform, IEncrypt encrypt) {
 		this.messageHandler = messageHandler;
 		this.messageIdTransform = messageIdTransform;
 		this.encrypt = encrypt;
@@ -58,8 +58,10 @@ public abstract class AbstractNettyTcpHandler extends SimpleChannelInboundHandle
 		log.info(LOG_INACTIVE, address, sessionId);
 		channel.close();
 		ctx.close();
-		if (sessionId != null) {
-//			dispatchManager.disconnect(new NettyTcpSender(channel, dataAnthenticate));
+		Attribute<ISender> attribute = channel.attr(SENDER_KEY);
+		ISender sender = attribute.get();
+		if (sessionId != null && sender != null) {
+			messageHandler.discontected(sender);
 		}
 	}
 

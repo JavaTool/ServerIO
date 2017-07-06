@@ -30,10 +30,6 @@ public final class AsynchronousIOCHandler extends BasedIOCHandler {
 		}: listSupplier);
 	}
 
-	public Function<String, List<Runnable>> getListSupplier() {
-		return listSupplier;
-	}
-
 	public void setListSupplier(Function<String, List<Runnable>> listSupplier) {
 		this.listSupplier = listSupplier;
 	}
