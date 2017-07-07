@@ -6,7 +6,7 @@ import javax.script.Invocable;
 import javax.script.ScriptEngine;
 import javax.script.ScriptEngineManager;
 
-import org.tool.server.debug.TimeOutputer;
+import com.google.common.base.Stopwatch;
 
 public class JSUtil {
 
@@ -32,16 +32,16 @@ public class JSUtil {
 	    //取得调用接口
 //	    Invocable jsInvoke = (Invocable) engine;
 	    //定义加法函数
-	    TimeOutputer timeOutputer = new TimeOutputer();
-	    timeOutputer.timing();
+	    Stopwatch timeOutputer = Stopwatch.createStarted();
 	    for (int i = 0;i < 10;i++) {
 //	    	Object result1 = jsInvoke.invokeFunction("add", i, i, i, i);
 //	    System.out.println(result1);
-	    	timeOutputer.timing("js " + i);
+//	    	timeOutputer.timing("js " + i);
 	    }
 //	    int re = 10 + 5 * 3 * 4;
-	    timeOutputer.timing("java");
-	    timeOutputer.outputAll();
+//	    timeOutputer.timing("java");
+//	    timeOutputer.outputAll();
+	    timeOutputer.stop();
 
 	    //调用加法函数,注意参数传递的方法
 //	    Adder adder = jsInvoke.getInterface(Adder.class);
