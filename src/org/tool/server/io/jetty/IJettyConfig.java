@@ -5,7 +5,7 @@ public interface IJettyConfig {
 	void init();
 	
 	default String getConfigPath() {
-		return "config/log4j.xml";
+		return "config/log4j.properties";
 	}
 	
 	default int getThreadPoolSize() {

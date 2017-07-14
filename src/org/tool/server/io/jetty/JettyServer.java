@@ -1,6 +1,6 @@
 package org.tool.server.io.jetty;
 
-import org.apache.log4j.xml.DOMConfigurator;
+import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
@@ -29,7 +29,7 @@ public final class JettyServer implements INetServer {
 	
 	@Override
 	public void bind() throws Exception {
-		DOMConfigurator.configureAndWatch(jettyConfig.getConfigPath());
+		PropertyConfigurator.configure(jettyConfig.getConfigPath());
 		new MakeKillShutdownExecutor().makeKill();
 		// 初始化配置
 		jettyConfig.init();
