@@ -103,6 +103,11 @@ public class SystemUtil {
 		return systemInfo.memoryUsage();
 	}
 	
+	public static long getUseMemory() {
+		Runtime runtime = getRuntime();
+		return runtime.maxMemory() - runtime.freeMemory();
+	}
+	
 	public static void executeBat(String path, Object... params) throws Exception {
 		StringBuilder builder = new StringBuilder(path);
 		for (Object param : params) {
