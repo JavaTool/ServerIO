@@ -1,5 +1,7 @@
 package org.tool.server.io.jetty;
 
+import org.eclipse.jetty.server.Handler;
+
 public interface IJettyConfig {
 	
 	void init();
@@ -40,6 +42,10 @@ public interface IJettyConfig {
 	
 	default int getMaxInactiveInterval() {
 		return 86400000;
+	}
+	
+	default Handler getHandler() {
+		return null;
 	}
 
 }

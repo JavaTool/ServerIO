@@ -2,14 +2,15 @@ package org.tool.server.io.jetty;
 
 import org.apache.log4j.PropertyConfigurator;
 import org.eclipse.jetty.server.Connector;
+import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.tool.server.io.INetServer;
 import org.tool.server.shutdown.MakeKillShutdownExecutor;
+import org.tool.server.utils.LogUtil;
 
 /**
  * Jetty服务器
@@ -17,7 +18,7 @@ import org.tool.server.shutdown.MakeKillShutdownExecutor;
  */
 public final class JettyServer implements INetServer {
 	
-	private static final Logger log = LoggerFactory.getLogger(JettyServer.class);
+	private static final Logger log = LogUtil.getLogger(JettyServer.class);
 	
 	private final IJettyConfig jettyConfig;
 	
@@ -48,6 +49,10 @@ public final class JettyServer implements INetServer {
 		context.setParentLoaderPriority(jettyConfig.getParentLoaderPriority());
 		context.setDefaultsDescriptor(jettyConfig.getDefaultsDescriptor());
 		context.getSessionHandler().getSessionManager().setMaxInactiveInterval(jettyConfig.getMaxInactiveInterval());
+		Handler handler = jettyConfig.getHandler();
+		if (handler != null) {
+			context.setHandler(handler);
+		}
 		// 线程启动
 		server.setHandler(context);
 		server.start();

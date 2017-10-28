@@ -224,5 +224,20 @@
 		    <artifactId>trove4j</artifactId>
 		    <version>3.0.3</version>
 		</dependency>
+		<dependency>
+			<groupId>javassist</groupId>
+			<artifactId>javassist</artifactId>
+			<version>3.11.0.GA</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.jetty</groupId>
+		    <artifactId>jetty-websocket</artifactId>
+		    <version>8.1.22.v20160922</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.eclipse.jetty</groupId>
+		    <artifactId>jetty-io</artifactId>
+		    <version>9.4.7.v20170914</version>
+		</dependency>
 	</dependencies>
 </project>

@@ -4,13 +4,13 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
 import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.tool.server.shutdown.MakeKillShutdownExecutor;
 import org.tool.server.shutdown.ShutdownExecutor;
+import org.tool.server.utils.LogUtil;
 
 public abstract class AbstractStartup implements ServletContextListener {
 
-	protected static final Logger log = LoggerFactory.getLogger(AbstractStartup.class);
+	protected static final Logger log = LogUtil.getLogger(AbstractStartup.class);
 	
 	private ShutdownExecutor shutdownExecutor;
 
