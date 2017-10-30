@@ -1,6 +1,7 @@
 package org.tool.server.io.jetty;
 
 import org.eclipse.jetty.server.Handler;
+import org.eclipse.jetty.util.ssl.SslContextFactory;
 
 public interface IJettyConfig {
 	
@@ -45,6 +46,10 @@ public interface IJettyConfig {
 	}
 	
 	default Handler getHandler() {
+		return null;
+	}
+	
+	default SslContextFactory getSslContextFactory() {
 		return null;
 	}
 

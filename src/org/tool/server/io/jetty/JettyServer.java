@@ -5,6 +5,7 @@ import org.eclipse.jetty.server.Connector;
 import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.server.ServerConnector;
+import org.eclipse.jetty.util.ssl.SslContextFactory;
 import org.eclipse.jetty.util.thread.QueuedThreadPool;
 import org.eclipse.jetty.webapp.WebAppContext;
 import org.slf4j.Logger;
@@ -36,7 +37,9 @@ public final class JettyServer implements INetServer {
 		jettyConfig.init();
 		// 创建连接器
 		server = new Server(new QueuedThreadPool(jettyConfig.getThreadPoolSize()));
-		ServerConnector serverConnector = new ServerConnector(server);
+		SslContextFactory sslContextFactory = jettyConfig.getSslContextFactory();
+		ServerConnector serverConnector = sslContextFactory == null ? 
+				new ServerConnector(server) : new ServerConnector(server, sslContextFactory);
 		serverConnector.setPort(jettyConfig.getPort());
 		Connector[] connectors = {serverConnector};
 		server.setConnectors(connectors);
