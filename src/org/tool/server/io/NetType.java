@@ -6,6 +6,8 @@ public enum NetType {
 	
 	UDP, 
 	
-	HTTP
+	HTTP,
+	
+	WEB_SOCKET, 
 
 }
