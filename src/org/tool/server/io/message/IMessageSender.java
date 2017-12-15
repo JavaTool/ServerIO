@@ -15,5 +15,7 @@ public interface IMessageSender {
 	}
 	
 	String getSessionId();
+	
+	void sendError(int messageId, int serial, String error);
 
 }

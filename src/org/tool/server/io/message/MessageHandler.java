@@ -35,14 +35,16 @@ public abstract class MessageHandler implements IMessageHandler {
 		return datas;
 	}
 	
-	private static IMessageSender getMessageSender(ISender sender) {
+	private IMessageSender getMessageSender(ISender sender) {
 		IMessageSender messageSender = sender.getAttribute(MESSAGE_SENDER_NAME, IMessageSender.class);
 		if (messageSender == null) {
-			messageSender = new MessageSender(sender);
+			messageSender = createMessageSender(sender);
 			sender.setAttribute(MESSAGE_SENDER_NAME, IMessageSender.class, messageSender);
 		}
 		return messageSender;
 	}
+	
+	protected abstract IMessageSender createMessageSender(ISender sender);
 	
 	protected abstract void handle(int messageId, int serial, byte[] datas, IMessageSender messageSender) throws Exception;
 

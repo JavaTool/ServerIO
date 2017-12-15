@@ -5,6 +5,7 @@ import static java.lang.System.currentTimeMillis;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.tool.server.io.dispatch.ISender;
+import org.tool.server.io.proto.IErrorHandler;
 
 public final class MessageSender implements IMessageSender {
 	
@@ -14,8 +15,11 @@ public final class MessageSender implements IMessageSender {
 	
 	private final ISender sender;
 	
-	public MessageSender(ISender sender) {
+	private final IErrorHandler errorHandler;
+	
+	public MessageSender(ISender sender, IErrorHandler errorHandler) {
 		this.sender = sender;
+		this.errorHandler = errorHandler;
 	}
 
 	@Override
@@ -39,6 +43,11 @@ public final class MessageSender implements IMessageSender {
 		} catch (Exception e) {
 			log.error("", e);
 		}
+	}
+
+	@Override
+	public void sendError(int messageId, int serial, String error) {
+		send(errorHandler.createErrorResponse(messageId, serial, error));
 	}
 
 }

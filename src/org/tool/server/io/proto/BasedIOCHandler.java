@@ -9,6 +9,7 @@ import org.tool.server.io.message.IMessage;
 import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.message.IMessageSender;
 import org.tool.server.io.message.MessageHandler;
+import org.tool.server.io.message.MessageSender;
 import org.tool.server.ioc.IOC;
 import org.tool.server.ioc.IOCBean;
 import org.tool.server.thread.IMessagePackage;
@@ -188,6 +189,11 @@ public abstract class BasedIOCHandler extends MessageHandler {
 			setThreadTypes(threadTypes);
 		}
 		return threadTypes;
+	}
+
+	@Override
+	protected IMessageSender createMessageSender(ISender sender) {
+		return new MessageSender(sender, errorHandler);
 	}
 
 }
