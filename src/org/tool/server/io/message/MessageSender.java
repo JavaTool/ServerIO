@@ -17,8 +17,6 @@ public final class MessageSender implements IMessageSender {
 	
 	private static final String LOG_SEND = "Use {} ms send message[{}] : {}.";
 	
-	private static final String LOG_SERIAL = "{\"serial\" : %d}";
-	
 	private final ISender sender;
 	
 	private final IErrorHandler errorHandler;
@@ -65,6 +63,11 @@ public final class MessageSender implements IMessageSender {
 	@Override
 	public void sendError(int messageId, int serial, String error) {
 		send(errorHandler.createErrorResponse(messageId, serial, error));
+	}
+
+	@Override
+	public String getIp() {
+		return sender.getIp();
 	}
 
 }

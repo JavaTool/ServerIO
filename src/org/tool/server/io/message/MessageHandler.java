@@ -21,13 +21,10 @@ public abstract class MessageHandler implements IMessageHandler {
 			int messageId = dis.readInt();
 			int serial = dis.readInt(); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
 			byte[] datas = readAvailable(dis);
-			logReceive(messageId, sender);
 			// 处理消息
 			handle(messageId, serial, datas, getMessageSender(sender));
 		}
 	}
-	
-	protected abstract void logReceive(int messageId, ISender sender);
 	
 	private static byte[] readAvailable(DataInputStream dis) throws Exception {
 		byte[] datas = new byte[dis.available()];
