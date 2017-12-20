@@ -39,7 +39,7 @@ public final class NettyTcpSender implements ISender {
 	}
 
 	@Override
-	public void send(byte[] datas, int serial, int messageId, long useTime) throws Exception {
+	public void send(byte[] datas, int serial, int messageId) throws Exception {
 		channel.writeAndFlush(createByteBuf(packageDatas(datas, serial, messageId)));
 	}
 	

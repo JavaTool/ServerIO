@@ -33,10 +33,10 @@ public class NettyHttpSender implements ISender {
 	}
 
 	@Override
-	public void send(byte[] datas, int receiveMessageId, int messageId, long useTime) throws Exception {
+	public void send(byte[] datas, int receiveMessageId, int messageId) throws Exception {
 		FullHttpResponse response = createResponse(ENCRYPT.encrypt(datas));
 		setCookie(response);
-		setContent(response, messageId, useTime);
+		setContent(response, messageId);
 		channel.writeAndFlush(response);
 	}
 	
@@ -49,8 +49,8 @@ public class NettyHttpSender implements ISender {
 		headers.add(HttpHeaders.Names.SET_COOKIE, sessionId);
 	}
 	
-	protected void setContent(FullHttpResponse response, int messageId, long useTime) {
-		response.headers().set(HttpHeaders.Names.CONTENT_TYPE, makeHead(messageId, useTime));
+	protected void setContent(FullHttpResponse response, int messageId) {
+		response.headers().set(HttpHeaders.Names.CONTENT_TYPE, makeHead(messageId));
         response.headers().set(HttpHeaders.Names.CONTENT_LENGTH, response.content().readableBytes());
         if (isKeepAlive) {
             response.headers().set(HttpHeaders.Names.CONNECTION, Values.KEEP_ALIVE);

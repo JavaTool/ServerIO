@@ -34,9 +34,9 @@ public final class HttpResponseSender implements ISender {
 	}
 
 	@Override
-	public void send(byte[] datas, int serial, int messageId, long useTime) throws Exception {
+	public void send(byte[] datas, int serial, int messageId) throws Exception {
 		try (OutputStream os = response.getOutputStream()) {
-			response.setContentType(makeHead(messageId, useTime));
+			response.setContentType(makeHead(messageId));
 			ByteArrayOutputStream baos = new ByteArrayOutputStream();
 			DataOutputStream dos = new DataOutputStream(baos);
 			dos.writeInt(messageId);
@@ -44,7 +44,7 @@ public final class HttpResponseSender implements ISender {
 			dos.write(datas);
 			os.write(ENCRYPT.encrypt(baos.toByteArray()));
 		} catch (Exception e) {
-			log.info("Exception message[{}], serial[{}], use {} ms.", messageId, serial, useTime);
+			log.info("Exception message[{}], serial[{}].", messageId, serial);
 			throw e;
 		}
 	}

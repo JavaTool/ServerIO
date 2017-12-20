@@ -193,7 +193,7 @@ public abstract class BasedIOCHandler extends MessageHandler {
 
 	@Override
 	protected IMessageSender createMessageSender(ISender sender) {
-		return new MessageSender(sender, errorHandler);
+		return new MessageSender(sender, errorHandler, messageIdTransform);
 	}
 
 }

@@ -30,7 +30,7 @@ public class WebSocketSender implements ISender {
 	}
 
 	@Override
-	public void send(byte[] datas, int serial, int messageId, long useTime) throws Exception {
+	public void send(byte[] datas, int serial, int messageId) throws Exception {
 		ByteBuffer data = ByteBuffer.wrap(packageDatas(datas, serial, messageId));
 		session.getRemote().sendBytes(data);
 	}

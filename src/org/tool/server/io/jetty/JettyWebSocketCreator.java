@@ -36,7 +36,7 @@ public class JettyWebSocketCreator implements WebSocketCreator {
 			}
 			System.out.println();
 			try {
-				webSocketSessionManager.getSender(sessionId).send(payload, 0, 0, 0);
+				webSocketSessionManager.getSender(sessionId).send(payload, 0, 0);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -71,7 +71,7 @@ public class JettyWebSocketCreator implements WebSocketCreator {
 		public void onWebSocketText(String message) {
 			System.out.println("onWebSocketText : " + message);
 			try {
-				webSocketSessionManager.getSender(sessionId).send(message.getBytes(), 0, 0, 0);
+				webSocketSessionManager.getSender(sessionId).send(message.getBytes(), 0, 0);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

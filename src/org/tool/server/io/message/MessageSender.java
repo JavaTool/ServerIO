@@ -15,21 +15,27 @@ public final class MessageSender implements IMessageSender {
 	
 	private static final Logger log = LoggerFactory.getLogger(MessageSender.class);
 	
-	private static final String LOG_SEND = "Send message[{}({})], serial[{}], size[{}], use {} ms.";
+	private static final String LOG_SEND = "Use {} ms send message[{}] : {}.";
+	
+	private static final String LOG_SERIAL = "{\"serial\" : %d}";
 	
 	private final ISender sender;
 	
 	private final IErrorHandler errorHandler;
 	
-	public MessageSender(ISender sender, IErrorHandler errorHandler) {
+	private final IMessageIdTransform messageIdTransform;
+	
+	public MessageSender(ISender sender, IErrorHandler errorHandler, IMessageIdTransform messageIdTransform) {
 		this.sender = sender;
 		this.errorHandler = errorHandler;
+		this.messageIdTransform = messageIdTransform;
 	}
 
 	@Override
 	public void send(IMessage message) {
-		send(message.toByteArray(), message.getMessageId(), message.getSerial(), message.getReceiveTime());
-		log.info(LOG_SEND, message.getClass().getSimpleName(), JSONObject.toJSONString(message));
+		int messageId = message.getMessageId();
+		send(message.toByteArray(), messageId, message.getSerial());
+		logSend(messageId, JSONObject.toJSONString(message), message.getReceiveTime());
 	}
 
 	@Override
@@ -39,12 +45,18 @@ public final class MessageSender implements IMessageSender {
 
 	@Override
 	public void send(int messageId, int serial, long receiveTime) {
-		send(EMPTY_DATAS, messageId, serial, receiveTime);
+		send(EMPTY_DATAS, messageId, serial);
+		logSend(messageId, String.format(LOG_SERIAL, serial), receiveTime);
 	}
 	
-	private void send(byte[] datas, int messageId, int serial, long receiveTime) {
+	private void logSend(int messageId, String content, long receiveTime) {
+		long useTime = receiveTime <= 0 ? 0 : (currentTimeMillis() - receiveTime);
+		log.info(LOG_SEND, useTime, messageIdTransform.transform(messageId), content);
+	}
+	
+	private void send(byte[] datas, int messageId, int serial) {
 		try {
-			sender.send(datas, serial, messageId, receiveTime <= 0 ? 0 : (currentTimeMillis() - receiveTime));
+			sender.send(datas, serial, messageId);
 		} catch (Exception e) {
 			log.error("", e);
 		}

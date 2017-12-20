@@ -10,20 +10,20 @@ import org.tool.server.io.NetType;
  */
 public interface ISender {
 	
-	String FORMAT = "text/plain; charset=UTF-8; time={0}; messageid={1}";
+	String FORMAT = "text/plain; charset=UTF-8; messageid={0}";
 	/**
 	 * session id name.
 	 */
 	String SESSION_ID = "SESSION_ID";
 	
-	void send(byte[] datas, int serial, int messageId, long useTime) throws Exception;
+	void send(byte[] datas, int serial, int messageId) throws Exception;
 	
 	<X, Y extends X> void setAttribute(String key, Class<X> clz, Y value);
 	
 	<X> X getAttribute(String key, Class<X> clz);
 	
-	default String makeHead(int messageId, long useTime) {
-		return format(FORMAT, useTime, messageId);
+	default String makeHead(int messageId) {
+		return format(FORMAT, messageId);
 	}
 	
 	NetType getNetType();
