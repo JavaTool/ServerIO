@@ -2,7 +2,6 @@ package org.tool.server.io.netty.client;
 
 import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.message.IMessageHandler;
-import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.netty.NettyTcpSender;
 
 import io.netty.buffer.ByteBuf;
@@ -16,13 +15,10 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 	
 	private final IMessageHandler contentHandler;
 	
-	private final IMessageIdTransform messageIdTransform;
-	
 	private final IEncrypt encrypt;
 
-	public NettyClientHandler(IMessageHandler contentHandler, IMessageIdTransform messageIdTransform, IEncrypt encrypt) {
+	public NettyClientHandler(IMessageHandler contentHandler, IEncrypt encrypt) {
 		this.contentHandler = contentHandler;
-		this.messageIdTransform = messageIdTransform;
 		this.encrypt = encrypt;
 	}
 	  
@@ -33,7 +29,7 @@ public class NettyClientHandler extends ChannelInboundHandlerAdapter {
 		    Channel channel = ctx.channel();
 		    byte[] data = new byte[buf.readableBytes()];
 		    buf.readBytes(data);
-		    contentHandler.handle(encrypt.deEncrypt(data), new NettyTcpSender(channel, messageIdTransform, encrypt));
+		    contentHandler.handle(encrypt.deEncrypt(data), new NettyTcpSender(channel, encrypt));
 	    }
 	}
 	  

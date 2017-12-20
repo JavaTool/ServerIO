@@ -4,7 +4,6 @@ import org.tool.server.anthenticate.DefaultEncrypt;
 import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.INetClient;
 import org.tool.server.io.message.IMessageHandler;
-import org.tool.server.io.message.IMessageIdTransform;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.buffer.ByteBuf;
@@ -32,13 +31,13 @@ public class NettyClient implements INetClient<byte[]> {
 	
 	protected final IEncrypt encrypt;
 	
-	public NettyClient(final IMessageHandler contentHandler, IMessageIdTransform messageIdTransform) {
+	public NettyClient(final IMessageHandler contentHandler) {
 		encrypt = new DefaultEncrypt();
-		nettyClientHandler = createNettyClientHandler(contentHandler, messageIdTransform);
+		nettyClientHandler = createNettyClientHandler(contentHandler);
 	}
 	
-	protected NettyClientHandler createNettyClientHandler(IMessageHandler contentHandler, IMessageIdTransform messageIdTransform) {
-		return new NettyClientHandler(contentHandler, messageIdTransform, encrypt);
+	protected NettyClientHandler createNettyClientHandler(IMessageHandler contentHandler) {
+		return new NettyClientHandler(contentHandler, encrypt);
 	}
 	
 	@Override

@@ -4,7 +4,6 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.message.IConncetHandler;
-import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.netty.server.INettyServerConfig;
 
 import io.netty.channel.ChannelHandler;
@@ -30,7 +29,6 @@ public final class NettyTcpServer extends AbstractNettyTcpServer<INettyServerCon
 		final long writerIdleTime = config.getWriterIdleTime();
 		final long allIdleTime = config.getAllIdleTime();
 		final IConncetHandler messageHandler = config.getConncetHandler();
-		final IMessageIdTransform messageIdTransform = config.getMessageIdTransform();
 		final IEncrypt encrypt = config.getEncrypt();
 		return new ChannelInitializer<SocketChannel>() {
 
@@ -42,7 +40,7 @@ public final class NettyTcpServer extends AbstractNettyTcpServer<INettyServerCon
 				// 粘包处理
 				pipeline.addLast("Decoder", new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 0, 4, 0, 4));
 				// 业务逻辑处理
-				pipeline.addLast("Handler", new NettyTcpHandler(messageHandler, messageIdTransform, encrypt));
+				pipeline.addLast("Handler", new NettyTcpHandler(messageHandler, encrypt));
 				log.info("Init channel done.");
 			}
 			

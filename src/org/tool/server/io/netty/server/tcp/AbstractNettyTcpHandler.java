@@ -7,7 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.tool.server.anthenticate.IEncrypt;
 import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.message.IConncetHandler;
-import org.tool.server.io.message.IMessageIdTransform;
 import org.tool.server.io.netty.NettyTcpSender;
 
 import io.netty.buffer.ByteBuf;
@@ -34,14 +33,11 @@ public abstract class AbstractNettyTcpHandler extends SimpleChannelInboundHandle
 	protected static final String LOG_INACTIVE = "[Coming Out]IP:{}, session{}";
 	/**消息处理器*/
 	protected final IConncetHandler messageHandler;
-	/**消息工厂*/
-	protected final IMessageIdTransform messageIdTransform;
 	
 	protected final IEncrypt encrypt;
 	
-	public AbstractNettyTcpHandler(IConncetHandler messageHandler, IMessageIdTransform messageIdTransform, IEncrypt encrypt) {
+	public AbstractNettyTcpHandler(IConncetHandler messageHandler, IEncrypt encrypt) {
 		this.messageHandler = messageHandler;
-		this.messageIdTransform = messageIdTransform;
 		this.encrypt = encrypt;
 	}
 
@@ -79,7 +75,7 @@ public abstract class AbstractNettyTcpHandler extends SimpleChannelInboundHandle
 			Attribute<ISender> attribute = channel.attr(SENDER_KEY);
 			ISender sender = attribute.get();
 			if (sender == null) {
-				sender = new NettyTcpSender(channel, messageIdTransform, encrypt);
+				sender = new NettyTcpSender(channel, encrypt);
 				attribute.set(sender);
 				Attribute<String> session = channel.attr(SESSSION_ID_KEY);
 				session.set(UUID.randomUUID().toString());

@@ -7,11 +7,15 @@ import org.slf4j.LoggerFactory;
 import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.proto.IErrorHandler;
 
+import com.alibaba.fastjson.JSONObject;
+
 public final class MessageSender implements IMessageSender {
 	
 	private static final byte[] EMPTY_DATAS = new byte[0];
 	
 	private static final Logger log = LoggerFactory.getLogger(MessageSender.class);
+	
+	private static final String LOG_SEND = "Send message[{}({})], serial[{}], size[{}], use {} ms.";
 	
 	private final ISender sender;
 	
@@ -25,6 +29,7 @@ public final class MessageSender implements IMessageSender {
 	@Override
 	public void send(IMessage message) {
 		send(message.toByteArray(), message.getMessageId(), message.getSerial(), message.getReceiveTime());
+		log.info(LOG_SEND, message.getClass().getSimpleName(), JSONObject.toJSONString(message));
 	}
 
 	@Override

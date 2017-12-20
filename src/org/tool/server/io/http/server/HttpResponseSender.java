@@ -43,7 +43,6 @@ public final class HttpResponseSender implements ISender {
 			dos.writeInt(serial); // 客户端的协议序列号，如果是需要返回消息的协议，则该值原样返回
 			dos.write(datas);
 			os.write(ENCRYPT.encrypt(baos.toByteArray()));
-			log.info("Send message[{}], serial[{}], use {} ms.", messageId, serial, useTime);
 		} catch (Exception e) {
 			log.info("Exception message[{}], serial[{}], use {} ms.", messageId, serial, useTime);
 			throw e;
