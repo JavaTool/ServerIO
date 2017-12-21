@@ -7,8 +7,6 @@ import org.slf4j.LoggerFactory;
 import org.tool.server.io.dispatch.ISender;
 import org.tool.server.io.proto.IErrorHandler;
 
-import com.alibaba.fastjson.JSONObject;
-
 public final class MessageSender implements IMessageSender {
 	
 	private static final byte[] EMPTY_DATAS = new byte[0];
@@ -33,7 +31,7 @@ public final class MessageSender implements IMessageSender {
 	public void send(IMessage message) {
 		int messageId = message.getMessageId();
 		send(message.toByteArray(), messageId, message.getSerial());
-		logSend(messageId, JSONObject.toJSONString(message), message.getReceiveTime());
+		logSend(messageId, message.toString(), message.getReceiveTime());
 	}
 
 	@Override

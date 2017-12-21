@@ -20,7 +20,6 @@ import org.tool.server.thread.IThreadType;
 import org.tool.server.thread.MessageProcessorGroup;
 import org.tool.server.utils.StringUtil;
 
-import com.alibaba.fastjson.JSONObject;
 import com.google.common.collect.ClassToInstanceMap;
 
 import gnu.trove.impl.unmodifiable.TUnmodifiableIntObjectMap;
@@ -109,7 +108,7 @@ public abstract class BasedIOCHandler extends MessageHandler {
 		public void invoke(int messageId, int serial, byte[] datas, IMessageSender sender) {
 			try {
 				IMessage message = fromMethod == null ? null : createMessage(serial, datas);
-				String content = message == null ? String.format(IMessageSender.LOG_SERIAL, serial) : JSONObject.toJSONString(message);
+				String content = message == null ? String.format(IMessageSender.LOG_SERIAL, serial) : message.toString();
 				log.info(LOG_RECEIVED, sender.getSessionId(), sender.getIp(), messageIdTransform.transform(messageId), content);
 				method.invoke(processor, message == null ? serial : message, sender);
 			} catch (Exception e) {
