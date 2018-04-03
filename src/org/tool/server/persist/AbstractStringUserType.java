@@ -12,7 +12,7 @@ import org.hibernate.usertype.UserType;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public abstract class AbstractStringUserType<T> implements UserType {
+public abstract class AbstractStringUserType implements UserType {
 	
 	protected static final Logger log = LoggerFactory.getLogger(AbstractStringUserType.class);
 	
@@ -33,15 +33,14 @@ public abstract class AbstractStringUserType<T> implements UserType {
 		return x.hashCode();
 	}
 
-	@SuppressWarnings("unchecked")
 	@Override
 	public Object nullSafeGet(ResultSet rs, String[] names, SessionImplementor session, Object owner)
 			throws HibernateException, SQLException {
 		String str = rs.getString(names[0]);
 		try {
 			return str == null ? 
-					owner == null ? makeObject() : makeObject((T) owner) : 
-						owner == null ? makeObject((String) owner) : makeObject(str, (T) owner);
+					owner == null ? makeObject() : makeObject(owner) : 
+						owner == null ? makeObject(str) : makeObject(str, owner);
 		} catch (Exception e) {
 			throw new HibernateException(e);
 		}
@@ -51,8 +50,7 @@ public abstract class AbstractStringUserType<T> implements UserType {
 	public void nullSafeSet(PreparedStatement st, Object value, int index, SessionImplementor session)
 			throws HibernateException, SQLException {
 		try {
-			@SuppressWarnings("unchecked")
-			String str = value == null ? makeString() : makeString((T) value);
+			String str = value == null ? makeString() : makeString(value);
 			if (str != null) {
 				st.setString(index, str);
 			} else {
@@ -83,15 +81,15 @@ public abstract class AbstractStringUserType<T> implements UserType {
 		return original;
 	}
 	
-	protected abstract Object makeObject(String str, T owner) throws Exception;
+	protected abstract Object makeObject(String str, Object owner) throws Exception;
 	
 	protected abstract Object makeObject(String str) throws Exception;
 	
-	protected abstract Object makeObject(T owner) throws Exception;
+	protected abstract Object makeObject(Object owner) throws Exception;
 	
 	protected abstract Object makeObject() throws Exception;
 	
-	protected abstract String makeString(T object) throws Exception;
+	protected abstract String makeString(Object object) throws Exception;
 	
 	protected abstract String makeString() throws Exception;
 
