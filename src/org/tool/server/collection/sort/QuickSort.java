@@ -16,18 +16,7 @@ public class QuickSort implements Sort {
 	public int[] sort(int[] kn) {
 		int n = kn.length;
 		if (n < m) {
-			for (int j = 1;j < n;j++) {
-				if (kn[j - 1] > kn[j]) {
-					int k = kn[j];
-					int i = j - 1;
-					while (kn[i] > k) {
-						kn[i + 1] = kn[i];
-						i = i - 1;
-					}
-					kn[i + 1] = k;
-				}
-			}
-			return kn;
+			return insertSort(kn);
 		} else {
 			StackNode stack = null;
 			// Q1
@@ -58,7 +47,7 @@ public class QuickSort implements Sort {
 						} else if (j - l > m && m >= r - j) {
 							r = j - 1;
 						} else if (stack == null) {
-							return kn;
+							return m == 1 ? kn : insertSort(kn);
 						} else {
 							// Q8
 							l = stack.l;
@@ -72,6 +61,21 @@ public class QuickSort implements Sort {
 				} while (i < j);
 			} while (true);
 		}
+	}
+	
+	private static int[] insertSort(int[] kn) {
+		for (int j = 1;j < kn.length;j++) {
+			if (kn[j - 1] > kn[j]) {
+				int k = kn[j];
+				int i = j - 1;
+				do {
+					kn[i + 1] = kn[i];
+					i = i - 1;
+				} while (i >= 0 && kn[i] > k);
+				kn[i + 1] = k;
+			}
+		}
+		return kn;
 	}
 	
 	private static class StackNode {
