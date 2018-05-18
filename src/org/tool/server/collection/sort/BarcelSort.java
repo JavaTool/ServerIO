@@ -17,9 +17,7 @@ public class BarcelSort implements Sort {
 				for (int i = 0;i < n - d;i++) {
 					if ((i & p) == r) {
 						if (kn[i] > kn[i + d]) {
-							int k = kn[i];
-							kn[i] = kn[i + d];
-							kn[i + d] = k;
+							Sort.swap(kn, i, i + d);
 						}
 					}
 				}

@@ -10,9 +10,7 @@ public class BubbleSort implements Sort {
 			t = 0;
 			for (int j = 0;j < bound;j++) {
 				if (kn[j] > kn[j + 1]) {
-					t = kn[j];
-					kn[j] = kn[j + 1];
-					kn[j + 1] = t;
+					Sort.swap(kn, j + 1, j);
 					t = j;
 				}
 			}

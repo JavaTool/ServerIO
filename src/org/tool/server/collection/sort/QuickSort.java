@@ -9,7 +9,7 @@ public class QuickSort implements Sort {
 	}
 	
 	public QuickSort() {
-		this(0);
+		this(1);
 	}
 
 	@Override
@@ -27,52 +27,67 @@ public class QuickSort implements Sort {
 					kn[i + 1] = k;
 				}
 			}
+			return kn;
 		} else {
-			int[] stack = new int[Sort.calcLgN(n)];
-			int top = 0;
+			StackNode stack = null;
+			// Q1
 			int l = 0;
 			int r = n - 1;
 			do {
+				// Q2
 				int i = l;
 				int j = r + 1;
 				int k = kn[l];
-				
 				do {
+					// Q3
 					while (kn[++i] < k) {}
+					// Q4
 					while (k < kn[--j]) {}
+					// Q5
 					if (j <= i) {
-						int t = kn[l];
-						kn[l] = kn[j];
-						kn[j] = t;
+						Sort.swap(kn, l, j);
+						// Q7
 						if (r - j >= j - l && j - l > m) {
-							for (t = j + 1;t <= r;t++) {
-								stack[top++] = t;
-							}
+							stack = new StackNode(j + 1, r, stack);
 							r = j - 1;
-						} else if (j - l > r - j && j - l > m) {
-							for (t = l;t < j;t++) {
-								stack[top++] = t;
-							}
+						} else if (j - l > r - j && r - j > m) {
+							stack = new StackNode(l, j - 1, stack);
 							l = j + 1;
-						} else if (r - j >= m && m >= j - l) {
+						} else if (r - j > m && m >= j - l) {
 							l = j + 1;
 						} else if (j - l > m && m >= r - j) {
 							r = j - 1;
+						} else if (stack == null) {
+							return kn;
 						} else {
-							r = stack[top];
-							do {
-								l = stack[top--];
-							} while (top > 0);
+							// Q8
+							l = stack.l;
+							r = stack.r;
+							stack = stack.previous;
 						}
 					} else {
-						int t = kn[i];
-						kn[i] = kn[j];
-						kn[j] = t;
+						// Q6
+						Sort.swap(kn, i, j);
 					}
-				} while (j <= i);
-			} while (top > 0);
+				} while (i < j);
+			} while (true);
 		}
-		return kn;
+	}
+	
+	private static class StackNode {
+		
+		private final int l;
+		
+		private final int r;
+		
+		private final StackNode previous;
+		
+		public StackNode(int l, int  r, StackNode previous) {
+			this.l = l;
+			this.r = r;
+			this.previous = previous;
+		}
+		
 	}
 
 }
